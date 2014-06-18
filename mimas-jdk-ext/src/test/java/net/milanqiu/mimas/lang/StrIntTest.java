@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.lang;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-
 import org.junit.Assert;
 import org.junit.Test;
 

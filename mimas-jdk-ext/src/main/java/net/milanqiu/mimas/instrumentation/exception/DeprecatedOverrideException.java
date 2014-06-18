@@ -7,7 +7,7 @@ package net.milanqiu.mimas.instrumentation.exception;
  * <p>Creation Date: 2014-2-8
  * @author Milan Qiu
  */
-public class DeprecatedOverrideException extends RuntimeException {
+public class DeprecatedOverrideException extends UnsupportedOperationException {
     /**
      * Constructs a new deprecated-override exception with {@code null} as its detail message.
      * The cause is not initialized, and may subsequently be initialized by a call to {@link #initCause}.
