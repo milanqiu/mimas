@@ -16,5 +16,10 @@
     <description>For the purpose of showing how to use JDK</description>
 
     <dependencies>
+        <!-- mimas itself -->
+        <dependency>
+            <groupId>net.milanqiu.mimas</groupId>
+            <artifactId>mimas-jdk-ext</artifactId>
+        </dependency>
     </dependencies>
 </project>

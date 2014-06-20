@@ -15,5 +15,25 @@
     <name>Mimas Third-Party Library Extension APIs</name>
 
     <dependencies>
+        <!-- mimas itself -->
+        <dependency>
+            <groupId>net.milanqiu.mimas</groupId>
+            <artifactId>mimas-jdk-ext</artifactId>
+        </dependency>
+        <!-- jdbc -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!-- bonecp -->
+        <dependency>
+            <groupId>com.jolbox</groupId>
+            <artifactId>bonecp</artifactId>
+        </dependency>
+        <!-- protobuf -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+        </dependency>
     </dependencies>
 </project>
