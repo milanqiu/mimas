@@ -30,6 +30,12 @@
             <!-- mimas itself -->
             <dependency>
                 <groupId>net.milanqiu.mimas</groupId>
+                <artifactId>mimas-test-ext</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>net.milanqiu.mimas</groupId>
                 <artifactId>mimas-jdk-ext</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>

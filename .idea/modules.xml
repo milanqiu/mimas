@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/mimas-jdk-ext/mimas-jdk-ext.iml" filepath="$PROJECT_DIR$/mimas-jdk-ext/mimas-jdk-ext.iml" />
       <module fileurl="file://$PROJECT_DIR$/mimas-jdk-trial/mimas-jdk-trial.iml" filepath="$PROJECT_DIR$/mimas-jdk-trial/mimas-jdk-trial.iml" />
       <module fileurl="file://$PROJECT_DIR$/mimas-parent/mimas-parent.iml" filepath="$PROJECT_DIR$/mimas-parent/mimas-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mimas-test-ext/mimas-test-ext.iml" filepath="$PROJECT_DIR$/mimas-test-ext/mimas-test-ext.iml" />
       <module fileurl="file://$PROJECT_DIR$/mimas-tpl-ext/mimas-tpl-ext.iml" filepath="$PROJECT_DIR$/mimas-tpl-ext/mimas-tpl-ext.iml" />
       <module fileurl="file://$PROJECT_DIR$/mimas-tpl-trial/mimas-tpl-trial.iml" filepath="$PROJECT_DIR$/mimas-tpl-trial/mimas-tpl-trial.iml" />
     </modules>

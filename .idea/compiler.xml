@@ -24,6 +24,7 @@
         <processorPath useClasspath="true" />
         <module name="mimas-jdk-ext" />
         <module name="mimas-jdk-trial" />
+        <module name="mimas-test-ext" />
         <module name="mimas-tpl-ext" />
         <module name="mimas-tpl-trial" />
       </profile>
@@ -32,6 +33,7 @@
       <module name="mimas-jdk-ext" target="1.7" />
       <module name="mimas-jdk-trial" target="1.7" />
       <module name="mimas-parent" target="1.7" />
+      <module name="mimas-test-ext" target="1.7" />
       <module name="mimas-tpl-ext" target="1.7" />
       <module name="mimas-tpl-trial" target="1.7" />
     </bytecodeTargetLevel>
