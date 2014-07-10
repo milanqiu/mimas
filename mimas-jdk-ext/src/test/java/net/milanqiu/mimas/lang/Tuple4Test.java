@@ -17,19 +17,19 @@ public class Tuple4Test {
     public void test_setAll() throws Exception {
         tuple = new Tuple4<>();
         tuple.setAll(INT_0, INT_1, INT_2, STR_0);
-        Assert.assertEquals((int) tuple.getA(), INT_0);
-        Assert.assertEquals((int) tuple.getB(), INT_1);
-        Assert.assertEquals((int) tuple.getC(), INT_2);
-        Assert.assertEquals(tuple.getD(), STR_0);
+        Assert.assertEquals(INT_0, (int) tuple.getA());
+        Assert.assertEquals(INT_1, (int) tuple.getB());
+        Assert.assertEquals(INT_2, (int) tuple.getC());
+        Assert.assertEquals(STR_0, tuple.getD());
     }
 
     @Test
     public void test_Constructor() throws Exception {
         tuple = new Tuple4<>(INT_0, INT_1, INT_3, STR_0);
-        Assert.assertEquals((int) tuple.getA(), INT_0);
-        Assert.assertEquals((int) tuple.getB(), INT_1);
-        Assert.assertEquals((int) tuple.getC(), INT_3);
-        Assert.assertEquals(tuple.getD(), STR_0);
+        Assert.assertEquals(INT_0, (int) tuple.getA());
+        Assert.assertEquals(INT_1, (int) tuple.getB());
+        Assert.assertEquals(INT_3, (int) tuple.getC());
+        Assert.assertEquals(STR_0, tuple.getD());
     }
 
     @Test
@@ -67,6 +67,6 @@ public class Tuple4Test {
     @Test
     public void test_toString() throws Exception {
         tuple = new Tuple4<>(INT_0, INT_1, INT_2, STR_0);
-        Assert.assertEquals(tuple.toString(), "(A="+INT_0+", B="+INT_1+", C="+INT_2+", D="+STR_0+")");
+        Assert.assertEquals("(A="+INT_0+", B="+INT_1+", C="+INT_2+", D="+STR_0+")", tuple.toString());
     }
 }

@@ -16,8 +16,8 @@ public class StrIntTest {
         si = new StrInt();
         si.setA(STR_0);
         si.setB(INT_0);
-        Assert.assertEquals(si.getStr(), STR_0);
-        Assert.assertEquals(si.getInt(), INT_0);
+        Assert.assertEquals(STR_0, si.getStr());
+        Assert.assertEquals(INT_0, si.getInt());
     }
 
     @Test
@@ -25,7 +25,7 @@ public class StrIntTest {
         si = new StrInt();
         si.setStr(STR_1);
         si.setInt(INT_1);
-        Assert.assertEquals(si.getA(), STR_1);
-        Assert.assertEquals((int) si.getB(), INT_1);
+        Assert.assertEquals(STR_1, si.getA());
+        Assert.assertEquals(INT_1, (int) si.getB());
     }
 }

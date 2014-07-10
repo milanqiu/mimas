@@ -17,15 +17,15 @@ public class Tuple2Test {
     public void test_setAll() throws Exception {
         tuple = new Tuple2<>();
         tuple.setAll(INT_0, STR_0);
-        Assert.assertEquals((int) tuple.getA(), INT_0);
-        Assert.assertEquals(tuple.getB(), STR_0);
+        Assert.assertEquals(INT_0, (int) tuple.getA());
+        Assert.assertEquals(STR_0, tuple.getB());
     }
 
     @Test
     public void test_Constructor() throws Exception {
         tuple = new Tuple2<>(INT_1, STR_1);
-        Assert.assertEquals((int) tuple.getA(), INT_1);
-        Assert.assertEquals(tuple.getB(), STR_1);
+        Assert.assertEquals(INT_1, (int) tuple.getA());
+        Assert.assertEquals(STR_1, tuple.getB());
     }
 
     @Test
@@ -63,6 +63,6 @@ public class Tuple2Test {
     @Test
     public void test_toString() throws Exception {
         tuple = new Tuple2<>(INT_0, STR_0);
-        Assert.assertEquals(tuple.toString(), "(A="+INT_0+", B="+STR_0+")");
+        Assert.assertEquals("(A="+INT_0+", B="+STR_0+")", tuple.toString());
     }
 }

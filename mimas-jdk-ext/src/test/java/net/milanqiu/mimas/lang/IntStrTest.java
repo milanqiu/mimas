@@ -16,8 +16,8 @@ public class IntStrTest {
         is = new IntStr();
         is.setA(INT_0);
         is.setB(STR_0);
-        Assert.assertEquals(is.getInt(), INT_0);
-        Assert.assertEquals(is.getStr(), STR_0);
+        Assert.assertEquals(INT_0, is.getInt());
+        Assert.assertEquals(STR_0, is.getStr());
     }
 
     @Test
@@ -25,7 +25,7 @@ public class IntStrTest {
         is = new IntStr();
         is.setInt(INT_1);
         is.setStr(STR_1);
-        Assert.assertEquals((int) is.getA(), INT_1);
-        Assert.assertEquals(is.getB(), STR_1);
+        Assert.assertEquals(INT_1, (int) is.getA());
+        Assert.assertEquals(STR_1, is.getB());
     }
 }

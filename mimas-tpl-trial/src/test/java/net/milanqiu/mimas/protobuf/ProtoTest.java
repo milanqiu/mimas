@@ -1,6 +1,8 @@
 package net.milanqiu.mimas.protobuf;
 
+import com.google.protobuf.UninitializedMessageException;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
+import net.milanqiu.mimas.junit.AssertExt;
 import net.milanqiu.mimas.protobuf.generated.PersonProto.Person;
 
 import java.io.ByteArrayInputStream;
@@ -23,9 +25,9 @@ public class ProtoTest {
     private void checkPersonIsDefault(Person p) {
         Assert.assertFalse(p.isInitialized());
         Assert.assertFalse(p.hasId());
-        Assert.assertEquals(p.getId(), 0);
+        AssertExt.assertDefault(p.getId());
         Assert.assertFalse(p.hasName());
-        Assert.assertEquals(p.getName(), "");
+        AssertExt.assertEmpty(p.getName());
     }
 
     /**
@@ -35,9 +37,9 @@ public class ProtoTest {
     private void checkPersonBuilderIsDefault(Person.Builder pb) {
         Assert.assertFalse(pb.isInitialized());
         Assert.assertFalse(pb.hasId());
-        Assert.assertEquals(pb.getId(), 0);
+        AssertExt.assertDefault(pb.getId());
         Assert.assertFalse(pb.hasName());
-        Assert.assertEquals(pb.getName(), "");
+        AssertExt.assertEmpty(pb.getName());
     }
 
     /**
@@ -47,9 +49,9 @@ public class ProtoTest {
     private void checkPersonIsSI0(Person p) {
         Assert.assertTrue(p.isInitialized());
         Assert.assertTrue(p.hasId());
-        Assert.assertEquals(p.getId(), INT_0);
+        Assert.assertEquals(INT_0, p.getId());
         Assert.assertTrue(p.hasName());
-        Assert.assertEquals(p.getName(), STR_0);
+        Assert.assertEquals(STR_0, p.getName());
     }
 
     /**
@@ -59,9 +61,9 @@ public class ProtoTest {
     private void checkPersonBuilderIsSI0(Person.Builder pb) {
         Assert.assertTrue(pb.isInitialized());
         Assert.assertTrue(pb.hasId());
-        Assert.assertEquals(pb.getId(), INT_0);
+        Assert.assertEquals(INT_0, pb.getId());
         Assert.assertTrue(pb.hasName());
-        Assert.assertEquals(pb.getName(), STR_0);
+        Assert.assertEquals(STR_0, pb.getName());
     }
 
     /**
@@ -71,9 +73,9 @@ public class ProtoTest {
     private void checkPersonIsSI1(Person p) {
         Assert.assertTrue(p.isInitialized());
         Assert.assertTrue(p.hasId());
-        Assert.assertEquals(p.getId(), INT_1);
+        Assert.assertEquals(INT_1, p.getId());
         Assert.assertTrue(p.hasName());
-        Assert.assertEquals(p.getName(), STR_1);
+        Assert.assertEquals(STR_1, p.getName());
     }
 
     /**
@@ -83,9 +85,9 @@ public class ProtoTest {
     private void checkPersonBuilderIsSI1(Person.Builder pb) {
         Assert.assertTrue(pb.isInitialized());
         Assert.assertTrue(pb.hasId());
-        Assert.assertEquals(pb.getId(), INT_1);
+        Assert.assertEquals(INT_1, pb.getId());
         Assert.assertTrue(pb.hasName());
-        Assert.assertEquals(pb.getName(), STR_1);
+        Assert.assertEquals(STR_1, pb.getName());
     }
 
     /**
@@ -143,7 +145,7 @@ public class ProtoTest {
             pb2.build();
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            // TO-DO
+            AssertExt.assertClassification(UninitializedMessageException.class, e);
         }
 
         Person.Builder pb3 = Person.newBuilder(p);
@@ -156,13 +158,14 @@ public class ProtoTest {
     public void test_toString() throws Exception {
         Person p = newPersonSI0();
         // Person.toString() is overrided
-        Assert.assertEquals(p.toString(),
+        Assert.assertEquals(
                 "id: " + INT_0 + "\n" +
-                "name: \"" + STR_0 + "\"\n");
+                "name: \"" + STR_0 + "\"\n",
+                p.toString());
 
         Person.Builder pb = newPersonBuilderSI0();
         // Person.Builder.toString() is default
-        Assert.assertTrue(pb.toString().startsWith(Person.Builder.class.getName() + "@")); // TO-DO
+        AssertExt.assertHasDefaultToString(pb);
     }
 
     @Test
@@ -178,9 +181,9 @@ public class ProtoTest {
         pb.clearName();
         Assert.assertFalse(pb.isInitialized());
         Assert.assertTrue(pb.hasId());
-        Assert.assertEquals(pb.getId(), INT_0);
+        Assert.assertEquals(INT_0, pb.getId());
         Assert.assertFalse(pb.hasName());
-        Assert.assertEquals(pb.getName(), "");
+        AssertExt.assertEmpty(pb.getName());
     }
 
     @Test

@@ -17,17 +17,17 @@ public class Tuple3Test {
     public void test_setAll() throws Exception {
         tuple = new Tuple3<>();
         tuple.setAll(INT_0, INT_1, STR_0);
-        Assert.assertEquals((int) tuple.getA(), INT_0);
-        Assert.assertEquals((int) tuple.getB(), INT_1);
-        Assert.assertEquals(tuple.getC(), STR_0);
+        Assert.assertEquals(INT_0, (int) tuple.getA());
+        Assert.assertEquals(INT_1, (int) tuple.getB());
+        Assert.assertEquals(STR_0, tuple.getC());
     }
 
     @Test
     public void test_Constructor() throws Exception {
         tuple = new Tuple3<>(INT_0, INT_2, STR_0);
-        Assert.assertEquals((int) tuple.getA(), INT_0);
-        Assert.assertEquals((int) tuple.getB(), INT_2);
-        Assert.assertEquals(tuple.getC(), STR_0);
+        Assert.assertEquals(INT_0, (int) tuple.getA());
+        Assert.assertEquals(INT_2, (int) tuple.getB());
+        Assert.assertEquals(STR_0, tuple.getC());
     }
 
     @Test
@@ -65,6 +65,6 @@ public class Tuple3Test {
     @Test
     public void test_toString() throws Exception {
         tuple = new Tuple3<>(INT_0, INT_1, STR_0);
-        Assert.assertEquals(tuple.toString(), "(A="+INT_0+", B="+INT_1+", C="+STR_0+")");
+        Assert.assertEquals("(A="+INT_0+", B="+INT_1+", C="+STR_0+")", tuple.toString());
     }
 }
