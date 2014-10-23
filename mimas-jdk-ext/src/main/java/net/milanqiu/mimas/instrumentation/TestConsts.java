@@ -1,5 +1,7 @@
 package net.milanqiu.mimas.instrumentation;
 
+import java.util.concurrent.Callable;
+
 /**
  * Declares a variety of constants used for unit tests and other tests.
  *
@@ -7,6 +9,11 @@ package net.milanqiu.mimas.instrumentation;
  * @author Milan Qiu
  */
 public class TestConsts {
+    /**
+     * Constant class is forbidden to be instantiated.
+     */
+    private TestConsts() {
+    }
 
     /**
      * Integer constant #0.
@@ -28,6 +35,27 @@ public class TestConsts {
      * Integer constant #4.
      */
     public static final int INT_4 = 50;
+
+    /**
+     * String constant converted from integer constant #0.
+     */
+    public static final String STR_OF_INT_0 = "1982";
+    /**
+     * String constant converted from integer constant #1.
+     */
+    public static final String STR_OF_INT_1 = "8";
+    /**
+     * String constant converted from integer constant #2.
+     */
+    public static final String STR_OF_INT_2 = "29";
+    /**
+     * String constant converted from integer constant #3.
+     */
+    public static final String STR_OF_INT_3 = "7";
+    /**
+     * String constant converted from integer constant #4.
+     */
+    public static final String STR_OF_INT_4 = "50";
 
     /**
      * Float constant #0.
@@ -93,23 +121,63 @@ public class TestConsts {
     public static final String STR_4 = "ccc";
 
     /**
-     * String constant converted from integer constant #0.
+     * Object constant #0.
      */
-    public static final String STR_OF_INT_0 = "1982";
+    public static final Object OBJ_0 = new Object();
     /**
-     * String constant converted from integer constant #1.
+     * Object constant #1.
      */
-    public static final String STR_OF_INT_1 = "8";
+    public static final Object OBJ_1 = new Object();
     /**
-     * String constant converted from integer constant #2.
+     * Object constant #2.
      */
-    public static final String STR_OF_INT_2 = "29";
+    public static final Object OBJ_2 = new Object();
     /**
-     * String constant converted from integer constant #3.
+     * Object constant #3.
      */
-    public static final String STR_OF_INT_3 = "7";
+    public static final Object OBJ_3 = new Object();
     /**
-     * String constant converted from integer constant #4.
+     * Object constant #4.
      */
-    public static final String STR_OF_INT_4 = "50";
+    public static final Object OBJ_4 = new Object();
+
+    /**
+     * String constant converted from object constant #0.
+     */
+    public static final String STR_OF_OBJ_0 = OBJ_0.toString();
+    /**
+     * String constant converted from object constant #1.
+     */
+    public static final String STR_OF_OBJ_1 = OBJ_1.toString();
+    /**
+     * String constant converted from object constant #2.
+     */
+    public static final String STR_OF_OBJ_2 = OBJ_2.toString();
+    /**
+     * String constant converted from object constant #3.
+     */
+    public static final String STR_OF_OBJ_3 = OBJ_3.toString();
+    /**
+     * String constant converted from object constant #4.
+     */
+    public static final String STR_OF_OBJ_4 = OBJ_4.toString();
+
+    /**
+     * Callable constant returning a null object.
+     */
+    public static final Callable<Object> CALLABLE_RETURNING_NULL_OBJ = new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+            return null;
+        }
+    };
+    /**
+     * Callable constant returning a null string.
+     */
+    public static final Callable<String> CALLABLE_RETURNING_NULL_STR = new Callable<String>() {
+        @Override
+        public String call() throws Exception {
+            return null;
+        }
+    };
 }

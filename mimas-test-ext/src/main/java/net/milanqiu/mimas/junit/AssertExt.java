@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * More types of assert functions.
+ * More types of assert methods.
  * An extension of {@link org.junit.Assert}.
  *
  * <p>Creation Date: 2014-7-8
@@ -100,7 +100,7 @@ public class AssertExt {
 
     /**
      * Asserts an object has a default <code>toString()</code> member.
-     * This means its <code>toString()</code> has never been overrided, or the override function is led by <code>Object.toString()</code>.
+     * This means its <code>toString()</code> has never been overrided, or the override method is led by <code>Object.toString()</code>.
      * @param obj the object expected to have default <code>toString()</code> member
      */
     public static void assertHasDefaultToString(Object obj) {
