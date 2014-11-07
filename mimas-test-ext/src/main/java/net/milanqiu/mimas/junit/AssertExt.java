@@ -4,8 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * More types of assert methods.
- * An extension of {@link org.junit.Assert}.
+ * An extension of {@link org.junit.Assert} to provide more utilities.
  *
  * <p>Creation Date: 2014-7-8
  * @author Milan Qiu
@@ -87,6 +86,15 @@ public class AssertExt {
      */
     public static void assertDefault(Object value) {
         Assert.assertNull(value);
+    }
+
+    /**
+     * Asserts a string is null or empty.
+     * This means it is <code>null</code> or <i>""</i>.
+     * @param str the string expected to be null or empty
+     */
+    public static void assertNullOrEmpty(String str) {
+        Assert.assertTrue(str == null || str.isEmpty());
     }
 
     /**

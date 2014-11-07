@@ -16,6 +16,48 @@ public class TestConsts {
     }
 
     /**
+     * Byte constant #0.
+     */
+    public static final byte BYTE_0 = 82;
+    /**
+     * Byte constant #1.
+     */
+    public static final byte BYTE_1 = 8;
+    /**
+     * Byte constant #2.
+     */
+    public static final byte BYTE_2 = 29;
+    /**
+     * Byte constant #3.
+     */
+    public static final byte BYTE_3 = 7;
+    /**
+     * Byte constant #4.
+     */
+    public static final byte BYTE_4 = 50;
+
+    /**
+     * Character constant #0.
+     */
+    public static final char CHAR_0 = 1982;
+    /**
+     * Character constant #1.
+     */
+    public static final char CHAR_1 = 8;
+    /**
+     * Character constant #2.
+     */
+    public static final char CHAR_2 = 29;
+    /**
+     * Character constant #3.
+     */
+    public static final char CHAR_3 = 7;
+    /**
+     * Character constant #4.
+     */
+    public static final char CHAR_4 = 50;
+
+    /**
      * Integer constant #0.
      */
     public static final int INT_0 = 1982;

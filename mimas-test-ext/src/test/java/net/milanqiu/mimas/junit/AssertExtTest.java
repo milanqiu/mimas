@@ -52,6 +52,12 @@ public class AssertExtTest {
     }
 
     @Test
+    public void test_assertNullOrEmpty() throws Exception {
+        AssertExt.assertNullOrEmpty(null);
+        AssertExt.assertNullOrEmpty("");
+    }
+
+    @Test
     public void test_assertEmpty() throws Exception {
         AssertExt.assertEmpty("");
     }

@@ -1,4 +1,4 @@
-package net.milanqiu.mimas.guava;
+package net.milanqiu.mimas.guava.string;
 
 import com.google.common.base.Strings;
 import static net.milanqiu.mimas.string.StrUtils.*;
