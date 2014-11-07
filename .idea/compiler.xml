@@ -24,7 +24,6 @@
         <processorPath useClasspath="true" />
         <module name="mimas-jdk-ext" />
         <module name="mimas-jdk-trial" />
-        <module name="mimas-test-ext" />
         <module name="mimas-tpl-ext" />
         <module name="mimas-tpl-trial" />
       </profile>

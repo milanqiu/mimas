@@ -16,9 +16,5 @@
 
     <dependencies>
         <!-- mimas itself -->
-        <dependency>
-            <groupId>net.milanqiu.mimas</groupId>
-            <artifactId>mimas-test-ext</artifactId>
-        </dependency>
     </dependencies>
 </project>

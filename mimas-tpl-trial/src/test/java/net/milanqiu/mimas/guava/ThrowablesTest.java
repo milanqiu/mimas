@@ -1,10 +1,7 @@
 package net.milanqiu.mimas.guava;
 
 import com.google.common.base.Throwables;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
 

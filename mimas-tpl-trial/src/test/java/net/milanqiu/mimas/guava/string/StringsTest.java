@@ -4,7 +4,7 @@ import com.google.common.base.Strings;
 import static net.milanqiu.mimas.string.StrUtils.*;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
+
 import org.junit.Assert;
 import org.junit.Test;
 

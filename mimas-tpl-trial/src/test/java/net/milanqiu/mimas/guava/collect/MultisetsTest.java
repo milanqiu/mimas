@@ -3,13 +3,11 @@ package net.milanqiu.mimas.guava.collect;
 import com.google.common.collect.*;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
 
-import java.util.Arrays;
 import java.util.ConcurrentModificationException;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
+
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -89,7 +87,7 @@ public class MultisetsTest {
             set1.removeAll(set1);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(ConcurrentModificationException.class, e);
+            Assert.assertTrue(e instanceof ConcurrentModificationException);
         }
 
         set1 = HashMultiset.create(originalSet);

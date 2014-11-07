@@ -2,7 +2,7 @@ package net.milanqiu.mimas.protobuf;
 
 import com.google.protobuf.UninitializedMessageException;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
-import net.milanqiu.mimas.junit.AssertExt;
+import net.milanqiu.mimas.lang.LangUtils;
 import net.milanqiu.mimas.protobuf.generated.PersonProto.Person;
 
 import java.io.ByteArrayInputStream;
@@ -25,9 +25,9 @@ public class ProtoTest {
     private void checkPersonIsDefault(Person p) {
         Assert.assertFalse(p.isInitialized());
         Assert.assertFalse(p.hasId());
-        AssertExt.assertDefault(p.getId());
+        Assert.assertTrue(LangUtils.isDefault(p.getId()));
         Assert.assertFalse(p.hasName());
-        AssertExt.assertEmpty(p.getName());
+        Assert.assertTrue(p.getName().isEmpty());
     }
 
     /**
@@ -37,9 +37,9 @@ public class ProtoTest {
     private void checkPersonBuilderIsDefault(Person.Builder pb) {
         Assert.assertFalse(pb.isInitialized());
         Assert.assertFalse(pb.hasId());
-        AssertExt.assertDefault(pb.getId());
+        Assert.assertTrue(LangUtils.isDefault(pb.getId()));
         Assert.assertFalse(pb.hasName());
-        AssertExt.assertEmpty(pb.getName());
+        Assert.assertTrue(pb.getName().isEmpty());
     }
 
     /**
@@ -145,7 +145,7 @@ public class ProtoTest {
             pb2.build();
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(UninitializedMessageException.class, e);
+            Assert.assertTrue(e instanceof UninitializedMessageException);
         }
 
         Person.Builder pb3 = Person.newBuilder(p);
@@ -165,7 +165,7 @@ public class ProtoTest {
 
         Person.Builder pb = newPersonBuilderSI0();
         // Person.Builder.toString() is default
-        AssertExt.assertHasDefaultToString(pb);
+        Assert.assertTrue(LangUtils.hasDefaultToString(pb));
     }
 
     @Test
@@ -183,7 +183,7 @@ public class ProtoTest {
         Assert.assertTrue(pb.hasId());
         Assert.assertEquals(INT_0, pb.getId());
         Assert.assertFalse(pb.hasName());
-        AssertExt.assertEmpty(pb.getName());
+        Assert.assertTrue(pb.getName().isEmpty());
     }
 
     @Test

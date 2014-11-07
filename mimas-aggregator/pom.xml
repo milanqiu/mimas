@@ -17,7 +17,6 @@
 
     <modules>
         <module>../mimas-parent</module>
-        <module>../mimas-test-ext</module>
         <module>../mimas-jdk-ext</module>
         <module>../mimas-tpl-ext</module>
         <module>../mimas-jdk-trial</module>

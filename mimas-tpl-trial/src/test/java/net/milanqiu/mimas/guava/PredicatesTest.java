@@ -3,17 +3,14 @@ package net.milanqiu.mimas.guava;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.string.RegExpConsts;
 
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
+
 import org.junit.Assert;
 import org.junit.Test;
 

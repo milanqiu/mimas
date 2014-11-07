@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -34,7 +34,7 @@ public class PreconditionsTest {
             Preconditions.checkArgument(false);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
+            Assert.assertTrue(e instanceof IllegalArgumentException);
         }
 
         // variant 2
@@ -42,7 +42,7 @@ public class PreconditionsTest {
             Preconditions.checkArgument(false, OBJ_0);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
+            Assert.assertTrue(e instanceof IllegalArgumentException);
             Assert.assertEquals(OBJ_0.toString(), e.getMessage());
         }
 
@@ -51,7 +51,7 @@ public class PreconditionsTest {
             Preconditions.checkArgument(false, "here %s error %s", "is", 404);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
+            Assert.assertTrue(e instanceof IllegalArgumentException);
             Assert.assertEquals("here is error 404", e.getMessage());
         }
     }
@@ -68,7 +68,7 @@ public class PreconditionsTest {
             Preconditions.checkNotNull(null);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
+            Assert.assertTrue(e instanceof NullPointerException);
         }
     }
 
@@ -85,7 +85,7 @@ public class PreconditionsTest {
             Preconditions.checkState(false);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IllegalStateException.class, e);
+            Assert.assertTrue(e instanceof IllegalStateException);
         }
     }
 
@@ -105,14 +105,14 @@ public class PreconditionsTest {
             Preconditions.checkElementIndex(-1, INT_0);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IndexOutOfBoundsException.class, e);
+            Assert.assertTrue(e instanceof IndexOutOfBoundsException);
         }
 
         try {
             Preconditions.checkElementIndex(INT_0, INT_0);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IndexOutOfBoundsException.class, e);
+            Assert.assertTrue(e instanceof IndexOutOfBoundsException);
         }
     }
 
@@ -132,14 +132,14 @@ public class PreconditionsTest {
             Preconditions.checkPositionIndex(-1, INT_0);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IndexOutOfBoundsException.class, e);
+            Assert.assertTrue(e instanceof IndexOutOfBoundsException);
         }
 
         try {
             Preconditions.checkPositionIndex(INT_0+1, INT_0);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IndexOutOfBoundsException.class, e);
+            Assert.assertTrue(e instanceof IndexOutOfBoundsException);
         }
     }
 
@@ -155,14 +155,14 @@ public class PreconditionsTest {
             Preconditions.checkPositionIndexes(-1, INT_0, INT_0);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IndexOutOfBoundsException.class, e);
+            Assert.assertTrue(e instanceof IndexOutOfBoundsException);
         }
 
         try {
             Preconditions.checkPositionIndexes(0, INT_0+1, INT_0);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IndexOutOfBoundsException.class, e);
+            Assert.assertTrue(e instanceof IndexOutOfBoundsException);
         }
     }
 }

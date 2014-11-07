@@ -4,7 +4,7 @@ import com.google.common.base.MoreObjects;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -24,7 +24,7 @@ public class MoreObjectsTest {
             MoreObjects.firstNonNull(null, null);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
+            Assert.assertTrue(e instanceof NullPointerException);
         }
     }
 

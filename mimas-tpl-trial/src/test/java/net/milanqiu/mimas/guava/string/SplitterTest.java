@@ -7,9 +7,8 @@ import com.google.common.collect.*;
 import java.util.regex.Pattern;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
+
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 /**

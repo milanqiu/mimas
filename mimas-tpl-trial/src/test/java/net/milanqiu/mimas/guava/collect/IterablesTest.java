@@ -10,7 +10,7 @@ import net.milanqiu.mimas.collect.CollectionUtils;
 import java.util.*;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -96,7 +96,7 @@ public class IterablesTest {
             Iterables.getLast(ImmutableList.of());
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(NoSuchElementException.class, e);
+            Assert.assertTrue(e instanceof NoSuchElementException);
         }
 
         /*
@@ -160,13 +160,13 @@ public class IterablesTest {
             Iterables.getOnlyElement(ImmutableList.of());
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(NoSuchElementException.class, e);
+            Assert.assertTrue(e instanceof NoSuchElementException);
         }
         try {
             Iterables.getOnlyElement(ImmutableList.of(STR_0, STR_1, STR_1, STR_2));
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
+            Assert.assertTrue(e instanceof IllegalArgumentException);
         }
 
         /*
@@ -178,7 +178,7 @@ public class IterablesTest {
             Iterables.getOnlyElement(ImmutableList.of(STR_0, STR_1, STR_1, STR_2), STR_4);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
+            Assert.assertTrue(e instanceof IllegalArgumentException);
         }
     }
 
@@ -292,7 +292,7 @@ public class IterablesTest {
             });
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(NoSuchElementException.class, e);
+            Assert.assertTrue(e instanceof NoSuchElementException);
         }
 
         /*

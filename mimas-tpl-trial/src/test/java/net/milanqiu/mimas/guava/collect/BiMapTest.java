@@ -8,7 +8,7 @@ import net.milanqiu.mimas.collect.CollectionUtils;
 import net.milanqiu.mimas.collect.MapEntry;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -62,7 +62,7 @@ public class BiMapTest {
             biMap.put(INT_3, STR_0);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
+            Assert.assertTrue(e instanceof IllegalArgumentException);
         }
     }
 

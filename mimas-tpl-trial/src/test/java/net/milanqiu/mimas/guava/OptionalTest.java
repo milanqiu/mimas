@@ -6,7 +6,7 @@ import net.milanqiu.mimas.instrumentation.DebugUtils;
 import java.util.Set;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -38,7 +38,7 @@ public class OptionalTest {
             Optional.of(null);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
+            Assert.assertTrue(e instanceof NullPointerException);
         }
     }
 
@@ -57,7 +57,7 @@ public class OptionalTest {
             o.get();
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IllegalStateException.class, e);
+            Assert.assertTrue(e instanceof IllegalStateException);
         }
     }
 

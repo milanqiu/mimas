@@ -8,7 +8,7 @@ import net.milanqiu.mimas.instrumentation.DebugUtils;
 import java.util.List;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,7 +38,7 @@ public class JoinerTest {
             joiner.join(listWithNull);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
+            Assert.assertTrue(e instanceof NullPointerException);
         }
     }
 
@@ -52,7 +52,7 @@ public class JoinerTest {
             joiner.appendTo(sb, listWithNull);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
+            Assert.assertTrue(e instanceof NullPointerException);
         }
     }
 

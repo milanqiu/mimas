@@ -5,15 +5,9 @@ import com.google.common.collect.ImmutableSet;
 
 import java.util.Set;
 
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-
-import com.google.common.primitives.SignedBytes;
-import com.google.common.primitives.UnsignedInteger;
 import net.milanqiu.mimas.guava.CharMatcherExt;
-import net.milanqiu.mimas.junit.AssertExt;
 import net.milanqiu.mimas.string.StrUtils;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 /**

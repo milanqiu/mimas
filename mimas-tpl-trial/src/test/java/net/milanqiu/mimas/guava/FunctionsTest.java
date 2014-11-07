@@ -8,7 +8,7 @@ import net.milanqiu.mimas.instrumentation.DebugUtils;
 import java.util.Map;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -43,7 +43,7 @@ public class FunctionsTest {
             func2.apply(INT_3);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
+            Assert.assertTrue(e instanceof IllegalArgumentException);
         }
     }
 
@@ -113,7 +113,7 @@ public class FunctionsTest {
             func.apply(null);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
+            Assert.assertTrue(e instanceof NullPointerException);
         }
     }
 }

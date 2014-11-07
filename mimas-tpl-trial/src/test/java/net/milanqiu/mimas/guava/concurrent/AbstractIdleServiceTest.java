@@ -7,7 +7,6 @@ import net.milanqiu.mimas.instrumentation.DebugUtils;
 
 import java.util.concurrent.TimeUnit;
 
-import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -67,7 +66,7 @@ public class AbstractIdleServiceTest {
                 service.awaitRunning();
                 DebugUtils.neverGoesHere();
             } catch (Exception e) {
-                AssertExt.assertClassification(IllegalStateException.class, e);
+                Assert.assertTrue(e instanceof IllegalStateException);
                 Assert.assertSame(deliberateException, e.getCause());
             }
             Assert.assertEquals(Service.State.FAILED, service.state());
@@ -104,7 +103,7 @@ public class AbstractIdleServiceTest {
                 service.awaitTerminated();
                 DebugUtils.neverGoesHere();
             } catch (Exception e) {
-                AssertExt.assertClassification(IllegalStateException.class, e);
+                Assert.assertTrue(e instanceof IllegalStateException);
                 Assert.assertSame(deliberateException, e.getCause());
             }
             Assert.assertEquals(Service.State.FAILED, service.state());

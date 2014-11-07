@@ -10,8 +10,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -125,7 +123,7 @@ public class ListenableFutureTest {
             future.get();
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
-            AssertExt.assertClassification(ExecutionException.class, e);
+            Assert.assertTrue(e instanceof ExecutionException);
             Assert.assertSame(deliberateException, e.getCause());
         }
         TimeUnit.MILLISECONDS.sleep(10);

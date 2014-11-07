@@ -3,9 +3,7 @@ package net.milanqiu.mimas.guava;
 import com.google.common.base.CharMatcher;
 import com.google.common.collect.ImmutableSet;
 
-import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Set;

@@ -5,7 +5,7 @@ import com.google.common.collect.ComparisonChain;
 import java.util.Comparator;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
+
 import org.junit.Assert;
 import org.junit.Test;
 

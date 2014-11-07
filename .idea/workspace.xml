@@ -1,42 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/ListenableFutureTest.java" description="                TimeUnit.MILLISECONDS.sleep(10);&#10;" line="33" />
+    <bookmark url="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/ListenableFutureTest.java" description="                TimeUnit.MILLISECONDS.sleep(10);&#10;" line="31" />
     <bookmark url="file://$PROJECT_DIR$/mimas-tpl-ext/src/main/java/net/milanqiu/mimas/guava/CharMatcherExt.java" description="     * @param chm&#10;" line="39" />
-    <bookmark url="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/CharMatcherTest.java" description="&#10;" line="191" />
-    <bookmark url="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/CharMatcherTest.java" description="&#10;" line="253" />
+    <bookmark url="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/CharMatcherTest.java" description="&#10;" line="185" />
+    <bookmark url="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/CharMatcherTest.java" description="&#10;" line="247" />
+    <bookmark url="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/lang/LangUtils.java" description="        Assert.assertNull(value);&#10;" line="95" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25a8c3d8-2deb-488a-beea-5971d27b6575" name="Default" comment="Tuples&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/ArrayUtilsTest.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/ArrayUtilsTest.java" />
+      <change type="DELETED" beforePath="D:\Career\Qiu\mimas\mimas-test-ext\mimas-test-ext.iml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Career\Qiu\mimas\mimas-test-ext\pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Career\Qiu\mimas\mimas-test-ext\src\main\java\net\milanqiu\mimas\junit\AssertExt.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Career\Qiu\mimas\mimas-test-ext\src\test\java\net\milanqiu\mimas\junit\AssertExtTest.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/AbstractIdleServiceTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/AbstractIdleServiceTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/BiMapTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/BiMapTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/CollectionUtilsTest.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/CollectionUtilsTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/IntStrTest.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/IntStrTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-ext/src/test/java/net/milanqiu/mimas/guava/CharMatcherExtTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-ext/src/test/java/net/milanqiu/mimas/guava/CharMatcherExtTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/CharMatcherTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/CharMatcherTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/ComparisonChainTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/ComparisonChainTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/FunctionsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/FunctionsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/ImmutableTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/ImmutableTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/IterablesTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/IterablesTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/IteratorsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/IteratorsTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/LoadingCacheTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/LoadingCacheTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/MapEntryTest.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/MapEntryTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MapsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MapsTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MultimapTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MultimapTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MultimapsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MultimapsTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/RangeMapTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/RangeMapTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/SetsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/SetsTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/StrIntTest.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/StrIntTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple2Test.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple2Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple3Test.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple3Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple4Test.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple4Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple5Test.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple5Test.java" />
-      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\ArrayUtils.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/ArrayUtils.java" />
-      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\CollectionUtils.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/CollectionUtils.java" />
-      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\IntInt.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/IntInt.java" />
-      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\IntStr.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/IntStr.java" />
-      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\MapEntry.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/MapEntry.java" />
-      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\StrInt.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/StrInt.java" />
-      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\StrStr.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/StrStr.java" />
-      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\Tuple2.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple2.java" />
-      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\Tuple3.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple3.java" />
-      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\Tuple4.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple4.java" />
-      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\Tuple5.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple5.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/JoinerTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/JoinerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/lang/LangUtils.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/lang/LangUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/LangUtilsTest.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/LangUtilsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/ListenableFutureTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/ListenableFutureTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/MoreObjectsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/MoreObjectsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MultisetsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MultisetsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/OptionalTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/OptionalTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/OrderingTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/OrderingTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/PreconditionsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/PreconditionsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/PredicatesTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/PredicatesTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/protobuf/ProtoTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/protobuf/ProtoTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/instrumentation/RunningTraceTest.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/instrumentation/RunningTraceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/SplitterTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/SplitterTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/StringsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/StringsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/ThrowablesTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/ThrowablesTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-aggregator/pom.xml" afterPath="$PROJECT_DIR$/mimas-aggregator/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/pom.xml" afterPath="$PROJECT_DIR$/mimas-jdk-ext/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-trial/pom.xml" afterPath="$PROJECT_DIR$/mimas-jdk-trial/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-parent/pom.xml" afterPath="$PROJECT_DIR$/mimas-parent/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-ext/pom.xml" afterPath="$PROJECT_DIR$/mimas-tpl-ext/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/pom.xml" afterPath="$PROJECT_DIR$/mimas-tpl-trial/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mimas.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -106,91 +112,109 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ConcurrentUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/concurrent/ConcurrentUtils.java">
+      <file leaf-file-name="AbstractIdleServiceTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/AbstractIdleServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="30" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="760">
+            <state line="68" column="0" selection-start="2116" selection-end="2116" vertical-scroll-proportion="0.0" vertical-offset="924" max-vertical-offset="2052">
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1642#1866#0" expanded="false" />
+                <element signature="e#1851#1852#0" expanded="false" />
+                <element signature="e#2825#3051#0" expanded="false" />
+                <element signature="e#3036#3037#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListenableFutureTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/ListenableFutureTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="125" column="0" selection-start="5062" selection-end="5062" vertical-scroll-proportion="0.0" vertical-offset="1726" max-vertical-offset="2261">
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#885#1156#0" expanded="false" />
+                <element signature="e#1145#1146#0" expanded="false" />
+                <element signature="e#1186#1336#0" expanded="false" />
+                <element signature="e#1325#1326#0" expanded="false" />
+                <element signature="e#2309#2580#0" expanded="false" />
+                <element signature="e#2569#2570#0" expanded="false" />
+                <element signature="e#4242#4512#0" expanded="false" />
+                <element signature="e#4501#4502#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JoinerTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/JoinerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="0" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.0" vertical-offset="392" max-vertical-offset="1406">
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProtoTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/protobuf/ProtoTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="167" column="60" selection-start="5330" selection-end="5330" vertical-scroll-proportion="0.0" vertical-offset="2787" max-vertical-offset="4123">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tuple5.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple5.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-aggregator/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="13" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2394">
+            <state line="19" column="0" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tuple4.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple4.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="13" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2318">
+            <state line="18" column="0" selection-start="660" selection-end="660" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="494">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tuple3.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple3.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-jdk-trial/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="13" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2242">
+            <state line="19" column="0" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tuple2.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple2.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-parent/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="13" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2033">
+            <state line="34" column="0" selection-start="913" selection-end="1127" vertical-scroll-proportion="0.0" vertical-offset="399" max-vertical-offset="2470">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StrStr.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/StrStr.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-tpl-ext/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="13" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="304">
+            <state line="18" column="0" selection-start="676" selection-end="676" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1615">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StrInt.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/StrInt.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="13" selection-start="173" selection-end="173" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="380">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapEntry.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/MapEntry.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="7" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0" vertical-offset="380" max-vertical-offset="1577">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArrayUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/ArrayUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="13" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2565">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CollectionUtils.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/CollectionUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="13" selection-start="170" selection-end="170" vertical-scroll-proportion="0.29096478" vertical-offset="0" max-vertical-offset="1007">
+            <state line="19" column="0" selection-start="760" selection-end="760" vertical-scroll-proportion="0.5106082" vertical-offset="0" max-vertical-offset="1710">
               <folding />
             </state>
           </provider>
@@ -209,30 +233,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/RunningProcess.java" />
-        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/JoinerTest.java" />
-        <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/lang/CollectionUtils.java" />
-        <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/RunningTrace.java" />
-        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/SplitterTest.java" />
-        <option value="$PROJECT_DIR$/mimas-parent/pom.xml" />
-        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/MoreObjectsTest.java" />
-        <option value="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/instrumentation/RunningTraceTest.java" />
-        <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/RunningTraceElement.java" />
-        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/ListenableFutureTest.java" />
-        <option value="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/concurrent/ConcurrentUtilsTest.java" />
-        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/AbstractIdleServiceTest.java" />
-        <option value="$PROJECT_DIR$/mimas-tpl-ext/src/main/java/net/milanqiu/mimas/guava/CharMatchersExt.java" />
-        <option value="$PROJECT_DIR$/mimas-test-ext/src/main/java/net/milanqiu/mimas/junit/AssertExt.java" />
-        <option value="$PROJECT_DIR$/mimas-test-ext/src/test/java/net/milanqiu/mimas/junit/AssertExtTest.java" />
-        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/CharMatcherTest.java" />
-        <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/lang/ArrayUtils.java" />
-        <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/TestConsts.java" />
         <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/ResourcesTest.java" />
         <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/ByteStreamsTest.java" />
         <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/CharSourceTest.java" />
-        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/ListenableFutureTest.java" />
         <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/ByteSourceTest.java" />
-        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/AbstractIdleServiceTest.java" />
         <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/CharStreamsTest.java" />
         <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/ProjectConvention.java" />
         <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/exception/CompiletimeException.java" />
@@ -260,6 +264,26 @@
         <option value="$PROJECT_DIR$/mimas-tpl-ext/src/main/java/net/milanqiu/mimas/guava/CharMatcherExt.java" />
         <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/string/StrUtils.java" />
         <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/MapEntry.java" />
+        <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/lang/LangUtils.java" />
+        <option value="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/LangUtilsTest.java" />
+        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/FunctionsTest.java" />
+        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/MoreObjectsTest.java" />
+        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/OptionalTest.java" />
+        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/PreconditionsTest.java" />
+        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/BiMapTest.java" />
+        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/IterablesTest.java" />
+        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MultisetsTest.java" />
+        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/AbstractIdleServiceTest.java" />
+        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/ListenableFutureTest.java" />
+        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/JoinerTest.java" />
+        <option value="$PROJECT_DIR$/mimas-test-ext/src/main/java/net/milanqiu/mimas/junit/AssertExt.java" />
+        <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/protobuf/ProtoTest.java" />
+        <option value="$PROJECT_DIR$/mimas-aggregator/pom.xml" />
+        <option value="$PROJECT_DIR$/mimas-jdk-ext/pom.xml" />
+        <option value="$PROJECT_DIR$/mimas-jdk-trial/pom.xml" />
+        <option value="$PROJECT_DIR$/mimas-tpl-ext/pom.xml" />
+        <option value="$PROJECT_DIR$/mimas-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/mimas-tpl-trial/pom.xml" />
       </list>
     </option>
   </component>
@@ -610,7 +634,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -625,7 +649,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mimas-tpl-ext" />
+              <option name="myItemId" value="mimas-tpl-trial" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -636,54 +660,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mimas-tpl-ext" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas-tpl-ext" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas-tpl-ext" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guava" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -723,311 +699,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mimas-jdk-ext" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas-jdk-ext" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas-jdk-ext" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="system" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas-jdk-ext" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="string" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas-jdk-ext" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas-jdk-ext" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="math" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas-jdk-ext" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas-jdk-ext" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas-jdk-ext" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="instrumentation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas-jdk-ext" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="concurrent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas-jdk-ext" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="collect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mimas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="mimas-aggregator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1070,20 +748,20 @@
       <recent name="net.milanqiu.mimas.system" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CaseFormatTest.test_to">
-    <configuration default="false" name="CharMatcherTest.test_" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ProtoTest.test_toString">
+    <configuration default="false" name="LangUtilsTest.test_isDefault" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="net.milanqiu.mimas.guava.string.*" />
+          <option name="PATTERN" value="net.milanqiu.mimas.lang.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <module name="mimas-tpl-trial" />
+      <module name="mimas-jdk-ext" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="net.milanqiu.mimas.guava.string" />
-      <option name="MAIN_CLASS_NAME" value="net.milanqiu.mimas.guava.string.CharMatcherTest" />
-      <option name="METHOD_NAME" value="test_" />
+      <option name="PACKAGE_NAME" value="net.milanqiu.mimas.lang" />
+      <option name="MAIN_CLASS_NAME" value="net.milanqiu.mimas.lang.LangUtilsTest" />
+      <option name="METHOD_NAME" value="test_isDefault" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1099,19 +777,19 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="CharMatcherTest.test_retainFrom" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="LangUtilsTest.test_hasDefaultToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="net.milanqiu.mimas.guava.string.*" />
+          <option name="PATTERN" value="net.milanqiu.mimas.lang.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <module name="mimas-tpl-trial" />
+      <module name="mimas-jdk-ext" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="net.milanqiu.mimas.guava.string" />
-      <option name="MAIN_CLASS_NAME" value="net.milanqiu.mimas.guava.string.CharMatcherTest" />
-      <option name="METHOD_NAME" value="test_retainFrom" />
+      <option name="PACKAGE_NAME" value="net.milanqiu.mimas.lang" />
+      <option name="MAIN_CLASS_NAME" value="net.milanqiu.mimas.lang.LangUtilsTest" />
+      <option name="METHOD_NAME" value="test_hasDefaultToString" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1127,46 +805,18 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="CharMatcherTest.test_trimFrom" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="LangUtilsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="net.milanqiu.mimas.guava.string.*" />
+          <option name="PATTERN" value="net.milanqiu.mimas.lang.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <module name="mimas-tpl-trial" />
+      <module name="mimas-jdk-ext" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="net.milanqiu.mimas.guava.string" />
-      <option name="MAIN_CLASS_NAME" value="net.milanqiu.mimas.guava.string.CharMatcherTest" />
-      <option name="METHOD_NAME" value="test_trimFrom" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="CharMatcherTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="net.milanqiu.mimas.guava.string.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="mimas-tpl-trial" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="net.milanqiu.mimas.guava.string" />
-      <option name="MAIN_CLASS_NAME" value="net.milanqiu.mimas.guava.string.CharMatcherTest" />
+      <option name="PACKAGE_NAME" value="net.milanqiu.mimas.lang" />
+      <option name="MAIN_CLASS_NAME" value="net.milanqiu.mimas.lang.LangUtilsTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -1183,19 +833,47 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="CaseFormatTest.test_to" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="FunctionsTest.test_toStringFunction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="net.milanqiu.mimas.guava.string.*" />
+          <option name="PATTERN" value="net.milanqiu.mimas.guava.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="mimas-tpl-trial" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="net.milanqiu.mimas.guava.string" />
-      <option name="MAIN_CLASS_NAME" value="net.milanqiu.mimas.guava.string.CaseFormatTest" />
-      <option name="METHOD_NAME" value="test_to" />
+      <option name="PACKAGE_NAME" value="net.milanqiu.mimas.guava" />
+      <option name="MAIN_CLASS_NAME" value="net.milanqiu.mimas.guava.FunctionsTest" />
+      <option name="METHOD_NAME" value="test_toStringFunction" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ProtoTest.test_toString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="net.milanqiu.mimas.protobuf.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="mimas-tpl-trial" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="net.milanqiu.mimas.protobuf" />
+      <option name="MAIN_CLASS_NAME" value="net.milanqiu.mimas.protobuf.ProtoTest" />
+      <option name="METHOD_NAME" value="test_toString" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1445,19 +1123,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.CharMatcherTest.test_" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.CharMatcherTest.test_retainFrom" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.CharMatcherTest.test_trimFrom" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.CharMatcherTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.CaseFormatTest.test_to" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.LangUtilsTest.test_isDefault" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.LangUtilsTest.test_hasDefaultToString" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.LangUtilsTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.FunctionsTest.test_toStringFunction" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ProtoTest.test_toString" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.CaseFormatTest.test_to" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.CharMatcherTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.CharMatcherTest.test_" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.CharMatcherTest.test_trimFrom" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.CharMatcherTest.test_retainFrom" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ProtoTest.test_toString" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.FunctionsTest.test_toStringFunction" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.LangUtilsTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.LangUtilsTest.test_hasDefaultToString" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.LangUtilsTest.test_isDefault" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -1569,6 +1247,7 @@
       <workItem from="1415256346022" duration="6612000" />
       <workItem from="1415323723463" duration="6698000" />
       <workItem from="1415332430174" duration="447000" />
+      <workItem from="1415339839780" duration="5024000" />
     </task>
     <task id="LOCAL-00001" summary="Tuples">
       <created>1402048247702</created>
@@ -1582,7 +1261,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="590058000" />
+    <option name="totallyTimeSpent" value="595082000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1613,6 +1292,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32669324" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37406215" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920128" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34726688" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1621,29 +1301,28 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1656017" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31618434" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32802126" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20553781" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14483494" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14643237" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20021299" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919786" sideWeight="0.5841321" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20021299" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18971062" sideWeight="0.5841321" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="789" y="521" width="870" height="369" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.374502" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31618434" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="Documentation" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="61" y="306" width="1186" height="730" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="61" y="306" width="1186" height="730" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21864952" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24924472" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1661,8 +1340,8 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3236715" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13085502" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13085502" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1690,129 +1369,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0.jar!/com/google/common/base/CharMatcher.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="28" selection-start="6548" selection-end="6548" vertical-scroll-proportion="-8.44" vertical-offset="2164" max-vertical-offset="4313" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/ByteStreamsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="13" selection-start="423" selection-end="423" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969" />
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0.jar!/com/google/common/base/CaseFormat.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="49" selection-start="428" selection-end="428" vertical-scroll-proportion="-7.6" vertical-offset="0" max-vertical-offset="722" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/CharMatcherTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="530" selection-end="591" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1786">
-          <folding>
-            <element signature="method#test_ANY#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_NONE#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_WHITESPACE#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_BREAKING_WHITESPACE#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_INVISIBLE#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_DIGIT#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_JAVA_LETTER#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_JAVA_DIGIT#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_JAVA_LETTER_OR_DIGIT#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_JAVA_ISO_CONTROL#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_JAVA_LOWER_CASE#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_JAVA_UPPER_CASE#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_ASCII#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_SINGLE_WIDTH#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_anyOf#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_is#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_inRange#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_negate#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_and#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_or#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_collapseFrom#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_matchesAllOf#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_removeFrom#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_retainFrom#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_trimFrom#0;class#CharMatcherTest#0" expanded="false" />
-            <element signature="method#test_#0;class#CharMatcherTest#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/JoinerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="13" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1406" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/SplitterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="13" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2033" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/CaseFormatTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="862" selection-end="862" vertical-scroll-proportion="0.5635593" vertical-offset="0" max-vertical-offset="708" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-ext/mimas-tpl-ext.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="60" selection-start="1175" selection-end="1175" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-aggregator/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="30" selection-start="458" selection-end="458" vertical-scroll-proportion="0.24152543" vertical-offset="0" max-vertical-offset="708">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-aggregator/mimas-aggregator.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="361" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/TestConsts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="5" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0" vertical-offset="627" max-vertical-offset="4199" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-ext/src/test/java/net/milanqiu/mimas/guava/CharMatcherExtTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="9" selection-start="783" selection-end="783" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/mimas-tpl-trial.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="874" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/ComparisonChainTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="344" selection-end="344" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="722" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/main/java/net/milanqiu/mimas/system/MimasTplTrialConvention.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="37" selection-start="334" selection-end="334" vertical-scroll-proportion="0.0" vertical-offset="112" max-vertical-offset="798" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/AbstractIdleServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="52" selection-start="2588" selection-end="2588" vertical-scroll-proportion="-0.72" vertical-offset="1198" max-vertical-offset="2052" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/ListenableFutureTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="41" selection-start="3740" selection-end="3740" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2261">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/ByteSinkTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="9" selection-start="1070" selection-end="1070" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="1349" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/GuavaIoTestUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="39" selection-start="942" selection-end="942" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1691" />
@@ -1828,24 +1384,9 @@
         <state line="23" column="13" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5054" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/PreconditionsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="26" selection-start="4631" selection-end="4631" vertical-scroll-proportion="0.0" vertical-offset="2223" max-vertical-offset="3192" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/OrderingTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="13" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4028" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/OptionalTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2242" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/MoreObjectsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="30" selection-start="626" selection-end="626" vertical-scroll-proportion="0.0" vertical-offset="55" max-vertical-offset="798" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/ResourcesTest.java">
@@ -1879,79 +1420,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/RunningTraceElement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="32" selection-start="286" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="171" max-vertical-offset="4560">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-ext/src/main/java/net/milanqiu/mimas/guava/CharMatcherExt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="27" selection-start="307" selection-end="321" vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="1007">
-          <folding />
-        </state>
+        <state line="12" column="32" selection-start="286" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="171" max-vertical-offset="4560" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/system/SysUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="21" selection-start="314" selection-end="322" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="912">
-          <folding />
-        </state>
+        <state line="14" column="21" selection-start="314" selection-end="322" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="912" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/system/ProjectConvention.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="34" selection-start="238" selection-end="255" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1311">
-          <folding />
-        </state>
+        <state line="10" column="34" selection-start="238" selection-end="255" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1311" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/system/MimasJdkExtConvention.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="34" selection-start="182" selection-end="203" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="798">
-          <folding />
-        </state>
+        <state line="8" column="34" selection-start="182" selection-end="203" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="798" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/system/MavenProjectConvention.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="44" selection-start="240" selection-end="262" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1330">
-          <folding />
-        </state>
+        <state line="12" column="44" selection-start="240" selection-end="262" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1330" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/string/StrUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="21" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1710">
-          <folding />
-        </state>
+        <state line="8" column="21" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1710" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/string/RegExpConsts.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="494">
-          <folding />
-        </state>
+        <state line="8" column="13" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="494" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/math/MathUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="141" selection-end="141" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="494">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/lang/LangUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
-          <folding />
-        </state>
+        <state line="8" column="13" selection-start="141" selection-end="141" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="494" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/io/FileUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="5" selection-start="1717" selection-end="1717" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1387">
-          <folding />
-        </state>
+        <state line="52" column="5" selection-start="1717" selection-end="1717" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1387" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/concurrent/ConcurrentUtils.java">
@@ -1982,13 +1491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2033">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/StrStr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="13" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="304">
@@ -2010,16 +1512,209 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/ArrayUtils.java">
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/CollectionUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2565">
+        <state line="44" column="49" selection-start="1439" selection-end="1439" vertical-scroll-proportion="0.83480173" vertical-offset="78" max-vertical-offset="1007">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/CollectionUtils.java">
+    <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="170" selection-end="170" vertical-scroll-proportion="0.29096478" vertical-offset="0" max-vertical-offset="1007">
+        <state line="200" column="33" selection-start="11323" selection-end="11323" vertical-scroll-proportion="-29.538462" vertical-offset="3032" max-vertical-offset="3914">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="152">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="23" selection-start="1438" selection-end="1438" vertical-scroll-proportion="0.30947137" vertical-offset="840" max-vertical-offset="2033">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/ArrayUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="9" selection-start="3712" selection-end="3712" vertical-scroll-proportion="0.0" vertical-offset="1657" max-vertical-offset="2565">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/lang/LangUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="44" selection-start="3319" selection-end="3337" vertical-scroll-proportion="0.0" vertical-offset="1539" max-vertical-offset="2660">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-ext/src/main/java/net/milanqiu/mimas/guava/CharMatcherExt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="27" selection-start="307" selection-end="321" vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="1007">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/LangUtilsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="9" selection-start="1573" selection-end="1573" vertical-scroll-proportion="0.0" vertical-offset="460" max-vertical-offset="1368">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/FunctionsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="12" selection-start="4422" selection-end="4422" vertical-scroll-proportion="0.0" vertical-offset="1460" max-vertical-offset="1995">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/MoreObjectsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="12" selection-start="820" selection-end="820" vertical-scroll-proportion="0.0" vertical-offset="202" max-vertical-offset="798">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/OptionalTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="0" selection-start="1235" selection-end="1235" vertical-scroll-proportion="0.0" vertical-offset="449" max-vertical-offset="2242">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/PreconditionsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="0" selection-start="3019" selection-end="3019" vertical-scroll-proportion="0.0" vertical-offset="1361" max-vertical-offset="3192">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/BiMapTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="0" selection-start="2217" selection-end="2217" vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="1368">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/IterablesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="180" column="0" selection-start="7631" selection-end="7631" vertical-scroll-proportion="0.0" vertical-offset="2805" max-vertical-offset="6460">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MultisetsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="0" selection-start="4151" selection-end="4151" vertical-scroll-proportion="0.0" vertical-offset="1380" max-vertical-offset="4655">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/AbstractIdleServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="0" selection-start="2116" selection-end="2116" vertical-scroll-proportion="0.0" vertical-offset="924" max-vertical-offset="2052">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1642#1866#0" expanded="false" />
+            <element signature="e#1851#1852#0" expanded="false" />
+            <element signature="e#2825#3051#0" expanded="false" />
+            <element signature="e#3036#3037#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/ListenableFutureTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="125" column="0" selection-start="5062" selection-end="5062" vertical-scroll-proportion="0.0" vertical-offset="1726" max-vertical-offset="2261">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#885#1156#0" expanded="false" />
+            <element signature="e#1145#1146#0" expanded="false" />
+            <element signature="e#1186#1336#0" expanded="false" />
+            <element signature="e#1325#1326#0" expanded="false" />
+            <element signature="e#2309#2580#0" expanded="false" />
+            <element signature="e#2569#2570#0" expanded="false" />
+            <element signature="e#4242#4512#0" expanded="false" />
+            <element signature="e#4501#4502#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/JoinerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="0" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.0" vertical-offset="392" max-vertical-offset="1406">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/org/junit/Assert.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="23" selection-start="313" selection-end="390" vertical-scroll-proportion="0.3501006" vertical-offset="16" max-vertical-offset="2869">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/protobuf/ProtoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="167" column="60" selection-start="5330" selection-end="5330" vertical-scroll-proportion="0.0" vertical-offset="2787" max-vertical-offset="4123">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-aggregator/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="660" selection-end="660" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="494">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-trial/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-ext/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="676" selection-end="676" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-parent/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="0" selection-start="913" selection-end="1127" vertical-scroll-proportion="0.0" vertical-offset="399" max-vertical-offset="2470">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="760" selection-end="760" vertical-scroll-proportion="0.5106082" vertical-offset="0" max-vertical-offset="1710">
           <folding />
         </state>
       </provider>
