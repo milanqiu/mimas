@@ -1,66 +1,69 @@
-package net.milanqiu.mimas.lang;
+package net.milanqiu.mimas.collect;
 
 import net.milanqiu.mimas.instrumentation.exception.DeprecatedOverrideException;
 
 /**
- * This class holds three objects in one instance.
+ * This class holds four objects in one instance.
  * Types of elements is generic.
  *
  * <p>Creation Date: 2014-2-8
  * @author Milan Qiu
  */
-public class Tuple3<TA, TB, TC> extends Tuple2<TA, TB> {
+public class Tuple4<TA, TB, TC, TD> extends Tuple3<TA, TB, TC> {
     /**
-     * Element C.
+     * Element D.
      */
-    protected TC c;
+    protected TD d;
 
-    public TC getC() {
-        return c;
+    public TD getD() {
+        return d;
     }
-    public void setC(TC c) {
-        this.c = c;
-    }
-
-    /**
-     * Removed in subclass. Only available when caller is instance of {@code Tuple2}.
-     *
-     * @param a new value of element A
-     * @param b new value of element B
-     */
-    @Deprecated
-    @Override
-    public void setAll(TA a, TB b) {
-        throw new DeprecatedOverrideException();
+    public void setD(TD d) {
+        this.d = d;
     }
 
     /**
-     * Sets all three elements in one call.
+     * Removed in subclass. Only available when caller is instance of {@code Tuple3}.
      *
      * @param a new value of element A
      * @param b new value of element B
      * @param c new value of element C
      */
+    @Deprecated
+    @Override
     public void setAll(TA a, TB b, TC c) {
-        super.setAll(a, b);
-        this.c = c;
+        throw new DeprecatedOverrideException();
     }
 
     /**
-     * Constructs a three-element tuple with every element is null.
+     * Sets all four elements in one call.
+     *
+     * @param a new value of element A
+     * @param b new value of element B
+     * @param c new value of element C
+     * @param d new value of element D
      */
-    public Tuple3() {
+    public void setAll(TA a, TB b, TC c, TD d) {
+        super.setAll(a, b, c);
+        this.d = d;
     }
 
     /**
-     * Constructs a three-element tuple with specified values.
+     * Constructs a four-element tuple with every element is null.
+     */
+    public Tuple4() {
+    }
+
+    /**
+     * Constructs a four-element tuple with specified values.
      *
      * @param a value of element A
      * @param b value of element B
      * @param c value of element C
+     * @param d value of element D
      */
-    public Tuple3(TA a, TB b, TC c) {
-        setAll(a, b, c);
+    public Tuple4(TA a, TB b, TC c, TD d) {
+        setAll(a, b, c, d);
     }
 
     /**
@@ -76,9 +79,9 @@ public class Tuple3<TA, TB, TC> extends Tuple2<TA, TB> {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
-        Tuple3 tuple3 = (Tuple3) o;
+        Tuple4 tuple4 = (Tuple4) o;
 
-        if (c != null ? !c.equals(tuple3.c) : tuple3.c != null) return false;
+        if (d != null ? !d.equals(tuple4.d) : tuple4.d != null) return false;
 
         return true;
     }
@@ -91,7 +94,7 @@ public class Tuple3<TA, TB, TC> extends Tuple2<TA, TB> {
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + (c != null ? c.hashCode() : 0);
+        result = 31 * result + (d != null ? d.hashCode() : 0);
         return result;
     }
 
@@ -99,7 +102,7 @@ public class Tuple3<TA, TB, TC> extends Tuple2<TA, TB> {
      * Returns a string representation of this tuple.
      * The string representation consists of a list of elements, enclosed in brackets("()").
      * Adjacent elements are separated by comma and space(", ").
-     * The result may be <tt>(A=valueA, B=valueB, C=valueC)</tt>.
+     * The result may be <tt>(A=valueA, B=valueB, C=valueC, D=valueD)</tt>.
      *
      * @return a string representation of this tuple
      */
@@ -109,7 +112,8 @@ public class Tuple3<TA, TB, TC> extends Tuple2<TA, TB> {
         sb.append('(');
         sb.append("A=").append(a).append(", ");
         sb.append("B=").append(b).append(", ");
-        sb.append("C=").append(c);
+        sb.append("C=").append(c).append(", ");
+        sb.append("D=").append(d);
         sb.append(')');
         return sb.toString();
     }

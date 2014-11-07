@@ -1,6 +1,8 @@
-package net.milanqiu.mimas.lang;
+package net.milanqiu.mimas.collect;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
+import net.milanqiu.mimas.collect.ArrayUtils;
 import org.junit.Assert;
 import org.junit.Test;
 

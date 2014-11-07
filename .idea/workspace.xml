@@ -8,18 +8,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25a8c3d8-2deb-488a-beea-5971d27b6575" name="Default" comment="Tuples&#10;">
-      <change type="DELETED" beforePath="D:\Career\Qiu\mimas\.idea\libraries\Maven__com_google_guava_guava_17_0.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-test-ext/src/main/java/net/milanqiu/mimas/junit/AssertExt.java" afterPath="$PROJECT_DIR$/mimas-test-ext/src/main/java/net/milanqiu/mimas/junit/AssertExt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-test-ext/src/test/java/net/milanqiu/mimas/junit/AssertExtTest.java" afterPath="$PROJECT_DIR$/mimas-test-ext/src/test/java/net/milanqiu/mimas/junit/AssertExtTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/string/StrUtils.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/string/StrUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/TestConsts.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/TestConsts.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-ext/mimas-tpl-ext.iml" afterPath="$PROJECT_DIR$/mimas-tpl-ext/mimas-tpl-ext.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/mimas-tpl-trial.iml" afterPath="$PROJECT_DIR$/mimas-tpl-trial/mimas-tpl-trial.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-parent/pom.xml" afterPath="$PROJECT_DIR$/mimas-parent/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-tpl-trial\src\test\java\net\milanqiu\mimas\guava\ObjectsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/MoreObjectsTest.java" />
-      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-tpl-trial\src\test\java\net\milanqiu\mimas\guava\StringsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/StringsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/ArrayUtilsTest.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/ArrayUtilsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/BiMapTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/BiMapTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/CollectionUtilsTest.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/CollectionUtilsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/IntStrTest.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/IntStrTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/IterablesTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/IterablesTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/IteratorsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/IteratorsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/LoadingCacheTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/LoadingCacheTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/MapEntryTest.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/MapEntryTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MapsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MapsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MultimapTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MultimapTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MultimapsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/MultimapsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/RangeMapTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/RangeMapTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/SetsTest.java" afterPath="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/SetsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/StrIntTest.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/StrIntTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple2Test.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple2Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple3Test.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple3Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple4Test.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple4Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple5Test.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/lang/Tuple5Test.java" />
+      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\ArrayUtils.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/ArrayUtils.java" />
+      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\CollectionUtils.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/CollectionUtils.java" />
+      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\IntInt.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/IntInt.java" />
+      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\IntStr.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/IntStr.java" />
+      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\MapEntry.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/MapEntry.java" />
+      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\StrInt.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/StrInt.java" />
+      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\StrStr.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/StrStr.java" />
+      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\Tuple2.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple2.java" />
+      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\Tuple3.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple3.java" />
+      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\Tuple4.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple4.java" />
+      <change type="MOVED" beforePath="D:\Career\Qiu\mimas\mimas-jdk-ext\src\main\java\net\milanqiu\mimas\lang\Tuple5.java" afterPath="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple5.java" />
     </list>
     <ignored path="mimas.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,103 +106,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CodeContextException.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/exception/CodeContextException.java">
+      <file leaf-file-name="ConcurrentUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/concurrent/ConcurrentUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="33" selection-start="642" selection-end="662" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1216">
+            <state line="8" column="30" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="760">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunningTrace.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/RunningTrace.java">
+      <file leaf-file-name="Tuple5.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple5.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="25" selection-start="343" selection-end="355" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6403">
+            <state line="11" column="13" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2394">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunningTraceElement.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/RunningTraceElement.java">
+      <file leaf-file-name="Tuple4.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple4.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="32" selection-start="286" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="171" max-vertical-offset="4560">
+            <state line="11" column="13" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2318">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/io/FileUtils.java">
+      <file leaf-file-name="Tuple3.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="22" selection-start="160" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="513">
-              <folding>
-                <element signature="docComment;class#FileUtils#0" expanded="false" />
-                <element signature="docComment;method#FileUtils#0;class#FileUtils#0" expanded="false" />
-                <element signature="method#FileUtils#0;class#FileUtils#0" expanded="false" />
-                <element signature="docComment;method#findAncestor#0;class#FileUtils#0" expanded="false" />
-                <element signature="method#findAncestor#0;class#FileUtils#0" expanded="false" />
-                <element signature="docComment;method#getSubFile#0;class#FileUtils#0" expanded="false" />
-                <element signature="method#getSubFile#0;class#FileUtils#0" expanded="false" />
-                <element signature="docComment;method#getSubFile#1;class#FileUtils#0" expanded="false" />
-                <element signature="method#getSubFile#1;class#FileUtils#0" expanded="false" />
-                <element signature="docComment;method#getSubFile#2;class#FileUtils#0" expanded="false" />
-                <element signature="method#getSubFile#2;class#FileUtils#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StrUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/string/StrUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="21" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1710">
+            <state line="11" column="13" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2242">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MavenProjectConvention.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/system/MavenProjectConvention.java">
+      <file leaf-file-name="Tuple2.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="44" selection-start="240" selection-end="262" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1330">
+            <state line="9" column="13" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2033">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MimasJdkExtConvention.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/system/MimasJdkExtConvention.java">
+      <file leaf-file-name="StrStr.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/StrStr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="34" selection-start="182" selection-end="203" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="798">
+            <state line="8" column="13" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="304">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectConvention.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/system/ProjectConvention.java">
+      <file leaf-file-name="StrInt.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/StrInt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="34" selection-start="238" selection-end="255" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1311">
+            <state line="8" column="13" selection-start="173" selection-end="173" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="380">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SysUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/system/SysUtils.java">
+      <file leaf-file-name="MapEntry.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/MapEntry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="21" selection-start="314" selection-end="322" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="912">
+            <state line="21" column="7" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0" vertical-offset="380" max-vertical-offset="1577">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CharMatcherExt.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mimas-tpl-ext/src/main/java/net/milanqiu/mimas/guava/CharMatcherExt.java">
+      <file leaf-file-name="ArrayUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/ArrayUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="27" selection-start="307" selection-end="321" vertical-scroll-proportion="0.037900876" vertical-offset="164" max-vertical-offset="1007">
+            <state line="8" column="13" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2565">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CollectionUtils.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/CollectionUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="13" selection-start="170" selection-end="170" vertical-scroll-proportion="0.29096478" vertical-offset="0" max-vertical-offset="1007">
               <folding />
             </state>
           </provider>
@@ -204,7 +209,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/lang/MapEntry.java" />
         <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/RunningProcess.java" />
         <option value="$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/JoinerTest.java" />
         <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/lang/CollectionUtils.java" />
@@ -255,6 +259,7 @@
         <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/concurrent/ConcurrentUtils.java" />
         <option value="$PROJECT_DIR$/mimas-tpl-ext/src/main/java/net/milanqiu/mimas/guava/CharMatcherExt.java" />
         <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/string/StrUtils.java" />
+        <option value="$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/MapEntry.java" />
       </list>
     </option>
   </component>
@@ -976,11 +981,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="instrumentation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exception" />
+              <option name="myItemId" value="concurrent" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1010,7 +1011,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="concurrent" />
+              <option name="myItemId" value="collect" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1567,6 +1568,7 @@
       <workItem from="1415112903805" duration="12314000" />
       <workItem from="1415256346022" duration="6612000" />
       <workItem from="1415323723463" duration="6698000" />
+      <workItem from="1415332430174" duration="447000" />
     </task>
     <task id="LOCAL-00001" summary="Tuples">
       <created>1402048247702</created>
@@ -1580,7 +1582,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="589611000" />
+    <option name="totallyTimeSpent" value="590058000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1619,29 +1621,29 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1656017" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31618434" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32802126" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20553781" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14323749" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14483494" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20021299" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21221864" sideWeight="0.5841321" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919786" sideWeight="0.5841321" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="789" y="521" width="870" height="369" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.374502" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31618434" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="61" y="306" width="1186" height="730" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21864952" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24924472" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24924472" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1659,8 +1661,8 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3236715" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13085502" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1688,78 +1690,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/collect/IterablesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="5" selection-start="1925" selection-end="1925" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="6460">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_11/src.zip!/java/util/regex/Pattern.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1020" column="26" selection-start="47712" selection-end="47712" vertical-scroll-proportion="0.0" vertical-offset="18580" max-vertical-offset="106742" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_11/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2942" column="25" selection-start="117550" selection-end="117550" vertical-scroll-proportion="0.0" vertical-offset="55060" max-vertical-offset="58444">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_11/src.zip!/java/lang/Runnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="51" selection-start="1260" selection-end="1260" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="988" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/system/MavenProjectConventionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0" vertical-offset="57" max-vertical-offset="1463" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/system/SysUtilsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="9" selection-start="462" selection-end="462" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="532" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_11/src.zip!/java/lang/Integer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="525" column="30" selection-start="19320" selection-end="19328" vertical-scroll-proportion="0.0" vertical-offset="9236" max-vertical-offset="23313">
-          <folding>
-            <element signature="e#0#46449#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/test/java/net/milanqiu/mimas/string/StrUtilsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="73" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="627" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/StringsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="9" selection-start="706" selection-end="706" vertical-scroll-proportion="0.35962147" vertical-offset="114" max-vertical-offset="760" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_11/src.zip!/java/util/Set.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="13" selection-start="5379" selection-end="5379" vertical-scroll-proportion="0.0" vertical-offset="2107" max-vertical-offset="6992">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_11/src.zip!/java/lang/CharSequence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="51" selection-start="3113" selection-end="3113" vertical-scroll-proportion="0.0" vertical-offset="1152" max-vertical-offset="1786" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_11/src.zip!/java/lang/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6414" column="55" selection-start="231858" selection-end="231858" vertical-scroll-proportion="0.0" vertical-offset="121294" max-vertical-offset="133228">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0.jar!/com/google/common/base/CharMatcher.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="126" column="28" selection-start="6548" selection-end="6548" vertical-scroll-proportion="-8.44" vertical-offset="2164" max-vertical-offset="4313" />
@@ -1767,32 +1697,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/ByteStreamsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="13" selection-start="423" selection-end="423" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
-          <folding />
-        </state>
+        <state line="18" column="13" selection-start="423" selection-end="423" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969" />
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0.jar!/com/google/common/base/CaseFormat.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="49" selection-start="428" selection-end="428" vertical-scroll-proportion="-7.6" vertical-offset="0" max-vertical-offset="722">
-          <folding>
-            <element signature="method#values#0;class#CaseFormat#0" expanded="false" />
-            <element signature="method#valueOf#0;class#CaseFormat#0" expanded="false" />
-            <element signature="method#CaseFormat#0;class#CaseFormat#0" expanded="false" />
-            <element signature="method#to#0;class#CaseFormat#0" expanded="false" />
-            <element signature="method#convert#0;class#CaseFormat#0" expanded="false" />
-            <element signature="method#converterTo#0;class#CaseFormat#0" expanded="false" />
-            <element signature="method#normalizeFirstWord#0;class#CaseFormat#0" expanded="false" />
-            <element signature="method#firstCharOnlyToUpper#0;class#CaseFormat#0" expanded="false" />
-            <element signature="class#StringConverter#0;class#CaseFormat#0" expanded="false" />
-            <element signature="method#StringConverter#0;class#StringConverter#0;class#CaseFormat#0" expanded="false" />
-            <element signature="method#doForward#0;class#StringConverter#0;class#CaseFormat#0" expanded="false" />
-            <element signature="method#doBackward#0;class#StringConverter#0;class#CaseFormat#0" expanded="false" />
-            <element signature="method#equals#0;class#StringConverter#0;class#CaseFormat#0" expanded="false" />
-            <element signature="method#hashCode#0;class#StringConverter#0;class#CaseFormat#0" expanded="false" />
-            <element signature="method#toString#0;class#StringConverter#0;class#CaseFormat#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="11" column="49" selection-start="428" selection-end="428" vertical-scroll-proportion="-7.6" vertical-offset="0" max-vertical-offset="722" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/CharMatcherTest.java">
@@ -1831,32 +1741,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/JoinerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="13" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1406">
-          <folding />
-        </state>
+        <state line="19" column="13" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1406" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/SplitterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="13" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2033">
-          <folding />
-        </state>
+        <state line="18" column="13" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2033" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/string/CaseFormatTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="862" selection-end="862" vertical-scroll-proportion="0.5635593" vertical-offset="0" max-vertical-offset="708">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="21" column="0" selection-start="862" selection-end="862" vertical-scroll-proportion="0.5635593" vertical-offset="0" max-vertical-offset="708" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-ext/mimas-tpl-ext.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="60" selection-start="1175" selection-end="1175" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
-          <folding />
-        </state>
+        <state line="16" column="60" selection-start="1175" selection-end="1175" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-aggregator/pom.xml">
@@ -1868,60 +1768,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-aggregator/mimas-aggregator.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="361">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/concurrent/ConcurrentUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="30" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="760">
-          <folding />
-        </state>
+        <state line="13" column="0" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="361" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/TestConsts.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="5" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0" vertical-offset="627" max-vertical-offset="4199">
-          <folding />
-        </state>
+        <state line="15" column="5" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0" vertical-offset="627" max-vertical-offset="4199" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-ext/src/test/java/net/milanqiu/mimas/guava/CharMatcherExtTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="9" selection-start="783" selection-end="783" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
+        <state line="28" column="9" selection-start="783" selection-end="783" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/mimas-tpl-trial.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="874">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="874" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/ComparisonChainTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="344" selection-end="344" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="722">
-          <folding />
-        </state>
+        <state line="15" column="13" selection-start="344" selection-end="344" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="722" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/main/java/net/milanqiu/mimas/system/MimasTplTrialConvention.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="37" selection-start="334" selection-end="334" vertical-scroll-proportion="0.0" vertical-offset="112" max-vertical-offset="798">
-          <folding />
-        </state>
+        <state line="12" column="37" selection-start="334" selection-end="334" vertical-scroll-proportion="0.0" vertical-offset="112" max-vertical-offset="798" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/AbstractIdleServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="52" selection-start="2588" selection-end="2588" vertical-scroll-proportion="-0.72" vertical-offset="1198" max-vertical-offset="2052">
-          <folding />
-        </state>
+        <state line="76" column="52" selection-start="2588" selection-end="2588" vertical-scroll-proportion="-0.72" vertical-offset="1198" max-vertical-offset="2052" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/concurrent/ListenableFutureTest.java">
@@ -1933,79 +1810,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/ByteSinkTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="9" selection-start="1070" selection-end="1070" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="1349">
-          <folding />
-        </state>
+        <state line="45" column="9" selection-start="1070" selection-end="1070" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="1349" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/GuavaIoTestUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="39" selection-start="942" selection-end="942" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1691">
-          <folding />
-        </state>
+        <state line="29" column="39" selection-start="942" selection-end="942" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1691" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/ThrowablesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="25" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="950">
-          <folding />
-        </state>
+        <state line="29" column="25" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="950" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/PredicatesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="13" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5054">
-          <folding />
-        </state>
+        <state line="23" column="13" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5054" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/PreconditionsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="26" selection-start="4631" selection-end="4631" vertical-scroll-proportion="0.0" vertical-offset="2223" max-vertical-offset="3192">
-          <folding />
-        </state>
+        <state line="125" column="26" selection-start="4631" selection-end="4631" vertical-scroll-proportion="0.0" vertical-offset="2223" max-vertical-offset="3192" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/OrderingTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="13" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4028">
-          <folding />
-        </state>
+        <state line="17" column="13" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4028" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/OptionalTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2242">
-          <folding />
-        </state>
+        <state line="16" column="13" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2242" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/MoreObjectsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="30" selection-start="626" selection-end="626" vertical-scroll-proportion="0.0" vertical-offset="55" max-vertical-offset="798">
-          <folding />
-        </state>
+        <state line="20" column="30" selection-start="626" selection-end="626" vertical-scroll-proportion="0.0" vertical-offset="55" max-vertical-offset="798" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/ResourcesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="266">
-          <folding />
-        </state>
+        <state line="6" column="13" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="266" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/FilesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="212" column="55" selection-start="8913" selection-end="8913" vertical-scroll-proportion="0.0" vertical-offset="3320" max-vertical-offset="4028">
-          <folding />
-        </state>
+        <state line="212" column="55" selection-start="8913" selection-end="8913" vertical-scroll-proportion="0.0" vertical-offset="3320" max-vertical-offset="4028" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-tpl-trial/src/test/java/net/milanqiu/mimas/guava/io/CharSourceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1073" selection-end="1073" vertical-scroll-proportion="0.0" vertical-offset="703" max-vertical-offset="1406">
-          <folding />
-        </state>
+        <state line="37" column="0" selection-start="1073" selection-end="1073" vertical-scroll-proportion="0.0" vertical-offset="703" max-vertical-offset="1406" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/instrumentation/exception/CodeContextException.java">
@@ -2029,49 +1884,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/io/FileUtils.java">
+    <entry file="file://$PROJECT_DIR$/mimas-tpl-ext/src/main/java/net/milanqiu/mimas/guava/CharMatcherExt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="22" selection-start="160" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="513">
-          <folding>
-            <element signature="docComment;class#FileUtils#0" expanded="false" />
-            <element signature="docComment;method#FileUtils#0;class#FileUtils#0" expanded="false" />
-            <element signature="method#FileUtils#0;class#FileUtils#0" expanded="false" />
-            <element signature="docComment;method#findAncestor#0;class#FileUtils#0" expanded="false" />
-            <element signature="method#findAncestor#0;class#FileUtils#0" expanded="false" />
-            <element signature="docComment;method#getSubFile#0;class#FileUtils#0" expanded="false" />
-            <element signature="method#getSubFile#0;class#FileUtils#0" expanded="false" />
-            <element signature="docComment;method#getSubFile#1;class#FileUtils#0" expanded="false" />
-            <element signature="method#getSubFile#1;class#FileUtils#0" expanded="false" />
-            <element signature="docComment;method#getSubFile#2;class#FileUtils#0" expanded="false" />
-            <element signature="method#getSubFile#2;class#FileUtils#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/string/StrUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="21" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1710">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/system/MavenProjectConvention.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="44" selection-start="240" selection-end="262" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1330">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/system/MimasJdkExtConvention.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="34" selection-start="182" selection-end="203" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="798">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/system/ProjectConvention.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="34" selection-start="238" selection-end="255" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1311">
+        <state line="13" column="27" selection-start="307" selection-end="321" vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="1007">
           <folding />
         </state>
       </provider>
@@ -2083,9 +1898,128 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mimas-tpl-ext/src/main/java/net/milanqiu/mimas/guava/CharMatcherExt.java">
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/system/ProjectConvention.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="27" selection-start="307" selection-end="321" vertical-scroll-proportion="0.037900876" vertical-offset="164" max-vertical-offset="1007">
+        <state line="10" column="34" selection-start="238" selection-end="255" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1311">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/system/MimasJdkExtConvention.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="34" selection-start="182" selection-end="203" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="798">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/system/MavenProjectConvention.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="44" selection-start="240" selection-end="262" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1330">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/string/StrUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="21" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1710">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/string/RegExpConsts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="494">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/math/MathUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="141" selection-end="141" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="494">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/lang/LangUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/io/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="5" selection-start="1717" selection-end="1717" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1387">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/concurrent/ConcurrentUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="30" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="760">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple5.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2394">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple4.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2318">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2242">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/Tuple2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2033">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/StrStr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="304">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/StrInt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="173" selection-end="173" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="380">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/MapEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="7" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1577">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/ArrayUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2565">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mimas-jdk-ext/src/main/java/net/milanqiu/mimas/collect/CollectionUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="13" selection-start="170" selection-end="170" vertical-scroll-proportion="0.29096478" vertical-offset="0" max-vertical-offset="1007">
           <folding />
         </state>
       </provider>

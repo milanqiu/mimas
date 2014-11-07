@@ -3,18 +3,16 @@ package net.milanqiu.mimas.guava.collect;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.*;
-import net.milanqiu.mimas.lang.CollectionUtils;
+import net.milanqiu.mimas.collect.CollectionUtils;
 import net.milanqiu.mimas.lang.LangUtils;
-import net.milanqiu.mimas.lang.MapEntry;
+import net.milanqiu.mimas.collect.MapEntry;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 /**

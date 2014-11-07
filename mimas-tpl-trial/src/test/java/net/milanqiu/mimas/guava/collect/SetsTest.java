@@ -3,7 +3,7 @@ package net.milanqiu.mimas.guava.collect;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
-import net.milanqiu.mimas.lang.CollectionUtils;
+import net.milanqiu.mimas.collect.CollectionUtils;
 import net.milanqiu.mimas.lang.LangUtils;
 
 import java.util.HashMap;
@@ -12,7 +12,6 @@ import java.util.Set;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 /**

@@ -4,14 +4,14 @@ import com.google.common.cache.*;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
-import net.milanqiu.mimas.lang.CollectionUtils;
-import net.milanqiu.mimas.lang.MapEntry;
+import net.milanqiu.mimas.collect.CollectionUtils;
+import net.milanqiu.mimas.collect.MapEntry;
 import net.milanqiu.mimas.math.MathUtils;
 
 import java.util.concurrent.*;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
+
 import org.junit.Assert;
 import org.junit.Test;
 

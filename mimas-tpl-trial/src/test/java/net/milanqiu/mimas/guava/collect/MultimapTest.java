@@ -1,8 +1,8 @@
 package net.milanqiu.mimas.guava.collect;
 
 import com.google.common.collect.*;
-import net.milanqiu.mimas.lang.CollectionUtils;
-import net.milanqiu.mimas.lang.MapEntry;
+import net.milanqiu.mimas.collect.CollectionUtils;
+import net.milanqiu.mimas.collect.MapEntry;
 
 import java.util.*;
 

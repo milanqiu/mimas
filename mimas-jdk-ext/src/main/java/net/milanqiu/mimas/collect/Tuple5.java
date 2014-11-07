@@ -1,4 +1,4 @@
-package net.milanqiu.mimas.lang;
+package net.milanqiu.mimas.collect;
 
 import net.milanqiu.mimas.instrumentation.exception.DeprecatedOverrideException;
 

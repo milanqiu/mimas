@@ -1,9 +1,11 @@
-package net.milanqiu.mimas.lang;
+package net.milanqiu.mimas.collect;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
+import net.milanqiu.mimas.collect.MapEntry;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

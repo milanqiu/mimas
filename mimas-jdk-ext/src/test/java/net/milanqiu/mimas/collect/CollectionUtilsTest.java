@@ -1,8 +1,10 @@
-package net.milanqiu.mimas.lang;
+package net.milanqiu.mimas.collect;
 
 import java.util.*;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
+import net.milanqiu.mimas.collect.CollectionUtils;
 import org.junit.Assert;
 import org.junit.Test;
 

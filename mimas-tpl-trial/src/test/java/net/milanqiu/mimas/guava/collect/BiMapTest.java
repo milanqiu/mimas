@@ -4,8 +4,8 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.ImmutableSet;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
-import net.milanqiu.mimas.lang.CollectionUtils;
-import net.milanqiu.mimas.lang.MapEntry;
+import net.milanqiu.mimas.collect.CollectionUtils;
+import net.milanqiu.mimas.collect.MapEntry;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 import net.milanqiu.mimas.junit.AssertExt;

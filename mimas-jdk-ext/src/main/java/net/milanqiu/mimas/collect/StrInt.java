@@ -1,4 +1,4 @@
-package net.milanqiu.mimas.lang;
+package net.milanqiu.mimas.collect;
 
 /**
  * This class holds a string and an integer in one instance.

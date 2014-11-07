@@ -3,10 +3,9 @@ package net.milanqiu.mimas.guava.collect;
 import com.google.common.base.Function;
 import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.*;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
-import net.milanqiu.mimas.lang.CollectionUtils;
+import net.milanqiu.mimas.collect.CollectionUtils;
 
 import java.util.*;
 

@@ -1,13 +1,11 @@
 package net.milanqiu.mimas.guava.collect;
 
 import com.google.common.collect.*;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 
 import java.util.*;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
-import net.milanqiu.mimas.lang.CollectionUtils;
+
 import org.junit.Assert;
 import org.junit.Test;
 

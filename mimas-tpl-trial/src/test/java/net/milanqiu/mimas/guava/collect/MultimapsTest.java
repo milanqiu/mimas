@@ -3,17 +3,14 @@ package net.milanqiu.mimas.guava.collect;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.*;
-import net.milanqiu.mimas.lang.CollectionUtils;
+import net.milanqiu.mimas.collect.CollectionUtils;
 
-import java.util.Arrays;
-import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.Map;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import net.milanqiu.mimas.junit.AssertExt;
+
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
