@@ -47,19 +47,19 @@ public abstract class MavenProjectConvention implements ProjectConvention {
     }
 
     @Override
-    public File getUnitTestTempDir() {
+    public File getTestTempDir() {
         if (unitTestTempDir == null) {
             File filesDir = getFilesDir();
-            unitTestTempDir = new File(filesDir.getPath() + File.separator + "unittest_temp");
+            unitTestTempDir = new File(filesDir.getPath() + File.separator + "test_temp");
         }
         return unitTestTempDir;
     }
 
     @Override
-    public File getUnitTestOutDir() {
+    public File getTestOutDir() {
         if (unitTestOutDir == null) {
             File filesDir = getFilesDir();
-            unitTestOutDir = new File(filesDir.getPath() + File.separator + "unittest_out");
+            unitTestOutDir = new File(filesDir.getPath() + File.separator + "test_out");
         }
         return unitTestOutDir;
     }

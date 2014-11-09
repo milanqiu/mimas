@@ -48,16 +48,16 @@ public interface ProjectConvention {
     File getFilesDir();
 
     /**
-     * Returns the temporary directory of unit test.
-     * The directory is used to store temporary files when running unit tests.
-     * @return the temporary directory of unit test
+     * Returns the temporary directory of test.
+     * The directory is used to store temporary files when running tests, especially unit tests.
+     * @return the temporary directory of test
      */
-    File getUnitTestTempDir();
+    File getTestTempDir();
 
     /**
-     * Returns the output directory of unit test.
-     * The directory is used to store output files when running unit tests.
-     * @return the output directory of unit test
+     * Returns the output directory of test.
+     * The directory is used to store output files when running tests, especially unit tests.
+     * @return the output directory of test
      */
-    File getUnitTestOutDir();
+    File getTestOutDir();
 }

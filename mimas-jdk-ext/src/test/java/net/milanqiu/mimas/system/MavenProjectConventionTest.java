@@ -65,11 +65,11 @@ public class MavenProjectConventionTest {
 
     @Test
     public void test_getUnitTestTempDir() throws Exception {
-        Assert.assertEquals(new File("/c:/my work/workspace/files/unittest_temp"), dpc.getUnitTestTempDir());
+        Assert.assertEquals(new File("/c:/my work/workspace/files/test_temp"), dpc.getTestTempDir());
     }
 
     @Test
     public void test_getUnitTestOutDir() throws Exception {
-        Assert.assertEquals(new File("/c:/my work/workspace/files/unittest_out"), dpc.getUnitTestOutDir());
+        Assert.assertEquals(new File("/c:/my work/workspace/files/test_out"), dpc.getTestOutDir());
     }
 }

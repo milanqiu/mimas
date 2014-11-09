@@ -14,7 +14,6 @@ import org.junit.Test;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.*;
 
 import static net.milanqiu.mimas.guava.io.GuavaIoTestUtils.*;
 
@@ -68,7 +67,7 @@ public class FilesTest {
             createParentDirs(File)
             Creates necessary but nonexistent parent directories of the file.
          */
-        File unitTestTempDir = MimasTplTrialConvention.getSingleton().getUnitTestTempDir();
+        File unitTestTempDir = MimasTplTrialConvention.getSingleton().getTestTempDir();
         File file = FileUtils.getSubFile(unitTestTempDir, "temp2", "temp3", "temp.tmp");
         File dir3 = FileUtils.getSubFile(unitTestTempDir, "temp2", "temp3");
         File dir2 = FileUtils.getSubFile(unitTestTempDir, "temp2");
@@ -157,7 +156,7 @@ public class FilesTest {
             fileTreeTraverser()
             Returns a TreeTraverser that can traverse file trees.
          */
-        File unitTestTempDir = MimasTplTrialConvention.getSingleton().getUnitTestTempDir();
+        File unitTestTempDir = MimasTplTrialConvention.getSingleton().getTestTempDir();
         Assert.assertTrue(FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb", "ccc").mkdirs());
         Assert.assertTrue(FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd", "eee").mkdirs());
         Assert.assertTrue(FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd", "fff").mkdirs());
@@ -172,6 +171,7 @@ public class FilesTest {
 
         // children()
         Assert.assertEquals(ImmutableList.of(
+                FileUtils.getSubFile(unitTestTempDir, ".gitkeep"),
                 FileUtils.getSubFile(unitTestTempDir, "aaa")
         ), tt.children(unitTestTempDir));
         Assert.assertEquals(ImmutableList.of(
@@ -182,6 +182,7 @@ public class FilesTest {
         // preOrderTraversal()
         Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(
                 unitTestTempDir,
+                FileUtils.getSubFile(unitTestTempDir, ".gitkeep"),
                 FileUtils.getSubFile(unitTestTempDir, "aaa"),
                 FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb"),
                 FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb", "ccc"),
@@ -192,6 +193,7 @@ public class FilesTest {
 
         // postOrderTraversal()
         Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(
+                FileUtils.getSubFile(unitTestTempDir, ".gitkeep"),
                 FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb", "ccc"),
                 FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb"),
                 FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd", "eee"),
@@ -204,6 +206,7 @@ public class FilesTest {
         // breadthFirstTraversal()
         Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(
                 unitTestTempDir,
+                FileUtils.getSubFile(unitTestTempDir, ".gitkeep"),
                 FileUtils.getSubFile(unitTestTempDir, "aaa"),
                 FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb"),
                 FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd"),

@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.guava.io;
 
 import com.google.common.collect.ImmutableList;
-import net.milanqiu.mimas.io.FileUtils;
 import net.milanqiu.mimas.string.StrUtils;
 import net.milanqiu.mimas.system.MimasTplTrialConvention;
 import org.junit.Assert;
@@ -39,7 +38,7 @@ public class GuavaIoTestUtils {
     public static final List<String> LIST_MULTILINE = ImmutableList.of(STR_0, STR_1, "", STR_2, "");
 
     public static final File TEST_FILE =
-            new File(MimasTplTrialConvention.getSingleton().getUnitTestTempDir(), "guava_io.tmp");
+            new File(MimasTplTrialConvention.getSingleton().getTestTempDir(), "guava_io.tmp");
 
     public static void createTestFileOfByte() throws IOException {
         FileOutputStream fos = new FileOutputStream(TEST_FILE);
