@@ -67,4 +67,103 @@ public class LangUtilsTest {
         Assert.assertEquals(-1, LangUtils.OBJECT_COMPARATOR.compare(null, OBJ_0));
         Assert.assertEquals(0, LangUtils.OBJECT_COMPARATOR.compare(null, null));
     }
+
+    private int cursor;
+    private int count;
+    private long sum;
+
+    @Test
+    public void test_traverseCharValues() throws Exception {
+        cursor = Character.MIN_VALUE;
+        count = 0;
+        sum = 0;
+        LangUtils.traverseCharValues(new RunnableWithParam.WithChar() {
+            @Override
+            public void run(char param) {
+                Assert.assertEquals(cursor++, param);
+                count++;
+                sum += param;
+            }
+        });
+        Assert.assertEquals(65536, count);
+        Assert.assertEquals(2147450880, sum);
+        Assert.assertEquals(Character.MAX_VALUE-Character.MIN_VALUE+1, count);
+        Assert.assertEquals((long)count*(Character.MAX_VALUE+Character.MIN_VALUE)/2, sum);
+    }
+
+    @Test
+    public void test_traverseByteValues() throws Exception {
+        cursor = Byte.MIN_VALUE;
+        count = 0;
+        sum = 0;
+        LangUtils.traverseByteValues(new RunnableWithParam.WithByte() {
+            @Override
+            public void run(byte param) {
+                Assert.assertEquals(cursor++, param);
+                count++;
+                sum += param;
+            }
+        });
+        Assert.assertEquals(256, count);
+        Assert.assertEquals(-128, sum);
+        Assert.assertEquals(Byte.MAX_VALUE-Byte.MIN_VALUE+1, count);
+        Assert.assertEquals((long)count*(Byte.MAX_VALUE+Byte.MIN_VALUE)/2, sum);
+    }
+
+    @Test
+    public void test_traverseUnsignedByteValues() throws Exception {
+        cursor = 0;
+        count = 0;
+        sum = 0;
+        LangUtils.traverseUnsignedByteValues(new RunnableWithParam.WithInt() {
+            @Override
+            public void run(int param) {
+                Assert.assertEquals(cursor++, param);
+                count++;
+                sum += param;
+            }
+        });
+        Assert.assertEquals(256, count);
+        Assert.assertEquals(32640, sum);
+        Assert.assertEquals(255-0+1, count);
+        Assert.assertEquals((long)count*(255+0)/2, sum);
+    }
+
+    @Test
+    public void test_traverseShortValues() throws Exception {
+        cursor = Short.MIN_VALUE;
+        count = 0;
+        sum = 0;
+        LangUtils.traverseShortValues(new RunnableWithParam.WithShort() {
+            @Override
+            public void run(short param) {
+                Assert.assertEquals(cursor++, param);
+                count++;
+                sum += param;
+            }
+        });
+        Assert.assertEquals(65536, count);
+        Assert.assertEquals(-32768, sum);
+        Assert.assertEquals(Short.MAX_VALUE-Short.MIN_VALUE+1, count);
+        Assert.assertEquals((long)count*(Short.MAX_VALUE+Short.MIN_VALUE)/2, sum);
+    }
+
+    @Test
+    public void test_traverseUnsignedShortValues() throws Exception {
+        cursor = 0;
+        count = 0;
+        sum = 0;
+        LangUtils.traverseUnsignedShortValues(new RunnableWithParam.WithInt() {
+            @Override
+            public void run(int param) {
+                Assert.assertEquals(cursor++, param);
+                count++;
+                sum += param;
+            }
+        });
+        Assert.assertEquals(65536, count);
+        Assert.assertEquals(2147450880, sum);
+        Assert.assertEquals(65535-0+1, count);
+        Assert.assertEquals((long)count*(65535+0)/2, sum);
+    }
 }

@@ -134,4 +134,54 @@ public class LangUtils {
             }
         }
     };
+
+    /**
+     * Traverses all character values in ascending order.
+     * @param action action to be taken in each visit
+     */
+    public static void traverseCharValues(RunnableWithParam.WithChar action) {
+        for (int i = Character.MIN_VALUE; i <= Character.MAX_VALUE; i++) {
+            action.run((char) i);
+        }
+    }
+
+    /**
+     * Traverses all byte values in ascending order.
+     * @param action action to be taken in each visit
+     */
+    public static void traverseByteValues(RunnableWithParam.WithByte action) {
+        for (int i = Byte.MIN_VALUE; i <= Byte.MAX_VALUE; i++) {
+            action.run((byte) i);
+        }
+    }
+
+    /**
+     * Traverses all unsigned byte values in ascending order.
+     * @param action action to be taken in each visit
+     */
+    public static void traverseUnsignedByteValues(RunnableWithParam.WithInt action) {
+        for (int i = 0x00; i <= 0xFF; i++) {
+            action.run(i);
+        }
+    }
+
+    /**
+     * Traverses all short values in ascending order.
+     * @param action action to be taken in each visit
+     */
+    public static void traverseShortValues(RunnableWithParam.WithShort action) {
+        for (int i = Short.MIN_VALUE; i <= Short.MAX_VALUE; i++) {
+            action.run((short) i);
+        }
+    }
+
+    /**
+     * Traverses all unsigned short values in ascending order.
+     * @param action action to be taken in each visit
+     */
+    public static void traverseUnsignedShortValues(RunnableWithParam.WithInt action) {
+        for (int i = 0x0000; i <= 0xFFFF; i++) {
+            action.run(i);
+        }
+    }
 }
