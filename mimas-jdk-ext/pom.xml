@@ -15,6 +15,5 @@
     <name>Mimas JDK Extension APIs</name>
 
     <dependencies>
-        <!-- mimas itself -->
     </dependencies>
 </project>
