@@ -1,6 +1,8 @@
 package net.milanqiu.mimas.io;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.NoSuchFileException;
 
 /**
  * Utilities related to file.
@@ -46,7 +48,7 @@ public class FileUtils {
      * @return the sub file
      */
     public static File getSubFile(File dir, String... subNamesLbl) {
-        StringBuffer sb = new StringBuffer(dir.getPath());
+        StringBuilder sb = new StringBuilder(dir.getPath());
         for (String subName : subNamesLbl)
             sb.append(File.separator).append(subName);
         return new File(sb.toString());
@@ -59,9 +61,45 @@ public class FileUtils {
      * @return the sub file
      */
     public static File getSubFile(File dir, Iterable<String> subNamesLbl) {
-        StringBuffer sb = new StringBuffer(dir.getPath());
+        StringBuilder sb = new StringBuilder(dir.getPath());
         for (String subName : subNamesLbl)
             sb.append(File.separator).append(subName);
         return new File(sb.toString());
+    }
+
+    /**
+     * Deletes all the files within a directory. Does not delete the directory itself.
+     * Note it is ever provided in guava but deprecated from guava release 11.0 for the reason of poor symlink detection
+     * and race conditions.
+     * @param dir the directory to delete the contents of
+     * @throws IOException if an I/O error occurs
+     * @throws NoSuchFileException if the directory does not exist
+     * @throws IllegalArgumentException if the argument is not a directory
+     */
+    public static void deleteDirectoryContents(File dir) throws IOException  {
+        if (!dir.exists())
+            throw new NoSuchFileException(dir.getPath());
+        if (!dir.isDirectory())
+            throw new IllegalArgumentException(dir.getPath());
+
+        for (File child : dir.listFiles()) {
+            deleteRecursively(child);
+        }
+    }
+
+    /**
+     * Deletes a file or directory and all contents recursively.
+     * Note it is ever provided in guava but deprecated from guava release 11.0 for the reason of poor symlink detection
+     * and race conditions.
+     * @param fileOrDir the file to delete
+     * @throws IOException if an I/O error occurs
+     * @throws NoSuchFileException if the file or directory does not exist
+     */
+    public static void deleteRecursively(File fileOrDir) throws IOException {
+        if (!fileOrDir.exists())
+            throw new NoSuchFileException(fileOrDir.getPath());
+        if (fileOrDir.isDirectory())
+            deleteDirectoryContents(fileOrDir);
+        fileOrDir.delete();
     }
 }

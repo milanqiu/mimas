@@ -1,12 +1,11 @@
 package net.milanqiu.mimas.io;
 
+import net.milanqiu.mimas.system.MimasJdkExtConvention;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * <p>Creation Date: 2014-11-3
@@ -33,5 +32,27 @@ public class FileUtilsTest {
                 FileUtils.getSubFile(new File("aaa/bbb"), "ccc", "ddd", "eee"));
         Assert.assertEquals(new File("aaa/bbb/ccc/ddd/eee"),
                 FileUtils.getSubFile(new File("aaa/bbb"), Arrays.asList("ccc", "ddd", "eee")));
+    }
+
+    @Test
+    public void test_deleteDirectoryContents() throws Exception {
+        File workDir = FileUtils.getSubFile(MimasJdkExtConvention.getSingleton().getTestTempDir(), "FileUtilsTest.test_deleteDirectoryContents");
+        Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "bbb", "ccc").mkdirs());
+        Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "ddd", "eee").mkdirs());
+        Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "ddd", "fff").createNewFile());
+        FileUtils.deleteDirectoryContents(workDir);
+        Assert.assertEquals(0, workDir.listFiles().length);
+        Assert.assertTrue(workDir.exists());
+        Assert.assertTrue(workDir.delete());
+    }
+
+    @Test
+    public void test_deleteRecursively() throws Exception {
+        File workDir = FileUtils.getSubFile(MimasJdkExtConvention.getSingleton().getTestTempDir(), "FileUtilsTest.test_deleteDirectoryContents");
+        Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "bbb", "ccc").mkdirs());
+        Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "ddd", "eee").mkdirs());
+        Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "ddd", "fff").createNewFile());
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
     }
 }
