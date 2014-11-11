@@ -30,15 +30,15 @@ public class ComparisonChainTest {
                         })
                         .result());
 
-        Assert.assertEquals(1,
-                ComparisonChain.start()
-                        .compare(INT_0+1, INT_0)
-                        .result());
-
         Assert.assertEquals(-1,
                 ComparisonChain.start()
+                        .compare(INT_0-1, INT_0)
+                        .result());
+
+        Assert.assertEquals(1,
+                ComparisonChain.start()
                         .compare(INT_0, INT_0)
-                        .compare(INT_1-1, INT_2)
+                        .compare(INT_1+1, INT_1)
                         .result());
     }
 }

@@ -93,7 +93,7 @@ public class ByteSourceTest {
     @Test
     public void test_hash() throws Exception {
         ByteSource bs = ByteSource.wrap(BYTE_ARR);
-        Assert.assertEquals("c7f5e428ba8ea38eb9681cc411674316", bs.hash(Hashing.md5()).toString());
+        Assert.assertEquals("1801c57a3366ae187abfcbd57b9a9b07", bs.hash(Hashing.md5()).toString());
     }
 
     @Test
