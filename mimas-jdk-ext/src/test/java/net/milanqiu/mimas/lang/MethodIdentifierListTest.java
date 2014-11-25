@@ -1,4 +1,4 @@
-package net.milanqiu.mimas.system;
+package net.milanqiu.mimas.lang;
 
 import net.milanqiu.mimas.instrumentation.DebugUtils;
 import org.junit.Assert;

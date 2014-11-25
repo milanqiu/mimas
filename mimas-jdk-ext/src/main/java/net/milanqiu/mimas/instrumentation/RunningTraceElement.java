@@ -1,16 +1,20 @@
 package net.milanqiu.mimas.instrumentation;
 
+import net.milanqiu.mimas.collect.ArrayUtils;
+import net.milanqiu.mimas.lang.MethodIdentifier;
 import net.milanqiu.mimas.string.StrUtils;
 
 import java.util.Objects;
 
 /**
  * An element in a running trace. Each element represents a single track of program running.
- *
- * <p>Creation Date: 2014-10-24
+ * <p>
+ * Creation Date: 2014-10-24
  * @author Milan Qiu
  */
 public class RunningTraceElement {
+
+    protected RunningTraceElement() {}
 
     /**
      * Enumerations of points where it tracks.
@@ -42,7 +46,7 @@ public class RunningTraceElement {
             public String toString() {
                 return "Method End";
             }
-        };
+        }
     }
 
     /**
@@ -59,37 +63,43 @@ public class RunningTraceElement {
     private String tag;
 
     /**
-     * Gets the current stack trace when it tracks.
+     * Returns the current stack trace when it tracks.
      * @return the current stack trace when it tracks
      */
     public StackTraceElement[] getStack() {
         return stack;
     }
+    /**
+     * A setter corresponding to the getter {@link #getStack()}.
+     */
     protected void setStack(StackTraceElement[] stack) {
         this.stack = stack;
     }
     /**
-     * Gets the point where it tracks.
+     * Returns the point where it tracks.
      * @return the point where it tracks
      */
     public TrackingPoint getTrackingPoint() {
         return trackingPoint;
     }
+    /**
+     * A setter corresponding to the getter {@link #getTrackingPoint()}.
+     */
     protected void setTrackingPoint(TrackingPoint trackingPoint) {
         this.trackingPoint = trackingPoint;
     }
     /**
-     * Gets the tag of track.
+     * Returns the tag of track.
      * @return the tag of track
      */
     public String getTag() {
         return tag;
     }
+    /**
+     * A setter corresponding to the getter {@link #getTag()}.
+     */
     protected void setTag(String tag) {
         this.tag = tag;
-    }
-
-    protected RunningTraceElement() {
     }
 
     @Override
@@ -99,20 +109,21 @@ public class RunningTraceElement {
         String trackingPointStr = trackingPoint.toString();
         if (!trackingPointStr.isEmpty())
             sb.append(" ").append(trackingPointStr);
-        if ((tag != null) && !tag.isEmpty())
+        if (tag != null && !tag.isEmpty())
             sb.append(" : ").append(tag);
         return sb.toString();
     }
 
     /**
-     * An expected running trace element which stores just key fields.
+     * An expected running trace element which stores only key fields.
      * For example, it doesn't store the full stack trace.
      * It is used to compare with actual {@code RunningTraceElement} for equality.
      */
     public interface Expected {
         /**
-         * Whether the expected running trace element is equal to the actual {@code RunningTraceElement} on key fields.
-         * @param actual the actual {@code RunningTraceElement} to be compared
+         * Returns whether this expected running trace element is equal to the specified {@code RunningTraceElement}
+         * on key fields.
+         * @param actual the actual {@code RunningTraceElement} to be tested
          * @return equality result
          */
         boolean equalsActual(RunningTraceElement actual);
@@ -122,15 +133,13 @@ public class RunningTraceElement {
      * An expected running trace element which stores full key fields.
      */
     public static class FullyExpected implements Expected {
+        private FullyExpected() {}
+
         /**
-         * The expected class name of the top element of stack trace.
+         * The expected method identifier of the top element of the stack trace.
          */
-        private String className;
-        /**
-         * The expected method name of the top element of stack trace.
-         */
-        private String methodName;
-        /**
+        private MethodIdentifier topMethod;
+         /**
          * The expected tracking point.
          */
         private TrackingPoint trackingPoint = TrackingPoint.ANYWHERE;
@@ -139,58 +148,62 @@ public class RunningTraceElement {
          */
         private String tag;
 
-        private FullyExpected() {
-        }
-
         /**
-         * Creates a new {@code RunningTraceElement.FullyExpected} object with specified fields.
-         * @param className the specified expected class name of the top element of stack trace
-         * @param methodName the specified expected method name of the top element of stack trace
-         * @return the new created {@code RunningTraceElement.FullyExpected} object
+         * Creates and returns a new instance of {@code RunningTraceElement.FullyExpected} with the specified method
+         * identifier.
+         * @param topMethod the expected method identifier of the top element of the stack trace
+         *                  of the new instance of {@code RunningTraceElement.FullyExpected}
+         * @return the new instance of {@code RunningTraceElement.FullyExpected}
          */
-        public static FullyExpected create(String className, String methodName) {
+        public static FullyExpected create(MethodIdentifier topMethod) {
             FullyExpected result = new FullyExpected();
-            result.className = className;
-            result.methodName = methodName;
+            result.topMethod = topMethod;
             return result;
         }
 
         /**
-         * Creates a new {@code RunningTraceElement.FullyExpected} object with specified fields.
-         * @param className the specified expected class name of the top element of stack trace
-         * @param methodName the specified expected method name of the top element of stack trace
-         * @param trackingPoint the specified expected tracking point
-         * @return the new created {@code RunningTraceElement.FullyExpected} object
+         * Creates and returns a new instance of {@code RunningTraceElement.FullyExpected} with the specified method
+         * identifier and tracking point.
+         * @param topMethod the expected method identifier of the top element of the stack trace
+         *                  of the new instance of {@code RunningTraceElement.FullyExpected}
+         * @param trackingPoint the expected tracking point
+         *                      of the new instance of {@code RunningTraceElement.FullyExpected}
+         * @return the new instance of {@code RunningTraceElement.FullyExpected}
          */
-        public static FullyExpected create(String className, String methodName, TrackingPoint trackingPoint) {
-            FullyExpected result = create(className, methodName);
+        public static FullyExpected create(MethodIdentifier topMethod, TrackingPoint trackingPoint) {
+            FullyExpected result = create(topMethod);
             result.trackingPoint = trackingPoint;
             return result;
         }
 
         /**
-         * Creates a new {@code RunningTraceElement.FullyExpected} object with specified fields.
-         * @param className the specified expected class name of the top element of stack trace
-         * @param methodName the specified expected method name of the top element of stack trace
-         * @param tag the specified expected tag
-         * @return the new created {@code RunningTraceElement.FullyExpected} object
+         * Creates and returns a new instance of {@code RunningTraceElement.FullyExpected} with the specified method
+         * identifier and tag.
+         * @param topMethod the expected method identifier of the top element of the stack trace
+         *                  of the new instance of {@code RunningTraceElement.FullyExpected}
+         * @param tag the expected tag
+         *            of the new instance of {@code RunningTraceElement.FullyExpected}
+         * @return the new instance of {@code RunningTraceElement.FullyExpected}
          */
-        public static FullyExpected create(String className, String methodName, String tag) {
-            FullyExpected result = create(className, methodName);
+        public static FullyExpected create(MethodIdentifier topMethod, String tag) {
+            FullyExpected result = create(topMethod);
             result.tag = tag;
             return result;
         }
 
         /**
-         * Creates a new {@code RunningTraceElement.FullyExpected} object with specified fields.
-         * @param className the specified expected class name of the top element of stack trace
-         * @param methodName the specified expected method name of the top element of stack trace
-         * @param trackingPoint the specified expected tracking point
-         * @param tag the specified expected tag
-         * @return the new created {@code RunningTraceElement.FullyExpected} object
+         * Creates and returns a new instance of {@code RunningTraceElement.FullyExpected} with the specified method
+         * identifier, tracking point and tag.
+         * @param topMethod the expected method identifier of the top element of the stack trace
+         *                  of the new instance of {@code RunningTraceElement.FullyExpected}
+         * @param trackingPoint the expected tracking point
+         *                      of the new instance of {@code RunningTraceElement.FullyExpected}
+         * @param tag the expected tag
+         *            of the new instance of {@code RunningTraceElement.FullyExpected}
+         * @return the new instance of {@code RunningTraceElement.FullyExpected}
          */
-        public static FullyExpected create(String className, String methodName, TrackingPoint trackingPoint, String tag) {
-            FullyExpected result = create(className, methodName);
+        public static FullyExpected create(MethodIdentifier topMethod, TrackingPoint trackingPoint, String tag) {
+            FullyExpected result = create(topMethod);
             result.trackingPoint = trackingPoint;
             result.tag = tag;
             return result;
@@ -198,10 +211,8 @@ public class RunningTraceElement {
 
         @Override
         public boolean equalsActual(RunningTraceElement actual) {
-            return actual.getStack() != null &&
-                    actual.getStack().length > 0 &&
-                    actual.getStack()[0].getClassName().equals(className) &&
-                    actual.getStack()[0].getMethodName().equals(methodName) &&
+            return !ArrayUtils.isNullOrEmpty(actual.getStack()) &&
+                    topMethod.equals(actual.getStack()[0]) &&
                     actual.getTrackingPoint().equals(trackingPoint) &&
                     Objects.equals(actual.getTag(), tag);
         }
@@ -212,18 +223,17 @@ public class RunningTraceElement {
      * Actually, it stores only {@code tag} field.
      */
     public static class SimplyExpected implements Expected {
+        private SimplyExpected() {}
+
         /**
          * The expected tag.
          */
         private String tag;
 
-        private SimplyExpected() {
-        }
-
         /**
-         * Creates a new {@code RunningTraceElement.SimplyExpected} object with specified fields.
-         * @param tag the specified expected tag
-         * @return the new created {@code RunningTraceElement.SimplyExpected} object
+         * Creates and returns a new instance of {@code RunningTraceElement.SimplyExpected} with the specified tag.
+         * @param tag the expected tag of the new instance of {@code RunningTraceElement.SimplyExpected}
+         * @return the new instance of {@code RunningTraceElement.SimplyExpected}
          */
         public static SimplyExpected create(String tag) {
             SimplyExpected result = new SimplyExpected();
@@ -238,8 +248,8 @@ public class RunningTraceElement {
     }
 
     /**
-     * Whether this object is equal to the expected running trace element on key fields.
-     * @param expected the expected running trace element
+     * Returns whether this object is equal to the specified expected running trace element on key fields.
+     * @param expected the expected running trace element to be tested
      * @return equality result
      */
     public boolean equalsExpected(Expected expected) {

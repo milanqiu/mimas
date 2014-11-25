@@ -4,9 +4,10 @@ import net.milanqiu.mimas.instrumentation.exception.DeprecatedOverrideException;
 
 /**
  * This class holds four objects in one instance.
- * Types of elements is generic.
- *
- * <p>Creation Date: 2014-2-8
+ * <p>
+ * Types of elements are generic.
+ * <p>
+ * Creation Date: 2014-2-8
  * @author Milan Qiu
  */
 public class Tuple4<TA, TB, TC, TD> extends Tuple3<TA, TB, TC> {
@@ -15,19 +16,25 @@ public class Tuple4<TA, TB, TC, TD> extends Tuple3<TA, TB, TC> {
      */
     protected TD d;
 
+    /**
+     * Returns element D.
+     * @return element D
+     */
     public TD getD() {
         return d;
     }
+    /**
+     * A setter corresponding to the getter {@link #getD()}.
+     */
     public void setD(TD d) {
         this.d = d;
     }
 
     /**
-     * Removed in subclass. Only available when caller is instance of {@code Tuple3}.
-     *
-     * @param a new value of element A
-     * @param b new value of element B
-     * @param c new value of element C
+     * Removed in subclass. Only available when invoker is an instance of {@link Tuple3}.
+     * @param a the new value of element A
+     * @param b the new value of element B
+     * @param c the new value of element C
      */
     @Deprecated
     @Override
@@ -36,12 +43,11 @@ public class Tuple4<TA, TB, TC, TD> extends Tuple3<TA, TB, TC> {
     }
 
     /**
-     * Sets all four elements in one call.
-     *
-     * @param a new value of element A
-     * @param b new value of element B
-     * @param c new value of element C
-     * @param d new value of element D
+     * Changes all four elements in one invocation.
+     * @param a the new value of element A
+     * @param b the new value of element B
+     * @param c the new value of element C
+     * @param d the new value of element D
      */
     public void setAll(TA a, TB b, TC c, TD d) {
         super.setAll(a, b, c);
@@ -49,18 +55,16 @@ public class Tuple4<TA, TB, TC, TD> extends Tuple3<TA, TB, TC> {
     }
 
     /**
-     * Constructs a four-element tuple with every element is null.
+     * Constructs a four-element tuple with each element is null.
      */
-    public Tuple4() {
-    }
+    public Tuple4() {}
 
     /**
-     * Constructs a four-element tuple with specified values.
-     *
-     * @param a value of element A
-     * @param b value of element B
-     * @param c value of element C
-     * @param d value of element D
+     * Constructs a four-element tuple with the specified values.
+     * @param a the value of element A
+     * @param b the value of element B
+     * @param c the value of element C
+     * @param d the value of element D
      */
     public Tuple4(TA a, TB b, TC c, TD d) {
         setAll(a, b, c, d);
@@ -68,10 +72,9 @@ public class Tuple4<TA, TB, TC, TD> extends Tuple3<TA, TB, TC> {
 
     /**
      * Compares the specified object with this tuple for equality.
-     * Return true if each element of the given object is equal to corresponding element of this tuple.
-     *
-     * @param o object to be compared for equality with this tuple
-     * @return if the specified object is equal to this tuple
+     * Return {@code true} if each element of the given object is equal to corresponding element of this tuple.
+     * @param o the object to be tested for equality with this tuple
+     * @return equality result
      */
     @Override
     public boolean equals(Object o) {
@@ -88,7 +91,6 @@ public class Tuple4<TA, TB, TC, TD> extends Tuple3<TA, TB, TC> {
 
     /**
      * Returns the hash code value for this tuple.
-     *
      * @return the hash code value for this tuple
      */
     @Override
@@ -99,22 +101,20 @@ public class Tuple4<TA, TB, TC, TD> extends Tuple3<TA, TB, TC> {
     }
 
     /**
-     * Returns a string representation of this tuple.
-     * The string representation consists of a list of elements, enclosed in brackets("()").
+     * Returns a string representation of this object.
+     * The string representation consists of a list of elements, enclosed in braces("{}").
      * Adjacent elements are separated by comma and space(", ").
-     * The result may be <tt>(A=valueA, B=valueB, C=valueC, D=valueD)</tt>.
-     *
-     * @return a string representation of this tuple
+     * The result may be <i><tt>{A=valueA, B=valueB, C=valueC, D=valueD}</tt></i>.
+     * @return a string representation of this object
      */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append('(');
-        sb.append("A=").append(a).append(", ");
-        sb.append("B=").append(b).append(", ");
-        sb.append("C=").append(c).append(", ");
-        sb.append("D=").append(d);
-        sb.append(')');
+        sb.append("{A=").append(a);
+        sb.append(", B=").append(b);
+        sb.append(", C=").append(c);
+        sb.append(", D=").append(d);
+        sb.append('}');
         return sb.toString();
     }
 }

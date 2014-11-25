@@ -1,9 +1,9 @@
 package net.milanqiu.mimas.system;
 
 /**
- * Properties and running environment of this project(mimas-jdk-ext).
- *
- * <p>Creation Date: 2014-11-3
+ * Conventional properties and running environment of this project(mimas-jdk-ext).
+ * <p>
+ * Creation Date: 2014-11-3
  * @author Milan Qiu
  */
 public class MimasJdkExtConvention extends MavenProjectConvention {
@@ -20,8 +20,8 @@ public class MimasJdkExtConvention extends MavenProjectConvention {
     private MimasJdkExtConvention() {}
 
     @Override
-    public String getSourcePath() {
-        return SysUtils.getClassSourcePath(MimasJdkExtConvention.class);
+    public String getSourceDir() {
+        return SysUtils.getClassSourceDir(this.getClass());
     }
 
     @Override

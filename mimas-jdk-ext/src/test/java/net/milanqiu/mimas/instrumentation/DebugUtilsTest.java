@@ -1,7 +1,7 @@
 package net.milanqiu.mimas.instrumentation;
 
-import net.milanqiu.mimas.system.MethodIdentifier;
-import net.milanqiu.mimas.system.MethodIdentifierList;
+import net.milanqiu.mimas.lang.MethodIdentifier;
+import net.milanqiu.mimas.lang.MethodIdentifierList;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -37,10 +37,25 @@ public class DebugUtilsTest {
         }
     }
 
-    private void aMethod() {
+    private void getCurrentStackTraceElementAnother() {
+        StackTraceElement ste = DebugUtils.getCurrentStackTraceElement();
+        Assert.assertEquals(this.getClass().getName(), ste.getClassName());
+        Assert.assertEquals("getCurrentStackTraceElementAnother", ste.getMethodName());
+    }
+
+    @Test
+    public void test_getCurrentStackTraceElement() throws Exception {
+        StackTraceElement ste = DebugUtils.getCurrentStackTraceElement();
+        Assert.assertEquals(this.getClass().getName(), ste.getClassName());
+        Assert.assertEquals("test_getCurrentStackTraceElement", ste.getMethodName());
+
+        getCurrentStackTraceElementAnother();
+    }
+
+    private void getCurrentMethodAnother() {
         MethodIdentifier mi = DebugUtils.getCurrentMethod();
         Assert.assertEquals(this.getClass().getName(), mi.getClassName());
-        Assert.assertEquals("aMethod", mi.getMethodName());
+        Assert.assertEquals("getCurrentMethodAnother", mi.getMethodName());
     }
 
     @Test
@@ -49,6 +64,22 @@ public class DebugUtilsTest {
         Assert.assertEquals(this.getClass().getName(), mi.getClassName());
         Assert.assertEquals("test_getCurrentMethod", mi.getMethodName());
 
-        aMethod();
+        getCurrentMethodAnother();
+    }
+
+    private void getActualCurrentMethodAnother() {
+        MethodIdentifier mi = DebugUtils.getActualCurrentMethod(
+                MethodIdentifierList.create(this.getClass().getName(), "getActualCurrentMethodAnother"));
+        Assert.assertEquals(this.getClass().getName(), mi.getClassName());
+        Assert.assertEquals("test_getActualCurrentMethod", mi.getMethodName());
+    }
+
+    @Test
+    public void test_getActualCurrentMethod() throws Exception {
+        MethodIdentifier mi = DebugUtils.getActualCurrentMethod(MethodIdentifierList.create());
+        Assert.assertEquals(this.getClass().getName(), mi.getClassName());
+        Assert.assertEquals("test_getActualCurrentMethod", mi.getMethodName());
+
+        getActualCurrentMethodAnother();
     }
 }

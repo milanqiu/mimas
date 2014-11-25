@@ -1,13 +1,14 @@
 package net.milanqiu.mimas.lang;
 
-import java.util.Arrays;
-
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
 /**
- * <p>Creation Date: 2014-7-25
+ * Creation Date: 2014-7-25
  * @author Milan Qiu
  */
 public class LangUtilsTest {
@@ -31,8 +32,8 @@ public class LangUtilsTest {
         Assert.assertTrue(LangUtils.isDefault((short) 0));
         Assert.assertTrue(LangUtils.isDefault(0));
         Assert.assertTrue(LangUtils.isDefault(0L));
-        Assert.assertTrue(LangUtils.isDefault(0.0F));
-        Assert.assertTrue(LangUtils.isDefault(0.0D));
+        Assert.assertTrue(LangUtils.isDefault(0.0f));
+        Assert.assertTrue(LangUtils.isDefault(0.0d));
         Assert.assertTrue(LangUtils.isDefault(null));
 
         Assert.assertTrue(LangUtils.isDefault(bool));
@@ -48,12 +49,6 @@ public class LangUtilsTest {
     }
 
     @Test
-    public void test_hasDefaultToString() throws Exception {
-        Assert.assertTrue(LangUtils.hasDefaultToString(new Object()));
-        Assert.assertTrue(LangUtils.hasDefaultToString(this));
-    }
-
-    @Test
     public void test_OBJECT_COMPARATOR() throws Exception {
         Assert.assertEquals(0, LangUtils.OBJECT_COMPARATOR.compare(OBJ_0, OBJ_0));
         Assert.assertTrue(Arrays.asList(-1, 1).contains(LangUtils.OBJECT_COMPARATOR.compare(OBJ_0, OBJ_1)));
@@ -66,6 +61,55 @@ public class LangUtilsTest {
         Assert.assertEquals(1, LangUtils.OBJECT_COMPARATOR.compare(OBJ_0, null));
         Assert.assertEquals(-1, LangUtils.OBJECT_COMPARATOR.compare(null, OBJ_0));
         Assert.assertEquals(0, LangUtils.OBJECT_COMPARATOR.compare(null, null));
+    }
+
+    @Test
+    public void test_ValueCountSeries() throws Exception {
+        Assert.assertEquals(LangUtils.CHAR_VALUE_COUNT,           65536);
+        Assert.assertEquals(LangUtils.BYTE_VALUE_COUNT,           256);
+        Assert.assertEquals(LangUtils.UNSIGNED_BYTE_VALUE_COUNT,  256);
+        Assert.assertEquals(LangUtils.SHORT_VALUE_COUNT,          65536);
+        Assert.assertEquals(LangUtils.UNSIGNED_SHORT_VALUE_COUNT, 65536);
+    }
+
+    @Test
+    public void test_getAllCharValues() throws Exception {
+        char[] charArr = LangUtils.getAllCharValues();
+        Assert.assertEquals(LangUtils.CHAR_VALUE_COUNT, charArr.length);
+        for (int i = 0; i < LangUtils.CHAR_VALUE_COUNT; i++)
+            Assert.assertEquals((char)(i+Character.MIN_VALUE), charArr[i]);
+    }
+
+    @Test
+    public void test_getAllByteValues() throws Exception {
+        byte[] byteArr = LangUtils.getAllByteValues();
+        Assert.assertEquals(LangUtils.BYTE_VALUE_COUNT, byteArr.length);
+        for (int i = 0; i < LangUtils.BYTE_VALUE_COUNT; i++)
+            Assert.assertEquals((byte)(i+Byte.MIN_VALUE), byteArr[i]);
+    }
+
+    @Test
+    public void test_getAllUnsignedByteValues() throws Exception {
+        int[] ubyteArr = LangUtils.getAllUnsignedByteValues();
+        Assert.assertEquals(LangUtils.UNSIGNED_BYTE_VALUE_COUNT, ubyteArr.length);
+        for (int i = 0; i < LangUtils.UNSIGNED_BYTE_VALUE_COUNT; i++)
+            Assert.assertEquals(i+LangUtils.UNSIGNED_BYTE_MIN_VALUE, ubyteArr[i]);
+    }
+
+    @Test
+    public void test_getAllShortValues() throws Exception {
+        short[] shortArr = LangUtils.getAllShortValues();
+        Assert.assertEquals(LangUtils.SHORT_VALUE_COUNT, shortArr.length);
+        for (int i = 0; i < LangUtils.SHORT_VALUE_COUNT; i++)
+            Assert.assertEquals((short)(i+Short.MIN_VALUE), shortArr[i]);
+    }
+
+    @Test
+    public void test_getAllUnsignedShortValues() throws Exception {
+        int[] ushortArr = LangUtils.getAllUnsignedShortValues();
+        Assert.assertEquals(LangUtils.UNSIGNED_SHORT_VALUE_COUNT, ushortArr.length);
+        for (int i = 0; i < LangUtils.UNSIGNED_SHORT_VALUE_COUNT; i++)
+            Assert.assertEquals(i+LangUtils.UNSIGNED_SHORT_MIN_VALUE, ushortArr[i]);
     }
 
     private int cursor;
@@ -85,9 +129,9 @@ public class LangUtilsTest {
                 sum += param;
             }
         });
-        Assert.assertEquals(65536, count);
+        Assert.assertEquals(Character.MAX_VALUE+1, cursor);
+        Assert.assertEquals(LangUtils.CHAR_VALUE_COUNT, count);
         Assert.assertEquals(2147450880, sum);
-        Assert.assertEquals(Character.MAX_VALUE-Character.MIN_VALUE+1, count);
         Assert.assertEquals((long)count*(Character.MAX_VALUE+Character.MIN_VALUE)/2, sum);
     }
 
@@ -104,15 +148,15 @@ public class LangUtilsTest {
                 sum += param;
             }
         });
-        Assert.assertEquals(256, count);
+        Assert.assertEquals(Byte.MAX_VALUE+1, cursor);
+        Assert.assertEquals(LangUtils.BYTE_VALUE_COUNT, count);
         Assert.assertEquals(-128, sum);
-        Assert.assertEquals(Byte.MAX_VALUE-Byte.MIN_VALUE+1, count);
         Assert.assertEquals((long)count*(Byte.MAX_VALUE+Byte.MIN_VALUE)/2, sum);
     }
 
     @Test
     public void test_traverseUnsignedByteValues() throws Exception {
-        cursor = 0;
+        cursor = LangUtils.UNSIGNED_BYTE_MIN_VALUE;
         count = 0;
         sum = 0;
         LangUtils.traverseUnsignedByteValues(new RunnableWithParam.WithInt() {
@@ -123,9 +167,9 @@ public class LangUtilsTest {
                 sum += param;
             }
         });
-        Assert.assertEquals(256, count);
+        Assert.assertEquals(LangUtils.UNSIGNED_BYTE_MAX_VALUE+1, cursor);
+        Assert.assertEquals(LangUtils.UNSIGNED_BYTE_VALUE_COUNT, count);
         Assert.assertEquals(32640, sum);
-        Assert.assertEquals(255-0+1, count);
         Assert.assertEquals((long)count*(255+0)/2, sum);
     }
 
@@ -142,15 +186,15 @@ public class LangUtilsTest {
                 sum += param;
             }
         });
-        Assert.assertEquals(65536, count);
+        Assert.assertEquals(Short.MAX_VALUE+1, cursor);
+        Assert.assertEquals(LangUtils.SHORT_VALUE_COUNT, count);
         Assert.assertEquals(-32768, sum);
-        Assert.assertEquals(Short.MAX_VALUE-Short.MIN_VALUE+1, count);
         Assert.assertEquals((long)count*(Short.MAX_VALUE+Short.MIN_VALUE)/2, sum);
     }
 
     @Test
     public void test_traverseUnsignedShortValues() throws Exception {
-        cursor = 0;
+        cursor = LangUtils.UNSIGNED_SHORT_MIN_VALUE;
         count = 0;
         sum = 0;
         LangUtils.traverseUnsignedShortValues(new RunnableWithParam.WithInt() {
@@ -161,9 +205,9 @@ public class LangUtilsTest {
                 sum += param;
             }
         });
-        Assert.assertEquals(65536, count);
+        Assert.assertEquals(LangUtils.UNSIGNED_SHORT_MAX_VALUE+1, cursor);
+        Assert.assertEquals(LangUtils.UNSIGNED_SHORT_VALUE_COUNT, count);
         Assert.assertEquals(2147450880, sum);
-        Assert.assertEquals(65535-0+1, count);
         Assert.assertEquals((long)count*(65535+0)/2, sum);
     }
 }

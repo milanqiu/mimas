@@ -3,14 +3,16 @@ package net.milanqiu.mimas.collect;
 import java.util.Map;
 
 /**
- * A direct and visible implementation of Map.Entry.
- * All other implementations of Map.Entry are inner classes, such as HashMap.Entry. They are tightly coupling with
- * outer classes and hard to be used.
- *
- * <p>Creation Date: 2014-7-25
+ * A direct and visible implementation of {@link java.util.Map.Entry}.
+ * <p>
+ * All other implementations of {@link java.util.Map.Entry} are inner classes, such as {@link java.util.HashMap.Entry}.
+ * They are tightly coupling with outer classes and hard to be used.
+ * <p>
+ * Creation Date: 2014-7-25
  * @author Milan Qiu
  */
 public class MapEntry<K, V> implements Map.Entry<K, V> {
+
     protected K key;
     protected V value;
 
@@ -20,10 +22,10 @@ public class MapEntry<K, V> implements Map.Entry<K, V> {
     }
 
     /**
-     * Creates a new <code>MapEntry</code> object with the specified key and value.
-     * @param key the specified key
-     * @param value the specified value
-     * @return the new created <code>MapEntry</code> object
+     * Creates and returns a new instance of {@code MapEntry} with the specified key and value.
+     * @param key the key of the new instance of {@code MapEntry}
+     * @param value the value of the new instance of {@code MapEntry}
+     * @return the new instance of {@code MapEntry}
      */
     public static <K, V> MapEntry<K, V> create(K key, V value) {
         return new MapEntry<>(key, value);

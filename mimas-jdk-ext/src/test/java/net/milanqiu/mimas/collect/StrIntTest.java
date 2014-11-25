@@ -1,17 +1,17 @@
 package net.milanqiu.mimas.collect;
 
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-
-import net.milanqiu.mimas.collect.StrInt;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
 /**
- * <p>Creation Date: 2014-6-9
+ * Creation Date: 2014-6-9
  * @author Milan Qiu
  */
 public class StrIntTest {
-    StrInt si;
+
+    private StrInt si;
 
     @Test
     public void test_ParameterizedGetter() throws Exception {

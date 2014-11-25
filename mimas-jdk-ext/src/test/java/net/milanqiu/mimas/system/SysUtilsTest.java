@@ -1,22 +1,27 @@
 package net.milanqiu.mimas.system;
 
+import net.milanqiu.mimas.string.StrUtils;
 import org.junit.Test;
 
 /**
- * <p>Creation Date: 2014-11-2
+ * Creation Date: 2014-11-2
  * @author Milan Qiu
  */
 public class SysUtilsTest {
 
     @Test
-    public void test_getClassLocation() throws Exception {
-        //System.out.println(SysUtils.getClassSourceLocation(SysUtilsTest.class));
-        //System.out.println(SysUtils.getClassSourceLocation(SysUtils.class));
+    public void test_getClassSourceLocation() throws Exception {
+        StringBuilder sb = new StringBuilder();
+        sb.append(SysUtils.getClassSourceLocation(SysUtilsTest.class)).append(StrUtils.LINE_SEPARATOR);
+        sb.append(SysUtils.getClassSourceLocation(SysUtils.class));
+        MimasJdkExtConvention.getSingleton().writeWorkFileInTestOutDir(sb);
     }
 
     @Test
-    public void test_getSourcePath() throws Exception {
-       // System.out.println(SysUtils.getClassSourcePath(SysUtilsTest.class));
-        //System.out.println(SysUtils.getClassSourcePath(SysUtils.class));
+    public void test_getClassSourceDir() throws Exception {
+        StringBuilder sb = new StringBuilder();
+        sb.append(SysUtils.getClassSourceDir(SysUtilsTest.class)).append(StrUtils.LINE_SEPARATOR);
+        sb.append(SysUtils.getClassSourceDir(SysUtils.class));
+        MimasJdkExtConvention.getSingleton().writeWorkFileInTestOutDir(sb);
     }
 }

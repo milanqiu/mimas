@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableSet;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.collect.CollectionUtils;
 import net.milanqiu.mimas.collect.MapEntry;
+import net.milanqiu.mimas.lang.LangUtils;
 import net.milanqiu.mimas.math.MathUtils;
 
 import java.util.concurrent.*;
@@ -168,7 +169,7 @@ public class LoadingCacheTest {
         /*
             The ratio of hits to requests.
          */
-        Assert.assertEquals((double)1/3, stats.hitRate(), MathUtils.PARTICLE);
+        Assert.assertEquals((double)1/3, stats.hitRate(), LangUtils.PARTICLE_DOUBLE);
         /*
             The number of cache evictions.
          */

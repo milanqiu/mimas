@@ -1,15 +1,17 @@
 package net.milanqiu.mimas.collect;
 
-import java.util.*;
-
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-
-import net.milanqiu.mimas.collect.CollectionUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
 /**
- * <p>Creation Date: 2014-7-25
+ * Creation Date: 2014-7-25
  * @author Milan Qiu
  */
 public class CollectionUtilsTest {
@@ -69,5 +71,4 @@ public class CollectionUtilsTest {
         Assert.assertFalse(CollectionUtils.equalsIgnoringOrder(list12, list10));
         Assert.assertFalse(CollectionUtils.equalsIgnoringOrder(list13, list10));
     }
-
 }

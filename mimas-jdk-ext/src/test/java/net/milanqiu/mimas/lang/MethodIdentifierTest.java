@@ -1,4 +1,4 @@
-package net.milanqiu.mimas.system;
+package net.milanqiu.mimas.lang;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -52,6 +52,11 @@ public class MethodIdentifierTest {
         Assert.assertFalse(mi3.equals(mi));
         Assert.assertFalse(mi4.equals(mi));
         Assert.assertFalse(mi5.equals(mi));
+
+        // boolean equals(StackTraceElement stackTraceElement)
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        Assert.assertTrue(MethodIdentifier.create(Thread.class.getName(), "getStackTrace").equals(stackTrace[0]));
+        Assert.assertTrue(MethodIdentifier.create(this.getClass().getName(), "test_equals").equals(stackTrace[1]));
     }
 
     @Test

@@ -1,4 +1,4 @@
-package net.milanqiu.mimas.system;
+package net.milanqiu.mimas.lang;
 
 import java.util.Objects;
 
@@ -40,11 +40,11 @@ public class MethodIdentifier {
     /**
      * The fully qualified name of the class which this method locates in.
      */
-    protected String className;
+    protected final String className;
     /**
      * The name of this method.
      */
-    protected String methodName;
+    protected final String methodName;
 
     /**
      * Returns the fully qualified name of the class which this method locates in.
@@ -68,7 +68,18 @@ public class MethodIdentifier {
      * @return {@code true} if class name and method name of this object are equal to the incoming parameters
      */
     public boolean equals(String className, String methodName) {
-        return Objects.equals(className, this.className) && Objects.equals(methodName, this.methodName);
+        return Objects.equals(this.className, className) && Objects.equals(this.methodName, methodName);
+    }
+
+    /**
+     * Compares with the specified {@code StackTraceElement} object for equality.
+     * @param stackTraceElement the {@code StackTraceElement} object to be tested for equality
+     * @return {@code true} if class name and method name of this object are equal to
+     *         those of the incoming {@code StackTraceElement} object
+     */
+    public boolean equals(StackTraceElement stackTraceElement) {
+        return Objects.equals(this.className, stackTraceElement.getClassName()) &&
+                Objects.equals(this.methodName, stackTraceElement.getMethodName());
     }
 
     /**
@@ -103,7 +114,7 @@ public class MethodIdentifier {
     /**
      * Returns a string representation of this object.
      * The string representation consists of linked class name, a dot('.') and method name.
-     * The result may be <tt>net.milanqiu.mimas.system.MethodIdentifier.toString</tt>.
+     * The result may be <i><tt>"net.milanqiu.mimas.lang.MethodIdentifier.toString"</tt></i>.
      * @return a string representation of this object
      */
     @Override

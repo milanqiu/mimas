@@ -1,9 +1,9 @@
-package net.milanqiu.mimas.system;
+package net.milanqiu.mimas.lang;
 
 import java.util.ArrayList;
 
 /**
- * Represents an array list of {@link net.milanqiu.mimas.system.MethodIdentifier}.
+ * Represents an array list of {@link MethodIdentifier}.
  * <p>
  * Creation Date: 2014-11-10
  * @author Milan Qiu

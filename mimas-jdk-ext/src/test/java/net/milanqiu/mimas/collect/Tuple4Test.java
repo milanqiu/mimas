@@ -1,19 +1,19 @@
 package net.milanqiu.mimas.collect;
 
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-
-import net.milanqiu.mimas.collect.Tuple4;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
 /**
- * <p>Creation Date: 2014-2-8
+ * Creation Date: 2014-2-8
  * @author Milan Qiu
  */
 public class Tuple4Test {
-    Tuple4<Integer, Integer, Integer, String> tuple;
-    Tuple4<Integer, Integer, Integer, String> anotherTuple;
-    Tuple4<String, String, String, String> anotherTupleWithDifferentType;
+
+    private Tuple4<Integer, Integer, Integer, String> tuple;
+    private Tuple4<Integer, Integer, Integer, String> anotherTuple;
+    private Tuple4<String, String, String, String> anotherTupleWithDifferentType;
 
     @Test
     public void test_setAll() throws Exception {
@@ -39,15 +39,19 @@ public class Tuple4Test {
         tuple = new Tuple4<>(INT_0, INT_1, INT_2, STR_0);
         anotherTuple = new Tuple4<>(INT_0, INT_1, INT_2, STR_0);
         Assert.assertTrue(tuple.equals(anotherTuple));
+        Assert.assertTrue(anotherTuple.equals(tuple));
 
         anotherTuple.setAll(INT_0, INT_1, INT_2, STR_1);
         Assert.assertFalse(tuple.equals(anotherTuple));
+        Assert.assertFalse(anotherTuple.equals(tuple));
 
         anotherTuple.setAll(INT_0, INT_1, INT_3, STR_0);
         Assert.assertFalse(tuple.equals(anotherTuple));
+        Assert.assertFalse(anotherTuple.equals(tuple));
 
         anotherTupleWithDifferentType = new Tuple4<>(STR_OF_INT_0, STR_OF_INT_1, STR_OF_INT_2, STR_0);
         Assert.assertFalse(tuple.equals(anotherTupleWithDifferentType));
+        Assert.assertFalse(anotherTupleWithDifferentType.equals(tuple));
     }
 
     @Test
@@ -69,6 +73,6 @@ public class Tuple4Test {
     @Test
     public void test_toString() throws Exception {
         tuple = new Tuple4<>(INT_0, INT_1, INT_2, STR_0);
-        Assert.assertEquals("(A="+INT_0+", B="+INT_1+", C="+INT_2+", D="+STR_0+")", tuple.toString());
+        Assert.assertEquals("{A="+INT_0+", B="+INT_1+", C="+INT_2+", D="+STR_0+"}", tuple.toString());
     }
 }

@@ -4,16 +4,15 @@ import java.util.Comparator;
 
 /**
  * Utilities related to language.
- *
- * <p>Creation Date: 2014-7-25
+ * <p>
+ * Creation Date: 2014-7-25
  * @author Milan Qiu
  */
 public class LangUtils {
     /**
      * Utility class is forbidden to be instantiated.
      */
-    private LangUtils() {
-    }
+    private LangUtils() {}
 
     /**
      * Returns whether the specified boolean value is default.
@@ -57,22 +56,22 @@ public class LangUtils {
 
     /**
      * Returns whether the specified float value is default.
-     * Usually, a default float is {@code 0.0F}.
+     * Usually, a default float is {@code 0.0f}.
      * @param value the float value to be tested
      * @return {@code true} if the specified float value is default
      */
     public static boolean isDefault(float value) {
-        return value == 0.0F;
+        return value == 0.0f;
     }
 
     /**
      * Returns whether the specified double value is default.
-     * Usually, a default double is {@code 0.0D}.
+     * Usually, a default double is {@code 0.0d}.
      * @param value the double value to be tested
      * @return {@code true} if the specified double value is default
      */
     public static boolean isDefault(double value) {
-        return value == 0.0D;
+        return value == 0.0d;
     }
 
     /**
@@ -96,19 +95,10 @@ public class LangUtils {
     }
 
     /**
-     * Returns whether the specified object has a default {@code toString()} member.
-     * This means its <code>toString()</code> has never been overrided, or the override method is led by <code>Object.toString()</code>.
-     * @param obj the object expected to have default <code>toString()</code> member
-     */
-    public static boolean hasDefaultToString(Object obj) {
-        return obj.toString().startsWith(obj.getClass().getName() + "@");
-    }
-
-    /**
      * A constant comparator to compare two objects.
-     * It casts <code>equals()</code> at first and return <code>0</code> if these two objects are equal. Otherwise,
-     * it would compare <code>hashCode()</code> and then <code>toString()</code>.
-     * Anyway, <code>null</code> is the least if any of them is <code>null</code>.
+     * It invokes {@link java.lang.Object#equals(Object)} at first and return {@code 0} if these two objects are equal.
+     * Otherwise, it will compare their {@link java.lang.Object#hashCode()} and then {@link java.lang.Object#toString()}.
+     * Anyway, {@code null} is the least if any of them is {@code null}.
      */
     public static final Comparator<Object> OBJECT_COMPARATOR = new Comparator<Object>() {
         @Override
@@ -136,8 +126,120 @@ public class LangUtils {
     };
 
     /**
+     * A tiny float. Usually used to compare two floats as delta.
+     */
+    public static final float PARTICLE_FLOAT = 0.000_000_000_1f;
+    /**
+     * A tiny double. Usually used to compare two doubles as delta.
+     */
+    public static final double PARTICLE_DOUBLE = 0.000_000_000_1;
+
+    /**
+     * A constant holding the minimum value a unsigned byte can have, which equals to 0.
+     */
+    public static final int UNSIGNED_BYTE_MIN_VALUE = 0x00;
+    /**
+     * A constant holding the maximum value a unsigned byte can have, which equals to 2<sup>8</sup>-1.
+     */
+    public static final int UNSIGNED_BYTE_MAX_VALUE = 0xFF;
+    /**
+     * A constant holding the minimum value a unsigned short can have, which equals to 0.
+     */
+    public static final int UNSIGNED_SHORT_MIN_VALUE = 0x0000;
+    /**
+     * A constant holding the maximum value a unsigned short can have, which equals to 2<sup>16</sup>-1.
+     */
+    public static final int UNSIGNED_SHORT_MAX_VALUE = 0xFFFF;
+
+    /**
+     * The count of all character values.
+     */
+    public static final int CHAR_VALUE_COUNT           = Character.MAX_VALUE - Character.MIN_VALUE + 1;
+    /**
+     * The count of all byte values.
+     */
+    public static final int BYTE_VALUE_COUNT           = Byte.MAX_VALUE - Byte.MIN_VALUE + 1;
+    /**
+     * The count of all unsigned byte values.
+     */
+    public static final int UNSIGNED_BYTE_VALUE_COUNT  = UNSIGNED_BYTE_MAX_VALUE - UNSIGNED_BYTE_MIN_VALUE + 1;
+    /**
+     * The count of all short values.
+     */
+    public static final int SHORT_VALUE_COUNT          = Short.MAX_VALUE - Short.MIN_VALUE + 1;
+    /**
+     * The count of all unsigned short values.
+     */
+    public static final int UNSIGNED_SHORT_VALUE_COUNT = UNSIGNED_SHORT_MAX_VALUE - UNSIGNED_SHORT_MIN_VALUE + 1;
+
+    /**
+     * Returns an array holding all character values in ascending order.
+     * @return an array holding all character values in ascending order
+     */
+    public static char[] getAllCharValues() {
+        char[] result = new char[CHAR_VALUE_COUNT];
+        int index = 0;
+        for (int i = Character.MIN_VALUE; i <= Character.MAX_VALUE; i++) {
+            result[index++] = (char) i;
+        }
+        return result;
+    }
+
+    /**
+     * Returns an array holding all byte values in ascending order.
+     * @return an array holding all byte values in ascending order
+     */
+    public static byte[] getAllByteValues() {
+        byte[] result = new byte[BYTE_VALUE_COUNT];
+        int index = 0;
+        for (int i = Byte.MIN_VALUE; i <= Byte.MAX_VALUE; i++) {
+            result[index++] = (byte) i;
+        }
+        return result;
+    }
+
+    /**
+     * Returns an array holding all unsigned byte values in ascending order.
+     * @return an array holding all unsigned byte values in ascending order
+     */
+    public static int[] getAllUnsignedByteValues() {
+        int[] result = new int[UNSIGNED_BYTE_VALUE_COUNT];
+        int index = 0;
+        for (int i = UNSIGNED_BYTE_MIN_VALUE; i <= UNSIGNED_BYTE_MAX_VALUE; i++) {
+            result[index++] = i;
+        }
+        return result;
+    }
+
+    /**
+     * Returns an array holding all short values in ascending order.
+     * @return an array holding all short values in ascending order
+     */
+    public static short[] getAllShortValues() {
+        short[] result = new short[SHORT_VALUE_COUNT];
+        int index = 0;
+        for (int i = Short.MIN_VALUE; i <= Short.MAX_VALUE; i++) {
+            result[index++] = (short) i;
+        }
+        return result;
+    }
+
+    /**
+     * Returns an array holding all unsigned short values in ascending order.
+     * @return an array holding all unsigned short values in ascending order
+     */
+    public static int[] getAllUnsignedShortValues() {
+        int[] result = new int[UNSIGNED_SHORT_VALUE_COUNT];
+        int index = 0;
+        for (int i = UNSIGNED_SHORT_MIN_VALUE; i <= UNSIGNED_SHORT_MAX_VALUE; i++) {
+            result[index++] = i;
+        }
+        return result;
+    }
+
+    /**
      * Traverses all character values in ascending order.
-     * @param action action to be taken in each visit
+     * @param action the action to be taken in each visit
      */
     public static void traverseCharValues(RunnableWithParam.WithChar action) {
         for (int i = Character.MIN_VALUE; i <= Character.MAX_VALUE; i++) {
@@ -147,7 +249,7 @@ public class LangUtils {
 
     /**
      * Traverses all byte values in ascending order.
-     * @param action action to be taken in each visit
+     * @param action the action to be taken in each visit
      */
     public static void traverseByteValues(RunnableWithParam.WithByte action) {
         for (int i = Byte.MIN_VALUE; i <= Byte.MAX_VALUE; i++) {
@@ -157,17 +259,17 @@ public class LangUtils {
 
     /**
      * Traverses all unsigned byte values in ascending order.
-     * @param action action to be taken in each visit
+     * @param action the action to be taken in each visit
      */
     public static void traverseUnsignedByteValues(RunnableWithParam.WithInt action) {
-        for (int i = 0x00; i <= 0xFF; i++) {
+        for (int i = UNSIGNED_BYTE_MIN_VALUE; i <= UNSIGNED_BYTE_MAX_VALUE; i++) {
             action.run(i);
         }
     }
 
     /**
      * Traverses all short values in ascending order.
-     * @param action action to be taken in each visit
+     * @param action the action to be taken in each visit
      */
     public static void traverseShortValues(RunnableWithParam.WithShort action) {
         for (int i = Short.MIN_VALUE; i <= Short.MAX_VALUE; i++) {
@@ -177,10 +279,10 @@ public class LangUtils {
 
     /**
      * Traverses all unsigned short values in ascending order.
-     * @param action action to be taken in each visit
+     * @param action the action to be taken in each visit
      */
     public static void traverseUnsignedShortValues(RunnableWithParam.WithInt action) {
-        for (int i = 0x0000; i <= 0xFFFF; i++) {
+        for (int i = UNSIGNED_SHORT_MIN_VALUE; i <= UNSIGNED_SHORT_MAX_VALUE; i++) {
             action.run(i);
         }
     }

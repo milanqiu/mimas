@@ -1,17 +1,16 @@
 package net.milanqiu.mimas.collect;
 
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 
-import net.milanqiu.mimas.collect.MapEntry;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 /**
- * <p>Creation Date: 2014-7-25
+ * Creation Date: 2014-7-25
  * @author Milan Qiu
  */
 public class MapEntryTest {

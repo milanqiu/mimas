@@ -2,9 +2,10 @@ package net.milanqiu.mimas.collect;
 
 /**
  * This class holds two objects in one instance.
- * Types of elements is generic.
- *
- * <p>Creation Date: 2014-2-8
+ * <p>
+ * Types of elements are generic.
+ * <p>
+ * Creation Date: 2014-2-8
  * @author Milan Qiu
  */
 public class Tuple2<TA, TB> {
@@ -17,24 +18,37 @@ public class Tuple2<TA, TB> {
      */
     protected TB b;
 
+    /**
+     * Returns element A.
+     * @return element A
+     */
     public TA getA() {
         return a;
     }
+    /**
+     * A setter corresponding to the getter {@link #getA()}.
+     */
     public void setA(TA a) {
         this.a = a;
     }
+    /**
+     * Returns element B.
+     * @return element B
+     */
     public TB getB() {
         return b;
     }
+    /**
+     * A setter corresponding to the getter {@link #getB()}.
+     */
     public void setB(TB b) {
         this.b = b;
     }
 
     /**
-     * Sets all two elements in one call.
-     *
-     * @param a new value of element A
-     * @param b new value of element B
+     * Changes all two elements in one invocation.
+     * @param a the new value of element A
+     * @param b the new value of element B
      */
     public void setAll(TA a, TB b) {
         this.a = a;
@@ -42,16 +56,14 @@ public class Tuple2<TA, TB> {
     }
 
     /**
-     * Constructs a two-element tuple with every element is null.
+     * Constructs a two-element tuple with each element is null.
      */
-    public Tuple2() {
-    }
+    public Tuple2() {}
 
     /**
-     * Constructs a two-element tuple with specified values.
-     *
-     * @param a value of element A
-     * @param b value of element B
+     * Constructs a two-element tuple with the specified values.
+     * @param a the value of element A
+     * @param b the value of element B
      */
     public Tuple2(TA a, TB b) {
         setAll(a, b);
@@ -59,10 +71,9 @@ public class Tuple2<TA, TB> {
 
     /**
      * Compares the specified object with this tuple for equality.
-     * Return true if each element of the given object is equal to corresponding element of this tuple.
-     *
-     * @param o object to be compared for equality with this tuple
-     * @return if the specified object is equal to this tuple
+     * Return {@code true} if each element of the given object is equal to corresponding element of this tuple.
+     * @param o the object to be tested for equality with this tuple
+     * @return equality result
      */
     @Override
     public boolean equals(Object o) {
@@ -79,7 +90,6 @@ public class Tuple2<TA, TB> {
 
     /**
      * Returns the hash code value for this tuple.
-     *
      * @return the hash code value for this tuple
      */
     @Override
@@ -90,20 +100,18 @@ public class Tuple2<TA, TB> {
     }
 
     /**
-     * Returns a string representation of this tuple.
-     * The string representation consists of a list of elements, enclosed in brackets("()").
+     * Returns a string representation of this object.
+     * The string representation consists of a list of elements, enclosed in braces("{}").
      * Adjacent elements are separated by comma and space(", ").
-     * The result may be <tt>(A=valueA, B=valueB)</tt>.
-     *
-     * @return a string representation of this tuple
+     * The result may be <i><tt>{A=valueA, B=valueB}</tt></i>.
+     * @return a string representation of this object
      */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append('(');
-        sb.append("A=").append(a).append(", ");
-        sb.append("B=").append(b);
-        sb.append(')');
+        sb.append("{A=").append(a);
+        sb.append(", B=").append(b);
+        sb.append('}');
         return sb.toString();
     }
 }

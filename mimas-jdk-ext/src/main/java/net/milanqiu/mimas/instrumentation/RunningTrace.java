@@ -1,51 +1,41 @@
 package net.milanqiu.mimas.instrumentation;
 
+import net.milanqiu.mimas.lang.MethodIdentifierList;
 import net.milanqiu.mimas.string.StrUtils;
 
-import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A trace of program running. It is composed by a sequence of {@code RunningTraceElement} objects.
- *
- * <p>Creation Date: 2014-10-24
+ * A trace of program running. It is composed by a sequence of {@link RunningTraceElement} objects.
+ * <p>
+ * Creation Date: 2014-10-24
  * @author Milan Qiu
  */
 public class RunningTrace {
 
-    private List<RunningTraceElement> elements = new ArrayList<>();
-
-    private static StackTraceElement[] removeTrackingElements(StackTraceElement[] stackTrace) {
-        int index = -1;
-        String className;
-        String methodName;
-        do {
-            index++;
-            if (index >= stackTrace.length)
-                break;
-            className = stackTrace[index].getClassName();
-            methodName = stackTrace[index].getMethodName();
-        } while ((className.equals(Thread.class.getName())       && methodName.equals("getStackTrace")) ||
-                 (className.equals(RunningTrace.class.getName()) && methodName.startsWith("track")));
-        return Arrays.copyOfRange(stackTrace, index, stackTrace.length);
-    }
+    private final List<RunningTraceElement> elements = new ArrayList<>();
 
     /**
-     * Tracks a record at the current point.
-     * @return the new track
+     * Tracks a record at the current running point.
+     * @return the new trace record
      */
     public RunningTraceElement track() {
         RunningTraceElement result = new RunningTraceElement();
         elements.add(result);
-        result.setStack(removeTrackingElements(Thread.currentThread().getStackTrace()));
+        result.setStack(DebugUtils.removeStackTraceTopElements(Thread.currentThread().getStackTrace(),
+                MethodIdentifierList.create(
+                        this.getClass().getName(), "track",
+                        this.getClass().getName(), "trackMethodBeginning",
+                        this.getClass().getName(), "trackMethodEnd"
+                )));
         return result;
     }
 
     /**
-     * Tracks a record at the current point.
-     * @param tag the tag of track
-     * @return the new track
+     * Tracks a record at the current running point with the specified tag.
+     * @param tag the tag of record
+     * @return the new trace record
      */
     public RunningTraceElement track(String tag) {
         RunningTraceElement result = track();
@@ -54,8 +44,8 @@ public class RunningTrace {
     }
 
     /**
-     * Tracks a record at the current point. It should be at the beginning of a method.
-     * @return the new track
+     * Tracks a record at the current running point. It should be at the beginning of a method.
+     * @return the new trace record
      */
     public RunningTraceElement trackMethodBeginning() {
         RunningTraceElement result = track();
@@ -64,9 +54,9 @@ public class RunningTrace {
     }
 
     /**
-     * Tracks a record at the current point. It should be at the beginning of a method.
-     * @param tag the tag of track
-     * @return the new track
+     * Tracks a record at the current running point with the specified tag. It should be at the beginning of a method.
+     * @param tag the tag of record
+     * @return the new trace record
      */
     public RunningTraceElement trackMethodBeginning(String tag) {
         RunningTraceElement result = track();
@@ -76,8 +66,8 @@ public class RunningTrace {
     }
 
     /**
-     * Tracks a record at the current point. It should be at the end of a method.
-     * @return the new track
+     * Tracks a record at the current running point. It should be at the end of a method.
+     * @return the new trace record
      */
     public RunningTraceElement trackMethodEnd() {
         RunningTraceElement result = track();
@@ -86,9 +76,9 @@ public class RunningTrace {
     }
 
     /**
-     * Tracks a record at the current point. It should be at the end of a method.
-     * @param tag the tag of track
-     * @return the new track
+     * Tracks a record at the current running point with the specified tag. It should be at the end of a method.
+     * @param tag the tag of record
+     * @return the new trace record
      */
     public RunningTraceElement trackMethodEnd(String tag) {
         RunningTraceElement result = track();
@@ -109,11 +99,10 @@ public class RunningTrace {
     }
 
     /**
-     * A comparison process of {@code RunningTrace}.
+     * A comparison process of {@link RunningTrace}.
      */
     public class Comparison {
-        private Comparison() {
-        }
+        private Comparison() {}
 
         private int cursor = 0;
 
@@ -132,8 +121,8 @@ public class RunningTrace {
         }
 
         /**
-         * Whether the current element is equal to the expected.
-         * @param expected the expected running trace element
+         * Returns whether the current element is equal to the specified expected.
+         * @param expected the expected running trace element to be tested
          * @return equality result
          */
         public boolean equalsExpected(RunningTraceElement.Expected expected) {
@@ -141,9 +130,9 @@ public class RunningTrace {
         }
 
         /**
-         * Whether the current element is equal to the expected.
-         * After compare, it will moves to the next element.
-         * @param expected the expected running trace element
+         * Returns whether the current element is equal to the specified expected. After comparison, it will moves to
+         * the next element.
+         * @param expected the expected running trace element to be tested
          * @return equality result
          */
         public boolean equalsExpectedAndNext(RunningTraceElement.Expected expected) {
@@ -151,8 +140,8 @@ public class RunningTrace {
         }
 
         /**
-         * Whether the following multiple elements are equal to the expected.
-         * @param expectedSequence the expected running trace element sequence
+         * Returns whether the next some elements are equal to the specified expected.
+         * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
          */
         public boolean equalsBatch(RunningTraceElement.Expected... expectedSequence) {
@@ -165,8 +154,8 @@ public class RunningTrace {
         }
 
         /**
-         * Whether the following multiple elements are equal to the expected.
-         * @param expectedSequence the expected running trace element sequence
+         * Returns whether the next some elements are equal to the specified expected.
+         * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
          */
         public boolean equalsBatch(Iterable<RunningTraceElement.Expected> expectedSequence) {
@@ -179,9 +168,9 @@ public class RunningTrace {
         }
 
         /**
-         * Whether the following multiple elements are equal to the expected.
-         * After compare, it will moves to the next element, skipping all compared elements. .
-         * @param expectedSequence the expected running trace element sequence
+         * Returns whether the next some elements are equal to the specified expected. After comparison(regardless of
+         * success or failure), it will moves to the element next to all comparing elements.
+         * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
          */
         public boolean equalsBatchAndNext(RunningTraceElement.Expected... expectedSequence) {
@@ -195,9 +184,9 @@ public class RunningTrace {
         }
 
         /**
-         * Whether the following multiple elements are equal to the expected.
-         * After compare, it will moves to the next element, skipping all compared elements. .
-         * @param expectedSequence the expected running trace element sequence
+         * Returns whether the next some elements are equal to the specified expected. After comparison(regardless of
+         * success or failure), it will moves to the element next to all comparing elements.
+         * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
          */
         public boolean equalsBatchAndNext(List<RunningTraceElement.Expected> expectedSequence) {
@@ -211,9 +200,9 @@ public class RunningTrace {
         }
 
         /**
-         * Whether the following multiple elements are equal to the expected, ignoring the order of expected running
-         * trace element sequence.
-         * @param expectedSequence the expected running trace element sequence
+         * Returns whether the next some elements are equal to the specified expected, ignoring the order of expected
+         * running trace element sequence.
+         * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
          */
         public boolean equalsBatchIgnoringOrder(RunningTraceElement.Expected... expectedSequence) {
@@ -236,9 +225,9 @@ public class RunningTrace {
         }
 
         /**
-         * Whether the following multiple elements are equal to the expected, ignoring the order of expected running
-         * trace element sequence.
-         * @param expectedSequence the expected running trace element sequence
+         * Returns whether the next some elements are equal to the specified expected, ignoring the order of expected
+         * running trace element sequence.
+         * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
          */
         public boolean equalsBatchIgnoringOrder(List<RunningTraceElement.Expected> expectedSequence) {
@@ -261,10 +250,10 @@ public class RunningTrace {
         }
 
         /**
-         * Whether the following multiple elements are equal to the expected, ignoring the order of expected running
-         * trace element sequence.
-         * After compare, it will moves to the next element, skipping all compared elements. .
-         * @param expectedSequence the expected running trace element sequence
+         * Returns whether the next some elements are equal to the specified expected, ignoring the order of expected
+         * running trace element sequence. After comparison(regardless of success or failure), it will moves to the
+         * element next to all comparing elements.
+         * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
          */
         public boolean equalsBatchIgnoringOrderAndNext(RunningTraceElement.Expected... expectedSequence) {
@@ -288,10 +277,10 @@ public class RunningTrace {
         }
 
         /**
-         * Whether the following multiple elements are equal to the expected, ignoring the order of expected running
-         * trace element sequence.
-         * After compare, it will moves to the next element, skipping all compared elements. .
-         * @param expectedSequence the expected running trace element sequence
+         * Returns whether the next some elements are equal to the specified expected, ignoring the order of expected
+         * running trace element sequence. After comparison(regardless of success or failure), it will moves to the
+         * element next to all comparing elements.
+         * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
          */
         public boolean equalsBatchIgnoringOrderAndNext(List<RunningTraceElement.Expected> expectedSequence) {
@@ -315,8 +304,8 @@ public class RunningTrace {
         }
 
         /**
-         * Whether it comes to the end of running trace.
-         * @return judging result
+         * Returns whether it reaches the end of running trace.
+         * @return {@code true} if it reaches the end of running trace
          */
         public boolean isEnd() {
             return cursor == RunningTrace.this.elements.size();
@@ -324,8 +313,8 @@ public class RunningTrace {
     }
 
     /**
-     * Creates a new comparison process of {@code RunningTrace}.
-     * @return the new created {@code RunningTrace.Comparison} object
+     * Creates and returns a new comparison process of {@code RunningTrace}.
+     * @return the new comparison process
      */
     public Comparison newComparison() {
         Comparison result = new Comparison();

@@ -1,29 +1,30 @@
 package net.milanqiu.mimas.system;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
- * Properties and running environment of project according to rule "Convention over Configuration".
- *
- * <p>Creation Date: 2014-11-2
+ * Conventional properties and running environment of project, according to rule "Convention over Configuration".
+ * <p>
+ * Creation Date: 2014-11-2
  * @author Milan Qiu
  */
 public interface ProjectConvention {
 
     /**
-     * Returns the path of compiled code source.
-     * @return the path of compiled code source
+     * Returns the directory which the compiled code source locates.
+     * @return the directory which the compiled code source locates
      */
-    String getSourcePath();
+    String getSourceDir();
 
     /**
-     * Returns the name of workspace.
+     * Returns the name of workspace(named as project in IntelliJ IDEA).
      * @return the name of workspace
      */
     String getWorkspaceName();
 
     /**
-     * Returns the name of project.
+     * Returns the name of project(named as module in IntelliJ IDEA).
      * @return the name of project
      */
     String getProjectName();
@@ -49,15 +50,36 @@ public interface ProjectConvention {
 
     /**
      * Returns the temporary directory of test.
-     * The directory is used to store temporary files when running tests, especially unit tests.
+     * The directory is used to put temporary files when running tests, especially unit tests.
      * @return the temporary directory of test
      */
     File getTestTempDir();
 
     /**
+     * Prepares a special work directory in the temporary directory of test for next tests.
+     * @param needToCreate if needs to create the work directory including any necessary but nonexistent parent directories
+     * @return the prepared special work directory
+     * @throws IOException if an I/O error occurs
+     */
+    File prepareWorkDirInTestTempDir(boolean needToCreate) throws IOException;
+
+    /**
      * Returns the output directory of test.
-     * The directory is used to store output files when running tests, especially unit tests.
+     * The directory is used to put output files when running tests, especially unit tests.
      * @return the output directory of test
      */
     File getTestOutDir();
+
+    /**
+     * Prepares a special work file in the output directory of test for next tests.
+     * @return the prepared special work file
+     */
+    File prepareWorkFileInTestOutDir();
+
+    /**
+     * Writes a special work file in the output directory of test with the contents of the specified character sequence,
+     * using the UTF-8 character set.
+     * @param chars the character sequence to write
+     */
+    void writeWorkFileInTestOutDir(CharSequence chars) throws IOException;
 }

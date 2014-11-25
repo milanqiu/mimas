@@ -12,8 +12,7 @@ public class TestConsts {
     /**
      * Constant class is forbidden to be instantiated.
      */
-    private TestConsts() {
-    }
+    private TestConsts() {}
 
     /**
      * Character constant #0.
