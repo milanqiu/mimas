@@ -147,7 +147,7 @@ public class StrUtils {
 
     /**
      * Converts the specified character from native format to ascii format.
-     * Specifically, converts to ascii format of unicode like <code>'\\u82AE'</code>.
+     * Specifically, converts to ascii format of unicode like <code>"\\u82AE"</code>.
      * All letters will be uppercase except the 'u' mark.
      * @param ntv the character in native format
      * @return the result character in ascii format
