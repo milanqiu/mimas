@@ -1,15 +1,14 @@
-package net.milanqiu.mimas.guava;
+package net.milanqiu.mimas.guava.base;
 
 import com.google.common.base.MoreObjects;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
-
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-
 import org.junit.Assert;
 import org.junit.Test;
 
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
 /**
- * <p>Creation Date: 2014-7-17
+ * Creation Date: 2014-7-17
  * @author Milan Qiu
  */
 public class MoreObjectsTest {
@@ -29,10 +28,18 @@ public class MoreObjectsTest {
     }
 
     @Test
-    public void test_toStringHelper() throws Exception {
+    public void test_toStringHelper_ToStringHelper_add_addValue_omitNullValues_toString() throws Exception {
+       Assert.assertEquals(
+               "MoreObjectsTest{" + STR_0 + "=" + INT_0 + ", " + STR_1 + "=null, " + INT_2 + "}",
+               MoreObjects.toStringHelper(this)
+                       .add(STR_0, INT_0)
+                       .add(STR_1, null)
+                       .addValue(INT_2)
+                       .toString());
+
        Assert.assertEquals(
                "MoreObjectsTest{" + STR_0 + "=" + INT_0 + ", " + INT_2 + "}",
-               MoreObjects.toStringHelper(this)
+               MoreObjects.toStringHelper(this.getClass())
                        .add(STR_0, INT_0)
                        .add(STR_1, null)
                        .addValue(INT_2)

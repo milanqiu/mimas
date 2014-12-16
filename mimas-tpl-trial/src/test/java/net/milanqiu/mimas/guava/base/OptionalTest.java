@@ -1,17 +1,17 @@
-package net.milanqiu.mimas.guava;
+package net.milanqiu.mimas.guava.base;
 
+import com.google.common.base.Function;
 import com.google.common.base.Optional;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.Set;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 /**
- * <p>Creation Date: 2014-7-16
+ * Creation Date: 2014-7-16
  * @author Milan Qiu
  */
 public class OptionalTest {
@@ -71,7 +71,7 @@ public class OptionalTest {
         Assert.assertEquals(Optional.of(STR_0), o);
 
         o = Optional.fromNullable(null);
-        Assert.assertEquals(Optional.absent(), o);
+        Assert.assertEquals(Optional.<String>absent(), o);
     }
 
     @Test
@@ -116,5 +116,32 @@ public class OptionalTest {
 
         Set<Object> s2 = Optional.absent().asSet();
         Assert.assertTrue(s2.isEmpty());
+    }
+
+    @Test
+    public void test_transform() throws Exception {
+        Function<Integer, String> func = new Function<Integer, String>() {
+            @Override
+            public String apply(Integer integer) {
+                if (integer == INT_4)
+                    return null;
+                else
+                    return integer.toString();
+            }
+        };
+
+        Optional<String> o = Optional.of(INT_0).transform(func);
+        Assert.assertEquals(STR_OF_INT_0, o.get());
+
+        Optional<Integer> absent = Optional.absent();
+        o = absent.transform(func);
+        Assert.assertEquals(Optional.<String>absent(), o);
+
+        try {
+            Optional.of(INT_4).transform(func);
+            DebugUtils.neverGoesHere();
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof NullPointerException);
+        }
     }
 }

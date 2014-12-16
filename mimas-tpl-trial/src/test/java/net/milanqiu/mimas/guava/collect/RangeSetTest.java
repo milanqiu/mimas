@@ -1,14 +1,12 @@
 package net.milanqiu.mimas.guava.collect;
 
 import com.google.common.collect.*;
-
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * <p>Creation Date: 2014-7-26
+ * Creation Date: 2014-7-26
  * @author Milan Qiu
  */
 public class RangeSetTest {
@@ -31,20 +29,19 @@ public class RangeSetTest {
             asRanges(): views the RangeSet as a Set<Range<C>> which can be iterated over.
          */
         rangeSet.add(Range.closed(1, 10)); // {[1, 10]}
-        Assert.assertTrue(rangeSet.asRanges().equals(ImmutableSet.of(Range.closed(1, 10))));
         Assert.assertEquals(ImmutableSet.of(Range.closed(1, 10)), rangeSet.asRanges());
 
         rangeSet.add(Range.closedOpen(11, 15)); // disconnected range: {[1, 10], [11, 15)}
-        Assert.assertTrue(rangeSet.asRanges().equals(ImmutableSet.of(Range.closed(1, 10), Range.closedOpen(11, 15))));
+        Assert.assertEquals(ImmutableSet.of(Range.closed(1, 10), Range.closedOpen(11, 15)), rangeSet.asRanges());
 
         rangeSet.add(Range.range(15, BoundType.CLOSED, 20, BoundType.OPEN)); // connected range; {[1, 10], [11, 20)}
-        Assert.assertTrue(rangeSet.asRanges().equals(ImmutableSet.of(Range.closed(1, 10), Range.closedOpen(11, 20))));
+        Assert.assertEquals(ImmutableSet.of(Range.closed(1, 10), Range.closedOpen(11, 20)), rangeSet.asRanges());
 
         rangeSet.add(Range.openClosed(0, 0)); // empty range; {[1, 10], [11, 20)}
-        Assert.assertTrue(rangeSet.asRanges().equals(ImmutableSet.of(Range.closed(1, 10), Range.closedOpen(11, 20))));
+        Assert.assertEquals(ImmutableSet.of(Range.closed(1, 10), Range.closedOpen(11, 20)), rangeSet.asRanges());
 
         rangeSet.remove(Range.open(5, 10)); // splits [1, 10]; {[1, 5], [10, 10], [11, 20)}
-        Assert.assertTrue(rangeSet.asRanges().equals(ImmutableSet.of(Range.closed(1, 5), Range.singleton(10), Range.closedOpen(11, 20))));
+        Assert.assertEquals(ImmutableSet.of(Range.closed(1, 5), Range.singleton(10), Range.closedOpen(11, 20)), rangeSet.asRanges());
 
         /*
             Note that to merge ranges like Range.closed(1, 10) and Range.closedOpen(11, 15), you must first preprocess
@@ -53,7 +50,7 @@ public class RangeSetTest {
         rangeSet.clear();
         rangeSet.add(Range.closed(1, 10).canonical(DiscreteDomain.integers())); // {[1, 10]}
         rangeSet.add(Range.closedOpen(11, 15)); // merged range: {[1, 15)}
-        Assert.assertTrue(rangeSet.asRanges().equals(ImmutableSet.of(Range.closedOpen(1, 15))));
+        Assert.assertEquals(ImmutableSet.of(Range.closedOpen(1, 15)), rangeSet.asRanges());
     }
 
     @Test
@@ -64,9 +61,8 @@ public class RangeSetTest {
          */
         rangeSet.add(Range.closedOpen(1, 10));
         rangeSet.add(Range.closedOpen(20, 30));
-        Assert.assertTrue(rangeSet.complement().asRanges().equals(ImmutableSet.of(
-                Range.lessThan(1), Range.closedOpen(10, 20), Range.atLeast(30)
-        )));
+        Assert.assertEquals(ImmutableSet.of(Range.lessThan(1), Range.closedOpen(10, 20), Range.atLeast(30)),
+                rangeSet.complement().asRanges());
     }
 
     @Test
@@ -77,9 +73,8 @@ public class RangeSetTest {
          */
         rangeSet.add(Range.closedOpen(1, 10));
         rangeSet.add(Range.openClosed(20, 30));
-        Assert.assertTrue(rangeSet.subRangeSet(Range.closed(5, 25)).asRanges().equals(ImmutableSet.of(
-                Range.closedOpen(5, 10), Range.openClosed(20, 25)
-        )));
+        Assert.assertEquals(ImmutableSet.of(Range.closedOpen(5, 10), Range.openClosed(20, 25)),
+                rangeSet.subRangeSet(Range.closed(5, 25)).asRanges());
     }
 
     @Test
@@ -106,8 +101,8 @@ public class RangeSetTest {
          */
         rangeSet.add(Range.closedOpen(1, 10));
         rangeSet.add(Range.openClosed(20, 30));
-        Assert.assertTrue(rangeSet.rangeContaining(5).equals(Range.closedOpen(1, 10)));
-        Assert.assertTrue(rangeSet.rangeContaining(25).equals(Range.openClosed(20, 30)));
+        Assert.assertEquals(Range.closedOpen(1, 10), rangeSet.rangeContaining(5));
+        Assert.assertEquals(Range.openClosed(20, 30), rangeSet.rangeContaining(25));
         Assert.assertNull(rangeSet.rangeContaining(15));
     }
 
@@ -133,6 +128,6 @@ public class RangeSetTest {
          */
         rangeSet.add(Range.closedOpen(1, 10));
         rangeSet.add(Range.openClosed(20, 30));
-        Assert.assertTrue(rangeSet.span().equals(Range.closed(1, 30)));
+        Assert.assertEquals(Range.closed(1, 30), rangeSet.span());
     }
 }

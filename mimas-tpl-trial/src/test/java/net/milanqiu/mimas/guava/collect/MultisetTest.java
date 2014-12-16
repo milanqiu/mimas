@@ -5,16 +5,16 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multiset;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
-
-import java.util.Set;
-
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Set;
+
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
 /**
- * <p>Creation Date: 2014-7-24
+ * Creation Date: 2014-7-24
  * @author Milan Qiu
  */
 public class MultisetTest {
@@ -76,14 +76,20 @@ public class MultisetTest {
         Set<Multiset.Entry<String>> entrySet = multiset.entrySet();
         Assert.assertEquals(3, entrySet.size());
         for (Multiset.Entry<String> entry : entrySet) {
-            if (entry.getElement().equals(STR_0))
-                Assert.assertEquals(3, entry.getCount());
-            else if (entry.getElement().equals(STR_1))
-                Assert.assertEquals(1, entry.getCount());
-            else if (entry.getElement().equals(STR_2))
-                Assert.assertEquals(2, entry.getCount());
-            else
-                DebugUtils.neverGoesHere();
+            switch (entry.getElement()) {
+                case STR_0:
+                    Assert.assertEquals(3, entry.getCount());
+                    break;
+                case STR_1:
+                    Assert.assertEquals(1, entry.getCount());
+                    break;
+                case STR_2:
+                    Assert.assertEquals(2, entry.getCount());
+                    break;
+                default:
+                    DebugUtils.neverGoesHere();
+                    break;
+            }
         }
     }
 

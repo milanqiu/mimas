@@ -5,24 +5,27 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import net.milanqiu.mimas.collect.CollectionUtils;
 import net.milanqiu.mimas.lang.LangUtils;
+import org.junit.Assert;
+import org.junit.Test;
 
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-import org.junit.Assert;
-import org.junit.Test;
 
 /**
- * <p>Creation Date: 2014-7-27
+ * Creation Date: 2014-7-27
  * @author Milan Qiu
  */
 public class SetsTest {
 
     private enum Enum {
         a,
-        b;
+        b,
+        c,
+        d
     }
 
     @SuppressWarnings("RedundantArrayCreation")
@@ -44,7 +47,7 @@ public class SetsTest {
         Sets.newTreeSet(ImmutableList.of(STR_0, STR_1, STR_2));
 
         Sets.newIdentityHashSet();
-        Sets.newEnumSet(ImmutableList.of(Enum.a, Enum.b), Enum.class);
+        Sets.newEnumSet(ImmutableList.of(Enum.a, Enum.b, Enum.c), Enum.class);
         Sets.newSetFromMap(new HashMap<Object, Boolean>());
 
         Sets.newCopyOnWriteArraySet();
@@ -54,48 +57,47 @@ public class SetsTest {
         Sets.newConcurrentHashSet(ImmutableList.of(STR_0, STR_1, STR_2));
     }
 
-    @SuppressWarnings("EqualsBetweenInconvertibleTypes")
+    @SuppressWarnings("AssertEqualsBetweenInconvertibleTypes")
     @Test
     public void test_union() throws Exception {
         Set<String> set1 = ImmutableSet.of(STR_0, STR_1, STR_2);
         Set<String> set2 = ImmutableSet.of(STR_1, STR_4);
         Sets.SetView<String> result = Sets.union(set1, set2);
-        Assert.assertTrue(result.equals(ImmutableSet.of(STR_0, STR_1, STR_2, STR_4)));
+        Assert.assertEquals(ImmutableSet.of(STR_0, STR_1, STR_2, STR_4), result);
     }
 
-
-    @SuppressWarnings("EqualsBetweenInconvertibleTypes")
+    @SuppressWarnings("AssertEqualsBetweenInconvertibleTypes")
     @Test
     public void test_intersection() throws Exception {
         Set<String> set1 = ImmutableSet.of(STR_0, STR_1, STR_2);
         Set<String> set2 = ImmutableSet.of(STR_1, STR_4);
         Sets.SetView<String> result = Sets.intersection(set1, set2);
-        Assert.assertTrue(result.equals(ImmutableSet.of(STR_1)));
+        Assert.assertEquals(ImmutableSet.of(STR_1), result);
     }
 
-    @SuppressWarnings("EqualsBetweenInconvertibleTypes")
+    @SuppressWarnings("AssertEqualsBetweenInconvertibleTypes")
     @Test
     public void test_difference() throws Exception {
         Set<String> set1 = ImmutableSet.of(STR_0, STR_1, STR_2);
         Set<String> set2 = ImmutableSet.of(STR_1, STR_4);
         Sets.SetView<String> result = Sets.difference(set1, set2);
-        Assert.assertTrue(result.equals(ImmutableSet.of(STR_0, STR_2)));
+        Assert.assertEquals(ImmutableSet.of(STR_0, STR_2), result);
     }
 
-    @SuppressWarnings("EqualsBetweenInconvertibleTypes")
+    @SuppressWarnings("AssertEqualsBetweenInconvertibleTypes")
     @Test
     public void test_symmetricDifference() throws Exception {
         Set<String> set1 = ImmutableSet.of(STR_0, STR_1, STR_2);
         Set<String> set2 = ImmutableSet.of(STR_1, STR_4);
         Sets.SetView<String> result = Sets.symmetricDifference(set1, set2);
-        Assert.assertTrue(result.equals(ImmutableSet.of(STR_0, STR_2, STR_4)));
+        Assert.assertEquals(ImmutableSet.of(STR_0, STR_2, STR_4), result);
     }
 
     @SuppressWarnings("unchecked")
     @Test
     public void test_cartesianProduct() throws Exception {
         /*
-            cartesianProduct(Set...)
+            Set<List> cartesianProduct(Set...)
             Returns every possible list that can be obtained by choosing one element from each set.
          */
         Set<String> set1 = ImmutableSet.of(STR_0, STR_1, STR_2);
@@ -111,7 +113,7 @@ public class SetsTest {
         )));
 
         /*
-            cartesianProduct(List<Set>)
+            Set<List> cartesianProduct(List<Set>)
          */
         Set<String> set3 = ImmutableSet.of(STR_3);
         result = Sets.cartesianProduct(ImmutableList.of(set1, set2, set3));
@@ -129,7 +131,7 @@ public class SetsTest {
     @Test
     public void test_powerSet() throws Exception {
         /*
-            powerSet(Set)
+            Set<Set> powerSet(Set)
             Returns the set of subsets of the specified set.
          */
         Set<String> set = ImmutableSet.of(STR_0, STR_1, STR_2);
@@ -144,5 +146,13 @@ public class SetsTest {
                 ImmutableSet.of(STR_1, STR_2),
                 ImmutableSet.of(STR_0, STR_1, STR_2)
         )));
+    }
+
+    @Test
+    public void test_complementOf() throws Exception {
+        EnumSet<Enum> result = Sets.complementOf(ImmutableSet.of(Enum.a, Enum.b));
+        Assert.assertEquals(2, result.size());
+        Assert.assertTrue(result.contains(Enum.c));
+        Assert.assertTrue(result.contains(Enum.d));
     }
 }

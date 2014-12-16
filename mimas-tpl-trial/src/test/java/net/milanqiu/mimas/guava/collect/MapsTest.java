@@ -4,26 +4,27 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.*;
 import net.milanqiu.mimas.collect.CollectionUtils;
-import net.milanqiu.mimas.lang.LangUtils;
 import net.milanqiu.mimas.collect.MapEntry;
-
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+import net.milanqiu.mimas.lang.LangUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
 /**
- * <p>Creation Date: 2014-7-27
+ * Creation Date: 2014-7-27
  * @author Milan Qiu
  */
 public class MapsTest {
 
     private enum Enum {
         a,
-        b;
+        b
     }
 
     @Test
@@ -162,7 +163,7 @@ public class MapsTest {
     }
 
     @Test
-    public void test_() throws Exception {
+    public void test_transformEntries() throws Exception {
         Map<String, Integer> from = ImmutableMap.of(STR_0, INT_0, STR_1, INT_1, STR_2, INT_2);
         Map<String, String> to = Maps.transformEntries(from, new Maps.EntryTransformer<String, Integer, String>() {
             @Override
@@ -171,8 +172,45 @@ public class MapsTest {
             }
         });
         Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(to.entrySet(), ImmutableSet.of(
-                MapEntry.create(STR_0, STR_0 + STR_OF_INT_0),
-                MapEntry.create(STR_1, STR_1 + STR_OF_INT_1),
-                MapEntry.create(STR_2, STR_2 + STR_OF_INT_2))));
+                MapEntry.create(STR_0, STR_0+STR_OF_INT_0),
+                MapEntry.create(STR_1, STR_1+STR_OF_INT_1),
+                MapEntry.create(STR_2, STR_2+STR_OF_INT_2))));
+    }
+
+    @Test
+    public void test_asMap() throws Exception {
+        Set<Integer> set = Sets.newHashSet(INT_0, INT_1, INT_2);
+        Map<Integer, String> result = Maps.asMap(set, new Function<Integer, String>() {
+            @Override
+            public String apply(Integer integer) {
+                return integer.toString();
+            }
+        });
+        Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(result.entrySet(), ImmutableSet.of(
+                MapEntry.create(INT_0, STR_OF_INT_0),
+                MapEntry.create(INT_1, STR_OF_INT_1),
+                MapEntry.create(INT_2, STR_OF_INT_2))));
+
+        set.add(INT_3);
+        set.remove(INT_1);
+        Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(result.entrySet(), ImmutableSet.of(
+                MapEntry.create(INT_0, STR_OF_INT_0),
+                MapEntry.create(INT_2, STR_OF_INT_2),
+                MapEntry.create(INT_3, STR_OF_INT_3))));
+    }
+
+    @Test
+    public void test_toMap() throws Exception {
+        Iterable<Integer> itr = FluentIterable.of(new Integer[]{INT_0, INT_1, INT_2});
+        ImmutableMap<Integer, String> result = Maps.toMap(itr, new Function<Integer, String>() {
+            @Override
+            public String apply(Integer integer) {
+                return integer.toString();
+            }
+        });
+        Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(result.entrySet(), ImmutableSet.of(
+                MapEntry.create(INT_0, STR_OF_INT_0),
+                MapEntry.create(INT_1, STR_OF_INT_1),
+                MapEntry.create(INT_2, STR_OF_INT_2))));
     }
 }

@@ -8,7 +8,7 @@ package net.milanqiu.mimas.instrumentation.exception;
  * Creation Date: 2014-11-18
  * @author Milan Qiu
  */
-public class DeliberateException extends CompiletimeException {
+public class DeliberateException extends RuntimeException {
     /**
      * Constructs a new {@code DeliberateException} with {@code null} as its detail message.
      * The cause is not initialized, and may subsequently be initialized by a call to {@link #initCause}.

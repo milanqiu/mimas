@@ -1,16 +1,19 @@
-package net.milanqiu.mimas.guava;
+package net.milanqiu.mimas.guava.collect;
 
 import com.google.common.base.Function;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Ordering;
-
-import java.util.*;
-
+import net.milanqiu.mimas.instrumentation.DebugUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.*;
+
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
 /**
- * <p>Creation Date: 2014-7-18
+ * Creation Date: 2014-7-18
  * @author Milan Qiu
  */
 public class OrderingTest {
@@ -33,7 +36,7 @@ public class OrderingTest {
             Uses the natural ordering on Comparable types.
          */
         Collections.sort(ints, Ordering.natural());
-        Assert.assertTrue(ints.equals(Arrays.asList(1, 2, 4, 5, 30)));
+        Assert.assertEquals(ImmutableList.of(1, 2, 4, 5, 30), ints);
     }
 
     @Test
@@ -43,7 +46,7 @@ public class OrderingTest {
             Compares objects by the lexicographical ordering of their string representations, as returned by toString().
          */
         Collections.sort(ints, Ordering.usingToString());
-        Assert.assertTrue(Arrays.asList(1, 2, 30, 4, 5).equals(ints));
+        Assert.assertEquals(ImmutableList.of(1, 2, 30, 4, 5), ints);
     }
 
     @Test
@@ -58,7 +61,7 @@ public class OrderingTest {
                 return -o1.compareTo(o2);
             }
         }));
-        Assert.assertTrue(ints.equals(Arrays.asList(30, 5, 4, 2, 1)));
+        Assert.assertEquals(ImmutableList.of(30, 5, 4, 2, 1), ints);
     }
 
     @Test
@@ -68,7 +71,7 @@ public class OrderingTest {
             Returns the reverse ordering.
          */
         Collections.sort(ints, Ordering.natural().reverse());
-        Assert.assertTrue(ints.equals(Arrays.asList(30, 5, 4, 2, 1)));
+        Assert.assertEquals(ImmutableList.of(30, 5, 4, 2, 1), ints);
     }
 
     @Test
@@ -80,14 +83,14 @@ public class OrderingTest {
          */
         ints.add(3, null);
         Collections.sort(ints, Ordering.natural().nullsFirst());
-        Assert.assertTrue(ints.equals(Arrays.asList(null, 1, 2, 4, 5, 30)));
+        Assert.assertEquals(Arrays.asList(null, 1, 2, 4, 5, 30), ints);
     }
 
     @Test
     public void test_nullsLast() throws Exception {
         ints.add(3, null);
         Collections.sort(ints, Ordering.natural().nullsLast());
-        Assert.assertTrue(ints.equals(Arrays.asList(1, 2, 4, 5, 30, null)));
+        Assert.assertEquals(Arrays.asList(1, 2, 4, 5, 30, null), ints);
     }
 
     @Test
@@ -108,7 +111,7 @@ public class OrderingTest {
             }
         };
         Collections.sort(ints, oddsFirstOrdering.compound(Ordering.<Integer>natural()));
-        Assert.assertTrue(ints.equals(Arrays.asList(1, 5, 2, 4, 30)));
+        Assert.assertEquals(ImmutableList.of(1, 5, 2, 4, 30), ints);
     }
 
     @Test
@@ -124,7 +127,7 @@ public class OrderingTest {
                 return integer.toString().replace('4', '9');
             }
         }));
-        Assert.assertTrue(ints.equals(Arrays.asList(1, 2, 30, 5, 4)));
+        Assert.assertEquals(ImmutableList.of(1, 2, 30, 5, 4), ints);
     }
 
     @Test
@@ -134,12 +137,14 @@ public class OrderingTest {
             Returns the k greatest elements of the specified iterable, according to this ordering, in order from
             greatest to least. Not necessarily stable.
          */
-        Assert.assertTrue(Ordering.natural().greatestOf(ints, 3).equals(Arrays.asList(30, 5, 4)));
+        Assert.assertEquals(ImmutableList.of(30, 5, 4),       Ordering.natural().greatestOf(ints, 3));
+        Assert.assertEquals(ImmutableList.of(30, 5, 4, 2, 1), Ordering.natural().greatestOf(ints, 6));
     }
 
     @Test
     public void test_leastOf() throws Exception {
-        Assert.assertTrue(Ordering.natural().leastOf(ints, 3).equals(Arrays.asList(1, 2, 4)));
+        Assert.assertEquals(ImmutableList.of(1, 2, 4),        Ordering.natural().leastOf(ints, 3));
+        Assert.assertEquals(ImmutableList.of(1, 2, 4, 5, 30), Ordering.natural().leastOf(ints, 6));
     }
 
     @Test
@@ -178,14 +183,14 @@ public class OrderingTest {
             List sortedCopy(Iterable)
             Returns a sorted copy of the specified elements as a List.
          */
-        Assert.assertTrue(Ordering.natural().sortedCopy(ints).equals(Arrays.asList(1, 2, 4, 5, 30)));
-        Assert.assertTrue(ints.equals(Arrays.asList(5, 30, 1, 4, 2)));
+        Assert.assertEquals(ImmutableList.of(1, 2, 4, 5, 30), Ordering.natural().sortedCopy(ints));
+        Assert.assertEquals(ImmutableList.of(5, 30, 1, 4, 2), ints);
     }
 
     @Test
     public void test_immutableSortedCopy() throws Exception {
-        Assert.assertTrue(Ordering.natural().immutableSortedCopy(ints).equals(Arrays.asList(1, 2, 4, 5, 30)));
-        Assert.assertTrue(ints.equals(Arrays.asList(5, 30, 1, 4, 2)));
+        Assert.assertEquals(ImmutableList.of(1, 2, 4, 5, 30), Ordering.natural().immutableSortedCopy(ints));
+        Assert.assertEquals(ImmutableList.of(5, 30, 1, 4, 2), ints);
     }
 
     @Test
@@ -220,5 +225,100 @@ public class OrderingTest {
         Assert.assertEquals(30, (int) Ordering.natural().max(5, 30, 1, 4, 2));
         Assert.assertEquals(30, (int) Ordering.natural().max(ints));
         Assert.assertEquals(30, (int) Ordering.natural().max(ints.iterator()));
+    }
+
+    @Test
+    public void test_explicit() throws Exception {
+        // Ordering<T> explicit(List<T> valuesInOrder)
+        {
+            Collections.sort(ints, Ordering.explicit(ImmutableList.of(4, 2, 5, 7, 30, 1)));
+            Assert.assertEquals(ImmutableList.of(4, 2, 5, 30, 1), ints);
+
+            try {
+                Collections.sort(ints, Ordering.explicit(ImmutableList.of(4, 2, 5, 7, 30)));
+                DebugUtils.neverGoesHere();
+            } catch (Exception e) {
+                Assert.assertTrue(e instanceof ClassCastException);
+            }
+
+            try {
+                Collections.sort(ints, Ordering.explicit(Arrays.asList(4, 2, 5, 7, 30, 1, null)));
+                DebugUtils.neverGoesHere();
+            } catch (Exception e) {
+                Assert.assertTrue(e instanceof NullPointerException);
+            }
+        }
+
+        // Ordering<T> explicit(T leastValue, T... remainingValuesInOrder)
+        {
+            Collections.sort(ints, Ordering.explicit(4, 2, 5, 7, 30, 1));
+            Assert.assertEquals(ImmutableList.of(4, 2, 5, 30, 1), ints);
+
+            try {
+                Collections.sort(ints, Ordering.explicit(4, 2, 5, 7, 30));
+                DebugUtils.neverGoesHere();
+            } catch (Exception e) {
+                Assert.assertTrue(e instanceof ClassCastException);
+            }
+
+            try {
+                Collections.sort(ints, Ordering.explicit(4, 2, 5, 7, 30, 1, null));
+                DebugUtils.neverGoesHere();
+            } catch (Exception e) {
+                Assert.assertTrue(e instanceof NullPointerException);
+            }
+        }
+    }
+
+    @Test
+    public void test_allEqual() throws Exception {
+        Collections.sort(ints, Ordering.allEqual());
+        Assert.assertEquals(ImmutableList.of(5, 30, 1, 4, 2), ints);
+
+        List<Object> objs = Arrays.asList(OBJ_0, null, OBJ_1, null, OBJ_2);
+        Collections.sort(objs, Ordering.allEqual().nullsLast());
+        Assert.assertEquals(Arrays.asList(OBJ_0, OBJ_1, OBJ_2, null, null), objs);
+    }
+
+    @Test
+    public void test_compare() throws Exception {
+        Assert.assertEquals(0, Ordering.natural().compare(1, 1));
+        Assert.assertEquals(1, Ordering.natural().compare(2, 1));
+        Assert.assertEquals(-1, Ordering.natural().compare(1, 2));
+    }
+
+    @Test
+    public void test_arbitrary() throws Exception {
+        Assert.assertEquals(0, Ordering.arbitrary().compare(OBJ_0, OBJ_0));
+        Assert.assertTrue(Arrays.asList(-1, 1).contains(Ordering.arbitrary().compare(OBJ_0, OBJ_1)));
+
+        Assert.assertEquals(0, Ordering.arbitrary().compare(1, 1));
+        Assert.assertTrue(Arrays.asList(-1, 1).contains(Ordering.arbitrary().compare(2, 1)));
+
+        // null test
+        Assert.assertEquals(1, Ordering.arbitrary().compare(OBJ_0, null));
+        Assert.assertEquals(-1, Ordering.arbitrary().compare(null, OBJ_0));
+        Assert.assertEquals(0, Ordering.arbitrary().compare(null, null));
+    }
+
+    @Test
+    public void test_lexicographical() throws Exception {
+        Ordering<Iterable<Integer>> o = Ordering.natural().lexicographical();
+        Assert.assertEquals(-1, o.compare(ImmutableList.<Integer>of(), ImmutableList.of(1)));
+        Assert.assertEquals(-1, o.compare(ImmutableList.of(1),         ImmutableList.of(1, 1)));
+        Assert.assertEquals(-1, o.compare(ImmutableList.of(1, 1),      ImmutableList.of(1, 2)));
+        Assert.assertEquals(-1, o.compare(ImmutableList.of(1, 2),      ImmutableList.of(2)));
+
+        Assert.assertEquals(1, Ordering.natural().<Integer>lexicographical().reverse().compare(ImmutableList.of(1), ImmutableList.of(1, 1)));
+        Assert.assertEquals(-1, Ordering.natural().reverse().<Integer>lexicographical().compare(ImmutableList.of(1), ImmutableList.of(1, 1)));
+    }
+
+    @Test
+    public void test_binarySearch() throws Exception {
+        Collections.sort(ints, Ordering.natural());
+        Assert.assertEquals(1, Ordering.natural().binarySearch(ints, 2));
+        Assert.assertEquals(3, Ordering.natural().binarySearch(ints, 5));
+        Assert.assertEquals(-1, Ordering.natural().binarySearch(ints, 0));
+        Assert.assertEquals(-6, Ordering.natural().binarySearch(ints, 100));
     }
 }

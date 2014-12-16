@@ -1,20 +1,15 @@
 package net.milanqiu.mimas.guava.collect;
 
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.*;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
-import net.milanqiu.mimas.collect.CollectionUtils;
-import net.milanqiu.mimas.collect.MapEntry;
-
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
 /**
- * <p>Creation Date: 2014-7-25
+ * Creation Date: 2014-7-25
  * @author Milan Qiu
  */
 public class BiMapTest {
@@ -30,36 +25,38 @@ public class BiMapTest {
         -------------------------------------------------------------------------
      */
 
-    private BiMap<Integer, String> biMap;
+    private BiMap<Integer, String> hashBiMap;
 
     @Before
     public void setUp() throws Exception {
-        biMap = HashBiMap.create();
-        biMap.put(INT_0, STR_0);
-        biMap.put(INT_1, STR_1);
+        hashBiMap = HashBiMap.create();
+        hashBiMap.put(INT_0, STR_0);
+        hashBiMap.put(INT_1, STR_1);
     }
 
     @Test
     public void test_inverse() throws Exception {
-        BiMap<String, Integer> inversedBiMap = biMap.inverse();
-        Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(inversedBiMap.entrySet(), ImmutableSet.of(
-                MapEntry.create(STR_0, INT_0),
-                MapEntry.create(STR_1, INT_1)
-        )));
+        Assert.assertEquals(ImmutableBiMap.of(
+                STR_0, INT_0,
+                STR_1, INT_1), hashBiMap.inverse());
     }
 
     @Test
     public void test_values() throws Exception {
-        Assert.assertTrue(biMap.values().equals(ImmutableSet.of(STR_0, STR_1)));
+        Assert.assertEquals(ImmutableSet.of(STR_0, STR_1), hashBiMap.values());
     }
 
     @Test
     public void test_put() throws Exception {
-        Assert.assertEquals(null, biMap.put(INT_2, STR_2));
-        Assert.assertEquals(STR_2, biMap.put(INT_2, STR_3));
+        Assert.assertEquals(null, hashBiMap.put(INT_2, STR_2));
+        Assert.assertEquals(STR_2, hashBiMap.put(INT_2, STR_3));
+        Assert.assertEquals(ImmutableBiMap.of(
+                INT_0, STR_0,
+                INT_1, STR_1,
+                INT_2, STR_3), hashBiMap);
 
         try {
-            biMap.put(INT_3, STR_0);
+            hashBiMap.put(INT_3, STR_0);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
             Assert.assertTrue(e instanceof IllegalArgumentException);
@@ -68,10 +65,25 @@ public class BiMapTest {
 
     @Test
     public void test_forcePut() throws Exception {
-        Assert.assertEquals(null, biMap.forcePut(INT_3, STR_0));
-        Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(biMap.entrySet(), ImmutableSet.of(
-                MapEntry.create(INT_3, STR_0),
-                MapEntry.create(INT_1, STR_1)
-        )));
+        Assert.assertEquals(null, hashBiMap.forcePut(INT_3, STR_0));
+        Assert.assertEquals(ImmutableBiMap.of(
+                INT_3, STR_0,
+                INT_1, STR_1), hashBiMap);
+    }
+
+    @Test
+    public void test_putAll() throws Exception {
+        hashBiMap.putAll(ImmutableMap.of(INT_2, STR_2, INT_1, STR_3));
+        Assert.assertEquals(ImmutableBiMap.of(
+                INT_0, STR_0,
+                INT_1, STR_3,
+                INT_2, STR_2), hashBiMap);
+
+        try {
+            hashBiMap.putAll(ImmutableMap.of(INT_4, STR_0));
+            DebugUtils.neverGoesHere();
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof IllegalArgumentException);
+        }
     }
 }

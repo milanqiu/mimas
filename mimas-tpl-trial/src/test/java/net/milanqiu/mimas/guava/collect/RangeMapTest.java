@@ -1,16 +1,19 @@
 package net.milanqiu.mimas.guava.collect;
 
-import com.google.common.collect.*;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Range;
+import com.google.common.collect.RangeMap;
+import com.google.common.collect.TreeRangeMap;
 import net.milanqiu.mimas.collect.CollectionUtils;
 import net.milanqiu.mimas.collect.MapEntry;
-
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
 /**
- * <p>Creation Date: 2014-7-26
+ * Creation Date: 2014-7-26
  * @author Milan Qiu
  */
 public class RangeMapTest {
@@ -78,5 +81,12 @@ public class RangeMapTest {
                 MapEntry.create(Range.closed(6, 8), STR_0),
                 MapEntry.create(Range.openClosed(8, 9), STR_0)
         )));
+    }
+
+    @Test
+    public void test_span() throws Exception {
+        rangeMap.put(Range.closed(1, 3), STR_0);
+        rangeMap.put(Range.open(7, 9), STR_1);
+        Assert.assertEquals(Range.closedOpen(1, 9), rangeMap.span());
     }
 }

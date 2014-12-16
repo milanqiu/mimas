@@ -1,5 +1,6 @@
 package net.milanqiu.mimas.collect;
 
+import net.milanqiu.mimas.string.StrUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -70,5 +71,15 @@ public class CollectionUtilsTest {
         Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(list11, list10));
         Assert.assertFalse(CollectionUtils.equalsIgnoringOrder(list12, list10));
         Assert.assertFalse(CollectionUtils.equalsIgnoringOrder(list13, list10));
+    }
+
+    @Test
+    public void test_getSumLength() throws Exception {
+        List<String> list = Arrays.asList(STR_0, STR_1, STR_2);
+        Assert.assertEquals(STR_0.length()+STR_1.length()+STR_2.length(), CollectionUtils.getSumLength(list));
+
+        // null test
+        list = Arrays.asList(STR_0, STR_1, STR_2, null, StrUtils.STR_EMPTY);
+        Assert.assertEquals(STR_0.length()+STR_1.length()+STR_2.length(), CollectionUtils.getSumLength(list));
     }
 }

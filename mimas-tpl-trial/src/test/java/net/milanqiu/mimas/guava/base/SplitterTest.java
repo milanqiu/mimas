@@ -1,24 +1,25 @@
-package net.milanqiu.mimas.guava.string;
+package net.milanqiu.mimas.guava.base;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Splitter;
-import com.google.common.collect.*;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Iterables;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.regex.Pattern;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 /**
- * <p>Creation Date: 2014-10-28
+ * Creation Date: 2014-10-28
  * @author Milan Qiu
  */
 public class SplitterTest {
 
     @Test
-    public void test_on_split() throws Exception {
+    public void test_on_onPattern_split() throws Exception {
         /*
             Splitter.on(char)
             Split on occurrences of a specific, individual character.
@@ -99,6 +100,12 @@ public class SplitterTest {
          */
         Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of("", "a", ",b,"),
                 Splitter.on(',').limit(3).split(",a,,b,")));
+    }
+
+    @Test
+    public void test_splitToList() throws Exception {
+        Assert.assertEquals(ImmutableList.of("", "a", "", "b", ""),
+                Splitter.on(CharMatcher.anyOf(",;/")).splitToList(",a;,b/"));
     }
 
     @Test

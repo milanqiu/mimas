@@ -1,20 +1,19 @@
-package net.milanqiu.mimas.guava.string;
+package net.milanqiu.mimas.guava.base;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.List;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 /**
- * <p>Creation Date: 2014-10-24
+ * Creation Date: 2014-10-24
  * @author Milan Qiu
  */
 public class JoinerTest {

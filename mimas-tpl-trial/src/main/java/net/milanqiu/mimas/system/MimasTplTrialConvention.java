@@ -1,9 +1,9 @@
 package net.milanqiu.mimas.system;
 
 /**
- * Properties and running environment of this project(mimas-tpl-trial).
- *
- * <p>Creation Date: 2014-11-3
+ * Conventional properties and running environment of this project(mimas-jdk-trial).
+ * <p>
+ * Creation Date: 2014-11-3
  * @author Milan Qiu
  */
 public class MimasTplTrialConvention extends MavenProjectConvention {
@@ -20,8 +20,8 @@ public class MimasTplTrialConvention extends MavenProjectConvention {
     private MimasTplTrialConvention() {}
 
     @Override
-    public String getSourcePath() {
-        return SysUtils.getClassSourcePath(MimasTplTrialConvention.class);
+    public String getSourceDir() {
+        return SysUtils.getClassSourceDir(this.getClass());
     }
 
     @Override

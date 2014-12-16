@@ -1,15 +1,14 @@
-package net.milanqiu.mimas.guava;
+package net.milanqiu.mimas.guava.base;
 
 import com.google.common.base.Preconditions;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
-
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
-
 import org.junit.Assert;
 import org.junit.Test;
 
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
 /**
- * <p>Creation Date: 2014-7-16
+ * Creation Date: 2014-7-16
  * @author Milan Qiu
  */
 public class PreconditionsTest {
@@ -125,18 +124,18 @@ public class PreconditionsTest {
             directly; you just pass its size.
             Returns index.
          */
-        Assert.assertEquals(0, Preconditions.checkPositionIndex(0, INT_0));
-        Assert.assertEquals(INT_0, Preconditions.checkPositionIndex(INT_0, INT_0));
+        Assert.assertEquals(0, Preconditions.checkPositionIndex(0, INT_3));
+        Assert.assertEquals(INT_3, Preconditions.checkPositionIndex(INT_3, INT_3));
 
         try {
-            Preconditions.checkPositionIndex(-1, INT_0);
+            Preconditions.checkPositionIndex(-1, INT_3);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
             Assert.assertTrue(e instanceof IndexOutOfBoundsException);
         }
 
         try {
-            Preconditions.checkPositionIndex(INT_0+1, INT_0);
+            Preconditions.checkPositionIndex(INT_3+1, INT_3);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
             Assert.assertTrue(e instanceof IndexOutOfBoundsException);
@@ -149,17 +148,17 @@ public class PreconditionsTest {
             void checkPositionIndexes(int start, int end, int size)
             Checks that [start, end) is a valid sub range of a list, string, or array with the specified size. Comes with its own error message.
          */
-        Preconditions.checkPositionIndexes(0, INT_0, INT_0);
+        Preconditions.checkPositionIndexes(0, INT_3, INT_3);
 
         try {
-            Preconditions.checkPositionIndexes(-1, INT_0, INT_0);
+            Preconditions.checkPositionIndexes(-1, INT_3, INT_3);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
             Assert.assertTrue(e instanceof IndexOutOfBoundsException);
         }
 
         try {
-            Preconditions.checkPositionIndexes(0, INT_0+1, INT_0);
+            Preconditions.checkPositionIndexes(0, INT_3+1, INT_3);
             DebugUtils.neverGoesHere();
         } catch (Exception e) {
             Assert.assertTrue(e instanceof IndexOutOfBoundsException);

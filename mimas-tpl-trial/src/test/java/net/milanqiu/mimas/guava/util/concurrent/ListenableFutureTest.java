@@ -1,24 +1,25 @@
-package net.milanqiu.mimas.guava.concurrent;
+package net.milanqiu.mimas.guava.util.concurrent;
 
 import com.google.common.util.concurrent.*;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.instrumentation.RunningTrace;
 import net.milanqiu.mimas.instrumentation.RunningTraceElement;
+import net.milanqiu.mimas.instrumentation.exception.DeliberateException;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 /**
- * <p>Creation Date: 2014-10-24
+ * Creation Date: 2014-10-24
  * @author Milan Qiu
  */
 public class ListenableFutureTest {
 
+    @SuppressWarnings("StatementWithEmptyBody")
     @Test
     public void test_addListener() throws Exception {
         final RunningTrace runningTrace = new RunningTrace();
@@ -52,6 +53,7 @@ public class ListenableFutureTest {
         Assert.assertTrue(comparison.isEnd());
     }
 
+    @SuppressWarnings("StatementWithEmptyBody")
     @Test
     public void test_addCallback_onSuccess() throws Exception {
         final RunningTrace runningTrace = new RunningTrace();
@@ -93,10 +95,11 @@ public class ListenableFutureTest {
         Assert.assertTrue(comparison.isEnd());
     }
 
+    @SuppressWarnings("StatementWithEmptyBody")
     @Test
     public void test_addCallback_onFailure() throws Exception {
         final RunningTrace runningTrace = new RunningTrace();
-        final Exception deliberateException = new Exception("Deliberate Exception");
+        final Exception deliberateException = new DeliberateException("Deliberate Exception");
 
         ListeningExecutorService executorService = MoreExecutors.listeningDecorator(Executors.newCachedThreadPool());
         ListenableFuture<String> future = executorService.submit(new Callable<String>() {

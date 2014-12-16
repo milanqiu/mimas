@@ -1,17 +1,17 @@
-package net.milanqiu.mimas.guava.concurrent;
+package net.milanqiu.mimas.guava.util.concurrent;
 
 import com.google.common.util.concurrent.AbstractIdleService;
 import com.google.common.util.concurrent.Service;
 import net.milanqiu.mimas.concurrent.ConcurrentUtils;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
-
-import java.util.concurrent.TimeUnit;
-
+import net.milanqiu.mimas.instrumentation.exception.DeliberateException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.concurrent.TimeUnit;
+
 /**
- * <p>Creation Date: 2014-10-29
+ * Creation Date: 2014-10-29
  * @author Milan Qiu
  */
 public class AbstractIdleServiceTest {
@@ -50,7 +50,7 @@ public class AbstractIdleServiceTest {
     public void test_StartUpFailed() throws Exception {
         ConcurrentUtils.blockUncaughtExceptions();
         try {
-            final Exception deliberateException = new Exception("Deliberate Exception");
+            final Exception deliberateException = new DeliberateException();
             AbstractIdleService service = new DefaultService() {
                 @Override
                 protected void startUp() throws Exception {
@@ -81,7 +81,7 @@ public class AbstractIdleServiceTest {
     public void test_ShutDownFailed() throws Exception {
         ConcurrentUtils.blockUncaughtExceptions();
         try {
-            final Exception deliberateException = new Exception("Deliberate Exception");
+            final Exception deliberateException = new DeliberateException();
             AbstractIdleService service = new DefaultService() {
                 @Override
                 protected void shutDown() throws Exception {

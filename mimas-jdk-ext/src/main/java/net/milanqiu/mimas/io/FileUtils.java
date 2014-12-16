@@ -34,6 +34,7 @@ public class FileUtils {
 
     /**
      * Returns a sub file of the specified directory with name assigned the specified name to.
+     * The equivalent of this method is <code>new File(File, String)</code>.
      * @param dir the parent directory
      * @param subName the name of sub file
      * @return the sub file
@@ -122,6 +123,8 @@ public class FileUtils {
 
     /**
      * Reads the content of a file as bytes.
+     * If possible, use <code>com.google.common.io.Files.toByteArray(File)</code> of guava instead,
+     * because guava is more reliable.
      * @param fromFile the file to read
      * @return the file content as bytes
      * @throws IOException if an I/O error occurs
@@ -145,6 +148,8 @@ public class FileUtils {
 
     /**
      * Reads the content of a file as characters, using the given character set.
+     * If possible, use <code>com.google.common.io.Files.toString(File, Charset)</code> of guava instead,
+     * because guava is more reliable.
      * @param fromFile the file to read
      * @param charset the character set used to decode the file content
      * @return the file content as characters
@@ -166,6 +171,8 @@ public class FileUtils {
 
     /**
      * Reads the content of a file as characters, using the UTF-8 character set.
+     * If possible, use <code>com.google.common.io.Files.toString(File, Charset)</code> of guava instead,
+     * because guava is more reliable.
      * @param fromFile the file to read
      * @return the file content as characters
      * @throws IOException if an I/O error occurs
@@ -178,6 +185,8 @@ public class FileUtils {
 
     /**
      * Overwrites a file with the contents of a byte array.
+     * If possible, use <code>com.google.common.io.Files.write(byte[], File)</code> of guava instead,
+     * because guava is more reliable.
      * @param bytes the byte array to write
      * @param toFile the destination file
      * @throws IOException if an I/O error occurs
@@ -192,6 +201,8 @@ public class FileUtils {
 
     /**
      * Overwrites a file with the contents of a character sequence, using the given character set.
+     * If possible, use <code>com.google.common.io.Files.write(CharSequence, File, Charset)</code> of guava instead,
+     * because guava is more reliable.
      * @param chars the character sequence to write
      * @param toFile the destination file
      * @param charset the character set used to encode the character sequence
@@ -207,6 +218,8 @@ public class FileUtils {
 
     /**
      * Overwrites a file with the contents of a character sequence, using the UTF-8 character set.
+     * If possible, use <code>com.google.common.io.Files.write(CharSequence, File, Charset)</code> of guava instead,
+     * because guava is more reliable.
      * @param chars the character sequence to write
      * @param toFile the destination file
      * @throws IOException if an I/O error occurs

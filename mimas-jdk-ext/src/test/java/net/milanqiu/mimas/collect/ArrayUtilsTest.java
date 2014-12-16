@@ -39,6 +39,15 @@ public class ArrayUtilsTest {
     }
 
     @Test
+    public void test_duplicate() throws Exception {
+        // int[] duplicate(int value, int count)
+        Assert.assertArrayEquals(new int[]{INT_0, INT_0, INT_0}, ArrayUtils.duplicate(INT_0, 3));
+
+        // Object[] duplicate(Object value, int count)
+        Assert.assertArrayEquals(new Object[]{OBJ_0, OBJ_0, OBJ_0}, ArrayUtils.duplicate(OBJ_0, 3));
+    }
+
+    @Test
     public void test_isNullOrEmpty() throws Exception {
         Assert.assertTrue(ArrayUtils.isNullOrEmpty(null));
         Assert.assertTrue(ArrayUtils.isNullOrEmpty(new Object[] {}));

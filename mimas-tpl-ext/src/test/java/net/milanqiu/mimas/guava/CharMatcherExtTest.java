@@ -33,8 +33,7 @@ public class CharMatcherExtTest {
 
     @Test
     public void test_toString() throws Exception {
-        Assert.assertEquals("[\\u0061, \\u0069, \\u006C, \\u006D, \\u006E, \\u0071, \\u0075]",
-                CharMatcherExt.toString(CharMatcher.anyOf("milanqiu")));
-        Assert.assertEquals("[]", CharMatcherExt.toString(CharMatcher.NONE));
+        Assert.assertEquals("ailmnqu", CharMatcherExt.toString(CharMatcher.anyOf("milanqiu")));
+        Assert.assertEquals("", CharMatcherExt.toString(CharMatcher.NONE));
     }
 }

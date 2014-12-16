@@ -1,146 +1,152 @@
 package net.milanqiu.mimas.guava.io;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.TreeTraverser;
+import com.google.common.hash.Hashing;
 import com.google.common.io.*;
-import com.google.common.io.Files;
+import net.milanqiu.mimas.collect.CollectionUtils;
 import net.milanqiu.mimas.io.FileUtils;
+import net.milanqiu.mimas.lang.LangUtils;
 import net.milanqiu.mimas.system.MimasTplTrialConvention;
 import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.TimeUnit;
 
 import static net.milanqiu.mimas.guava.io.GuavaIoTestUtils.*;
 
 /**
- * <p>Creation Date: 2014-10-29
+ * Creation Date: 2014-10-29
  * @author Milan Qiu
  */
 public class FilesTest {
 
-    @Before
-    public void setUp() throws Exception {
-        GuavaIoTestUtils.assertTestFileNotExists();
-    }
+    private File workDir;
+    private File workFile;
 
     @After
     public void tearDown() throws Exception {
-        GuavaIoTestUtils.deleteTestFile();
+        if (workDir != null) {
+            FileUtils.deleteRecursively(workDir);
+            Assert.assertFalse(workDir.exists());
+        }
     }
 
     @Test
     public void test_asByteSource() throws Exception {
-        createTestFileOfByte();
-        ByteSource bs = Files.asByteSource(TEST_FILE);
-        Assert.assertArrayEquals(BYTE_ARR, bs.read());
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        createTestFileOfByte(workFile);
+        ByteSource bs = Files.asByteSource(workFile);
+        Assert.assertArrayEquals(ALL_BYTE_VALUES, bs.read());
     }
 
     @Test
     public void test_asByteSink() throws Exception {
-        ByteSink bsnk = Files.asByteSink(TEST_FILE);
-        bsnk.write(BYTE_ARR);
-        checkTestFileOfByte();
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        ByteSink bsnk = Files.asByteSink(workFile);
+        bsnk.write(ALL_BYTE_VALUES);
+        assertTestFileOfByte(workFile);
     }
 
     @Test
     public void test_asCharSource() throws Exception {
-        createTestFileOfChar();
-        CharSource cs = Files.asCharSource(TEST_FILE, StandardCharsets.UTF_8);
-        Assert.assertEquals(STR_OF_CHAR_ARR, cs.read());
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        createTestFileOfChar(workFile);
+        CharSource cs = Files.asCharSource(workFile, StandardCharsets.UTF_8);
+        Assert.assertEquals(UNICODE_CHAR_VALUES_STR, cs.read());
     }
 
     @Test
     public void test_asCharSink() throws Exception {
-        CharSink csnk = Files.asCharSink(TEST_FILE, StandardCharsets.UTF_8);
-        csnk.write(STR_OF_CHAR_ARR);
-        checkTestFileOfChar();
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        CharSink csnk = Files.asCharSink(workFile, StandardCharsets.UTF_8);
+        csnk.write(UNICODE_CHAR_VALUES_STR);
+        assertTestFileOfChar(workFile);
     }
 
     @Test
     public void test_createParentDirs() throws Exception {
         /*
-            createParentDirs(File)
+            void createParentDirs(File)
             Creates necessary but nonexistent parent directories of the file.
-         */
-        File unitTestTempDir = MimasTplTrialConvention.getSingleton().getTestTempDir();
-        File file = FileUtils.getSubFile(unitTestTempDir, "temp2", "temp3", "temp.tmp");
-        File dir3 = FileUtils.getSubFile(unitTestTempDir, "temp2", "temp3");
-        File dir2 = FileUtils.getSubFile(unitTestTempDir, "temp2");
+        */
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        File lv1Dir = FileUtils.getSubFile(workDir, "lv1");
+        File lv2Dir = FileUtils.getSubFile(workDir, "lv1", "lv2");
+        File file = FileUtils.getSubFile(workDir, "lv1", "lv2", "temp");
 
+        Assert.assertFalse(lv1Dir.exists());
+        Assert.assertFalse(lv2Dir.exists());
         Assert.assertFalse(file.exists());
-        Assert.assertFalse(dir3.exists());
-        Assert.assertFalse(dir2.exists());
-
-        Files.createParentDirs(file);
-        Assert.assertFalse(file.exists());
-        Assert.assertTrue(dir3.exists());
-        Assert.assertTrue(dir2.exists());
 
         Files.createParentDirs(file);
+        Assert.assertTrue(lv1Dir.exists());
+        Assert.assertTrue(lv2Dir.exists());
         Assert.assertFalse(file.exists());
-        Assert.assertTrue(dir3.exists());
-        Assert.assertTrue(dir2.exists());
 
-        java.nio.file.Files.delete(dir3.toPath());
-        java.nio.file.Files.delete(dir2.toPath());
+        Files.createParentDirs(file);
+        Assert.assertTrue(lv1Dir.exists());
+        Assert.assertTrue(lv2Dir.exists());
         Assert.assertFalse(file.exists());
-        Assert.assertFalse(dir3.exists());
-        Assert.assertFalse(dir2.exists());
     }
 
     @Test
     public void test_getFileExtension() throws Exception {
         /*
-            getFileExtension(String)
+            String getFileExtension(String)
             Gets the file extension of the file described by the path.
-         */
-        Assert.assertEquals("tmp", Files.getFileExtension("C:\\aaa\\bbb\\ccc.tmp"));
-        Assert.assertEquals("tmp", Files.getFileExtension("/C:/aaa/bbb/ccc.tmp"));
-        Assert.assertEquals("tmp", Files.getFileExtension("/aaa/bbb/ccc.tmp"));
+        */
+        Assert.assertEquals("tmp", Files.getFileExtension("C:/aaa/bbb/ccc.tmp"));
+        Assert.assertEquals("tmp", Files.getFileExtension("aaa/bbb/ccc.tmp"));
 
-        Assert.assertEquals("", Files.getFileExtension("C:\\aaa\\bbb\\ccc"));
-        Assert.assertEquals("", Files.getFileExtension("/C:/aaa/bbb/ccc"));
-        Assert.assertEquals("", Files.getFileExtension("/aaa/bbb/ccc"));
+        Assert.assertEquals("", Files.getFileExtension("C:/aaa/bbb/ccc"));
+        Assert.assertEquals("", Files.getFileExtension("aaa/bbb/ccc"));
     }
 
     @Test
     public void test_getNameWithoutExtension() throws Exception {
         /*
-            getNameWithoutExtension(String)
+            String getNameWithoutExtension(String)
             Gets the name of the file with its extension removed.
-         */
-        Assert.assertEquals("ccc", Files.getNameWithoutExtension("C:\\aaa\\bbb\\ccc.tmp"));
-        Assert.assertEquals("ccc", Files.getNameWithoutExtension("/C:/aaa/bbb/ccc.tmp"));
-        Assert.assertEquals("ccc", Files.getNameWithoutExtension("/aaa/bbb/ccc.tmp"));
+        */
+        Assert.assertEquals("ccc", Files.getNameWithoutExtension("C:/aaa/bbb/ccc.tmp"));
+        Assert.assertEquals("ccc", Files.getNameWithoutExtension("aaa/bbb/ccc.tmp"));
 
-        Assert.assertEquals("ccc", Files.getNameWithoutExtension("C:\\aaa\\bbb\\ccc"));
-        Assert.assertEquals("ccc", Files.getNameWithoutExtension("/C:/aaa/bbb/ccc"));
-        Assert.assertEquals("ccc", Files.getNameWithoutExtension("/aaa/bbb/ccc"));
+        Assert.assertEquals("ccc", Files.getNameWithoutExtension("C:/aaa/bbb/ccc"));
+        Assert.assertEquals("ccc", Files.getNameWithoutExtension("aaa/bbb/ccc"));
     }
 
     @Test
     public void test_simplifyPath() throws Exception {
         /*
-            simplifyPath(String)
+            String simplifyPath(String)
             Cleans up the path. Not always consistent with your filesystem; test carefully!
 
             Returns the lexically cleaned form of the path name, usually (but not always) equivalent to the original.
             The following heuristics are used:
-             - empty string becomes .
-             - . stays as .
-             - fold out ./
-             - fold out ../ when possible
-             - collapse multiple slashes
-             - delete trailing slashes (unless the path is just "/")
+                - empty string becomes .
+                - . stays as .
+                - fold out ./
+                - fold out ../ when possible
+                - collapse multiple slashes
+                - delete trailing slashes (unless the path is just "/")
             These heuristics do not always match the behavior of the filesystem. In particular, consider the path
             a/../b, which simplifyPath will change to b. If a is a symlink to x, a/../b may refer to a sibling of x,
             rather than the sibling of a referred to by b.
-         */
+        */
         Assert.assertEquals(".", Files.simplifyPath(""));
         Assert.assertEquals(".", Files.simplifyPath("."));
         Assert.assertEquals("aaa/bbb", Files.simplifyPath("./aaa/bbb"));
@@ -150,16 +156,24 @@ public class FilesTest {
         Assert.assertEquals("aaa/bbb", Files.simplifyPath("aaa/bbb/"));
     }
 
+    @SuppressWarnings("AssertEqualsBetweenInconvertibleTypes")
     @Test
-    public void test_fileTreeTraverser() throws Exception {
+    public void test_fileTreeTraverser_TreeTraverser_children_preOrderTraversal_postOrderTraversal_breadthFirstTraversal() throws Exception {
         /*
             fileTreeTraverser()
             Returns a TreeTraverser that can traverse file trees.
-         */
-        File unitTestTempDir = MimasTplTrialConvention.getSingleton().getTestTempDir();
-        Assert.assertTrue(FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb", "ccc").mkdirs());
-        Assert.assertTrue(FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd", "eee").mkdirs());
-        Assert.assertTrue(FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd", "fff").mkdirs());
+        */
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+
+        File aaa = FileUtils.getSubFile(workDir, "aaa");
+        File bbb = FileUtils.getSubFile(workDir, "aaa", "bbb");
+        File ccc = FileUtils.getSubFile(workDir, "aaa", "bbb", "ccc");
+        File ddd = FileUtils.getSubFile(workDir, "aaa", "ddd");
+        File eee = FileUtils.getSubFile(workDir, "aaa", "ddd", "eee");
+        File fff = FileUtils.getSubFile(workDir, "aaa", "ddd", "fff");
+        Assert.assertTrue(ccc.mkdirs());
+        Assert.assertTrue(eee.mkdirs());
+        Assert.assertTrue(fff.createNewFile());
         // then the file tree will be
         //              aaa
         //            /     \
@@ -170,56 +184,262 @@ public class FilesTest {
         TreeTraverser<File> tt = Files.fileTreeTraverser();
 
         // children()
-        Assert.assertEquals(ImmutableList.of(
-                FileUtils.getSubFile(unitTestTempDir, ".gitkeep"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa")
-        ), tt.children(unitTestTempDir));
-        Assert.assertEquals(ImmutableList.of(
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd")
-        ), tt.children(FileUtils.getSubFile(unitTestTempDir, "aaa")));
+        Assert.assertEquals(ImmutableList.of(aaa), tt.children(workDir));
+        Assert.assertEquals(ImmutableList.of(bbb, ddd), tt.children(aaa));
+        Assert.assertEquals(ImmutableList.of(ccc),      tt.children(bbb));
+        Assert.assertEquals(ImmutableList.of(),         tt.children(ccc));
+        Assert.assertEquals(ImmutableList.of(eee, fff), tt.children(ddd));
+        Assert.assertEquals(ImmutableList.of(),         tt.children(eee));
+        Assert.assertEquals(ImmutableList.of(),         tt.children(fff));
 
         // preOrderTraversal()
-        Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(
-                unitTestTempDir,
-                FileUtils.getSubFile(unitTestTempDir, ".gitkeep"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb", "ccc"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd", "eee"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd", "fff")
-        ), tt.preOrderTraversal(unitTestTempDir)));
+        Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(workDir, aaa, bbb, ccc, ddd, eee, fff),
+                tt.preOrderTraversal(workDir)));
 
         // postOrderTraversal()
-        Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(
-                FileUtils.getSubFile(unitTestTempDir, ".gitkeep"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb", "ccc"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd", "eee"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd", "fff"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa"),
-                unitTestTempDir
-        ), tt.postOrderTraversal(unitTestTempDir)));
+        Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(ccc, bbb, eee, fff, ddd, aaa, workDir),
+                tt.postOrderTraversal(workDir)));
 
         // breadthFirstTraversal()
-        Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(
-                unitTestTempDir,
-                FileUtils.getSubFile(unitTestTempDir, ".gitkeep"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb", "ccc"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd", "eee"),
-                FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd", "fff")
-        ), tt.breadthFirstTraversal(unitTestTempDir)));
+        Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(workDir, aaa, bbb, ddd, ccc, eee, fff),
+                tt.breadthFirstTraversal(workDir)));
+    }
 
-        java.nio.file.Files.delete(FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb", "ccc").toPath());
-        java.nio.file.Files.delete(FileUtils.getSubFile(unitTestTempDir, "aaa", "bbb").toPath());
-        java.nio.file.Files.delete(FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd", "eee").toPath());
-        java.nio.file.Files.delete(FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd", "fff").toPath());
-        java.nio.file.Files.delete(FileUtils.getSubFile(unitTestTempDir, "aaa", "ddd").toPath());
-        java.nio.file.Files.delete(FileUtils.getSubFile(unitTestTempDir, "aaa").toPath());
+    @Test
+    public void test_newReader() throws Exception {
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        createTestFileOfChar(workFile);
+        try (BufferedReader br = Files.newReader(workFile, StandardCharsets.UTF_8)) {
+            Assert.assertEquals(UNICODE_CHAR_VALUES_STR, CharStreams.toString(br));
+        }
+    }
+
+    @Test
+    public void test_newWriter() throws Exception {
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        try (BufferedWriter bw = Files.newWriter(workFile, StandardCharsets.UTF_8)) {
+            bw.write(UNICODE_CHAR_VALUES_STR);
+            bw.flush();
+            assertTestFileOfChar(workFile);
+        }
+    }
+
+    @Test
+    public void test_toByteArray() throws Exception {
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        createTestFileOfByte(workFile);
+        Assert.assertArrayEquals(ALL_BYTE_VALUES, Files.toByteArray(workFile));
+    }
+
+    @Test
+    public void test_toString() throws Exception {
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        createTestFileOfChar(workFile);
+        Assert.assertEquals(UNICODE_CHAR_VALUES_STR, Files.toString(workFile, StandardCharsets.UTF_8));
+    }
+
+    @Test
+    public void test_write() throws Exception {
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        // void write(byte[] from, File to)
+        {
+            Files.write(ALL_BYTE_VALUES, workFile);
+            assertTestFileOfByte(workFile);
+        }
+
+        // void write(CharSequence from, File to, Charset charset)
+        {
+            Files.write(UNICODE_CHAR_VALUES_STR, workFile, StandardCharsets.UTF_8);
+            assertTestFileOfChar(workFile);
+        }
+    }
+
+    @Test
+    public void test_append() throws Exception {
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        Files.write(UNICODE_CHAR_VALUES_STR, workFile, StandardCharsets.UTF_8);
+        Assert.assertEquals(UNICODE_CHAR_VALUES_STR, Files.toString(workFile, StandardCharsets.UTF_8));
+
+        Files.append(UNICODE_CHAR_VALUES_STR, workFile, StandardCharsets.UTF_8);
+        Assert.assertEquals(UNICODE_CHAR_VALUES_STR + UNICODE_CHAR_VALUES_STR, Files.toString(workFile, StandardCharsets.UTF_8));
+    }
+
+    @Test
+    public void test_copy() throws Exception {
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+        File toFile = new File(workDir, "to");
+
+        // void copy(File from, OutputStream to)
+        {
+            createTestFileOfByte(workFile);
+            OutputStream os = new ByteArrayOutputStream();
+            Files.copy(workFile, os);
+            Assert.assertArrayEquals(ALL_BYTE_VALUES, ((ByteArrayOutputStream) os).toByteArray());
+        }
+
+        // void copy(File from, File to)
+        {
+            createTestFileOfByte(workFile);
+            Assert.assertTrue(workFile.exists());
+            Assert.assertFalse(toFile.exists());
+            Files.copy(workFile, toFile);
+            Assert.assertTrue(workFile.exists());
+            Assert.assertTrue(toFile.exists());
+            Assert.assertArrayEquals(ALL_BYTE_VALUES, Files.toByteArray(toFile));
+        }
+
+        // void copy(File from, Charset charset, Appendable to)
+        {
+            createTestFileOfChar(workFile);
+            Appendable a = new CharArrayWriter();
+            Files.copy(workFile, StandardCharsets.UTF_8, a);
+            Assert.assertEquals(UNICODE_CHAR_VALUES_STR, a.toString());
+        }
+    }
+
+    @Test
+    public void test_equal() throws Exception {
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+        File workFile2 = new File(workDir, "temp2");
+
+        createTestFileOfByte(workFile);
+        Files.copy(workFile, workFile2);
+        Assert.assertTrue(Files.equal(workFile, workFile2));
+
+        byte[] CHANGED_ALL_BYTE_VALUES = LangUtils.getAllByteValues();
+        CHANGED_ALL_BYTE_VALUES[CHANGED_ALL_BYTE_VALUES.length-1] = 0;
+        Files.write(CHANGED_ALL_BYTE_VALUES, workFile2);
+        Assert.assertFalse(Files.equal(workFile, workFile2));
+    }
+
+    @Test
+    public void test_createTempDir() throws Exception {
+        File file = Files.createTempDir();
+        MimasTplTrialConvention.getSingleton().writeWorkFileInTestOutDir(file.toString());
+    }
+
+    @Test
+    public void test_touch() throws Exception {
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        Files.touch(workFile);
+        long lastModified1 = workFile.lastModified();
+        TimeUnit.MILLISECONDS.sleep(100);
+        Files.touch(workFile);
+        long lastModified2 = workFile.lastModified();
+        Assert.assertTrue(lastModified2 - lastModified1 >= 100);
+    }
+
+    @Test
+    public void test_move() throws Exception {
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+        File toFile = new File(workDir, "to");
+
+        createTestFileOfByte(workFile);
+        Assert.assertTrue(workFile.exists());
+        Assert.assertFalse(toFile.exists());
+        Files.move(workFile, toFile);
+        Assert.assertFalse(workFile.exists());
+        Assert.assertTrue(toFile.exists());
+        Assert.assertArrayEquals(ALL_BYTE_VALUES, Files.toByteArray(toFile));
+    }
+
+    @Test
+    public void test_readFirstLine() throws Exception {
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        createTestFileOfText(workFile);
+        Assert.assertEquals(MULTILINE_LIST.get(0), Files.readFirstLine(workFile, StandardCharsets.UTF_8));
+    }
+
+    @Test
+    public void test_readLines() throws Exception {
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        // List<String> readLines(File file, Charset charset)
+        {
+            createTestFileOfText(workFile);
+            Assert.assertEquals(MULTILINE_LIST, Files.readLines(workFile, StandardCharsets.UTF_8));
+        }
+
+        // T readLines(File file, Charset charset, LineProcessor<T> callback)
+        {
+            createTestFileOfText(workFile);
+            Assert.assertEquals(CollectionUtils.getSumLength(MULTILINE_LIST),
+                    (int) Files.readLines(workFile, StandardCharsets.UTF_8, new LineProcessor<Integer>() {
+                        int sumLength = 0;
+                        @Override
+                        public boolean processLine(String s) throws IOException {
+                            sumLength += s.length();
+                            return true;
+                        }
+                        @Override
+                        public Integer getResult() {
+                            return sumLength;
+                        }
+                    }));
+        }
+    }
+
+    @Test
+    public void test_readBytes() throws Exception {
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        createTestFileOfByte(workFile);
+        Assert.assertEquals("-128", Files.readBytes(workFile, new ByteProcessor<String>() {
+            int sum = 0;
+
+            @Override
+            public boolean processBytes(byte[] bytes, int i, int i2) throws IOException {
+                for (int index = i; index < i2; index++)
+                    sum += bytes[index];
+                return true;
+            }
+
+            @Override
+            public String getResult() {
+                return String.valueOf(sum);
+            }
+        }));
+    }
+
+    @Test
+    public void test_hash() throws Exception {
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        createTestFileOfByte(workFile);
+        Assert.assertEquals("03f9522e6aa992641525359b6c67cb55", Files.hash(workFile, Hashing.md5()).toString());
+    }
+
+    @Test
+    public void test_isDirectory() throws Exception {
+        Predicate<File> p = Files.isDirectory();
+        Assert.assertTrue(p.apply(MimasTplTrialConvention.getSingleton().getWorkspaceDir()));
+    }
+
+    @Test
+    public void test_isFile() throws Exception {
+        Predicate<File> p = Files.isFile();
+        Assert.assertFalse(p.apply(MimasTplTrialConvention.getSingleton().getWorkspaceDir()));
     }
 }

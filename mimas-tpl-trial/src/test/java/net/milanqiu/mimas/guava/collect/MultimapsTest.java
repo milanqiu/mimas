@@ -4,20 +4,19 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.*;
 import net.milanqiu.mimas.collect.CollectionUtils;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.List;
 import java.util.Map;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 /**
- * <p>Creation Date: 2014-9-4
+ * Creation Date: 2014-9-4
  * @author Milan Qiu
  */
-public class MultimapsTest {
+    public class MultimapsTest {
 
     private class Entity {
         int id;
@@ -62,21 +61,21 @@ public class MultimapsTest {
             Multimap. Guava provides invertFrom(Multimap toInvert, Multimap dest) to let you do this, without choosing
             an implementation for you.
          */
-        ListMultimap<Integer, String> multimap = ArrayListMultimap.create();
-        multimap.putAll(INT_0, ImmutableList.of(STR_3, STR_4));
-        multimap.putAll(INT_1, ImmutableList.of(STR_3));
-        multimap.putAll(INT_2, ImmutableList.of(STR_2, STR_3, STR_4));
-        multimap.putAll(INT_3, ImmutableList.of(STR_2, STR_4));
+        ListMultimap<Integer, String> from = ArrayListMultimap.create();
+        from.putAll(INT_0, ImmutableList.of(STR_3, STR_4));
+        from.putAll(INT_1, ImmutableList.of(STR_3));
+        from.putAll(INT_2, ImmutableList.of(STR_2, STR_3, STR_4));
+        from.putAll(INT_3, ImmutableList.of(STR_2, STR_4));
 
-        TreeMultimap<String, Integer> revertedMultimap = TreeMultimap.create();
-        Assert.assertSame(revertedMultimap, Multimaps.invertFrom(multimap, revertedMultimap));
-        Assert.assertEquals(3, revertedMultimap.keySet().size());
-        Assert.assertEquals(8, revertedMultimap.size());
-        Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(revertedMultimap.get(STR_2),
+        TreeMultimap<String, Integer> to = TreeMultimap.create();
+        Assert.assertSame(to, Multimaps.invertFrom(from, to));
+        Assert.assertEquals(3, to.keySet().size());
+        Assert.assertEquals(8, to.size());
+        Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(to.get(STR_2),
                 ImmutableList.of(INT_2, INT_3)));
-        Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(revertedMultimap.get(STR_3),
+        Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(to.get(STR_3),
                 ImmutableList.of(INT_0, INT_1, INT_2)));
-        Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(revertedMultimap.get(STR_4),
+        Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(to.get(STR_4),
                 ImmutableList.of(INT_0, INT_2, INT_3)));
     }
 

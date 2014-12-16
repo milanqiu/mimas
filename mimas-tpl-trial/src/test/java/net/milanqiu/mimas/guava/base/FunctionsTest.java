@@ -1,19 +1,20 @@
-package net.milanqiu.mimas.guava;
+package net.milanqiu.mimas.guava.base;
 
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
+import com.google.common.base.Predicate;
+import com.google.common.base.Supplier;
 import com.google.common.collect.ImmutableMap;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.Map;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 /**
- * <p>Creation Date: 2014-9-24
+ * Creation Date: 2014-9-24
  * @author Milan Qiu
  */
 public class FunctionsTest {
@@ -115,5 +116,29 @@ public class FunctionsTest {
         } catch (Exception e) {
             Assert.assertTrue(e instanceof NullPointerException);
         }
+    }
+
+    @Test
+    public void test_forPredicate() throws Exception {
+        Function<Integer, Boolean> func = Functions.forPredicate(new Predicate<Integer>() {
+            @Override
+            public boolean apply(Integer integer) {
+                return integer >= 0;
+            }
+        });
+        Assert.assertTrue(func.apply(1));
+        Assert.assertTrue(func.apply(0));
+        Assert.assertFalse(func.apply(-1));
+    }
+
+    @Test
+    public void test_forSupplier() throws Exception {
+        Function<Object, String> func = Functions.forSupplier(new Supplier<String>() {
+            @Override
+            public String get() {
+                return STR_0;
+            }
+        });
+        Assert.assertEquals(STR_0, func.apply(OBJ_0));
     }
 }

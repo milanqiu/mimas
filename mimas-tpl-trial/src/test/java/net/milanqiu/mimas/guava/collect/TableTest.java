@@ -5,14 +5,14 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Table;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
-
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
 /**
- * <p>Creation Date: 2014-7-26
+ * Creation Date: 2014-7-26
  * @author Milan Qiu
  */
 public class TableTest {

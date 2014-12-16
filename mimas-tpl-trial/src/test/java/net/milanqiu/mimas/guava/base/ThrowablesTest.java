@@ -1,14 +1,14 @@
-package net.milanqiu.mimas.guava;
+package net.milanqiu.mimas.guava.base;
 
 import com.google.common.base.Throwables;
-
+import net.milanqiu.mimas.system.MimasTplTrialConvention;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
 
 /**
- * <p>Creation Date: 2014-7-18
+ * Creation Date: 2014-7-18
  * @author Milan Qiu
  */
 public class ThrowablesTest {
@@ -40,10 +40,10 @@ public class ThrowablesTest {
             Assert.assertEquals(ea, Throwables.getRootCause(e));
             Assert.assertTrue(Throwables.getCausalChain(e).equals(Arrays.asList(ec, eb, ea)));
             Assert.assertTrue(Throwables.getStackTraceAsString(e).startsWith(
-                    "net.milanqiu.mimas.guava.ThrowablesTest$ExceptionC: " +
-                    "net.milanqiu.mimas.guava.ThrowablesTest$ExceptionB: " +
-                    "net.milanqiu.mimas.guava.ThrowablesTest$ExceptionA"));
-            //System.out.println(Throwables.getStackTraceAsString(e));
+                    "net.milanqiu.mimas.guava.base.ThrowablesTest$ExceptionC: " +
+                    "net.milanqiu.mimas.guava.base.ThrowablesTest$ExceptionB: " +
+                    "net.milanqiu.mimas.guava.base.ThrowablesTest$ExceptionA"));
+            MimasTplTrialConvention.getSingleton().writeWorkFileInTestOutDir(Throwables.getStackTraceAsString(e));
         }
     }
 }

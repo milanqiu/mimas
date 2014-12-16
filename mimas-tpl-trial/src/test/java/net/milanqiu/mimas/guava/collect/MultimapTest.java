@@ -3,16 +3,19 @@ package net.milanqiu.mimas.guava.collect;
 import com.google.common.collect.*;
 import net.milanqiu.mimas.collect.CollectionUtils;
 import net.milanqiu.mimas.collect.MapEntry;
-
-import java.util.*;
-
-import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
 /**
- * <p>Creation Date: 2014-7-24
+ * Creation Date: 2014-7-24
  * @author Milan Qiu
  */
 public class MultimapTest {

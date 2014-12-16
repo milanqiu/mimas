@@ -1,21 +1,20 @@
-package net.milanqiu.mimas.guava;
+package net.milanqiu.mimas.guava.base;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;
 import net.milanqiu.mimas.string.RegExpConsts;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 /**
- * <p>Creation Date: 2014-9-25
+ * Creation Date: 2014-9-25
  * @author Milan Qiu
  */
 public class PredicatesTest {

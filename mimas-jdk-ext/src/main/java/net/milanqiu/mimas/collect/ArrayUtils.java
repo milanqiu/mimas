@@ -1,5 +1,7 @@
 package net.milanqiu.mimas.collect;
 
+import java.util.Arrays;
+
 /**
  * Utilities related to array.
  * <p>
@@ -124,6 +126,102 @@ public class ArrayUtils {
                 return true;
         }
         return false;
+    }
+
+    /**
+     * Creates and returns a character array with the specified length and all elements equal to the specified value.
+     * @param value the value to be duplicated, which will be assigned to every element of result array
+     * @param count the count of duplication, which is the length of result array
+     * @return the result array
+     */
+    public static char[] duplicate(char value, int count) {
+        char[] result = new char[count];
+        Arrays.fill(result, value);
+        return result;
+    }
+
+    /**
+     * Creates and returns a byte array with the specified length and all elements equal to the specified value.
+     * @param value the value to be duplicated, which will be assigned to every element of result array
+     * @param count the count of duplication, which is the length of result array
+     * @return the result array
+     */
+    public static byte[] duplicate(byte value, int count) {
+        byte[] result = new byte[count];
+        Arrays.fill(result, value);
+        return result;
+    }
+
+    /**
+     * Creates and returns a short array with the specified length and all elements equal to the specified value.
+     * @param value the value to be duplicated, which will be assigned to every element of result array
+     * @param count the count of duplication, which is the length of result array
+     * @return the result array
+     */
+    public static short[] duplicate(short value, int count) {
+        short[] result = new short[count];
+        Arrays.fill(result, value);
+        return result;
+    }
+
+    /**
+     * Creates and returns an integer array with the specified length and all elements equal to the specified value.
+     * @param value the value to be duplicated, which will be assigned to every element of result array
+     * @param count the count of duplication, which is the length of result array
+     * @return the result array
+     */
+    public static int[] duplicate(int value, int count) {
+        int[] result = new int[count];
+        Arrays.fill(result, value);
+        return result;
+    }
+
+    /**
+     * Creates and returns a long array with the specified length and all elements equal to the specified value.
+     * @param value the value to be duplicated, which will be assigned to every element of result array
+     * @param count the count of duplication, which is the length of result array
+     * @return the result array
+     */
+    public static long[] duplicate(long value, int count) {
+        long[] result = new long[count];
+        Arrays.fill(result, value);
+        return result;
+    }
+
+    /**
+     * Creates and returns a float array with the specified length and all elements equal to the specified value.
+     * @param value the value to be duplicated, which will be assigned to every element of result array
+     * @param count the count of duplication, which is the length of result array
+     * @return the result array
+     */
+    public static float[] duplicate(float value, int count) {
+        float[] result = new float[count];
+        Arrays.fill(result, value);
+        return result;
+    }
+
+    /**
+     * Creates and returns a double array with the specified length and all elements equal to the specified value.
+     * @param value the value to be duplicated, which will be assigned to every element of result array
+     * @param count the count of duplication, which is the length of result array
+     * @return the result array
+     */
+    public static double[] duplicate(double value, int count) {
+        double[] result = new double[count];
+        Arrays.fill(result, value);
+        return result;
+    }
+
+    /**
+     * Creates and returns an object array with the specified length and all elements equal to the specified value.
+     * @param value the value to be duplicated, which will be assigned to every element of result array
+     * @param count the count of duplication, which is the length of result array
+     * @return the result array
+     */
+    public static Object[] duplicate(Object value, int count) {
+        Object[] result = new Object[count];
+        Arrays.fill(result, value);
+        return result;
     }
 
     /**

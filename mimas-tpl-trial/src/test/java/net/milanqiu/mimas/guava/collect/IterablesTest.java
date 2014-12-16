@@ -4,18 +4,17 @@ import com.google.common.base.Function;
 import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import com.google.common.collect.*;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.collect.CollectionUtils;
+import net.milanqiu.mimas.instrumentation.DebugUtils;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.*;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 /**
- * <p>Creation Date: 2014-7-30
+ * Creation Date: 2014-7-30
  * @author Milan Qiu
  */
 public class IterablesTest {
@@ -23,25 +22,26 @@ public class IterablesTest {
     @Test
     public void test_concat() throws Exception {
         /*
-            concat(Iterable...)
-            concat(Iterable<Iterable>)
+            Iterable concat(Iterable...)
+            Iterable concat(Iterable<Iterable>)
             Returns a lazy view of the concatenation of several iterables.
+            ps: The actual type of returned value is an inner class inheriting abstract class FluentIterable.
          */
         List<String> list1 = ImmutableList.of(STR_0, STR_1);
         List<String> list2 = ImmutableList.of(STR_1, STR_2, STR_2);
         Set<String> set3 = ImmutableSet.of(STR_2, STR_3);
-        List<String> expectedListResult = ImmutableList.of(STR_0, STR_1, STR_1, STR_2, STR_2, STR_2, STR_3);
-        Assert.assertEquals(expectedListResult, ((FluentIterable) Iterables.concat(list1, list2, set3)).toList());
-        Assert.assertEquals(expectedListResult, ((FluentIterable) Iterables.concat(ImmutableList.of(list1, list2, set3))).toList());
+        FluentIterable<String> expected = FluentIterable.of(new String[]{STR_0, STR_1, STR_1, STR_2, STR_2, STR_2, STR_3});
+        Assert.assertTrue(Iterables.elementsEqual(expected, Iterables.concat(list1, list2, set3)));
+        Assert.assertTrue(Iterables.elementsEqual(expected, Iterables.concat(ImmutableList.of(list1, list2, set3))));
     }
 
     @Test
     public void test_frequency() throws Exception {
         /*
-            frequency(Iterable, Object)
+            int frequency(Iterable, Object)
             Returns the number of occurrences of the object.
          */
-        List list = ImmutableList.of(STR_0, STR_1, STR_1, STR_1, STR_2, STR_2);
+        List<String> list = ImmutableList.of(STR_0, STR_1, STR_1, STR_1, STR_2, STR_2);
         Assert.assertEquals(1, Iterables.frequency(list, STR_0));
         Assert.assertEquals(3, Iterables.frequency(list, STR_1));
         Assert.assertEquals(2, Iterables.frequency(list, STR_2));
@@ -51,34 +51,35 @@ public class IterablesTest {
     @Test
     public void test_partition() throws Exception {
         /*
-            partition(Iterable, int)
+            Iterable<List> partition(Iterable, int)
             Returns an unmodifiable view of the iterable partitioned into chunks of the specified size.
+            ps: The actual type of returned value is an inner class inheriting abstract class FluentIterable.
          */
         List<String> list = ImmutableList.of(STR_0, STR_1, STR_1, STR_2, STR_2, STR_2, STR_3);
-        List<List<String>> result = ((FluentIterable<List<String>>) Iterables.partition(list, 3)).toList();
-        Assert.assertEquals(3, result.size());
-        Assert.assertEquals(ImmutableList.of(STR_0, STR_1, STR_1), result.get(0));
-        Assert.assertEquals(ImmutableList.of(STR_2, STR_2, STR_2), result.get(1));
-        Assert.assertEquals(ImmutableList.of(STR_3), result.get(2));
+        Iterable<List<String>> result = Iterables.partition(list, 3);
+        Iterator<List<String>> resultIterator = result.iterator();
+        Assert.assertEquals(ImmutableList.of(STR_0, STR_1, STR_1), resultIterator.next());
+        Assert.assertEquals(ImmutableList.of(STR_2, STR_2, STR_2), resultIterator.next());
+        Assert.assertEquals(ImmutableList.of(STR_3),               resultIterator.next());
     }
 
     @Test
     public void test_paddedPartition() throws Exception {
         /*
-            paddedPartition(Iterable, int)
+            Iterable<List> paddedPartition(Iterable, int)
          */
         List<String> list = ImmutableList.of(STR_0, STR_1, STR_1, STR_2, STR_2, STR_2, STR_3);
-        List<List<String>> result = ((FluentIterable<List<String>>) Iterables.paddedPartition(list, 3)).toList();
-        Assert.assertEquals(3, result.size());
-        Assert.assertEquals(ImmutableList.of(STR_0, STR_1, STR_1), result.get(0));
-        Assert.assertEquals(ImmutableList.of(STR_2, STR_2, STR_2), result.get(1));
-        Assert.assertEquals(Lists.newArrayList(STR_3, null, null), result.get(2));
+        Iterable<List<String>> result = Iterables.paddedPartition(list, 3);
+        Iterator<List<String>> resultIterator = result.iterator();
+        Assert.assertEquals(ImmutableList.of(STR_0, STR_1, STR_1), resultIterator.next());
+        Assert.assertEquals(ImmutableList.of(STR_2, STR_2, STR_2), resultIterator.next());
+        Assert.assertEquals(Lists.newArrayList(STR_3, null, null), resultIterator.next());
     }
 
     @Test
     public void test_getFirst() throws Exception {
         /*
-            getFirst(Iterable, T default)
+            T getFirst(Iterable, T default)
             Returns the first element of the iterable, or the default value if empty.
          */
         Assert.assertEquals(STR_0, Iterables.getFirst(ImmutableList.of(STR_0, STR_1, STR_1, STR_2), STR_4));
@@ -88,7 +89,7 @@ public class IterablesTest {
     @Test
     public void test_getLast() throws Exception {
         /*
-            getLast(Iterable)
+            T getLast(Iterable)
             Returns the last element of the iterable, or fails fast with a NoSuchElementException if it's empty.
          */
         Assert.assertEquals(STR_2, Iterables.getLast(ImmutableList.of(STR_0, STR_1, STR_1, STR_2)));
@@ -100,7 +101,7 @@ public class IterablesTest {
         }
 
         /*
-            getLast(Iterable, T default)
+            T getLast(Iterable, T default)
          */
         Assert.assertEquals(STR_2, Iterables.getLast(ImmutableList.of(STR_0, STR_1, STR_1, STR_2), STR_4));
         Assert.assertEquals(STR_4, Iterables.getLast(ImmutableList.of(), STR_4));
@@ -109,7 +110,7 @@ public class IterablesTest {
     @Test
     public void test_elementsEqual() throws Exception {
         /*
-            elementsEqual(Iterable, Iterable)
+            boolean elementsEqual(Iterable, Iterable)
             Returns true if the iterables have the same elements in the same order.
          */
         List<String> list1 = Lists.newArrayList(STR_0, STR_1, STR_2);
@@ -127,32 +128,34 @@ public class IterablesTest {
     @Test
     public void test_unmodifiableIterable() throws Exception {
         /*
-            unmodifiableIterable(Iterable)
+            Iterable unmodifiableIterable(Iterable)
             Returns an unmodifiable view of the iterable.
+            ps: The actual type of returned value is a private class inheriting abstract class FluentIterable.
          */
         List<String> modifiableList = new ArrayList<>();
         modifiableList.add(STR_0);
         modifiableList.add(STR_1);
         modifiableList.add(STR_2);
-        FluentIterable<String> unmodifiableList = (FluentIterable<String>) Iterables.unmodifiableIterable(modifiableList);
-        Assert.assertTrue(Iterables.elementsEqual(unmodifiableList, modifiableList));
+        FluentIterable<String> expected = FluentIterable.of(new String[]{STR_0, STR_1, STR_2});
+        Assert.assertTrue(Iterables.elementsEqual(expected, Iterables.unmodifiableIterable(modifiableList)));
     }
 
     @Test
     public void test_limit() throws Exception {
         /*
-            limit(Iterable, int)
+            Iterable limit(Iterable, int)
             Returns an Iterable returning at most the specified number of elements.
+            ps: The actual type of returned value is an inner class inheriting abstract class FluentIterable.
          */
         List<String> list = ImmutableList.of(STR_0, STR_1, STR_2, STR_2, STR_3);
-        List<String> result = ((FluentIterable<String>) Iterables.limit(list, 3)).toList();
-        Assert.assertEquals(ImmutableList.of(STR_0, STR_1, STR_2), result);
+        FluentIterable<String> expected = FluentIterable.of(new String[]{STR_0, STR_1, STR_2});
+        Assert.assertTrue(Iterables.elementsEqual(expected, Iterables.limit(list, 3)));
     }
 
     @Test
     public void test_getOnlyElement() throws Exception {
         /*
-            getOnlyElement(Iterable)
+            T getOnlyElement(Iterable)
             Returns the only element in Iterable. Fails fast if the iterable is empty or has multiple elements.
          */
         Assert.assertEquals(STR_2, Iterables.getOnlyElement(ImmutableList.of(STR_2)));
@@ -170,7 +173,7 @@ public class IterablesTest {
         }
 
         /*
-            getOnlyElement(Iterable, T default)
+            T getOnlyElement(Iterable, T default)
          */
         Assert.assertEquals(STR_2, Iterables.getOnlyElement(ImmutableList.of(STR_2), STR_4));
         Assert.assertEquals(STR_4, Iterables.getOnlyElement(ImmutableList.of(), STR_4));
@@ -320,6 +323,7 @@ public class IterablesTest {
                 return s.equals(STR_1) || s.equals(STR_3);
             }
         }));
+        //noinspection AssertEqualsBetweenInconvertibleTypes
         Assert.assertEquals(Optional.absent(), Iterables.tryFind(list, new Predicate<String>() {
             @Override
             public boolean apply(String s) {
@@ -358,20 +362,21 @@ public class IterablesTest {
             Removes all elements satisfying the predicate, using the Iterator.remove() method.
             Also implemented in Iterators.
          */
-        List<String> list = Lists.newArrayList(STR_0, STR_1, STR_2, STR_2);
+        List<String> list = Lists.newArrayList(STR_0, STR_1, STR_2, STR_1);
         Assert.assertTrue(Iterables.removeIf(list, new Predicate<String>() {
             @Override
             public boolean apply(String s) {
                 return s.equals(STR_1) || s.equals(STR_3);
             }
         }));
-        Assert.assertEquals(ImmutableList.of(STR_0, STR_2, STR_2), list);
+        Assert.assertEquals(ImmutableList.of(STR_0, STR_2), list);
         Assert.assertFalse(Iterables.removeIf(list, new Predicate<String>() {
             @Override
             public boolean apply(String s) {
                 return s.equals(STR_1) || s.equals(STR_3);
             }
         }));
+        Assert.assertEquals(ImmutableList.of(STR_0, STR_2), list);
     }
 
     @Test
@@ -382,7 +387,7 @@ public class IterablesTest {
             supported. Instead, use Sets.newHashSet(Collections2.transform(set, function)) to create a copy of a
             transformed set.
          */
-        List<Integer> from = ImmutableList.of(INT_0, INT_1, INT_1, INT_1, INT_2, INT_2);
+        List<Integer> from = ImmutableList.of(INT_0, INT_1, INT_2, INT_2);
         Iterable<String> to = Iterables.transform(from, new Function<Integer, String>() {
             @Override
             public String apply(Integer integer) {
@@ -390,6 +395,105 @@ public class IterablesTest {
             }
         });
         Assert.assertTrue(Iterables.elementsEqual(to, ImmutableList.of(
-                STR_OF_INT_0, STR_OF_INT_1, STR_OF_INT_1, STR_OF_INT_1, STR_OF_INT_2, STR_OF_INT_2)));
+                STR_OF_INT_0, STR_OF_INT_1, STR_OF_INT_2, STR_OF_INT_2)));
+    }
+
+    @Test
+    public void test_toString() throws Exception {
+        List<Integer> list = ImmutableList.of(INT_0, INT_1, INT_2, INT_2);
+        Assert.assertEquals("["+STR_OF_INT_0+", "+STR_OF_INT_1+", "+STR_OF_INT_2+", "+STR_OF_INT_2+"]",
+                Iterables.toString(list));
+    }
+
+    @Test
+    public void test_cycle() throws Exception {
+        // Iterable<T> cycle(Iterable<T> iterable)
+        {
+            List<String> list = ImmutableList.of(STR_0, STR_1, STR_2, STR_2);
+            Iterable<String> result = Iterables.cycle(list);
+            Iterator<String> resultIterator = result.iterator();
+            int counter = 0;
+            while (counter < 100) {
+                switch (counter++ % 4) {
+                    case 0:
+                        Assert.assertEquals(STR_0, resultIterator.next());
+                        break;
+                    case 1:
+                        Assert.assertEquals(STR_1, resultIterator.next());
+                        break;
+                    case 2:
+                        Assert.assertEquals(STR_2, resultIterator.next());
+                        break;
+                    case 3:
+                        Assert.assertEquals(STR_2, resultIterator.next());
+                        break;
+                }
+            }
+        }
+
+        // Iterable<T> cycle(T... elements)
+        {
+            Iterable<String> result = Iterables.cycle(STR_0, STR_1, STR_2, STR_2);
+            Iterator<String> resultIterator = result.iterator();
+            int counter = 0;
+            while (counter < 100) {
+                switch (counter++ % 4) {
+                    case 0:
+                        Assert.assertEquals(STR_0, resultIterator.next());
+                        break;
+                    case 1:
+                        Assert.assertEquals(STR_1, resultIterator.next());
+                        break;
+                    case 2:
+                        Assert.assertEquals(STR_2, resultIterator.next());
+                        break;
+                    case 3:
+                        Assert.assertEquals(STR_2, resultIterator.next());
+                        break;
+                }
+            }
+        }
+    }
+
+    @Test
+    public void test_skip() throws Exception {
+        List<String> list = ImmutableList.of(STR_0, STR_1, STR_2, STR_2);
+        Assert.assertTrue(Iterables.elementsEqual(Iterables.skip(list, 2), ImmutableList.of(STR_2, STR_2)));
+        Assert.assertTrue(Iterables.elementsEqual(Iterables.skip(list, 4), ImmutableList.of()));
+    }
+
+    @Test
+    public void test_consumingIterable() throws Exception {
+        List<String> list = Lists.newArrayList(STR_0, STR_1, STR_2, STR_2);
+        Iterable<String> consuming = Iterables.consumingIterable(list);
+        Assert.assertEquals(ImmutableList.of(STR_0, STR_1, STR_2, STR_2), list);
+
+        Assert.assertEquals(STR_0, consuming.iterator().next());
+        Assert.assertEquals(ImmutableList.of(STR_1, STR_2, STR_2), list);
+
+        Assert.assertEquals(STR_1, consuming.iterator().next());
+        Assert.assertEquals(ImmutableList.of(STR_2, STR_2), list);
+
+        Assert.assertEquals("["+STR_2+", "+STR_2+"]", Iterables.toString(consuming));
+        Assert.assertTrue(list.isEmpty());
+        Assert.assertFalse(consuming.iterator().hasNext());
+    }
+
+    @Test
+    public void test_isEmpty() throws Exception {
+        Assert.assertTrue(Iterables.isEmpty(ImmutableList.of()));
+        Assert.assertFalse(Iterables.isEmpty(ImmutableList.of(STR_0, STR_1, STR_2, STR_2)));
+    }
+
+    @Test
+    public void test_mergeSorted() throws Exception {
+        List<Integer> list1 = ImmutableList.of(1, 3, 5);
+        List<Integer> list2 = ImmutableList.of(2, 4);
+        List<Integer> list3 = ImmutableList.of(1, 2, 3);
+        List<Integer> list4 = ImmutableList.of(3, 2, 1);
+        Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(1, 1, 2, 2, 3, 3, 4, 5),
+                Iterables.mergeSorted(ImmutableList.of(list1, list2, list3), Ordering.natural())));
+        Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(1, 2, 3, 3, 2, 1, 4, 5),
+                Iterables.mergeSorted(ImmutableList.of(list1, list2, list4), Ordering.natural())));
     }
 }

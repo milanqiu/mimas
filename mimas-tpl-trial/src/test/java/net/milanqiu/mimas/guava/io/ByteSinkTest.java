@@ -3,12 +3,14 @@ package net.milanqiu.mimas.guava.io;
 import com.google.common.io.ByteSink;
 import com.google.common.io.CharSink;
 import com.google.common.io.Files;
+import net.milanqiu.mimas.io.FileUtils;
+import net.milanqiu.mimas.system.MimasTplTrialConvention;
 import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
@@ -16,63 +18,76 @@ import java.nio.charset.StandardCharsets;
 import static net.milanqiu.mimas.guava.io.GuavaIoTestUtils.*;
 
 /**
- * <p>Creation Date: 2014-10-29
+ * Creation Date: 2014-10-29
  * @author Milan Qiu
  */
 public class ByteSinkTest {
 
-    @Before
-    public void setUp() throws Exception {
-        GuavaIoTestUtils.assertTestFileNotExists();
-    }
+    private File workDir;
+    private File workFile;
 
     @After
     public void tearDown() throws Exception {
-        GuavaIoTestUtils.deleteTestFile();
+        if (workDir != null) {
+            FileUtils.deleteRecursively(workDir);
+            Assert.assertFalse(workDir.exists());
+        }
     }
 
     @Test
     public void test_openStream() throws Exception {
-        ByteSink bsnk = Files.asByteSink(TEST_FILE);
-        OutputStream os = bsnk.openStream();
-        try {
-            os.write(BYTE_ARR);
-            checkTestFileOfByte();
-        } finally {
-            os.close();
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        ByteSink bsnk = Files.asByteSink(workFile);
+        try (OutputStream os = bsnk.openStream()) {
+            os.write(ALL_BYTE_VALUES);
+            assertTestFileOfByte(workFile);
         }
     }
 
     @Test
     public void test_openBufferedStream() throws Exception {
-        ByteSink bsnk = Files.asByteSink(TEST_FILE);
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        ByteSink bsnk = Files.asByteSink(workFile);
         try (OutputStream os = bsnk.openBufferedStream()) {
-            os.write(BYTE_ARR);
-            os.flush();
-            checkTestFileOfByte();
+            os.write(ALL_BYTE_VALUES);
+            os.flush(); // this sentence can NOT be removed
+            assertTestFileOfByte(workFile);
         }
     }
 
     @Test
     public void test_write() throws Exception {
-        ByteSink bsnk = Files.asByteSink(TEST_FILE);
-        bsnk.write(BYTE_ARR);
-        checkTestFileOfByte();
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        ByteSink bsnk = Files.asByteSink(workFile);
+        bsnk.write(ALL_BYTE_VALUES);
+        assertTestFileOfByte(workFile);
     }
 
     @Test
     public void test_writeFrom() throws Exception {
-        InputStream is = new ByteArrayInputStream(BYTE_ARR);
-        ByteSink bsnk = Files.asByteSink(TEST_FILE);
-        Assert.assertEquals(BYTE_ARR_LEN, bsnk.writeFrom(is));
-        checkTestFileOfByte();
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        InputStream is = new ByteArrayInputStream(ALL_BYTE_VALUES);
+        ByteSink bsnk = Files.asByteSink(workFile);
+        Assert.assertEquals(ALL_BYTE_VALUES_LEN, bsnk.writeFrom(is));
+        assertTestFileOfByte(workFile);
     }
 
     @Test
     public void test_asCharSink() throws Exception {
-        ByteSink bsnk = Files.asByteSink(TEST_FILE);
+        workDir = MimasTplTrialConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        workFile = new File(workDir, "temp");
+
+        ByteSink bsnk = Files.asByteSink(workFile);
         CharSink cs = bsnk.asCharSink(StandardCharsets.UTF_8);
-        cs.write(STR_OF_CHAR_ARR);
-        checkTestFileOfChar();
+        cs.write(UNICODE_CHAR_VALUES_STR);
+        assertTestFileOfChar(workFile);
     }
 }
