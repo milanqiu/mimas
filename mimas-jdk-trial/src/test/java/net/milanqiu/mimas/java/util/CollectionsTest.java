@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.java.util;
 
 import net.milanqiu.mimas.instrumentation.DebugUtils;
-import net.milanqiu.mimas.string.StrUtils;
 import net.milanqiu.mimas.system.MimasJdkTrialConvention;
 import org.junit.Assert;
 import org.junit.Before;
@@ -54,7 +53,7 @@ public class CollectionsTest {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 10; i++) {
             Collections.shuffle(ints);
-            sb.append(ints).append(StrUtils.LINE_SEPARATOR);
+            sb.append(ints).append(System.lineSeparator());
         }
         MimasJdkTrialConvention.getSingleton().writeWorkFileInTestOutDir(sb.toString());
     }

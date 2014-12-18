@@ -2,7 +2,6 @@ package net.milanqiu.mimas.string;
 
 import net.milanqiu.mimas.lang.LangUtils;
 import net.milanqiu.mimas.lang.RunnableWithParam;
-import net.milanqiu.mimas.system.MimasJdkExtConvention;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,13 +10,6 @@ import org.junit.Test;
  * @author Milan Qiu
  */
 public class StrUtilsTest {
-
-    @Test
-    public void test_LINE_SEPARATOR() throws Exception {
-        StringBuilder sb = new StringBuilder();
-        sb.append(StrUtils.nativeToAscii(StrUtils.LINE_SEPARATOR));
-        MimasJdkExtConvention.getSingleton().writeWorkFileInTestOutDir(sb);
-    }
 
     @Test
     public void test_getValidUnicodeCharValues() throws Exception {

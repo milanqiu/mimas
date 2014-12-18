@@ -1,6 +1,5 @@
 package net.milanqiu.mimas.system;
 
-import net.milanqiu.mimas.string.StrUtils;
 import org.junit.Test;
 
 /**
@@ -12,7 +11,7 @@ public class SysUtilsTest {
     @Test
     public void test_getClassSourceLocation() throws Exception {
         StringBuilder sb = new StringBuilder();
-        sb.append(SysUtils.getClassSourceLocation(SysUtilsTest.class)).append(StrUtils.LINE_SEPARATOR);
+        sb.append(SysUtils.getClassSourceLocation(SysUtilsTest.class)).append(System.lineSeparator());
         sb.append(SysUtils.getClassSourceLocation(SysUtils.class));
         MimasJdkExtConvention.getSingleton().writeWorkFileInTestOutDir(sb);
     }
@@ -20,7 +19,7 @@ public class SysUtilsTest {
     @Test
     public void test_getClassSourceDir() throws Exception {
         StringBuilder sb = new StringBuilder();
-        sb.append(SysUtils.getClassSourceDir(SysUtilsTest.class)).append(StrUtils.LINE_SEPARATOR);
+        sb.append(SysUtils.getClassSourceDir(SysUtilsTest.class)).append(System.lineSeparator());
         sb.append(SysUtils.getClassSourceDir(SysUtils.class));
         MimasJdkExtConvention.getSingleton().writeWorkFileInTestOutDir(sb);
     }

@@ -30,11 +30,11 @@ public class GuavaIoTestUtils {
     public static final String UNICODE_CHAR_VALUES_STR = String.valueOf(UNICODE_CHAR_VALUES);
 
     public static final String MULTILINE_STR =
-                    STR_0 + StrUtils.LINE_SEPARATOR +
-                    STR_1 + StrUtils.LINE_SEPARATOR +
-                            StrUtils.LINE_SEPARATOR +
-                    STR_2 + StrUtils.LINE_SEPARATOR +
-                            StrUtils.LINE_SEPARATOR;
+                    STR_0 + System.lineSeparator() +
+                    STR_1 + System.lineSeparator() +
+                            System.lineSeparator() +
+                    STR_2 + System.lineSeparator() +
+                            System.lineSeparator();
     public static final int MULTILINE_STR_LEN = MULTILINE_STR.length();
     public static final List<String> MULTILINE_LIST = ImmutableList.of(STR_0, STR_1, "", STR_2, "");
 

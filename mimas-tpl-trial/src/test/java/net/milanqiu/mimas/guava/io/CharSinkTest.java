@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.io.CharSink;
 import com.google.common.io.Files;
 import net.milanqiu.mimas.io.FileUtils;
-import net.milanqiu.mimas.string.StrUtils;
 import net.milanqiu.mimas.system.MimasTplTrialConvention;
 import org.junit.After;
 import org.junit.Assert;
@@ -97,8 +96,8 @@ public class CharSinkTest {
         {
             CharSink csnk = Files.asCharSink(workFile, StandardCharsets.UTF_8);
             csnk.writeLines(
-                    ImmutableList.of(MULTILINE_STR.substring(0, MULTILINE_STR.length()-StrUtils.LINE_SEPARATOR.length())),
-                    StrUtils.LINE_SEPARATOR);
+                    ImmutableList.of(MULTILINE_STR.substring(0, MULTILINE_STR.length()-System.lineSeparator().length())),
+                    System.lineSeparator());
             assertTestFileOfText(workFile);
         }
     }

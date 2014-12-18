@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.instrumentation;
 
 import net.milanqiu.mimas.lang.MethodIdentifierList;
-import net.milanqiu.mimas.string.StrUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +91,7 @@ public class RunningTrace {
         StringBuilder sb = new StringBuilder();
         sb.append(getClass().getSimpleName()).append(":");
         for (RunningTraceElement element : elements) {
-            sb.append(StrUtils.LINE_SEPARATOR);
+            sb.append(System.lineSeparator());
             sb.append(element);
         }
         return sb.toString();

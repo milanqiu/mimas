@@ -25,11 +25,6 @@ public class StrUtils {
     public static final String STR_SPACE = " ";
 
     /**
-     * Line separator constant. Cross-platform.
-     */
-    public static final String LINE_SEPARATOR = System.getProperty("line.separator");
-
-    /**
      * Byte Order Mark of Unicode.
      */
     public static final char UNICODE_BOM = '\uFEFF';
