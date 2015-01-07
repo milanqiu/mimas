@@ -88,6 +88,9 @@ public class OrderedPropertiesTest {
             Assert.assertEquals("k1=v1",             fileLines[2]);
             Assert.assertEquals("k2=v2\u0001\uEEEE", fileLines[3]);
         }
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
     }
 
     @Test
@@ -116,5 +119,8 @@ public class OrderedPropertiesTest {
         Assert.assertEquals("<entry key=\"k1\">v1</entry>",       fileLines[4]);
         Assert.assertEquals("<entry key=\"k2\">v2\uEEEE</entry>", fileLines[5]);
         Assert.assertEquals("</properties>",                      fileLines[6]);
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
     }
 }

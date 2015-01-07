@@ -14,6 +14,7 @@ public class ConcurrentUtilsTest {
     @Test
     public void test_blockUncaughtExceptions_resetUncaughtExceptionHandler() throws Exception {
         ConcurrentUtils.blockUncaughtExceptions();
+        TimeUnit.MILLISECONDS.sleep(10);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -24,6 +25,7 @@ public class ConcurrentUtilsTest {
         TimeUnit.MILLISECONDS.sleep(10);
 
         ConcurrentUtils.resetUncaughtExceptionHandler();
+        TimeUnit.MILLISECONDS.sleep(10);
         new Thread(new Runnable() {
             @Override
             public void run() {
