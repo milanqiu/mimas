@@ -3,7 +3,6 @@ package net.milanqiu.mimas.guava.reflect;
 import com.google.common.reflect.AbstractInvocationHandler;
 import com.google.common.reflect.Reflection;
 import net.milanqiu.mimas.instrumentation.RunningTrace;
-import net.milanqiu.mimas.instrumentation.RunningTraceElement;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -40,7 +39,7 @@ public class ReflectionTest {
 
         Reflection.initialize(Foo.class);
         RunningTrace.Comparison comparison = traceTestInitialize.newComparison();
-        Assert.assertTrue(comparison.equalsExpectedAndNext(RunningTraceElement.SimplyExpected.create("Foo initializing")));
+        Assert.assertTrue(comparison.equalsExpectedAndNext("Foo initializing"));
         Assert.assertTrue(comparison.isEnd());
     }
 
@@ -78,7 +77,7 @@ public class ReflectionTest {
         task.execute();
 
         RunningTrace.Comparison comparison = traceTestNewProxy.newComparison();
-        Assert.assertTrue(comparison.equalsExpectedAndNext(RunningTraceElement.SimplyExpected.create("ActualWork executing")));
+        Assert.assertTrue(comparison.equalsExpectedAndNext("ActualWork executing"));
         Assert.assertTrue(comparison.isEnd());
     }
 }

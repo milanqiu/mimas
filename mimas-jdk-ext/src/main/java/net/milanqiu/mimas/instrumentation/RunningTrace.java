@@ -4,6 +4,7 @@ import net.milanqiu.mimas.lang.MethodIdentifierList;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A trace of program running. It is composed by a sequence of {@link RunningTraceElement} objects.
@@ -98,6 +99,22 @@ public class RunningTrace {
     }
 
     /**
+     * Returns the size of trace.
+     * @return the size of trace
+     */
+    public int size() {
+        return elements.size();
+    }
+
+    /**
+     * Returns whether the trace is empty.
+     * @return whether the trace is empty
+     */
+    public boolean isEmpty() {
+        return elements.isEmpty();
+    }
+
+    /**
      * A comparison process of {@link RunningTrace}.
      */
     public class Comparison {
@@ -120,33 +137,74 @@ public class RunningTrace {
         }
 
         /**
-         * Returns whether the current element is equal to the specified expected.
-         * @param expected the expected running trace element to be tested
-         * @return equality result
+         * Moves to the next element with the specified step for comparison.
+         * @param step the step to skip
          */
-        public boolean equalsExpected(RunningTraceElement.Expected expected) {
-            return RunningTrace.this.elements.get(cursor).equalsExpected(expected);
+        public void next(int step) {
+            cursor += step;
         }
 
         /**
-         * Returns whether the current element is equal to the specified expected. After comparison, it will moves to
-         * the next element.
+         * Returns the element of original running trace at the specified index.
+         * @param index the index to get element
+         * @return the element of original running trace at the specified index
+         */
+        private RunningTraceElement getElement(int index) {
+            return RunningTrace.this.elements.get(index);
+        }
+
+        /**
+         * Returns whether the current element is equal to the specified expected.
          * @param expected the expected running trace element to be tested
          * @return equality result
+         * @throws IndexOutOfBoundsException if the current element is out of trace range
+         */
+        public boolean equalsExpected(RunningTraceElement.Expected expected) {
+            return getElement(cursor).equalsExpected(expected);
+        }
+
+        /**
+         * Returns whether the tag of current element is equal to the specified expected tag.
+         * @param expectedTag the expected tag to be tested
+         * @return equality result
+         * @throws IndexOutOfBoundsException if the current element is out of trace range
+         */
+        public boolean equalsExpected(String expectedTag) {
+            return Objects.equals(getElement(cursor).getTag(), expectedTag);
+        }
+
+        /**
+         * Returns whether the current element is equal to the specified expected. After comparison
+         * (regardless of success or failure), it will moves to the next element.
+         * @param expected the expected running trace element to be tested
+         * @return equality result
+         * @throws IndexOutOfBoundsException if the current element is out of trace range
          */
         public boolean equalsExpectedAndNext(RunningTraceElement.Expected expected) {
-            return RunningTrace.this.elements.get(cursor++).equalsExpected(expected);
+            return getElement(cursor++).equalsExpected(expected);
+        }
+
+        /**
+         * Returns whether the tag of current element is equal to the specified expected tag. After comparison
+         * (regardless of success or failure), it will moves to the next element.
+         * @param expectedTag the expected tag to be tested
+         * @return equality result
+         * @throws IndexOutOfBoundsException if the current element is out of trace range
+         */
+        public boolean equalsExpectedAndNext(String expectedTag) {
+            return Objects.equals(getElement(cursor++).getTag(), expectedTag);
         }
 
         /**
          * Returns whether the next some elements are equal to the specified expected.
          * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
+         * @throws IndexOutOfBoundsException if any of next elements is out of trace range
          */
         public boolean equalsBatch(RunningTraceElement.Expected... expectedSequence) {
             int tempCursor = cursor;
             for (RunningTraceElement.Expected expected : expectedSequence) {
-                if (!RunningTrace.this.elements.get(tempCursor++).equalsExpected(expected))
+                if (!getElement(tempCursor++).equalsExpected(expected))
                     return false;
             }
             return true;
@@ -156,53 +214,89 @@ public class RunningTrace {
          * Returns whether the next some elements are equal to the specified expected.
          * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
+         * @throws IndexOutOfBoundsException if any of next elements is out of trace range
          */
         public boolean equalsBatch(Iterable<RunningTraceElement.Expected> expectedSequence) {
             int tempCursor = cursor;
             for (RunningTraceElement.Expected expected : expectedSequence) {
-                if (!RunningTrace.this.elements.get(tempCursor++).equalsExpected(expected))
+                if (!getElement(tempCursor++).equalsExpected(expected))
                     return false;
             }
             return true;
         }
 
         /**
-         * Returns whether the next some elements are equal to the specified expected. After comparison(regardless of
-         * success or failure), it will moves to the element next to all comparing elements.
+         * Returns whether the tags of next some elements are equal to the specified expected tag sequence.
+         * @param expectedTagSequence the expected tag sequence to be tested
+         * @return equality result
+         * @throws IndexOutOfBoundsException if any of next elements is out of trace range
+         */
+        public boolean equalsBatch(String... expectedTagSequence) {
+            int tempCursor = cursor;
+            for (String expectedTag : expectedTagSequence) {
+                if (!Objects.equals(getElement(tempCursor++).getTag(), expectedTag))
+                    return false;
+            }
+            return true;
+        }
+
+        /**
+         * Returns whether the next some elements are equal to the specified expected. After comparison
+         * (regardless of success or failure), it will moves to the element next to all comparing elements.
          * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
+         * @throws IndexOutOfBoundsException if any of next elements is out of trace range
          */
         public boolean equalsBatchAndNext(RunningTraceElement.Expected... expectedSequence) {
             int tempCursor = cursor;
             cursor += expectedSequence.length;
             for (RunningTraceElement.Expected expected : expectedSequence) {
-                if (!RunningTrace.this.elements.get(tempCursor++).equalsExpected(expected))
+                if (!getElement(tempCursor++).equalsExpected(expected))
                     return false;
             }
             return true;
         }
 
         /**
-         * Returns whether the next some elements are equal to the specified expected. After comparison(regardless of
-         * success or failure), it will moves to the element next to all comparing elements.
+         * Returns whether the next some elements are equal to the specified expected. After comparison
+         * (regardless of success or failure), it will moves to the element next to all comparing elements.
          * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
+         * @throws IndexOutOfBoundsException if any of next elements is out of trace range
          */
         public boolean equalsBatchAndNext(List<RunningTraceElement.Expected> expectedSequence) {
             int tempCursor = cursor;
             cursor += expectedSequence.size();
             for (RunningTraceElement.Expected expected : expectedSequence) {
-                if (!RunningTrace.this.elements.get(tempCursor++).equalsExpected(expected))
+                if (!getElement(tempCursor++).equalsExpected(expected))
                     return false;
             }
             return true;
         }
 
         /**
-         * Returns whether the next some elements are equal to the specified expected, ignoring the order of expected
-         * running trace element sequence.
+         * Returns whether the tags of next some elements are equal to the specified expected tag sequence. After comparison
+         * (regardless of success or failure), it will moves to the element next to all comparing elements.
+         * @param expectedTagSequence the expected tag sequence to be tested
+         * @return equality result
+         * @throws IndexOutOfBoundsException if any of next elements is out of trace range
+         */
+        public boolean equalsBatchAndNext(String... expectedTagSequence) {
+            int tempCursor = cursor;
+            cursor += expectedTagSequence.length;
+            for (String expectedTag : expectedTagSequence) {
+                if (!Objects.equals(getElement(tempCursor++).getTag(), expectedTag))
+                    return false;
+            }
+            return true;
+        }
+
+        /**
+         * Returns whether the next some elements are equal to the specified expected,
+         * ignoring the order of expected running trace element sequence.
          * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
+         * @throws IndexOutOfBoundsException if any of next elements is out of trace range
          */
         public boolean equalsBatchIgnoringOrder(RunningTraceElement.Expected... expectedSequence) {
             int count = expectedSequence.length;
@@ -215,6 +309,7 @@ public class RunningTrace {
                     if (actualSequence.get(i) != null && actualSequence.get(i).equalsExpected(expected)) {
                         found = true;
                         actualSequence.set(i, null);
+                        break;
                     }
                 }
                 if (!found)
@@ -224,10 +319,11 @@ public class RunningTrace {
         }
 
         /**
-         * Returns whether the next some elements are equal to the specified expected, ignoring the order of expected
-         * running trace element sequence.
+         * Returns whether the next some elements are equal to the specified expected,
+         * ignoring the order of expected running trace element sequence.
          * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
+         * @throws IndexOutOfBoundsException if any of next elements is out of trace range
          */
         public boolean equalsBatchIgnoringOrder(List<RunningTraceElement.Expected> expectedSequence) {
             int count = expectedSequence.size();
@@ -240,6 +336,7 @@ public class RunningTrace {
                     if (actualSequence.get(i) != null && actualSequence.get(i).equalsExpected(expected)) {
                         found = true;
                         actualSequence.set(i, null);
+                        break;
                     }
                 }
                 if (!found)
@@ -249,11 +346,39 @@ public class RunningTrace {
         }
 
         /**
-         * Returns whether the next some elements are equal to the specified expected, ignoring the order of expected
-         * running trace element sequence. After comparison(regardless of success or failure), it will moves to the
-         * element next to all comparing elements.
+         * Returns whether the tags of next some elements are equal to the specified expected tag sequence,
+         * ignoring the order of expected tag sequence.
+         * @param expectedTagSequence the expected tag sequence to be tested
+         * @return equality result
+         * @throws IndexOutOfBoundsException if any of next elements is out of trace range
+         */
+        public boolean equalsBatchIgnoringOrder(String... expectedTagSequence) {
+            int count = expectedTagSequence.length;
+            List<RunningTraceElement> actualSequence = new ArrayList<>(RunningTrace.this.elements.subList(cursor, cursor+count));
+            if (actualSequence.size() != count)
+                return false;
+            for (String expectedTag : expectedTagSequence) {
+                boolean found = false;
+                for (int i = 0; i < count; i++) {
+                    if (actualSequence.get(i) != null && Objects.equals(actualSequence.get(i).getTag(), expectedTag)) {
+                        found = true;
+                        actualSequence.set(i, null);
+                        break;
+                    }
+                }
+                if (!found)
+                    return false;
+            }
+            return true;
+        }
+
+        /**
+         * Returns whether the next some elements are equal to the specified expected,
+         * ignoring the order of expected running trace element sequence.
+         * After comparison(regardless of success or failure), it will moves to the element next to all comparing elements.
          * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
+         * @throws IndexOutOfBoundsException if any of next elements is out of trace range
          */
         public boolean equalsBatchIgnoringOrderAndNext(RunningTraceElement.Expected... expectedSequence) {
             int count = expectedSequence.length;
@@ -276,11 +401,12 @@ public class RunningTrace {
         }
 
         /**
-         * Returns whether the next some elements are equal to the specified expected, ignoring the order of expected
-         * running trace element sequence. After comparison(regardless of success or failure), it will moves to the
-         * element next to all comparing elements.
+         * Returns whether the next some elements are equal to the specified expected,
+         * ignoring the order of expected running trace element sequence.
+         * After comparison(regardless of success or failure), it will moves to the element next to all comparing elements.
          * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
+         * @throws IndexOutOfBoundsException if any of next elements is out of trace range
          */
         public boolean equalsBatchIgnoringOrderAndNext(List<RunningTraceElement.Expected> expectedSequence) {
             int count = expectedSequence.size();
@@ -292,6 +418,34 @@ public class RunningTrace {
                 boolean found = false;
                 for (int i = 0; i < count; i++) {
                     if (actualSequence.get(i) != null && actualSequence.get(i).equalsExpected(expected)) {
+                        found = true;
+                        actualSequence.set(i, null);
+                    }
+                }
+                if (!found)
+                    return false;
+            }
+            return true;
+        }
+
+        /**
+         * Returns whether the tags of next some elements are equal to the specified expected tag sequence,
+         * ignoring the order of expected tag sequence.
+         * After comparison(regardless of success or failure), it will moves to the element next to all comparing elements.
+         * @param expectedTagSequence the expected tag sequence to be tested
+         * @return equality result
+         * @throws IndexOutOfBoundsException if any of next elements is out of trace range
+         */
+        public boolean equalsBatchIgnoringOrderAndNext(String... expectedTagSequence) {
+            int count = expectedTagSequence.length;
+            List<RunningTraceElement> actualSequence = new ArrayList<>(RunningTrace.this.elements.subList(cursor, cursor+count));
+            cursor += count;
+            if (actualSequence.size() != count)
+                return false;
+            for (String expectedTag : expectedTagSequence) {
+                boolean found = false;
+                for (int i = 0; i < count; i++) {
+                    if (actualSequence.get(i) != null && Objects.equals(actualSequence.get(i).getTag(), expectedTag)) {
                         found = true;
                         actualSequence.set(i, null);
                     }

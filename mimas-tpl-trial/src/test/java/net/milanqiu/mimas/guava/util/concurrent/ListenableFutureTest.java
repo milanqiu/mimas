@@ -3,7 +3,6 @@ package net.milanqiu.mimas.guava.util.concurrent;
 import com.google.common.util.concurrent.*;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.instrumentation.RunningTrace;
-import net.milanqiu.mimas.instrumentation.RunningTraceElement;
 import net.milanqiu.mimas.instrumentation.exception.DeliberateException;
 import org.junit.Assert;
 import org.junit.Test;
@@ -46,9 +45,9 @@ public class ListenableFutureTest {
         RunningTrace.Comparison comparison = runningTrace.newComparison();
         // it seems "Callable returned" always tracks before "Listener invoked"
         Assert.assertTrue(comparison.equalsBatchAndNext(
-                RunningTraceElement.SimplyExpected.create("Callable invoked"),
-                RunningTraceElement.SimplyExpected.create("Callable returned"),
-                RunningTraceElement.SimplyExpected.create("Listener invoked")
+                "Callable invoked",
+                "Callable returned",
+                "Listener invoked"
         ));
         Assert.assertTrue(comparison.isEnd());
     }
@@ -84,13 +83,13 @@ public class ListenableFutureTest {
 
         RunningTrace.Comparison comparison = runningTrace.newComparison();
         Assert.assertTrue(comparison.equalsExpectedAndNext(
-                RunningTraceElement.SimplyExpected.create("Callable invoked")
+                "Callable invoked"
         ));
         // when runs this test case in IDE, "Callback invoked" tracks before "Callable returned"
         // when runs this test case in Maven, "Callable returned" tracks before "Callback invoked"
         Assert.assertTrue(comparison.equalsBatchIgnoringOrderAndNext(
-                RunningTraceElement.SimplyExpected.create("Callback invoked : Callable returned"),
-                RunningTraceElement.SimplyExpected.create("Callable returned")
+                "Callback invoked : Callable returned",
+                "Callable returned"
         ));
         Assert.assertTrue(comparison.isEnd());
     }
@@ -133,8 +132,8 @@ public class ListenableFutureTest {
 
         RunningTrace.Comparison comparison = runningTrace.newComparison();
         Assert.assertTrue(comparison.equalsBatchAndNext(
-                RunningTraceElement.SimplyExpected.create("Callable invoked"),
-                RunningTraceElement.SimplyExpected.create("Callback failed : Deliberate Exception")
+                "Callable invoked",
+                "Callback failed : Deliberate Exception"
         ));
         Assert.assertTrue(comparison.isEnd());
     }

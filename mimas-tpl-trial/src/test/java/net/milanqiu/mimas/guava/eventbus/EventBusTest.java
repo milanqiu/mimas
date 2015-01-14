@@ -5,7 +5,6 @@ import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.instrumentation.RunningTrace;
-import net.milanqiu.mimas.instrumentation.RunningTraceElement;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -89,7 +88,7 @@ public class EventBusTest {
         eventBus.post(new RealEvent(INT_0));
 
         RunningTrace.Comparison comparison = runningTrace.newComparison();
-        Assert.assertTrue(comparison.equalsExpectedAndNext(RunningTraceElement.SimplyExpected.create("RealEvent listening")));
+        Assert.assertTrue(comparison.equalsExpectedAndNext("RealEvent listening"));
         Assert.assertTrue(comparison.isEnd());
     }
 
@@ -107,7 +106,7 @@ public class EventBusTest {
         eventBus.post(new WildEvent(INT_2));
 
         RunningTrace.Comparison comparison = runningTrace.newComparison();
-        Assert.assertTrue(comparison.equalsExpectedAndNext(RunningTraceElement.SimplyExpected.create("DeadEvent listening")));
+        Assert.assertTrue(comparison.equalsExpectedAndNext("DeadEvent listening"));
         Assert.assertTrue(comparison.isEnd());
     }
 }
