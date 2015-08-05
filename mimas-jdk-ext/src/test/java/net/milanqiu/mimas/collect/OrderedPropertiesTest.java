@@ -116,8 +116,8 @@ public class OrderedPropertiesTest {
         String[] fileLines = fileContent.split(System.lineSeparator());
         Assert.assertEquals("<properties>",                       fileLines[2]);
         Assert.assertEquals("<comment>comment</comment>",         fileLines[3]);
-        Assert.assertEquals("<entry key=\"k1\">v1</entry>",       fileLines[4]);
-        Assert.assertEquals("<entry key=\"k2\">v2\uEEEE</entry>", fileLines[5]);
+        Assert.assertEquals("<entry key=\"k2\">v2\uEEEE</entry>", fileLines[4]);
+        Assert.assertEquals("<entry key=\"k1\">v1</entry>",       fileLines[5]);
         Assert.assertEquals("</properties>",                      fileLines[6]);
 
         FileUtils.deleteRecursively(workDir);
