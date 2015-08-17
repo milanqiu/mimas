@@ -11,19 +11,16 @@
         <relativePath>../mimas-parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>mimas-jdk-trial</artifactId>
-    <name>Mimas JDK Trial</name>
-    <description>For the purpose of showing how to use JDK</description>
+    <artifactId>mimas-test-ext</artifactId>
+    <name>Mimas Test Scope Extension APIs</name>
 
     <dependencies>
-        <!-- mimas itself -->
+        <!-- junit(scope changed) -->
         <dependency>
-            <groupId>net.milanqiu.mimas</groupId>
-            <artifactId>mimas-test-ext</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.milanqiu.mimas</groupId>
-            <artifactId>mimas-jdk-ext</artifactId>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
