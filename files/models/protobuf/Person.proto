@@ -1,9 +1,0 @@
-package trial;
-
-option java_package = "net.milanqiu.mimas.protobuf.generated";
-option java_outer_classname = "PersonProto";
-
-message Person {
-    required int32 id = 1; // Person Id.
-    required string name = 2; // Person Name.
-}
