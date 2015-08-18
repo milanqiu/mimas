@@ -9,18 +9,127 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Mimas Aggregator</name>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <description>Mimas Aggregator &amp; Parent</description>
 
     <modules>
-        <module>../mimas-parent</module>
         <module>../mimas-test-ext</module>
         <module>../mimas-jdk-ext</module>
         <module>../mimas-tpl-ext</module>
         <module>../mimas-jdk-trial</module>
         <module>../mimas-tpl-trial</module>
     </modules>
+
+    <dependencies>
+        <!-- test -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- mimas itself -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>mimas-test-ext</artifactId>
+                <version>${project.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>mimas-jdk-ext</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>mimas-tpl-ext</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- fundamental -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>18.0</version>
+            </dependency>
+            <!-- json -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.2.4</version>
+            </dependency>
+            <!-- xml -->
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>1.6.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-digester3</artifactId>
+                <version>3.2</version>
+            </dependency>
+            <!-- binary serialization -->
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>2.5.0</version>
+            </dependency>
+            <!-- datetime -->
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>2.2.1</version>
+            </dependency>
+            <!-- database -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.29</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jolbox</groupId>
+                <artifactId>bonecp</artifactId>
+                <version>0.8.0.RELEASE</version>
+            </dependency>
+            <!-- logging -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>1.1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-access</artifactId>
+                <version>1.1.2</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.custom.jdkVersion>1.8</project.custom.jdkVersion>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${project.custom.jdkVersion}</source>
+                    <target>${project.custom.jdkVersion}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
