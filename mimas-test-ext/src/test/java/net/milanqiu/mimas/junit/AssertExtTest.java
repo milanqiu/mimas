@@ -1,19 +1,22 @@
 package net.milanqiu.mimas.junit;
 
-import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.Test;
 
 /**
- * <p>Creation Date: 2014-7-8
+ * Creation Date: 2014-07-08
  * @author Milan Qiu
  */
 public class AssertExtTest {
+
+    private static final boolean WILL_EXECUTE_FAILED_ASSERTION = false;
 
     @Test
     public void test_assertClassification() throws Exception {
         AssertExt.assertClassification(Integer.class, 123);
         AssertExt.assertClassification(String.class, "abc");
-        AssertExt.assertClassification(ArithmeticException.class, new ArithmeticException());
+        AssertExt.assertClassification(IndexOutOfBoundsException.class, new IndexOutOfBoundsException());
+        AssertExt.assertClassification(IndexOutOfBoundsException.class, new ArrayIndexOutOfBoundsException());
     }
 
     private boolean bool;
@@ -35,8 +38,8 @@ public class AssertExtTest {
         AssertExt.assertDefault((short) 0);
         AssertExt.assertDefault(0);
         AssertExt.assertDefault(0L);
-        AssertExt.assertDefault(0.0F);
-        AssertExt.assertDefault(0.0D);
+        AssertExt.assertDefault(0.0f);
+        AssertExt.assertDefault(0.0d);
         AssertExt.assertDefault(null);
 
         AssertExt.assertDefault(bool);
@@ -52,19 +55,42 @@ public class AssertExtTest {
     }
 
     @Test
-    public void test_assertNullOrEmpty() throws Exception {
-        AssertExt.assertNullOrEmpty(null);
-        AssertExt.assertNullOrEmpty("");
-    }
-
-    @Test
     public void test_assertEmpty() throws Exception {
         AssertExt.assertEmpty("");
     }
 
     @Test
-    public void test_assertHasDefaultToString() throws Exception {
-        AssertExt.assertHasDefaultToString(new Object());
-        AssertExt.assertHasDefaultToString(this);
+    public void test_assertNullOrEmpty() throws Exception {
+        AssertExt.assertNullOrEmpty(null);
+        AssertExt.assertNullOrEmpty("");
+    }
+
+    private static class A {}
+
+    private static class B extends A {
+        @Override
+        public String toString() {
+            return super.toString();
+        }
+    }
+
+    private static class C extends B {}
+
+    @Test
+    public void test_assertHasCustomToString() throws Exception {
+        AssertExt.assertHasCustomToString(new Object());
+        AssertExt.assertHasCustomToString(new B());
+    }
+
+    @Test
+    public void test_assertHasCustomToString_fail() throws Exception {
+        Assume.assumeTrue(WILL_EXECUTE_FAILED_ASSERTION);
+        AssertExt.assertHasCustomToString(new A());
+    }
+
+    @Test
+    public void test_assertHasCustomToString_fail2() throws Exception {
+        Assume.assumeTrue(WILL_EXECUTE_FAILED_ASSERTION);
+        AssertExt.assertHasCustomToString(new C());
     }
 }
