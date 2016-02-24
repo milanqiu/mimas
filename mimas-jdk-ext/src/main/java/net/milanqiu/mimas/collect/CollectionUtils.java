@@ -1,12 +1,14 @@
 package net.milanqiu.mimas.collect;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Utilities related to collection.
  * <p>
- * Creation Date: 2014-7-25
+ * Creation Date: 2014-07-25
  * @author Milan Qiu
  */
 public class CollectionUtils {
@@ -34,10 +36,26 @@ public class CollectionUtils {
     }
 
     /**
-     * Compares two {@link java.lang.Iterable} objects ignoring the element order.
+     * Compares two {@link java.lang.Iterable} objects, regardless of their actual types.
      * @param itr1 the first {@link java.lang.Iterable} object to be compared
      * @param itr2 the second {@link java.lang.Iterable} object to be compared
-     * @return {@code true} if elements of two {@link java.lang.Iterable} objects are equal ignoring the element order
+     * @return {@code true} if size of two {@link java.lang.Iterable} objects are equal and their elements are equal one by one
+     */
+    public static <T> boolean equals(Iterable<? extends T> itr1, Iterable<? extends T> itr2) {
+        Iterator itor1 = itr1.iterator();
+        Iterator itor2 = itr2.iterator();
+        while (itor1.hasNext() && itor2.hasNext()) {
+            if (!Objects.equals(itor1.next(), itor2.next()))
+                return false;
+        }
+        return (!itor1.hasNext() && !itor2.hasNext());
+    }
+
+    /**
+     * Compares two {@link java.lang.Iterable} objects ignoring the element order, regardless of their actual types..
+     * @param itr1 the first {@link java.lang.Iterable} object to be compared
+     * @param itr2 the second {@link java.lang.Iterable} object to be compared
+     * @return {@code true} if size of two {@link java.lang.Iterable} objects are equal and their elements are equal ignoring the element order
      */
     public static <T> boolean equalsIgnoringOrder(Iterable<? extends T> itr1, Iterable<? extends T> itr2) {
         Map<T, Integer> itr1Elements = countsOccurrence(itr1);
@@ -52,11 +70,6 @@ public class CollectionUtils {
      * @return the sum of length
      */
     public static int getSumLength(Iterable<String> itr) {
-        int result = 0;
-        for (String element : itr) {
-            if (element != null)
-                result += element.length();
-        }
-        return result;
+        return StreamUtils.parallelStreamOf(itr).filter(e -> e!=null).mapToInt(String::length).sum();
     }
 }

@@ -1,10 +1,10 @@
 package net.milanqiu.mimas.instrumentation;
 
-import net.milanqiu.mimas.lang.MethodIdentifierList;
+import net.milanqiu.mimas.collect.tuple.StrStr;
+import net.milanqiu.mimas.lang.StackTrace;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * A trace of program running. It is composed by a sequence of {@link RunningTraceElement} objects.
@@ -23,11 +23,11 @@ public class RunningTrace {
     public RunningTraceElement track() {
         RunningTraceElement result = new RunningTraceElement();
         elements.add(result);
-        result.setStack(DebugUtils.removeStackTraceTopElements(Thread.currentThread().getStackTrace(),
-                MethodIdentifierList.create(
-                        this.getClass().getName(), "track",
-                        this.getClass().getName(), "trackMethodBeginning",
-                        this.getClass().getName(), "trackMethodEnd"
+        result.setStackTrace(StackTrace.createFromCurrentThread().removeTopElements(
+                StackTrace.createFromMethodIdentifiers(StrStr.createList(
+                                this.getClass().getName(), "track",
+                                this.getClass().getName(), "trackMethodBeginning",
+                                this.getClass().getName(), "trackMethodEnd")
                 )));
         return result;
     }
@@ -87,17 +87,6 @@ public class RunningTrace {
         return result;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName()).append(":");
-        for (RunningTraceElement element : elements) {
-            sb.append(System.lineSeparator());
-            sb.append(element);
-        }
-        return sb.toString();
-    }
-
     /**
      * Returns the size of trace.
      * @return the size of trace
@@ -112,6 +101,40 @@ public class RunningTrace {
      */
     public boolean isEmpty() {
         return elements.isEmpty();
+    }
+
+    /**
+     * Returns a string representation of this object.
+     * The string representation consists of a list of elements, leading by simple class name and colon(":").
+     * Adjacent elements are separated by line separator.
+     * @return a string representation of this object
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName()).append(":");
+        for (RunningTraceElement element : elements) {
+            sb.append(System.lineSeparator());
+            sb.append(element);
+        }
+        return sb.toString();
+    }
+
+    /**
+     * Returns a full string representation of this object.
+     * The full string representation consists of a list of full string representations of elements,
+     * leading by simple class name and colon(":").
+     * Adjacent elements are separated by line separator.
+     * @return a full string representation of this object
+     */
+    public String toFullString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName()).append(":");
+        for (RunningTraceElement element : elements) {
+            sb.append(System.lineSeparator());
+            sb.append(element.toFullString());
+        }
+        return sb.toString();
     }
 
     /**
@@ -145,6 +168,14 @@ public class RunningTrace {
         }
 
         /**
+         * Returns whether it reaches the end of running trace.
+         * @return {@code true} if it reaches the end of running trace
+         */
+        public boolean isEnd() {
+            return cursor == RunningTrace.this.elements.size();
+        }
+
+        /**
          * Returns the element of original running trace at the specified index.
          * @param index the index to get element
          * @return the element of original running trace at the specified index
@@ -170,12 +201,12 @@ public class RunningTrace {
          * @throws IndexOutOfBoundsException if the current element is out of trace range
          */
         public boolean equalsExpected(String expectedTag) {
-            return Objects.equals(getElement(cursor).getTag(), expectedTag);
+            return getElement(cursor).equalsTag(expectedTag);
         }
 
         /**
-         * Returns whether the current element is equal to the specified expected. After comparison
-         * (regardless of success or failure), it will moves to the next element.
+         * Returns whether the current element is equal to the specified expected.
+         * After comparison(regardless of success or failure), it will moves to the next element.
          * @param expected the expected running trace element to be tested
          * @return equality result
          * @throws IndexOutOfBoundsException if the current element is out of trace range
@@ -185,14 +216,14 @@ public class RunningTrace {
         }
 
         /**
-         * Returns whether the tag of current element is equal to the specified expected tag. After comparison
-         * (regardless of success or failure), it will moves to the next element.
+         * Returns whether the tag of current element is equal to the specified expected tag.
+         * After comparison(regardless of success or failure), it will moves to the next element.
          * @param expectedTag the expected tag to be tested
          * @return equality result
          * @throws IndexOutOfBoundsException if the current element is out of trace range
          */
         public boolean equalsExpectedAndNext(String expectedTag) {
-            return Objects.equals(getElement(cursor++).getTag(), expectedTag);
+            return getElement(cursor++).equalsTag(expectedTag);
         }
 
         /**
@@ -234,15 +265,15 @@ public class RunningTrace {
         public boolean equalsBatch(String... expectedTagSequence) {
             int tempCursor = cursor;
             for (String expectedTag : expectedTagSequence) {
-                if (!Objects.equals(getElement(tempCursor++).getTag(), expectedTag))
+                if (!getElement(tempCursor++).equalsTag(expectedTag))
                     return false;
             }
             return true;
         }
 
         /**
-         * Returns whether the next some elements are equal to the specified expected. After comparison
-         * (regardless of success or failure), it will moves to the element next to all comparing elements.
+         * Returns whether the next some elements are equal to the specified expected.
+         * After comparison(regardless of success or failure), it will moves to the element next to all comparing elements.
          * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
          * @throws IndexOutOfBoundsException if any of next elements is out of trace range
@@ -258,8 +289,8 @@ public class RunningTrace {
         }
 
         /**
-         * Returns whether the next some elements are equal to the specified expected. After comparison
-         * (regardless of success or failure), it will moves to the element next to all comparing elements.
+         * Returns whether the next some elements are equal to the specified expected.
+         * After comparison(regardless of success or failure), it will moves to the element next to all comparing elements.
          * @param expectedSequence the expected running trace element sequence to be tested
          * @return equality result
          * @throws IndexOutOfBoundsException if any of next elements is out of trace range
@@ -275,8 +306,8 @@ public class RunningTrace {
         }
 
         /**
-         * Returns whether the tags of next some elements are equal to the specified expected tag sequence. After comparison
-         * (regardless of success or failure), it will moves to the element next to all comparing elements.
+         * Returns whether the tags of next some elements are equal to the specified expected tag sequence.
+         * After comparison(regardless of success or failure), it will moves to the element next to all comparing elements.
          * @param expectedTagSequence the expected tag sequence to be tested
          * @return equality result
          * @throws IndexOutOfBoundsException if any of next elements is out of trace range
@@ -285,7 +316,7 @@ public class RunningTrace {
             int tempCursor = cursor;
             cursor += expectedTagSequence.length;
             for (String expectedTag : expectedTagSequence) {
-                if (!Objects.equals(getElement(tempCursor++).getTag(), expectedTag))
+                if (!getElement(tempCursor++).equalsTag(expectedTag))
                     return false;
             }
             return true;
@@ -360,7 +391,7 @@ public class RunningTrace {
             for (String expectedTag : expectedTagSequence) {
                 boolean found = false;
                 for (int i = 0; i < count; i++) {
-                    if (actualSequence.get(i) != null && Objects.equals(actualSequence.get(i).getTag(), expectedTag)) {
+                    if (actualSequence.get(i) != null && actualSequence.get(i).equalsTag(expectedTag)) {
                         found = true;
                         actualSequence.set(i, null);
                         break;
@@ -445,7 +476,7 @@ public class RunningTrace {
             for (String expectedTag : expectedTagSequence) {
                 boolean found = false;
                 for (int i = 0; i < count; i++) {
-                    if (actualSequence.get(i) != null && Objects.equals(actualSequence.get(i).getTag(), expectedTag)) {
+                    if (actualSequence.get(i) != null && actualSequence.get(i).equalsTag(expectedTag)) {
                         found = true;
                         actualSequence.set(i, null);
                     }
@@ -454,14 +485,6 @@ public class RunningTrace {
                     return false;
             }
             return true;
-        }
-
-        /**
-         * Returns whether it reaches the end of running trace.
-         * @return {@code true} if it reaches the end of running trace
-         */
-        public boolean isEnd() {
-            return cursor == RunningTrace.this.elements.size();
         }
     }
 

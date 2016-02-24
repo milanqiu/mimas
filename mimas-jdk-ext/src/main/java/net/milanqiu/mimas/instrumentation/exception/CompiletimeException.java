@@ -7,7 +7,7 @@ package net.milanqiu.mimas.instrumentation.exception;
  * <p>
  * If a method throws {@code CompiletimeException}, it is shouting "NEVER CALL ME!".
  * <p>
- * Creation Date: 2014-2-8
+ * Creation Date: 2014-02-08
  * @author Milan Qiu
  */
 public class CompiletimeException extends Error {

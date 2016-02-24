@@ -3,7 +3,7 @@ package net.milanqiu.mimas.string;
 /**
  * Declares a variety of regular expression constants.
  * <p>
- * Creation Date: 2014-9-26
+ * Creation Date: 2014-09-26
  * @author Milan Qiu
  */
 public class RegExpConsts {

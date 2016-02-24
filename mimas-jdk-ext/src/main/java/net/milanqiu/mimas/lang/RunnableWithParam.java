@@ -1,93 +1,101 @@
 package net.milanqiu.mimas.lang;
 
 /**
- * Like {@link java.lang.Runnable}, but accepts a parameter when running.
+ * Likes {@link java.lang.Runnable}, but accepts a parameter when running.
  * <p>
- * Creation Date: 2014-11-9
+ * Creation Date: 2014-11-09
  * @author Milan Qiu
  */
+@FunctionalInterface
 public interface RunnableWithParam<T> {
 
     /**
      * May take any action whatsoever with the specified parameter.
      * @param param the parameter to be passed
      */
-    public void run(T param);
+    void run(T param);
 
     /**
-     * Like {@link RunnableWithParam}, but accepts a specific character parameter to avoid wrapping.
+     * Likes {@link RunnableWithParam}, but accepts a specific character parameter to avoid wrapping.
      */
-    public interface WithChar {
+    @FunctionalInterface
+    interface WithChar {
         /**
          * May take any action whatsoever with the specified parameter.
          * @param param the parameter to be passed
          */
-        public void run(char param);
+        void run(char param);
     }
 
     /**
-     * Like {@link RunnableWithParam}, but accepts a specific byte parameter to avoid wrapping.
+     * Likes {@link RunnableWithParam}, but accepts a specific byte parameter to avoid wrapping.
      */
-    public interface WithByte {
+    @FunctionalInterface
+    interface WithByte {
         /**
          * May take any action whatsoever with the specified parameter.
          * @param param the parameter to be passed
          */
-        public void run(byte param);
+        void run(byte param);
     }
 
     /**
-     * Like {@link RunnableWithParam}, but accepts a specific short parameter to avoid wrapping.
+     * Likes {@link RunnableWithParam}, but accepts a specific short parameter to avoid wrapping.
      */
-    public interface WithShort {
+    @FunctionalInterface
+    interface WithShort {
         /**
          * May take any action whatsoever with the specified parameter.
          * @param param the parameter to be passed
          */
-        public void run(short param);
+        void run(short param);
     }
 
     /**
-     * Like {@link RunnableWithParam}, but accepts a specific integer parameter to avoid wrapping.
+     * Likes {@link RunnableWithParam}, but accepts a specific integer parameter to avoid wrapping.
      */
-    public interface WithInt {
+    @FunctionalInterface
+    interface WithInt {
         /**
          * May take any action whatsoever with the specified parameter.
          * @param param the parameter to be passed
          */
-        public void run(int param);
+        void run(int param);
     }
 
     /**
-     * Like {@link RunnableWithParam}, but accepts a specific long parameter to avoid wrapping.
+     * Likes {@link RunnableWithParam}, but accepts a specific long parameter to avoid wrapping.
      */
-    public interface WithLong {
+    @FunctionalInterface
+    interface WithLong {
         /**
          * May take any action whatsoever with the specified parameter.
          * @param param the parameter to be passed
          */
-        public void run(long param);
+        void run(long param);
     }
 
     /**
-     * Like {@link RunnableWithParam}, but accepts a specific float parameter to avoid wrapping.
+     * Likes {@link RunnableWithParam}, but accepts a specific float parameter to avoid wrapping.
      */
-    public interface WithFloat {
+    @FunctionalInterface
+    interface WithFloat {
         /**
          * May take any action whatsoever with the specified parameter.
          * @param param the parameter to be passed
          */
-        public void run(float param);
+        void run(float param);
     }
 
     /**
-     * Like {@link RunnableWithParam}, but accepts a specific double parameter to avoid wrapping.
+     * Likes {@link RunnableWithParam}, but accepts a specific double parameter to avoid wrapping.
      */
-    public interface WithDouble {
+    @FunctionalInterface
+    interface WithDouble {
         /**
          * May take any action whatsoever with the specified parameter.
          * @param param the parameter to be passed
          */
-        public void run(double param);
+        void run(double param);
     }
 }

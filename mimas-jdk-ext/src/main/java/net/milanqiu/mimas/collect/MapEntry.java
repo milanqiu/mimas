@@ -1,14 +1,15 @@
 package net.milanqiu.mimas.collect;
 
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * A direct and visible implementation of {@link java.util.Map.Entry}.
  * <p>
- * All other implementations of {@link java.util.Map.Entry} are inner classes, such as {@link java.util.HashMap.Entry}.
+ * All other implementations of {@link java.util.Map.Entry} are inner classes, such as {@link java.util.HashMap.Node}.
  * They are tightly coupling with outer classes and hard to be used.
  * <p>
- * Creation Date: 2014-7-25
+ * Creation Date: 2014-07-25
  * @author Milan Qiu
  */
 public class MapEntry<K, V> implements Map.Entry<K, V> {
@@ -42,27 +43,22 @@ public class MapEntry<K, V> implements Map.Entry<K, V> {
     }
 
     @Override
-    public V setValue(V value) {
-        // use the same implementation as HashMap.Entry
-        V oldValue = this.value;
-        this.value = value;
+    public final V setValue(V newValue) {
+        // use the same implementation as HashMap.Node
+        V oldValue = value;
+        value = newValue;
         return oldValue;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
+        // use the same implementation as HashMap.Node
+        if (o == this)
             return true;
-        // use the same implementation as HashMap.Entry
-        if (!(o instanceof Map.Entry))
-            return false;
-        Map.Entry e = (Map.Entry)o;
-        Object k1 = getKey();
-        Object k2 = e.getKey();
-        if (k1 == k2 || (k1 != null && k1.equals(k2))) {
-            Object v1 = getValue();
-            Object v2 = e.getValue();
-            if (v1 == v2 || (v1 != null && v1.equals(v2)))
+        if (o instanceof Map.Entry) {
+            Map.Entry<?,?> e = (Map.Entry<?,?>)o;
+            if (Objects.equals(key, e.getKey()) &&
+                    Objects.equals(value, e.getValue()))
                 return true;
         }
         return false;
@@ -70,14 +66,13 @@ public class MapEntry<K, V> implements Map.Entry<K, V> {
 
     @Override
     public int hashCode() {
-        // use the same implementation as HashMap.Entry
-        return (key==null   ? 0 : key.hashCode()) ^
-               (value==null ? 0 : value.hashCode());
+        // use the same implementation as HashMap.Node
+        return Objects.hashCode(key) ^ Objects.hashCode(value);
     }
 
     @Override
     public String toString() {
-        // use the same implementation as HashMap.Entry
-        return getKey() + "=" + getValue();
+        // use the same implementation as HashMap.Node
+        return key + "=" + value;
     }
 }

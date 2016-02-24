@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.instrumentation;
 
-import net.milanqiu.mimas.lang.MethodIdentifier;
-import net.milanqiu.mimas.lang.MethodIdentifierList;
+import net.milanqiu.mimas.lang.StackTrace;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,75 +10,49 @@ import org.junit.Test;
  */
 public class DebugUtilsTest {
 
-    private StackTraceElement[] getStackTraceReally() {
-        return Thread.currentThread().getStackTrace();
-    }
-
-    private StackTraceElement[] getStackTrace() {
-        return getStackTraceReally();
-    }
-
-    @Test
-    public void test_removeStackTraceTopElements() throws Exception {
-        StackTraceElement[] currStackTrace = DebugUtils.removeStackTraceTopElements(Thread.currentThread().getStackTrace(),
-                MethodIdentifierList.create());
-        StackTraceElement[] processedStackTrace = DebugUtils.removeStackTraceTopElements(getStackTrace(),
-                MethodIdentifierList.create(this.getClass().getName(), "getStackTrace",
-                                            this.getClass().getName(), "getStackTraceReally"));
-
-        Assert.assertEquals(currStackTrace.length, processedStackTrace.length);
-        for (int i = 0; i < currStackTrace.length; i++) {
-            Assert.assertEquals(currStackTrace[i].getFileName(), processedStackTrace[i].getFileName());
-            Assert.assertEquals(currStackTrace[i].getClassName(), processedStackTrace[i].getClassName());
-            Assert.assertEquals(currStackTrace[i].getMethodName(), processedStackTrace[i].getMethodName());
-            if (i != 0)
-                Assert.assertEquals(currStackTrace[i].getLineNumber(), processedStackTrace[i].getLineNumber());
-        }
-    }
-
-    private void getCurrentStackTraceElementAnother() {
-        StackTraceElement ste = DebugUtils.getCurrentStackTraceElement();
-        Assert.assertEquals(this.getClass().getName(), ste.getClassName());
-        Assert.assertEquals("getCurrentStackTraceElementAnother", ste.getMethodName());
-    }
-
-    @Test
-    public void test_getCurrentStackTraceElement() throws Exception {
-        StackTraceElement ste = DebugUtils.getCurrentStackTraceElement();
-        Assert.assertEquals(this.getClass().getName(), ste.getClassName());
-        Assert.assertEquals("test_getCurrentStackTraceElement", ste.getMethodName());
-
-        getCurrentStackTraceElementAnother();
-    }
-
-    private void getCurrentMethodAnother() {
-        MethodIdentifier mi = DebugUtils.getCurrentMethod();
-        Assert.assertEquals(this.getClass().getName(), mi.getClassName());
-        Assert.assertEquals("getCurrentMethodAnother", mi.getMethodName());
+    private void getCurrentMethodInEncapsulation() {
+        StackTraceElement method = DebugUtils.getCurrentMethod();
+        Assert.assertEquals(this.getClass().getName(), method.getClassName());
+        Assert.assertEquals("getCurrentMethodInEncapsulation", method.getMethodName());
     }
 
     @Test
     public void test_getCurrentMethod() throws Exception {
-        MethodIdentifier mi = DebugUtils.getCurrentMethod();
-        Assert.assertEquals(this.getClass().getName(), mi.getClassName());
-        Assert.assertEquals("test_getCurrentMethod", mi.getMethodName());
+        StackTraceElement method = DebugUtils.getCurrentMethod();
+        Assert.assertEquals(this.getClass().getName(), method.getClassName());
+        Assert.assertEquals("test_getCurrentMethod", method.getMethodName());
 
-        getCurrentMethodAnother();
+        getCurrentMethodInEncapsulation();
     }
 
-    private void getActualCurrentMethodAnother() {
-        MethodIdentifier mi = DebugUtils.getActualCurrentMethod(
-                MethodIdentifierList.create(this.getClass().getName(), "getActualCurrentMethodAnother"));
-        Assert.assertEquals(this.getClass().getName(), mi.getClassName());
-        Assert.assertEquals("test_getActualCurrentMethod", mi.getMethodName());
+    private void getInvokerMethodInEncapsulation() {
+        StackTraceElement method = DebugUtils.getInvokerMethod();
+        Assert.assertEquals(this.getClass().getName(), method.getClassName());
+        Assert.assertEquals("test_getInvokerMethod", method.getMethodName());
     }
 
     @Test
-    public void test_getActualCurrentMethod() throws Exception {
-        MethodIdentifier mi = DebugUtils.getActualCurrentMethod(MethodIdentifierList.create());
-        Assert.assertEquals(this.getClass().getName(), mi.getClassName());
-        Assert.assertEquals("test_getActualCurrentMethod", mi.getMethodName());
+    public void test_getInvokerMethod() throws Exception {
+        StackTraceElement method = DebugUtils.getInvokerMethod();
+        Assert.assertEquals("sun.reflect.NativeMethodAccessorImpl", method.getClassName());
+        Assert.assertEquals("invoke0", method.getMethodName());
 
-        getActualCurrentMethodAnother();
+        getInvokerMethodInEncapsulation();
+    }
+
+    private void getSourceMethodInEncapsulation() {
+        StackTraceElement method = DebugUtils.getSourceMethod(
+                StackTrace.createFromMethodIdentifier(this.getClass().getName(), "getSourceMethodInEncapsulation"));
+        Assert.assertEquals(this.getClass().getName(), method.getClassName());
+        Assert.assertEquals("test_getSourceMethod", method.getMethodName());
+    }
+
+    @Test
+    public void test_getSourceMethod() throws Exception {
+        StackTraceElement method = DebugUtils.getSourceMethod(StackTrace.create());
+        Assert.assertEquals(this.getClass().getName(), method.getClassName());
+        Assert.assertEquals("test_getSourceMethod", method.getMethodName());
+
+        getSourceMethodInEncapsulation();
     }
 }

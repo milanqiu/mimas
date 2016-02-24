@@ -16,7 +16,7 @@ public class ConcurrentUtils {
 
     /**
      * Blocks all uncaught exceptions of child threads from passing to main thread.
-     * It will assign an idle method to default uncaught exception handlers of all child threads.
+     * It will assign an idle method to default uncaught exception handler of all child threads.
      */
     public static void blockUncaughtExceptions() {
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
@@ -28,11 +28,11 @@ public class ConcurrentUtils {
     }
 
     /**
-     * Resets default uncaught exception handlers of all child threads to system default.
-     * It would unblock all uncaught exceptions of child threads from passing to main thread.
+     * Unblocks all uncaught exceptions of child threads by passing to main thread.
+     * It will reset default uncaught exception handler of all child threads to system default.
      * Actually, only {@link java.lang.Error} and {@link java.lang.RuntimeException} can be passed to main thread.
      */
-    public static void resetUncaughtExceptionHandler() {
+    public static void unblockUncaughtExceptions() {
         Thread.setDefaultUncaughtExceptionHandler(SYSTEM_DEFAULT_UNCAUGHT_EXCEPTION_HANDLER);
     }
 }

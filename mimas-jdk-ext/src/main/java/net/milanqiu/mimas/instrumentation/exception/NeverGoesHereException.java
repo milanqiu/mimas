@@ -5,7 +5,7 @@ package net.milanqiu.mimas.instrumentation.exception;
  * <p>
  * So if a {@code NeverGoesHereException} is thrown in runtime, it means the program has bug and the running is wrong.
  * <p>
- * Creation Date: 2014-6-18
+ * Creation Date: 2014-06-18
  * @author Milan Qiu
  */
 public class NeverGoesHereException extends RuntimeException {

@@ -10,7 +10,7 @@ import java.util.Map;
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 
 /**
- * Creation Date: 2014-7-25
+ * Creation Date: 2014-07-25
  * @author Milan Qiu
  */
 public class MapEntryTest {
@@ -48,19 +48,19 @@ public class MapEntryTest {
 
         Map<Integer, String> map = new HashMap<>();
         map.put(INT_0, STR_0);
-        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+        map.entrySet().forEach(entry -> {
             Assert.assertTrue(mapEntry.equals(entry));
             Assert.assertTrue(entry.equals(mapEntry));
-        }
+        });
     }
 
     @Test
     public void test_hashCode() throws Exception {
         Map<Integer, String> map = new HashMap<>();
         map.put(INT_0, STR_0);
-        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+        map.entrySet().forEach(entry -> {
             Assert.assertEquals(entry.hashCode(), mapEntry.hashCode());
-        }
+        });
     }
 
     @Test

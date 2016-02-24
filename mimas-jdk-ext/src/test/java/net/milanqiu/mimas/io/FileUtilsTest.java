@@ -1,9 +1,9 @@
 package net.milanqiu.mimas.io;
 
+import net.milanqiu.mimas.config.MimasJdkExtProjectConfig;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
-import net.milanqiu.mimas.lang.LangUtils;
+import net.milanqiu.mimas.lang.TypeUtils;
 import net.milanqiu.mimas.string.StrUtils;
-import net.milanqiu.mimas.system.MimasJdkExtConvention;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ import java.nio.file.NoSuchFileException;
 import java.util.Arrays;
 
 /**
- * Creation Date: 2014-11-3
+ * Creation Date: 2014-11-03
  * @author Milan Qiu
  */
 public class FileUtilsTest {
@@ -52,7 +52,7 @@ public class FileUtilsTest {
 
     @Test
     public void test_deleteDirectoryContents() throws Exception {
-        File workDir = MimasJdkExtConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
         Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "bbb", "ccc").mkdirs());
         Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "ddd", "eee").mkdirs());
         Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "ddd", "fff").createNewFile());
@@ -79,7 +79,7 @@ public class FileUtilsTest {
 
     @Test
     public void test_deleteRecursively() throws Exception {
-        File workDir = MimasJdkExtConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
         Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "bbb", "ccc").mkdirs());
         Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "ddd", "eee").mkdirs());
         Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "ddd", "fff").createNewFile());
@@ -97,7 +97,7 @@ public class FileUtilsTest {
 
     @Test
     public void test_deleteRecursivelyIfExists() throws Exception {
-        File workDir = MimasJdkExtConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
         Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "bbb", "ccc").mkdirs());
         Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "ddd", "eee").mkdirs());
         Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "ddd", "fff").createNewFile());
@@ -111,9 +111,9 @@ public class FileUtilsTest {
 
     @Test
     public void test_readBytes_writeBytes() throws Exception {
-        File workDir = MimasJdkExtConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
         File workFile = new File(workDir, "temp");
-        byte[] content = LangUtils.getAllByteValues();
+        byte[] content = TypeUtils.getAllByteValues();
 
         FileUtils.writeBytes(content, workFile);
         Assert.assertArrayEquals(content, FileUtils.readBytes(workFile));
@@ -145,9 +145,9 @@ public class FileUtilsTest {
 
     @Test
     public void test_readChars_writeChars() throws Exception {
-        File workDir = MimasJdkExtConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
         File workFile = new File(workDir, "temp");
-        String content = new String(StrUtils.getValidUnicodeCharValues());
+        String content = StrUtils.getValidUnicodeString();
 
         FileUtils.writeChars(content, workFile, StandardCharsets.UTF_16LE);
         Assert.assertEquals(content, FileUtils.readChars(workFile, StandardCharsets.UTF_16LE));
@@ -181,9 +181,9 @@ public class FileUtilsTest {
 
     @Test
     public void test_readCharsUsingUtf8_writeCharsUsingUtf8() throws Exception {
-        File workDir = MimasJdkExtConvention.getSingleton().prepareWorkDirInTestTempDir(true);
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
         File workFile = new File(workDir, "temp");
-        String content = new String(StrUtils.getValidUnicodeCharValues());
+        String content = StrUtils.getValidUnicodeString();
 
         FileUtils.writeCharsUsingUtf8(content, workFile);
         Assert.assertEquals(content, FileUtils.readCharsUsingUtf8(workFile));

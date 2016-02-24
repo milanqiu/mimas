@@ -9,7 +9,6 @@ import org.junit.Assert;
  * @author Milan Qiu
  */
 public class AssertExt {
-
     /**
      * Utility class is forbidden to be instantiated.
      */

@@ -15,23 +15,17 @@ public class ConcurrentUtilsTest {
     public void test_blockUncaughtExceptions_resetUncaughtExceptionHandler() throws Exception {
         ConcurrentUtils.blockUncaughtExceptions();
         TimeUnit.MILLISECONDS.sleep(10);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // the exception will NOT be passed to main thread and printed
-                throw new DeliberateException();
-            }
+        new Thread(() -> {
+            // the exception will NOT be passed to main thread and printed
+            throw new DeliberateException();
         }).start();
         TimeUnit.MILLISECONDS.sleep(10);
 
-        ConcurrentUtils.resetUncaughtExceptionHandler();
+        ConcurrentUtils.unblockUncaughtExceptions();
         TimeUnit.MILLISECONDS.sleep(10);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // if remove the comment mark, the exception will be passed to main thread and printed
-                //throw new DeliberateException();
-            }
+        new Thread(() -> {
+            // if remove the comment mark, the exception will be passed to main thread and printed
+            //throw new DeliberateException();
         }).start();
         TimeUnit.MILLISECONDS.sleep(10);
     }

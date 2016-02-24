@@ -1,12 +1,12 @@
 package net.milanqiu.mimas.string;
 
-import net.milanqiu.mimas.lang.LangUtils;
 import net.milanqiu.mimas.lang.RunnableWithParam;
+import net.milanqiu.mimas.lang.TypeUtils;
 
 /**
  * Utilities related to string.
  * <p>
- * Creation Date: 2014-7-17
+ * Creation Date: 2014-07-17
  * @author Milan Qiu
  */
 public class StrUtils {
@@ -25,11 +25,11 @@ public class StrUtils {
     public static final String STR_SPACE = " ";
 
     /**
-     * Byte Order Mark of Unicode.
+     * Byte Order Mark of Unicode, which represents little-endian.
      */
     public static final char UNICODE_BOM = '\uFEFF';
     /**
-     * High/low byte reversed Byte Order Mark of Unicode.
+     * High/low byte reversed Byte Order Mark of Unicode, which represents big-endian.
      */
     public static final char REVERSED_UNICODE_BOM = '\uFFFE';
 
@@ -47,12 +47,12 @@ public class StrUtils {
      * The count of valid unicode character values.
      * See {@link #getValidUnicodeCharValues()} to study valid unicode character values.
      */
-    public static final int VALID_UNICODE_CHAR_VALUE_COUNT = LangUtils.CHAR_VALUE_COUNT - INVALID_UNICODE_CHAR_VALUE_COUNT;
+    public static final int VALID_UNICODE_CHAR_VALUE_COUNT = TypeUtils.CHAR_VALUE_COUNT - INVALID_UNICODE_CHAR_VALUE_COUNT;
 
     /**
      * Returns an array holding all valid unicode character values in ascending order.
-     * The surrogate section (from '\uD800' to '\uDFFF') and the reversed BOM ('\uFFFE') are invalid unicode character
-     * values. All other characters are valid unicode character values.
+     * The surrogate section (from {@code '&#92;uD800'} to {@code '&#92;uDFFF'}) and the reversed BOM ({@code '&#92;uFFFE'})
+     * are invalid unicode character values. All other characters are valid unicode character values.
      * @return an array holding all valid unicode character values in ascending order
      */
     public static char[] getValidUnicodeCharValues() {
@@ -75,6 +75,17 @@ public class StrUtils {
             if ((i < Character.MIN_SURROGATE || i > Character.MAX_SURROGATE) && i != REVERSED_UNICODE_BOM)
                 action.run((char) i);
         }
+    }
+
+    /**
+     * Returns a string holding all valid unicode characters in ascending order.
+     * The surrogate section (from {@code '&#92;uD800'} to {@code '&#92;uDFFF'}) and the reversed BOM ({@code '&#92;uFFFE'})
+     * are invalid unicode characters. All other characters are valid unicode characters.
+     * The production of string costs some time. So if need to use the string repeatedly, create a variable to cache it.
+     * @return a string holding all valid unicode characters in ascending order
+     */
+    public static String getValidUnicodeString() {
+        return new String(getValidUnicodeCharValues());
     }
 
     /**
@@ -141,11 +152,11 @@ public class StrUtils {
     }
 
     /**
-     * Converts the specified character from native format to ascii format.
-     * Specifically, converts to ascii format of unicode like <code>"\\u82AE"</code>.
+     * Converts the specified character from native format to ASCII format.
+     * Specifically, converts to ASCII format of unicode like {@code "&#92;u82AE"}.
      * All letters will be uppercase except the 'u' mark.
      * @param ntv the character in native format
-     * @return the result character in ascii format
+     * @return the result character in ASCII format
      */
     public static String nativeToAscii(char ntv) {
         if (ntv <= '\u000F')
@@ -159,27 +170,28 @@ public class StrUtils {
     }
 
     /**
-     * Converts the specified string from native format to ascii format.
-     * Specifically, converts to ascii format of unicode like <code>"\\u82AE\\uDC29"</code>.
+     * Converts the specified string from native format to ASCII format.
+     * Specifically, converts to ASCII format of unicode like {@code "&#92;u82AE&#92;uDC29"}.
      * All letters will be uppercase except the 'u' mark.
-     * The conversion is mandatory on every character in the source string, even if it is an ascii character.
+     * The conversion is mandatory on every character in the source string, even if it has already been an ASCII character.
      * @param ntv the string in native format
-     * @return the result string in ascii format
+     * @return the result string in ASCII format
      */
     public static String nativeToAscii(String ntv) {
-        StringBuilder sb = new StringBuilder(ntv.length()*6);
-        for (int i = 0; i < ntv.length(); i++) {
-            sb.append(nativeToAscii(ntv.charAt(i)));
+        char[] ntvCharArr = ntv.toCharArray();
+        StringBuilder sb = new StringBuilder(ntvCharArr.length*6);
+        for (char ch : ntvCharArr) {
+            sb.append(nativeToAscii(ch));
         }
         return sb.toString();
     }
 
     /**
-     * Converts the specified string from ascii format to native format.
-     * The conversion allows the source string is not in "pure" ascii format. All characters which can't be parsed as
-     * ascii format will be directly copied to result string. For example,
-     * <code>"a\\u006\\u0061\\u006"</code> will be converted to <code>"a\\u006a\\u006"</code>.
-     * @param ascii the string in ascii format
+     * Converts the specified string from ASCII format to native format.
+     * This conversion allows the source string is not in "pure" ASCII format. All characters which can't be parsed as
+     * ASCII format will be directly copied to result string.
+     * For example, {@code "a&#92;u006&#92;u0061&#92;u006"} will be converted to {@code "a&#92;u006a&#92;u006"}.
+     * @param ascii the string in ASCII format
      * @return the result string in native format
      */
     public static String asciiToNative(String ascii) {

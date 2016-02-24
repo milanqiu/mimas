@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.instrumentation;
 
-import net.milanqiu.mimas.lang.MethodIdentifier;
-import net.milanqiu.mimas.system.MimasJdkExtConvention;
+import net.milanqiu.mimas.config.MimasJdkExtProjectConfig;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,15 +36,6 @@ public class RunningTraceTest {
     }
 
     @Test
-    public void test_toString() throws Exception {
-        methodC();
-
-        StringBuilder sb = new StringBuilder();
-        sb.append(trace.toString());
-        MimasJdkExtConvention.getSingleton().writeWorkFileInTestOutDir(sb);
-    }
-
-    @Test
     public void test_size_isEmpty() throws Exception {
         methodC();
         Assert.assertEquals(6, trace.size());
@@ -57,42 +47,70 @@ public class RunningTraceTest {
     }
 
     @Test
-    public void test_Comparison_next_isEnd_equalsExpected_equalsExpectedAndNext() throws Exception {
+    public void test_toString() throws Exception {
+        methodC();
+        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDir(trace.toString());
+    }
+
+    @Test
+    public void test_toFullString() throws Exception {
+        methodC();
+        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDir(trace.toFullString());
+    }
+
+    @Test
+    public void test_Comparison_reset_next_isEnd_equalsExpected_equalsExpectedAndNext() throws Exception {
         methodC();
 
+        RunningTrace.Comparison comparison = trace.newComparison();
         {
-            // variant of RunningTraceElement.Expected parameter
-            RunningTrace.Comparison comparison = trace.newComparison();
-            Assert.assertTrue(comparison.equalsExpected(RunningTraceElement.FullyExpected.create(
-                    MethodIdentifier.create("net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodC"),
+            // boolean equalsExpected(RunningTraceElement.Expected expected)
+            Assert.assertTrue(comparison.equalsExpected(RunningTraceElement.Expected.create(
+                    "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodC",
                     RunningTraceElement.TrackingPoint.METHOD_BEGINNING,
                     "enter methodC"
             )));
             comparison.next();
-            Assert.assertTrue(comparison.equalsExpected(RunningTraceElement.FullyExpected.create(
-                    MethodIdentifier.create("net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodB"),
+            Assert.assertTrue(comparison.equalsExpected(RunningTraceElement.Expected.create(
+                    "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodB",
                     RunningTraceElement.TrackingPoint.METHOD_BEGINNING
             )));
             comparison.next();
-            Assert.assertTrue(comparison.equalsExpected(RunningTraceElement.FullyExpected.create(
-                    MethodIdentifier.create("net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodA")
+            Assert.assertTrue(comparison.equalsExpected(RunningTraceElement.Expected.create(
+                    "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodA"
             )));
             comparison.next();
-            Assert.assertTrue(comparison.equalsExpectedAndNext(RunningTraceElement.SimplyExpected.create("exit methodA")));
-            Assert.assertTrue(comparison.equalsExpectedAndNext(RunningTraceElement.SimplyExpected.create(null)));
-            Assert.assertTrue(comparison.equalsExpectedAndNext(RunningTraceElement.SimplyExpected.create("exit methodC")));
+            Assert.assertFalse(comparison.isEnd());
+
+            // boolean equalsExpectedAndNext(RunningTraceElement.Expected expected)
+            Assert.assertTrue(comparison.equalsExpectedAndNext(RunningTraceElement.Expected.create(
+                    "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodA",
+                    "exit methodA"
+            )));
+            Assert.assertTrue(comparison.equalsExpectedAndNext(RunningTraceElement.Expected.create(
+                    "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodB",
+                    RunningTraceElement.TrackingPoint.METHOD_END
+            )));
+            Assert.assertTrue(comparison.equalsExpectedAndNext(RunningTraceElement.Expected.create(
+                    "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodC",
+                    RunningTraceElement.TrackingPoint.METHOD_END,
+                    "exit methodC"
+            )));
             Assert.assertTrue(comparison.isEnd());
         }
 
+        comparison.reset();
         {
-            // variant of String parameter
-            RunningTrace.Comparison comparison = trace.newComparison();
+            // boolean equalsExpected(String expectedTag)
             Assert.assertTrue(comparison.equalsExpected("enter methodC"));
             comparison.next();
             Assert.assertTrue(comparison.equalsExpected((String) null));
             comparison.next();
             Assert.assertTrue(comparison.equalsExpected((String) null));
             comparison.next();
+            Assert.assertFalse(comparison.isEnd());
+
+            // boolean equalsExpectedAndNext(String expectedTag)
             Assert.assertTrue(comparison.equalsExpectedAndNext("exit methodA"));
             Assert.assertTrue(comparison.equalsExpectedAndNext((String) null));
             Assert.assertTrue(comparison.equalsExpectedAndNext("exit methodC"));
@@ -101,80 +119,112 @@ public class RunningTraceTest {
     }
 
     @Test
-    public void test_Comparison_next_isEnd_equalBatch_equalsBatchAndNext() throws Exception {
+    public void test_Comparison_reset_next_isEnd_equalBatch_equalsBatchAndNext() throws Exception {
         methodC();
 
+        RunningTrace.Comparison comparison = trace.newComparison();
         {
-            // variant of RunningTraceElement.Expected parameter
-            RunningTrace.Comparison comparison = trace.newComparison();
+            // boolean equalsBatch(RunningTraceElement.Expected... expectedSequence)
             Assert.assertTrue(comparison.equalsBatch(
-                    RunningTraceElement.FullyExpected.create(
-                            MethodIdentifier.create("net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodC"),
+                    RunningTraceElement.Expected.create(
+                            "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodC",
                             RunningTraceElement.TrackingPoint.METHOD_BEGINNING,
                             "enter methodC"
                     ),
-                    RunningTraceElement.FullyExpected.create(
-                            MethodIdentifier.create("net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodB"),
+                    RunningTraceElement.Expected.create(
+                            "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodB",
                             RunningTraceElement.TrackingPoint.METHOD_BEGINNING
                     ),
-                    RunningTraceElement.FullyExpected.create(
-                            MethodIdentifier.create("net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodA")
+                    RunningTraceElement.Expected.create(
+                            "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodA"
                     )
             ));
             comparison.next(3);
+            Assert.assertFalse(comparison.isEnd());
+
+            // boolean equalsBatchAndNext(RunningTraceElement.Expected... expectedSequence)
             Assert.assertTrue(comparison.equalsBatchAndNext(
-                    RunningTraceElement.SimplyExpected.create("exit methodA"),
-                    RunningTraceElement.SimplyExpected.create(null),
-                    RunningTraceElement.SimplyExpected.create("exit methodC")
+                    RunningTraceElement.Expected.create(
+                            "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodA",
+                            "exit methodA"
+                    ),
+                    RunningTraceElement.Expected.create(
+                            "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodB",
+                            RunningTraceElement.TrackingPoint.METHOD_END
+                    ),
+                    RunningTraceElement.Expected.create(
+                            "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodC",
+                            RunningTraceElement.TrackingPoint.METHOD_END,
+                            "exit methodC"
+                    )
             ));
             Assert.assertTrue(comparison.isEnd());
         }
 
+        comparison.reset();
         {
-            // variant of String parameter
-            RunningTrace.Comparison comparison = trace.newComparison();
+            // boolean equalsBatch(String... expectedTagSequence)
             Assert.assertTrue(comparison.equalsBatch("enter methodC", null, null));
             comparison.next(3);
+            Assert.assertFalse(comparison.isEnd());
+
+            // boolean equalsBatchAndNext(String... expectedTagSequence)
             Assert.assertTrue(comparison.equalsBatchAndNext("exit methodA", null, "exit methodC"));
             Assert.assertTrue(comparison.isEnd());
         }
     }
 
     @Test
-    public void test_Comparison_next_isEnd_equalBatchIgnoringOrder_equalsBatchIgnoringOrderAndNext() throws Exception {
+    public void test_Comparison_reset_next_isEnd_equalBatchIgnoringOrder_equalsBatchIgnoringOrderAndNext() throws Exception {
         methodC();
 
+        RunningTrace.Comparison comparison = trace.newComparison();
         {
-            // variant of RunningTraceElement.Expected parameter
-            RunningTrace.Comparison comparison = trace.newComparison();
+            // boolean equalsBatchIgnoringOrder(RunningTraceElement.Expected... expectedSequence)
             Assert.assertTrue(comparison.equalsBatchIgnoringOrder(
-                    RunningTraceElement.FullyExpected.create(
-                            MethodIdentifier.create("net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodA")
+                    RunningTraceElement.Expected.create(
+                            "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodA"
                     ),
-                    RunningTraceElement.FullyExpected.create(
-                            MethodIdentifier.create("net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodC"),
+                    RunningTraceElement.Expected.create(
+                            "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodC",
                             RunningTraceElement.TrackingPoint.METHOD_BEGINNING,
                             "enter methodC"
                     ),
-                    RunningTraceElement.FullyExpected.create(
-                            MethodIdentifier.create("net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodB"),
+                    RunningTraceElement.Expected.create(
+                            "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodB",
                             RunningTraceElement.TrackingPoint.METHOD_BEGINNING
                     )
             ));
             comparison.next(3);
+            Assert.assertFalse(comparison.isEnd());
+
+            // boolean equalsBatchIgnoringOrderAndNext(RunningTraceElement.Expected... expectedSequence)
             Assert.assertTrue(comparison.equalsBatchIgnoringOrderAndNext(
-                    RunningTraceElement.SimplyExpected.create("exit methodC"),
-                    RunningTraceElement.SimplyExpected.create(null),
-                    RunningTraceElement.SimplyExpected.create("exit methodA")
+                    RunningTraceElement.Expected.create(
+                            "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodC",
+                            RunningTraceElement.TrackingPoint.METHOD_END,
+                            "exit methodC"
+                    ),
+                    RunningTraceElement.Expected.create(
+                            "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodB",
+                            RunningTraceElement.TrackingPoint.METHOD_END
+                    ),
+                    RunningTraceElement.Expected.create(
+                            "net.milanqiu.mimas.instrumentation.RunningTraceTest", "methodA",
+                            "exit methodA"
+                    )
             ));
             Assert.assertTrue(comparison.isEnd());
         }
 
+        comparison.reset();
         {
-            // variant of String parameter
-            RunningTrace.Comparison comparison = trace.newComparison();
+            // boolean equalsBatchIgnoringOrder(String... expectedTagSequence)
             Assert.assertTrue(comparison.equalsBatchIgnoringOrder(null, "enter methodC", null));
             comparison.next(3);
+            Assert.assertFalse(comparison.isEnd());
+
+            // boolean equalsBatchIgnoringOrderAndNext(String... expectedTagSequence)
             Assert.assertTrue(comparison.equalsBatchIgnoringOrderAndNext("exit methodC", null, "exit methodA"));
             Assert.assertTrue(comparison.isEnd());
         }

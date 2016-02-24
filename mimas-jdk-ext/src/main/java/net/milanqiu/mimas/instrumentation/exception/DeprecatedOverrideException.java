@@ -4,7 +4,7 @@ package net.milanqiu.mimas.instrumentation.exception;
  * When a subclass intends to remove a method implemented in superclass, it should override this method,
  * add a {@code Deprecated} annotation and throw a {@code DeprecatedOverrideException} to prevent invocations.
  * <p>
- * Creation Date: 2014-2-8
+ * Creation Date: 2014-02-08
  * @author Milan Qiu
  */
 public class DeprecatedOverrideException extends UnsupportedOperationException {

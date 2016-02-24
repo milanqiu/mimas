@@ -1,12 +1,11 @@
 package net.milanqiu.mimas.string;
 
-import net.milanqiu.mimas.lang.LangUtils;
-import net.milanqiu.mimas.lang.RunnableWithParam;
+import net.milanqiu.mimas.lang.TypeUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Creation Date: 2014-11-4
+ * Creation Date: 2014-11-04
  * @author Milan Qiu
  */
 public class StrUtilsTest {
@@ -23,6 +22,7 @@ public class StrUtilsTest {
                 cursor++;
             Assert.assertEquals(cursor++, charArr[i]);
         }
+        Assert.assertEquals(Character.MAX_VALUE+1, cursor);
     }
 
     private int cursor;
@@ -32,88 +32,79 @@ public class StrUtilsTest {
     public void test_traverseValidUnicodeCharValues() throws Exception {
         cursor = Character.MIN_VALUE;
         count = 0;
-        StrUtils.traverseValidUnicodeCharValues(new RunnableWithParam.WithChar() {
-            @Override
-            public void run(char param) {
-                if (cursor == Character.MIN_SURROGATE)
-                    cursor = Character.MAX_SURROGATE + 1;
-                if (cursor == StrUtils.REVERSED_UNICODE_BOM)
-                    cursor++;
-                Assert.assertEquals(cursor++, param);
-                count++;
-            }
+        StrUtils.traverseValidUnicodeCharValues((param) -> {
+            if (cursor == Character.MIN_SURROGATE)
+                cursor = Character.MAX_SURROGATE + 1;
+            if (cursor == StrUtils.REVERSED_UNICODE_BOM)
+                cursor++;
+            Assert.assertEquals(cursor++, param);
+            count++;
         });
         Assert.assertEquals(Character.MAX_VALUE+1, cursor);
         Assert.assertEquals(StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT, count);
     }
 
     @Test
+    public void test_getValidUnicodeString() throws Exception {
+        String str = StrUtils.getValidUnicodeString();
+        Assert.assertEquals(StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT, str.length());
+        int cursor = Character.MIN_VALUE;
+        for (int i = 0; i < StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT; i++) {
+            if (cursor == Character.MIN_SURROGATE)
+                cursor = Character.MAX_SURROGATE + 1;
+            if (cursor == StrUtils.REVERSED_UNICODE_BOM)
+                cursor++;
+            Assert.assertEquals(cursor++, str.charAt(i));
+        }
+        Assert.assertEquals(Character.MAX_VALUE+1, cursor);
+    }
+
+    @Test
     public void test_isAsciiUpperCase() throws Exception {
-        LangUtils.traverseCharValues(new RunnableWithParam.WithChar() {
-            @Override
-            public void run(char param) {
-                Assert.assertEquals(String.valueOf(param).matches("[A-Z]"), StrUtils.isAsciiUpperCase(param));
-            }
+        TypeUtils.traverseCharValues((param) -> {
+            Assert.assertEquals(String.valueOf(param).matches("[A-Z]"), StrUtils.isAsciiUpperCase(param));
         });
     }
 
     @Test
     public void test_isAsciiLowerCase() throws Exception {
-        LangUtils.traverseCharValues(new RunnableWithParam.WithChar() {
-            @Override
-            public void run(char param) {
-                Assert.assertEquals(String.valueOf(param).matches("[a-z]"), StrUtils.isAsciiLowerCase(param));
-            }
+        TypeUtils.traverseCharValues((param) -> {
+            Assert.assertEquals(String.valueOf(param).matches("[a-z]"), StrUtils.isAsciiLowerCase(param));
         });
     }
 
     @Test
     public void test_isAsciiLetter() throws Exception {
-        LangUtils.traverseCharValues(new RunnableWithParam.WithChar() {
-            @Override
-            public void run(char param) {
-                Assert.assertEquals(String.valueOf(param).matches("[A-Za-z]"), StrUtils.isAsciiLetter(param));
-            }
+        TypeUtils.traverseCharValues((param) -> {
+            Assert.assertEquals(String.valueOf(param).matches("[A-Za-z]"), StrUtils.isAsciiLetter(param));
         });
     }
 
     @Test
     public void test_isAsciiDigit() throws Exception {
-        LangUtils.traverseCharValues(new RunnableWithParam.WithChar() {
-            @Override
-            public void run(char param) {
-                Assert.assertEquals(String.valueOf(param).matches("[0-9]"), StrUtils.isAsciiDigit(param));
-            }
+        TypeUtils.traverseCharValues((param) -> {
+            Assert.assertEquals(String.valueOf(param).matches("[0-9]"), StrUtils.isAsciiDigit(param));
         });
     }
 
     @Test
     public void test_isAsciiLetterOrDigit() throws Exception {
-        LangUtils.traverseCharValues(new RunnableWithParam.WithChar() {
-            @Override
-            public void run(char param) {
-                Assert.assertEquals(String.valueOf(param).matches("[A-Za-z0-9]"), StrUtils.isAsciiLetterOrDigit(param));
-            }
+        TypeUtils.traverseCharValues((param) -> {
+            Assert.assertEquals(String.valueOf(param).matches("[A-Za-z0-9]"), StrUtils.isAsciiLetterOrDigit(param));
         });
     }
 
     @Test
     public void test_isAsciiSign() throws Exception {
-        LangUtils.traverseCharValues(new RunnableWithParam.WithChar() {
-            @Override
-            public void run(char param) {
-                Assert.assertEquals(String.valueOf(param).matches("[\\+\\-]"), StrUtils.isAsciiSign(param));
-            }
+        TypeUtils.traverseCharValues((param) -> {
+            Assert.assertEquals(String.valueOf(param).matches("[\\+\\-]"), StrUtils.isAsciiSign(param));
         });
     }
 
     @Test
     public void test_isHexChar() throws Exception {
-        LangUtils.traverseCharValues(new RunnableWithParam.WithChar() {
-            @Override
-            public void run(char param) {
-                Assert.assertEquals(String.valueOf(param).matches("[A-Fa-f0-9]"), StrUtils.isHexChar(param));
-            }
+        TypeUtils.traverseCharValues((param) -> {
+            Assert.assertEquals(String.valueOf(param).matches("[A-Fa-f0-9]"), StrUtils.isHexChar(param));
         });
     }
 

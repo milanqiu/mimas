@@ -5,7 +5,9 @@ import java.util.concurrent.Callable;
 /**
  * Declares a variety of constants used for unit tests and other tests.
  * <p>
- * Creation Date: 2014-2-8
+ * Many of them are marginal.
+ * <p>
+ * Creation Date: 2014-02-08
  * @author Milan Qiu
  */
 public class TestConsts {
