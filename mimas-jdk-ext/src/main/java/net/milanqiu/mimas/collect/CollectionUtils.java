@@ -37,6 +37,7 @@ public class CollectionUtils {
 
     /**
      * Compares two {@link java.lang.Iterable} objects, regardless of their actual types.
+     * Same as <code>com.google.common.collect.Iterables.elementsEqual(Iterable, Iterable)</code> of guava.
      * @param itr1 the first {@link java.lang.Iterable} object to be compared
      * @param itr2 the second {@link java.lang.Iterable} object to be compared
      * @return {@code true} if size of two {@link java.lang.Iterable} objects are equal and their elements are equal one by one

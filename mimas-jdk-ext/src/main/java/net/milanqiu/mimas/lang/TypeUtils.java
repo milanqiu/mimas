@@ -174,6 +174,7 @@ public class TypeUtils {
 
     /**
      * Returns an array holding all character values in ascending order.
+     * The production of array costs some time. So if need to use the array repeatedly, create a variable to cache it.
      * @return an array holding all character values in ascending order
      */
     public static char[] getAllCharValues() {
@@ -187,6 +188,7 @@ public class TypeUtils {
 
     /**
      * Returns an array holding all byte values in ascending order.
+     * The production of array costs some time. So if need to use the array repeatedly, create a variable to cache it.
      * @return an array holding all byte values in ascending order
      */
     public static byte[] getAllByteValues() {
@@ -200,6 +202,7 @@ public class TypeUtils {
 
     /**
      * Returns an array holding all unsigned byte values in ascending order.
+     * The production of array costs some time. So if need to use the array repeatedly, create a variable to cache it.
      * @return an array holding all unsigned byte values in ascending order
      */
     public static int[] getAllUnsignedByteValues() {
@@ -213,6 +216,7 @@ public class TypeUtils {
 
     /**
      * Returns an array holding all short values in ascending order.
+     * The production of array costs some time. So if need to use the array repeatedly, create a variable to cache it.
      * @return an array holding all short values in ascending order
      */
     public static short[] getAllShortValues() {
@@ -226,6 +230,7 @@ public class TypeUtils {
 
     /**
      * Returns an array holding all unsigned short values in ascending order.
+     * The production of array costs some time. So if need to use the array repeatedly, create a variable to cache it.
      * @return an array holding all unsigned short values in ascending order
      */
     public static int[] getAllUnsignedShortValues() {
@@ -285,5 +290,14 @@ public class TypeUtils {
         for (int i = UNSIGNED_SHORT_MIN_VALUE; i <= UNSIGNED_SHORT_MAX_VALUE; i++) {
             action.run(i);
         }
+    }
+
+    /**
+     * Returns a string holding all character values in ascending order.
+     * The production of string costs some time. So if need to use the string repeatedly, create a variable to cache it.
+     * @return a string holding all character values in ascending order
+     */
+    public static String getAllCharValuesString() {
+        return new String(getAllCharValues());
     }
 }

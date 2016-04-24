@@ -53,6 +53,7 @@ public class StrUtils {
      * Returns an array holding all valid unicode character values in ascending order.
      * The surrogate section (from {@code '&#92;uD800'} to {@code '&#92;uDFFF'}) and the reversed BOM ({@code '&#92;uFFFE'})
      * are invalid unicode character values. All other characters are valid unicode character values.
+     * The production of array costs some time. So if need to use the array repeatedly, create a variable to cache it.
      * @return an array holding all valid unicode character values in ascending order
      */
     public static char[] getValidUnicodeCharValues() {
