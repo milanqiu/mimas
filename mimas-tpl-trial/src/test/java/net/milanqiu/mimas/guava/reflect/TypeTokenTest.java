@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.guava.reflect;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.TypeParameter;
 import com.google.common.reflect.TypeToken;
 import net.milanqiu.mimas.collect.CollectionUtils;
@@ -100,7 +99,7 @@ public class TypeTokenTest {
         Assert.assertTrue(mapToken.isAssignableFrom(HashMap.class));
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("AssertEqualsBetweenInconvertibleTypes")
     @Test
     public void test_getTypes() throws Exception {
         /*
@@ -110,13 +109,13 @@ public class TypeTokenTest {
          */
         TypeToken.TypeSet intTypeSet = intToken.getTypes();
         Assert.assertEquals(1, intTypeSet.size());
-        Iterables.elementsEqual(ImmutableList.of(
+        Assert.assertEquals(ImmutableSet.of(
                 TypeToken.of(Integer.TYPE)
         ), intTypeSet);
 
         TypeToken.TypeSet strTypeSet = strToken.getTypes();
         Assert.assertEquals(5, strTypeSet.size());
-        CollectionUtils.equalsIgnoringOrder(ImmutableList.of(
+        Assert.assertEquals(ImmutableSet.of(
                 TypeToken.of(String.class),
                 TypeToken.of(CharSequence.class),
                 new TypeToken<Comparable<String>>() {},
@@ -126,7 +125,7 @@ public class TypeTokenTest {
 
         TypeToken.TypeSet strArrayTypeSet = strArrayToken.getTypes();
         Assert.assertEquals(4, strArrayTypeSet.size());
-        Iterables.elementsEqual(ImmutableList.of(
+        Assert.assertEquals(ImmutableSet.of(
                 TypeToken.of(String[].class),
                 TypeToken.of(Cloneable.class),
                 TypeToken.of(Serializable.class),
@@ -135,7 +134,7 @@ public class TypeTokenTest {
 
         TypeToken.TypeSet strListTypeSet = strListToken.getTypes();
         Assert.assertEquals(3, strListTypeSet.size());
-        Iterables.elementsEqual(ImmutableList.of(
+        Assert.assertEquals(ImmutableSet.of(
                 new TypeToken<List<String>>() {},
                 new TypeToken<Collection<String>>() {},
                 new TypeToken<Iterable<String>>() {}
@@ -143,7 +142,7 @@ public class TypeTokenTest {
 
         TypeToken.TypeSet mapTypeSet = mapToken.getTypes();
         Assert.assertEquals(1, mapTypeSet.size());
-        Iterables.elementsEqual(ImmutableList.of(
+        Assert.assertEquals(ImmutableSet.of(
                 new TypeToken<Map<?, ?>>() {}
         ), mapTypeSet);
     }
