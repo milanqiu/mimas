@@ -182,26 +182,125 @@ public class FilesTest {
 
         TreeTraverser<File> tt = Files.fileTreeTraverser();
 
-        // children()
-        Assert.assertEquals(ImmutableList.of(aaa),      tt.children(workDir));
-        Assert.assertEquals(ImmutableList.of(bbb, ddd), tt.children(aaa));
-        Assert.assertEquals(ImmutableList.of(ccc),      tt.children(bbb));
-        Assert.assertEquals(ImmutableList.of(),         tt.children(ccc));
-        Assert.assertEquals(ImmutableList.of(eee, fff), tt.children(ddd));
-        Assert.assertEquals(ImmutableList.of(),         tt.children(eee));
-        Assert.assertEquals(ImmutableList.of(),         tt.children(fff));
+        // since there is no guarantee that the name strings in the resulting array of children() will appear in
+        // any specific order, the unit test should include 4 situations of different orders
+        if (tt.children(aaa).iterator().next().equals(bbb)) {
+            if (tt.children(ddd).iterator().next().equals(eee)) {
+                // the retrieved file tree will be
+                //              aaa
+                //            /     \
+                //          bbb     ddd
+                //        /       /     \
+                //      ccc     eee     fff
 
-        // preOrderTraversal()
-        Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(workDir, aaa, bbb, ccc, ddd, eee, fff),
-                tt.preOrderTraversal(workDir)));
+                // children()
+                Assert.assertEquals(ImmutableList.of(aaa),      tt.children(workDir));
+                Assert.assertEquals(ImmutableList.of(bbb, ddd), tt.children(aaa));
+                Assert.assertEquals(ImmutableList.of(ccc),      tt.children(bbb));
+                Assert.assertEquals(ImmutableList.of(),         tt.children(ccc));
+                Assert.assertEquals(ImmutableList.of(eee, fff), tt.children(ddd));
+                Assert.assertEquals(ImmutableList.of(),         tt.children(eee));
+                Assert.assertEquals(ImmutableList.of(),         tt.children(fff));
 
-        // postOrderTraversal()
-        Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(ccc, bbb, eee, fff, ddd, aaa, workDir),
-                tt.postOrderTraversal(workDir)));
+                // preOrderTraversal()
+                Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(workDir, aaa, bbb, ccc, ddd, eee, fff),
+                        tt.preOrderTraversal(workDir)));
 
-        // breadthFirstTraversal()
-        Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(workDir, aaa, bbb, ddd, ccc, eee, fff),
-                tt.breadthFirstTraversal(workDir)));
+                // postOrderTraversal()
+                Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(ccc, bbb, eee, fff, ddd, aaa, workDir),
+                        tt.postOrderTraversal(workDir)));
+
+                // breadthFirstTraversal()
+                Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(workDir, aaa, bbb, ddd, ccc, eee, fff),
+                        tt.breadthFirstTraversal(workDir)));
+            } else {
+                // the retrieved file tree will be
+                //              aaa
+                //            /     \
+                //          bbb     ddd
+                //        /       /     \
+                //      ccc     fff     eee
+
+                // children()
+                Assert.assertEquals(ImmutableList.of(aaa),      tt.children(workDir));
+                Assert.assertEquals(ImmutableList.of(bbb, ddd), tt.children(aaa));
+                Assert.assertEquals(ImmutableList.of(ccc),      tt.children(bbb));
+                Assert.assertEquals(ImmutableList.of(),         tt.children(ccc));
+                Assert.assertEquals(ImmutableList.of(fff, eee), tt.children(ddd));
+                Assert.assertEquals(ImmutableList.of(),         tt.children(eee));
+                Assert.assertEquals(ImmutableList.of(),         tt.children(fff));
+
+                // preOrderTraversal()
+                Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(workDir, aaa, bbb, ccc, ddd, fff, eee),
+                        tt.preOrderTraversal(workDir)));
+
+                // postOrderTraversal()
+                Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(ccc, bbb, fff, eee, ddd, aaa, workDir),
+                        tt.postOrderTraversal(workDir)));
+
+                // breadthFirstTraversal()
+                Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(workDir, aaa, bbb, ddd, ccc, fff, eee),
+                        tt.breadthFirstTraversal(workDir)));
+            }
+        } else {
+            if (tt.children(ddd).iterator().next().equals(eee)) {
+                // the retrieved file tree will be
+                //              aaa
+                //            /     \
+                //          ddd     bbb
+                //        /     \       \
+                //      eee     fff     ccc
+
+                // children()
+                Assert.assertEquals(ImmutableList.of(aaa),      tt.children(workDir));
+                Assert.assertEquals(ImmutableList.of(ddd, bbb), tt.children(aaa));
+                Assert.assertEquals(ImmutableList.of(ccc),      tt.children(bbb));
+                Assert.assertEquals(ImmutableList.of(),         tt.children(ccc));
+                Assert.assertEquals(ImmutableList.of(eee, fff), tt.children(ddd));
+                Assert.assertEquals(ImmutableList.of(),         tt.children(eee));
+                Assert.assertEquals(ImmutableList.of(),         tt.children(fff));
+
+                // preOrderTraversal()
+                Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(workDir, aaa, ddd, eee, fff, bbb, ccc),
+                        tt.preOrderTraversal(workDir)));
+
+                // postOrderTraversal()
+                Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(eee, fff, ddd, ccc, bbb, aaa, workDir),
+                        tt.postOrderTraversal(workDir)));
+
+                // breadthFirstTraversal()
+                Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(workDir, aaa, ddd, bbb, eee, fff, ccc),
+                        tt.breadthFirstTraversal(workDir)));
+            } else {
+                // the retrieved file tree will be
+                //              aaa
+                //            /     \
+                //          ddd     bbb
+                //        /     \       \
+                //      fff     eee     ccc
+
+                // children()
+                Assert.assertEquals(ImmutableList.of(aaa),      tt.children(workDir));
+                Assert.assertEquals(ImmutableList.of(ddd, bbb), tt.children(aaa));
+                Assert.assertEquals(ImmutableList.of(ccc),      tt.children(bbb));
+                Assert.assertEquals(ImmutableList.of(),         tt.children(ccc));
+                Assert.assertEquals(ImmutableList.of(fff, eee), tt.children(ddd));
+                Assert.assertEquals(ImmutableList.of(),         tt.children(eee));
+                Assert.assertEquals(ImmutableList.of(),         tt.children(fff));
+
+                // preOrderTraversal()
+                Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(workDir, aaa, ddd, fff, eee, bbb, ccc),
+                        tt.preOrderTraversal(workDir)));
+
+                // postOrderTraversal()
+                Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(fff, eee, ddd, ccc, bbb, aaa, workDir),
+                        tt.postOrderTraversal(workDir)));
+
+                // breadthFirstTraversal()
+                Assert.assertTrue(Iterables.elementsEqual(ImmutableList.of(workDir, aaa, ddd, bbb, fff, eee, ccc),
+                        tt.breadthFirstTraversal(workDir)));
+            }
+        }
     }
 
     @Test
@@ -343,10 +442,10 @@ public class FilesTest {
         Assert.assertTrue(Files.asByteSource(workFile).isEmpty());
 
         long lastModified1 = workFile.lastModified();
-        TimeUnit.MILLISECONDS.sleep(100);
+        TimeUnit.MILLISECONDS.sleep(1000);
         Files.touch(workFile);
         long lastModified2 = workFile.lastModified();
-        Assert.assertTrue(lastModified2 - lastModified1 >= 100);
+        Assert.assertTrue(lastModified2 - lastModified1 >= 1000);
     }
 
     @Test
