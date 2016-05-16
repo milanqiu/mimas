@@ -32,7 +32,7 @@ public class StackTrace {
      * Returns the element at the specified position in this stack trace.
      * @param index index of the element to return
      * @return the element at the specified position in this stack trace
-     * @throws IndexOutOfBoundsException if the index is out of range (<code>index < 0 || index >= getElementCount()</code>)
+     * @throws IndexOutOfBoundsException if the index is out of range (<code>index &lt; 0 || index &gt;= getElementCount()</code>)
      */
     public StackTraceElement getElement(int index) {
         if (index < 0 || index >= elements.length)

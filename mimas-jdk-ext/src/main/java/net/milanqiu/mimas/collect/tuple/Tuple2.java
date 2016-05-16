@@ -27,6 +27,7 @@ public class Tuple2<TA, TB> {
     }
     /**
      * A setter corresponding to the getter {@link #getA()}.
+     * @param a the new value of element A
      */
     public void setA(TA a) {
         this.a = a;
@@ -40,6 +41,7 @@ public class Tuple2<TA, TB> {
     }
     /**
      * A setter corresponding to the getter {@link #getB()}.
+     * @param b the new value of element B
      */
     public void setB(TB b) {
         this.b = b;

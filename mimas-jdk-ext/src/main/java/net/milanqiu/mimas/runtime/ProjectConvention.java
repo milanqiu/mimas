@@ -79,6 +79,7 @@ public interface ProjectConvention {
      * Writes a special work file in the output directory of test with the contents of the specified character sequence,
      * using the UTF-8 character set.
      * @param chars the character sequence to write
+     * @throws IOException if an I/O error occurs
      */
     void writeFileInTestOutDir(CharSequence chars) throws IOException;
 }

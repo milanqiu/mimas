@@ -25,6 +25,7 @@ public class Tuple4<TA, TB, TC, TD> extends Tuple3<TA, TB, TC> {
     }
     /**
      * A setter corresponding to the getter {@link #getD()}.
+     * @param d the new value of element D
      */
     public void setD(TD d) {
         this.d = d;

@@ -118,6 +118,7 @@ public class ArrayUtils {
      * <code>(value == null ? element == null : value.equals(element))</code>.
      * @param array the array to be tested
      * @param value the value to be tested
+     * @param <T> the class of the objects in the array
      * @return {@code true} if the specified array contains the specified value
      */
     public static <T> boolean contains(T[] array, Object value) {
@@ -227,6 +228,7 @@ public class ArrayUtils {
     /**
      * Returns whether the specified array is null or empty.
      * @param array the array to be tested
+     * @param <T> the class of the objects in the array
      * @return {@code true} if the specified array is null or empty
      */
     public static <T> boolean isNullOrEmpty(T[] array) {

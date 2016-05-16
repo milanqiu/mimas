@@ -31,6 +31,7 @@ public class IntStr extends Tuple2<Integer, String> {
     }
     /**
      * A setter corresponding to the getter {@link #getInt()}.
+     * @param a the new value of the integer element(element A)
      */
     public void setInt(int a) {
         this.a = a;
@@ -44,6 +45,7 @@ public class IntStr extends Tuple2<Integer, String> {
     }
     /**
      * A setter corresponding to the getter {@link #getStr()}.
+     * @param b the new value of the string element(element B)
      */
     public void setStr(String b) {
         this.b = b;

@@ -20,6 +20,7 @@ public class CollectionUtils {
     /**
      * Counts how many times each of the different elements occurs in an {@link java.lang.Iterable} object.
      * @param itr the {@link java.lang.Iterable} object to count in
+     * @param <T> the base class of the objects in the iterable
      * @return a map with elements as key and counts as value
      */
     public static <T> Map<T, Integer> countsOccurrence(Iterable<? extends T> itr) {
@@ -40,6 +41,7 @@ public class CollectionUtils {
      * Same as <code>com.google.common.collect.Iterables.elementsEqual(Iterable, Iterable)</code> of guava.
      * @param itr1 the first {@link java.lang.Iterable} object to be compared
      * @param itr2 the second {@link java.lang.Iterable} object to be compared
+     * @param <T> the base class of the objects in the iterables
      * @return {@code true} if size of two {@link java.lang.Iterable} objects are equal and their elements are equal one by one
      */
     public static <T> boolean equals(Iterable<? extends T> itr1, Iterable<? extends T> itr2) {
@@ -56,6 +58,7 @@ public class CollectionUtils {
      * Compares two {@link java.lang.Iterable} objects ignoring the element order, regardless of their actual types..
      * @param itr1 the first {@link java.lang.Iterable} object to be compared
      * @param itr2 the second {@link java.lang.Iterable} object to be compared
+     * @param <T> the base class of the objects in the iterables
      * @return {@code true} if size of two {@link java.lang.Iterable} objects are equal and their elements are equal ignoring the element order
      */
     public static <T> boolean equalsIgnoringOrder(Iterable<? extends T> itr1, Iterable<? extends T> itr2) {
