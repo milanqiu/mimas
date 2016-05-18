@@ -1,2 +1,2 @@
-del files\test_out\*.tmp
+del /q files\test_out\*.tmp
 pause
