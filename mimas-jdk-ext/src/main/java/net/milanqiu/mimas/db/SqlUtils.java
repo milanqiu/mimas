@@ -33,7 +33,7 @@ public class SqlUtils {
         }
         sb.setCharAt(sb.length()-2, ')');
         sb.append("VALUES (");
-        for (int i=0; i<fieldCount; i++) {
+        for (int i = 0; i < fieldCount; i++) {
             if (i == 0)
                 sb.append("?");
             else
@@ -66,7 +66,7 @@ public class SqlUtils {
         }
         sb.setCharAt(sb.length()-2, ')');
         sb.append("VALUES (");
-        for (int i=0; i<fieldCount; i++) {
+        for (int i = 0; i < fieldCount; i++) {
             if (i == 0)
                 sb.append("?");
             else
