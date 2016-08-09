@@ -20,6 +20,7 @@ public class PointerTest {
         pointer = new Pointer<>(INT_0);
         Assert.assertEquals(INT_0, (int) pointer.get());
 
+        // null test
         pointer = new Pointer<>(null);
         Assert.assertNull(pointer.get());
     }
@@ -30,6 +31,10 @@ public class PointerTest {
         Assert.assertEquals(INT_0, (int) pointer.get());
         Assert.assertEquals(INT_0, (int) pointer.set(INT_1));
         Assert.assertEquals(INT_1, (int) pointer.get());
+
+        // null test
+        Assert.assertEquals(INT_1, (int) pointer.set(null));
+        Assert.assertNull(pointer.get());
     }
 
     @Test
@@ -47,6 +52,7 @@ public class PointerTest {
         Assert.assertFalse(pointer.equals(anotherPointerWithDifferentType));
         Assert.assertFalse(anotherPointerWithDifferentType.equals(pointer));
 
+        // null test
         anotherPointer.set(null);
         Assert.assertFalse(pointer.equals(anotherPointer));
         Assert.assertFalse(anotherPointer.equals(pointer));
@@ -68,6 +74,7 @@ public class PointerTest {
         anotherPointerWithDifferentType = new Pointer<>(STR_OF_INT_0);
         Assert.assertNotEquals(pointer.hashCode(), anotherPointerWithDifferentType.hashCode());
 
+        // null test
         anotherPointer.set(null);
         Assert.assertNotEquals(pointer.hashCode(), anotherPointer.hashCode());
 
@@ -80,6 +87,7 @@ public class PointerTest {
         pointer = new Pointer<>(INT_0);
         Assert.assertEquals(STR_OF_INT_0, pointer.toString());
 
+        // null test
         pointer.set(null);
         Assert.assertEquals("", pointer.toString());
     }

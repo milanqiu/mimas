@@ -32,10 +32,10 @@ public class IntInt extends Tuple2<Integer, Integer> {
      * @throws IllegalArgumentException if there are redundant elements in the incoming {@code ints} parameter
      */
     public static List<IntInt> createList(int... ints) {
-        if (ints.length % 2 != 0)
+        if ((ints.length & 1) != 0)
             throw new IllegalArgumentException();
 
-        int count = ints.length / 2;
+        int count = ints.length >> 1;
         List<IntInt> result = new ArrayList<>(count);
         for (int i = 0; i < count; i++) {
             result.add(new IntInt(ints[i*2], ints[i*2+1]));

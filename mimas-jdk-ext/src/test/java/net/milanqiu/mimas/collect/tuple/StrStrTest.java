@@ -30,5 +30,13 @@ public class StrStrTest {
         } catch (Exception e) {
             AssertExt.assertClassification(IllegalArgumentException.class, e);
         }
+
+        // null test
+        list = StrStr.createList(null, null, null, null);
+        Assert.assertEquals(2, list.size());
+        Assert.assertNull(list.get(0).getA());
+        Assert.assertNull(list.get(0).getB());
+        Assert.assertNull(list.get(1).getA());
+        Assert.assertNull(list.get(1).getB());
     }
 }

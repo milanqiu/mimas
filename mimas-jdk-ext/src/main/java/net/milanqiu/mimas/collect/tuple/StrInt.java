@@ -38,10 +38,11 @@ public class StrInt extends Tuple2<String, Integer> {
     }
     /**
      * Returns the integer element(element B).
+     * If the integer element is null, returns {@code 0}.
      * @return the integer element(element B)
      */
     public int getInt() {
-        return b;
+        return b==null ? 0 : b;
     }
     /**
      * A setter corresponding to the getter {@link #getInt()}.

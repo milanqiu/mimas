@@ -24,10 +24,11 @@ public class IntStr extends Tuple2<Integer, String> {
 
     /**
      * Returns the integer element(element A).
+     * If the integer element is null, returns {@code 0}.
      * @return the integer element(element A)
      */
     public int getInt() {
-        return a;
+        return a==null ? 0 : a;
     }
     /**
      * A setter corresponding to the getter {@link #getInt()}.

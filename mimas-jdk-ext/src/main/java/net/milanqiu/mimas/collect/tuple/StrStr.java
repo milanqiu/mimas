@@ -32,10 +32,10 @@ public class StrStr extends Tuple2<String, String> {
      * @throws IllegalArgumentException if there are redundant elements in the incoming {@code strs} parameter
      */
     public static List<StrStr> createList(String... strs) {
-        if (strs.length % 2 != 0)
+        if ((strs.length & 1) != 0)
             throw new IllegalArgumentException();
 
-        int count = strs.length / 2;
+        int count = strs.length >> 1;
         List<StrStr> result = new ArrayList<>(count);
         for (int i = 0; i < count; i++) {
             result.add(new StrStr(strs[i*2], strs[i*2+1]));
