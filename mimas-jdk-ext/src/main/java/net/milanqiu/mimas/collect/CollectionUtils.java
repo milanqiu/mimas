@@ -1,9 +1,6 @@
 package net.milanqiu.mimas.collect;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Utilities related to collection.
@@ -16,6 +13,33 @@ public class CollectionUtils {
      * Utility class is forbidden to be instantiated.
      */
     private CollectionUtils() {}
+
+    /**
+     * Converts the specified iterable of subtype to iterable of supertype.
+     * @param iterableSubtype the iterable of subtype to be converted
+     * @param <T> the supertype to be converted to
+     * @return the result iterable of supertype
+     */
+    public static <T> Iterable<T> convertIterable(Iterable<? extends T> iterableSubtype) {
+        return new Iterable<T>() {
+            @Override
+            public Iterator<T> iterator() {
+                return new Iterator<T>() {
+                    private Iterator<? extends T> iteratorSubtype = iterableSubtype.iterator();
+
+                    @Override
+                    public boolean hasNext() {
+                        return iteratorSubtype.hasNext();
+                    }
+
+                    @Override
+                    public T next() {
+                        return iteratorSubtype.next();
+                    }
+                };
+            }
+        };
+    }
 
     /**
      * Counts how many times each of the different elements occurs in an {@link java.lang.Iterable} object.

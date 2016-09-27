@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 
@@ -13,6 +14,19 @@ import static net.milanqiu.mimas.instrumentation.TestConsts.*;
  * @author Milan Qiu
  */
 public class CollectionUtilsTest {
+
+    @Test
+    public void test_convertIterable() throws Exception {
+        List<Integer> list = Arrays.asList(INT_0, INT_1, INT_2);
+        Iterable<Number> itr = CollectionUtils.convertIterable(list);
+        for (int i = 0; i < 2; i++) {
+            int cursor = 0;
+            for (Number element : itr) {
+                Assert.assertEquals(list.get(cursor++), element);
+            }
+            Assert.assertEquals(list.size(), cursor);
+        }
+    }
 
     @Test
     public void test_countsOccurrence() throws Exception {
