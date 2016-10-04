@@ -5,7 +5,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.*;
-import java.util.function.Consumer;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 
@@ -237,6 +236,99 @@ public class CollectionUtilsTest {
         Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(listWithNull3, listWithNull));
         Assert.assertFalse(CollectionUtils.equalsIgnoringOrder(listWithNull4, listWithNull));
         Assert.assertFalse(CollectionUtils.equalsIgnoringOrder(listWithNull5, listWithNull));
+    }
+
+    @Test
+    public void test_equalsCallingHasNextRepeatedly() throws Exception {
+        List<Object> list = Arrays.asList(OBJ_0, OBJ_1, OBJ_2, OBJ_0);
+        List<Object> list2 = Arrays.asList(OBJ_0, OBJ_1, OBJ_2, OBJ_0);
+        List<Object> list3 = Arrays.asList(OBJ_2, OBJ_0, OBJ_0, OBJ_1);
+        List<Object> list4 = Arrays.asList(OBJ_0, OBJ_1, OBJ_2, OBJ_2);
+        List<Object> list5 = Arrays.asList(OBJ_0, OBJ_1, OBJ_3, OBJ_0);
+        List<Object> list6 = Arrays.asList(OBJ_0, OBJ_1, OBJ_2);
+        List<Object> list7 = Arrays.asList(OBJ_0, OBJ_1, OBJ_2, OBJ_0, OBJ_0);
+
+        Assert.assertTrue(CollectionUtils.equalsCallingHasNextRepeatedly(list, list2));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(list, list3));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(list, list4));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(list, list5));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(list, list6));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(list, list7));
+
+        Assert.assertTrue(CollectionUtils.equalsCallingHasNextRepeatedly(list2, list));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(list3, list));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(list4, list));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(list5, list));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(list6, list));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(list7, list));
+
+        // same test but change element type to int
+        List<Integer> listInt = Arrays.asList(INT_0, INT_1, INT_2, INT_0);
+        List<Integer> listInt2 = Arrays.asList(INT_0, INT_1, INT_2, INT_0);
+        List<Integer> listInt3 = Arrays.asList(INT_2, INT_0, INT_0, INT_1);
+        List<Integer> listInt4 = Arrays.asList(INT_0, INT_1, INT_2, INT_2);
+        List<Integer> listInt5 = Arrays.asList(INT_0, INT_1, INT_3, INT_0);
+        List<Integer> listInt6 = Arrays.asList(INT_0, INT_1, INT_2);
+        List<Integer> listInt7 = Arrays.asList(INT_0, INT_1, INT_2, INT_0, INT_0);
+
+        Assert.assertTrue(CollectionUtils.equalsCallingHasNextRepeatedly(listInt, listInt2));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listInt, listInt3));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listInt, listInt4));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listInt, listInt5));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listInt, listInt6));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listInt, listInt7));
+
+        Assert.assertTrue(CollectionUtils.equalsCallingHasNextRepeatedly(listInt2, listInt));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listInt3, listInt));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listInt4, listInt));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listInt5, listInt));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listInt6, listInt));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listInt7, listInt));
+
+        // compare list and set
+        List<Object> listS = Arrays.asList(OBJ_0, OBJ_1, OBJ_2, OBJ_0);
+        List<Object> listS2 = Arrays.asList(OBJ_0, OBJ_1, OBJ_2);
+        Set<Object> set = new LinkedHashSet<>(Arrays.asList(OBJ_0, OBJ_1, OBJ_2, OBJ_0));
+        Set<Object> set2 = new LinkedHashSet<>(Arrays.asList(OBJ_0, OBJ_1, OBJ_2));
+        Set<Object> set3 = new LinkedHashSet<>(Arrays.asList(OBJ_2, OBJ_1, OBJ_0));
+
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listS, listS2));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listS, set));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listS, set2));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listS, set3));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listS2, listS));
+        Assert.assertTrue(CollectionUtils.equalsCallingHasNextRepeatedly(listS2, set));
+        Assert.assertTrue(CollectionUtils.equalsCallingHasNextRepeatedly(listS2, set2));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listS2, set3));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(set, listS));
+        Assert.assertTrue(CollectionUtils.equalsCallingHasNextRepeatedly(set, listS2));
+        Assert.assertTrue(CollectionUtils.equalsCallingHasNextRepeatedly(set, set2));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(set, set3));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(set2, listS));
+        Assert.assertTrue(CollectionUtils.equalsCallingHasNextRepeatedly(set2, listS2));
+        Assert.assertTrue(CollectionUtils.equalsCallingHasNextRepeatedly(set2, set));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(set2, set3));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(set3, listS));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(set3, listS2));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(set3, set));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(set3, set2));
+
+        // null test
+        List<Object> listWithNull = Arrays.asList(OBJ_0, null, null);
+        List<Object> listWithNull2 = Arrays.asList(OBJ_0, null, null);
+        List<Object> listWithNull3 = Arrays.asList(null, null, OBJ_0);
+        List<Object> listWithNull4 = Arrays.asList(OBJ_0, null);
+        List<Object> listWithNull5 = Arrays.asList(OBJ_0, null, null, null);
+
+        Assert.assertTrue(CollectionUtils.equalsCallingHasNextRepeatedly(listWithNull, listWithNull2));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listWithNull, listWithNull3));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listWithNull, listWithNull4));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listWithNull, listWithNull5));
+
+        Assert.assertTrue(CollectionUtils.equalsCallingHasNextRepeatedly(listWithNull2, listWithNull));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listWithNull3, listWithNull));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listWithNull4, listWithNull));
+        Assert.assertFalse(CollectionUtils.equalsCallingHasNextRepeatedly(listWithNull5, listWithNull));
     }
 
     @Test
