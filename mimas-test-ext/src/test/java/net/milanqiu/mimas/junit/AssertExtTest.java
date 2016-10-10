@@ -19,6 +19,12 @@ public class AssertExtTest {
         AssertExt.assertClassification(IndexOutOfBoundsException.class, new ArrayIndexOutOfBoundsException());
     }
 
+    @Test
+    public void test_assertClassification_fail() throws Exception {
+        Assume.assumeTrue(WILL_EXECUTE_FAILED_ASSERTION);
+        AssertExt.assertClassification(Integer.class, "abc");
+    }
+
     private boolean bool;
     private char c;
     private byte b;
@@ -60,9 +66,21 @@ public class AssertExtTest {
     }
 
     @Test
+    public void test_assertEmpty_fail() throws Exception {
+        Assume.assumeTrue(WILL_EXECUTE_FAILED_ASSERTION);
+        AssertExt.assertEmpty("abc");
+    }
+
+    @Test
     public void test_assertNullOrEmpty() throws Exception {
         AssertExt.assertNullOrEmpty(null);
         AssertExt.assertNullOrEmpty("");
+    }
+
+    @Test
+    public void test_assertNullOrEmpty_fail() throws Exception {
+        Assume.assumeTrue(WILL_EXECUTE_FAILED_ASSERTION);
+        AssertExt.assertNullOrEmpty("abc");
     }
 
     private static class A {}

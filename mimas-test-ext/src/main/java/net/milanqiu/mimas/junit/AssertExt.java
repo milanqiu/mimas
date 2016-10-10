@@ -1,5 +1,6 @@
 package net.milanqiu.mimas.junit;
 
+import net.milanqiu.mimas.test.TestUtils;
 import org.junit.Assert;
 
 /**
@@ -20,7 +21,7 @@ public class AssertExt {
      * @param actualObj the actual object
      */
     public static void assertClassification(Class<?> expectedClazz, Object actualObj) {
-        Assert.assertTrue(expectedClazz.isInstance(actualObj));
+        Assert.assertTrue(TestUtils.comparisonMsg(expectedClazz, actualObj.getClass()), expectedClazz.isInstance(actualObj));
     }
 
     /**
@@ -101,7 +102,7 @@ public class AssertExt {
      * @param str the string expected to be empty
      */
     public static void assertEmpty(String str) {
-        Assert.assertTrue(str.isEmpty());
+        Assert.assertTrue("expected empty, but was:<" + str + ">", str.isEmpty());
     }
 
     /**
@@ -110,7 +111,7 @@ public class AssertExt {
      * @param str the string expected to be null or empty
      */
     public static void assertNullOrEmpty(String str) {
-        Assert.assertTrue(str == null || str.isEmpty());
+        Assert.assertTrue("expected null or empty, but was:<" + str + ">", str == null || str.isEmpty());
     }
 
     /**
