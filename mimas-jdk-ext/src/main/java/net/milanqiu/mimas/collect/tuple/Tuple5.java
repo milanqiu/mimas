@@ -113,13 +113,6 @@ public class Tuple5<TA, TB, TC, TD, TE> extends Tuple4<TA, TB, TC, TD> {
      */
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{A=").append(a);
-        sb.append(", B=").append(b);
-        sb.append(", C=").append(c);
-        sb.append(", D=").append(d);
-        sb.append(", E=").append(e);
-        sb.append('}');
-        return sb.toString();
+        return "{A=" + a + ", B=" + b + ", C=" + c + ", D=" + d + ", E=" + e + '}';
     }
 }

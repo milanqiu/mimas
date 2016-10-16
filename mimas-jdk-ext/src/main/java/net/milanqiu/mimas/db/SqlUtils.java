@@ -180,13 +180,7 @@ public class SqlUtils {
      * @return the assembled SQL DELETE statement
      */
     public static String parameterizedDelete(String tableName, String filterFieldName) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("DELETE FROM ")
-          .append(tableName)
-          .append(" WHERE ")
-          .append(filterFieldName)
-          .append(" = ?");
-        return sb.toString();
+        return "DELETE FROM " + tableName + " WHERE " + filterFieldName + " = ?";
     }
 
     /**
