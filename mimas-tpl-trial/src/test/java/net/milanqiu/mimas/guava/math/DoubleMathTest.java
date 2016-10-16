@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.guava.math;
 
 import com.google.common.math.DoubleMath;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import net.milanqiu.mimas.lang.TypeUtils;
 import org.junit.Assert;
@@ -34,12 +33,7 @@ public class DoubleMathTest {
          */
         Assert.assertEquals(5, DoubleMath.roundToInt(5.5, RoundingMode.DOWN));
 
-        try {
-            DoubleMath.roundToInt(4294967296.5, RoundingMode.DOWN);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(ArithmeticException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> DoubleMath.roundToInt(4294967296.5, RoundingMode.DOWN), ArithmeticException.class);
     }
 
     @Test
@@ -49,12 +43,7 @@ public class DoubleMathTest {
          */
         Assert.assertEquals(6, DoubleMath.roundToLong(5.5, RoundingMode.HALF_EVEN));
 
-        try {
-            DoubleMath.roundToLong(18446744073709551616.5, RoundingMode.HALF_EVEN);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(ArithmeticException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> DoubleMath.roundToLong(18446744073709551616.5, RoundingMode.HALF_EVEN), ArithmeticException.class);
     }
 
     @Test
@@ -64,12 +53,7 @@ public class DoubleMathTest {
          */
         Assert.assertEquals(new BigInteger("18446744073709551616"), DoubleMath.roundToBigInteger(18446744073709551616.5, RoundingMode.FLOOR));
 
-        try {
-            DoubleMath.roundToLong(Double.NaN, RoundingMode.FLOOR);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(ArithmeticException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> DoubleMath.roundToLong(Double.NaN, RoundingMode.FLOOR), ArithmeticException.class);
     }
 
     @Test

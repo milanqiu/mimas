@@ -1,6 +1,5 @@
 package net.milanqiu.mimas.collect.tuple;
 
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -24,11 +23,6 @@ public class IntIntTest {
         Assert.assertEquals(INT_2, (int) list.get(1).getA());
         Assert.assertEquals(INT_3, (int) list.get(1).getB());
 
-        try {
-            IntInt.createList(INT_0, INT_1, INT_2, INT_3, INT_4);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> IntInt.createList(INT_0, INT_1, INT_2, INT_3, INT_4), IllegalArgumentException.class);
     }
 }

@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.guava.util.concurrent;
 
 import com.google.common.util.concurrent.*;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.instrumentation.RunningTrace;
 import net.milanqiu.mimas.instrumentation.exception.DeliberateException;
 import net.milanqiu.mimas.junit.AssertExt;
@@ -122,13 +121,7 @@ public class ListenableFutureTest {
             }
         });
         while (!future.isDone());
-        try {
-            future.get();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(ExecutionException.class, e);
-            Assert.assertSame(deliberateException, e.getCause());
-        }
+        AssertExt.assertExceptionThrown(future::get, ExecutionException.class, deliberateException);
         TimeUnit.MILLISECONDS.sleep(10);
 
         RunningTrace.Comparison comparison = runningTrace.newComparison();

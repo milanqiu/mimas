@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.guava.primitives;
 
 import com.google.common.primitives.Ints;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -182,12 +181,7 @@ public class IntsTest {
             Sign-dependent for integral types only
          */
         Assert.assertEquals(Integer.MAX_VALUE, Ints.checkedCast(Integer.MAX_VALUE));
-        try {
-            Ints.checkedCast(Long.MAX_VALUE);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Ints.checkedCast(Long.MAX_VALUE), IllegalArgumentException.class);
     }
 
     @Test
@@ -226,12 +220,7 @@ public class IntsTest {
          */
         Assert.assertEquals(0x12345678, Ints.fromByteArray(new byte[]{0x12, 0x34, 0x56, 0x78, 0x55}));
         Assert.assertEquals(0x12345678, Ints.fromByteArray(new byte[]{0x12, 0x34, 0x56, 0x78}));
-        try {
-            Ints.fromByteArray(new byte[]{0x12, 0x34, 0x56});
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Ints.fromByteArray(new byte[]{0x12, 0x34, 0x56}), IllegalArgumentException.class);
     }
 
     @Test

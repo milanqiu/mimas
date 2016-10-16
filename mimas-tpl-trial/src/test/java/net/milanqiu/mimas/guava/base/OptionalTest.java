@@ -2,7 +2,6 @@ package net.milanqiu.mimas.guava.base;
 
 import com.google.common.base.Function;
 import com.google.common.base.Optional;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -35,12 +34,7 @@ public class OptionalTest {
         Optional<String> o = Optional.of(STR_0);
         Assert.assertEquals(STR_0, o.get());
 
-        try {
-            Optional.of(null);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Optional.of(null), NullPointerException.class);
     }
 
     @Test
@@ -53,13 +47,7 @@ public class OptionalTest {
             Returns the contained T instance, which must be present; otherwise, throws an IllegalStateException.
          */
         Optional<String> o = Optional.absent();
-
-        try {
-            o.get();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalStateException.class, e);
-        }
+        AssertExt.assertExceptionThrown(o::get, IllegalStateException.class);
     }
 
     @Test
@@ -138,11 +126,6 @@ public class OptionalTest {
         o = absent.transform(func);
         Assert.assertEquals(Optional.absent(), o);
 
-        try {
-            Optional.of(INT_4).transform(func);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Optional.of(INT_4).transform(func), NullPointerException.class);
     }
 }

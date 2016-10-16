@@ -4,7 +4,6 @@ import com.google.common.collect.BoundType;
 import com.google.common.collect.DiscreteDomain;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Range;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -41,24 +40,14 @@ public class RangeTest {
     public void test_lowerBoundType_upperBoundType() throws Exception {
         Assert.assertEquals(BoundType.CLOSED, Range.closedOpen(1, 3).lowerBoundType());
         Assert.assertEquals(BoundType.OPEN,   Range.closedOpen(1, 3).upperBoundType());
-        try {
-            Range.lessThan(5).lowerBoundType();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalStateException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Range.lessThan(5).lowerBoundType(), IllegalStateException.class);
     }
 
     @Test
     public void test_lowerEndpoint_upperEndpoint() throws Exception {
         Assert.assertEquals(1, (int) Range.closedOpen(1, 3).lowerEndpoint());
         Assert.assertEquals(3, (int) Range.closedOpen(1, 3).upperEndpoint());
-        try {
-            Range.lessThan(5).lowerEndpoint();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalStateException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Range.lessThan(5).lowerEndpoint(), IllegalStateException.class);
     }
 
     @Test
@@ -66,12 +55,7 @@ public class RangeTest {
         Assert.assertTrue(Range.closedOpen(1, 1).isEmpty());
         Assert.assertTrue(Range.openClosed(1, 1).isEmpty());
         Assert.assertFalse(Range.closed(1, 1).isEmpty());
-        try {
-            Range.open(1, 1);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Range.open(1, 1), IllegalArgumentException.class);
     }
 
     @Test
@@ -98,18 +82,8 @@ public class RangeTest {
         Assert.assertEquals(Range.openClosed(5, 5), Range.closed(3, 5).intersection(Range.open(5, 10)));
         Assert.assertEquals(Range.closed(3, 4),     Range.closed(0, 9).intersection(Range.closed(3, 4)));
         Assert.assertEquals(Range.closed(3, 5),     Range.closed(0, 5).intersection(Range.closed(3, 9)));
-        try {
-            Range.open(3, 5).intersection(Range.open(5, 10));
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-        }
-        try {
-            Range.closed(1, 5).intersection(Range.closed(6, 10));
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Range.open(3, 5).intersection(Range.open(5, 10)), IllegalArgumentException.class);
+        AssertExt.assertExceptionThrown(() -> Range.closed(1, 5).intersection(Range.closed(6, 10)), IllegalArgumentException.class);
     }
 
     @Test

@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.lang;
 
 import net.milanqiu.mimas.collect.tuple.StrStr;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -56,12 +55,7 @@ public class StackTraceTest {
         Assert.assertEquals(INT_0, element.getLineNumber());
 
         // null test
-        try {
-            StackTrace.createElement(null, null, null, 0);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> StackTrace.createElement(null, null, null, 0), NullPointerException.class);
     }
 
     @Test
@@ -73,12 +67,7 @@ public class StackTraceTest {
         Assert.assertEquals(-1, element.getLineNumber());
 
         // null test
-        try {
-            StackTrace.createMethodElement(null, null);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> StackTrace.createMethodElement(null, null), NullPointerException.class);
     }
 
     @Test

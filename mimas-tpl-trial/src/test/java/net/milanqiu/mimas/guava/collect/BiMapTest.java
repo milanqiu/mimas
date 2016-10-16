@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.guava.collect;
 
 import com.google.common.collect.*;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Before;
@@ -56,12 +55,7 @@ public class BiMapTest {
                 INT_1, STR_1,
                 INT_2, STR_3), hashBiMap);
 
-        try {
-            hashBiMap.put(INT_3, STR_0);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> hashBiMap.put(INT_3, STR_0), IllegalArgumentException.class);
     }
 
     @Test
@@ -80,11 +74,6 @@ public class BiMapTest {
                 INT_1, STR_3,
                 INT_2, STR_2), hashBiMap);
 
-        try {
-            hashBiMap.putAll(ImmutableMap.of(INT_4, STR_0));
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> hashBiMap.putAll(ImmutableMap.of(INT_4, STR_0)), IllegalArgumentException.class);
     }
 }

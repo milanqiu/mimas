@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.guava.collect;
 
 import com.google.common.collect.AbstractIterator;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Before;
@@ -58,11 +57,6 @@ public class AbstractIteratorTest {
         Assert.assertEquals(1, (int) countOneToFiveItr.peek());
         Assert.assertEquals(1, (int) countOneToFiveItr.peek());
 
-        try {
-            emptyItr.peek();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NoSuchElementException.class, e);
-        }
+        AssertExt.assertExceptionThrown(emptyItr::peek, NoSuchElementException.class);
     }
 }

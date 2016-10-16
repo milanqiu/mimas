@@ -122,4 +122,82 @@ public class AssertExt {
     public static void assertHasCustomToString(Object obj) throws NoSuchMethodException {
         Assert.assertTrue(obj.getClass().getMethod("toString").getDeclaringClass().equals(obj.getClass()));
     }
+
+    /**
+     * Likes {@link java.lang.Runnable}, but may throw an exception when running.
+     */
+    @FunctionalInterface
+    public interface RunnableWithException {
+        /**
+         * May take any action whatsoever, allowing exception thrown.
+         */
+        void run() throws Exception;
+    }
+
+    /**
+     * Asserts the running of the specified code will throw an expected exception.
+     * @param runnable the runnable code expected to throw exception
+     * @param exceptionClazz the expected exception class
+     */
+    public static void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz) {
+        try {
+            runnable.run();
+            Assert.fail("Expected exception not thrown");
+        } catch (Exception e) {
+            Assert.assertTrue(TestUtils.comparisonMsg(exceptionClazz, e.getClass()), exceptionClazz.isInstance(e));
+        }
+    }
+
+    /**
+     * Asserts the running of the specified code will throw an expected exception with expected message.
+     * @param runnable the runnable code expected to throw exception
+     * @param exceptionClazz the expected exception class
+     * @param exceptionMessage the expected exception message
+     */
+    public static void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz,
+                                             String exceptionMessage) {
+        try {
+            runnable.run();
+            Assert.fail("Expected exception not thrown");
+        } catch (Exception e) {
+            Assert.assertTrue(TestUtils.comparisonMsg(exceptionClazz, e.getClass()), exceptionClazz.isInstance(e));
+            Assert.assertEquals(exceptionMessage, e.getMessage());
+        }
+    }
+
+    /**
+     * Asserts the running of the specified code will throw an expected exception with expected message and cause.
+     * @param runnable the runnable code expected to throw exception
+     * @param exceptionClazz the expected exception class
+     * @param exceptionMessage the expected exception message
+     * @param exceptionCause the expected exception cause
+     */
+    public static void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz,
+                                             String exceptionMessage, Throwable exceptionCause) {
+        try {
+            runnable.run();
+            Assert.fail("Expected exception not thrown");
+        } catch (Exception e) {
+            Assert.assertTrue(TestUtils.comparisonMsg(exceptionClazz, e.getClass()), exceptionClazz.isInstance(e));
+            Assert.assertEquals(exceptionMessage, e.getMessage());
+            Assert.assertSame(exceptionCause, e.getCause());
+        }
+    }
+
+    /**
+     * Asserts the running of the specified code will throw an expected exception with expected cause.
+     * @param runnable the runnable code expected to throw exception
+     * @param exceptionClazz the expected exception class
+     * @param exceptionCause the expected exception cause
+     */
+    public static void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz,
+                                             Throwable exceptionCause) {
+        try {
+            runnable.run();
+            Assert.fail("Expected exception not thrown");
+        } catch (Exception e) {
+            Assert.assertTrue(TestUtils.comparisonMsg(exceptionClazz, e.getClass()), exceptionClazz.isInstance(e));
+            Assert.assertSame(exceptionCause, e.getCause());
+        }
+    }
 }

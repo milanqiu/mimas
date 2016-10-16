@@ -1,6 +1,5 @@
 package net.milanqiu.mimas.runtime;
 
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.instrumentation.exception.CodeContextException;
 import net.milanqiu.mimas.io.FileUtils;
 import net.milanqiu.mimas.junit.AssertExt;
@@ -90,48 +89,28 @@ public class MavenProjectConventionTest {
     public void test_getWorkspaceDir() throws Exception {
         Assert.assertEquals(new File(ROOT_DIR + "workspace/"), dpc.getWorkspaceDir());
 
-        try {
-            wpc.getWorkspaceDir();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(CodeContextException.class, e);
-        }
+        AssertExt.assertExceptionThrown(wpc::getWorkspaceDir, CodeContextException.class);
     }
 
     @Test
     public void test_getProjectDir() throws Exception {
         Assert.assertEquals(new File(ROOT_DIR + "workspace/project/"), dpc.getProjectDir());
 
-        try {
-            wpc.getProjectDir();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(CodeContextException.class, e);
-        }
+        AssertExt.assertExceptionThrown(wpc::getProjectDir, CodeContextException.class);
     }
 
     @Test
     public void test_getFilesDir() throws Exception {
         Assert.assertEquals(new File(ROOT_DIR + "workspace/files/"), dpc.getFilesDir());
 
-        try {
-            wpc.getFilesDir();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(CodeContextException.class, e);
-        }
+        AssertExt.assertExceptionThrown(wpc::getFilesDir, CodeContextException.class);
     }
 
     @Test
     public void test_getTestTempDir() throws Exception {
         Assert.assertEquals(new File(ROOT_DIR + "workspace/files/test_temp/"), dpc.getTestTempDir());
 
-        try {
-            wpc.getTestTempDir();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(CodeContextException.class, e);
-        }
+        AssertExt.assertExceptionThrown(wpc::getTestTempDir, CodeContextException.class);
     }
 
     @Test
@@ -144,24 +123,14 @@ public class MavenProjectConventionTest {
 
         FileUtils.deleteRecursively(new File(ROOT_DIR));
 
-        try {
-            wpc.prepareDirInTestTempDir();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(CodeContextException.class, e);
-        }
+        AssertExt.assertExceptionThrown(wpc::prepareDirInTestTempDir, CodeContextException.class);
     }
 
     @Test
     public void test_getTestOutDir() throws Exception {
         Assert.assertEquals(new File(ROOT_DIR + "workspace/files/test_out/"), dpc.getTestOutDir());
 
-        try {
-            wpc.getTestOutDir();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(CodeContextException.class, e);
-        }
+        AssertExt.assertExceptionThrown(wpc::getTestOutDir, CodeContextException.class);
     }
 
     @Test
@@ -172,12 +141,7 @@ public class MavenProjectConventionTest {
         Assert.assertEquals(expectedFile, dpc.prepareFileInTestOutDir());
         Assert.assertFalse(expectedFile.exists());
 
-        try {
-            wpc.prepareFileInTestOutDir();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(CodeContextException.class, e);
-        }
+        AssertExt.assertExceptionThrown(wpc::prepareFileInTestOutDir, CodeContextException.class);
     }
 
     @Test
@@ -194,11 +158,6 @@ public class MavenProjectConventionTest {
 
         FileUtils.deleteRecursively(new File(ROOT_DIR));
 
-        try {
-            wpc.writeFileInTestOutDir(content);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(CodeContextException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> wpc.writeFileInTestOutDir(content), CodeContextException.class);
     }
 }

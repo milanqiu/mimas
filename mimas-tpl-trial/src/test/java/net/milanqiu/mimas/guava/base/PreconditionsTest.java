@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.guava.base;
 
 import com.google.common.base.Preconditions;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -30,30 +29,15 @@ public class PreconditionsTest {
          */
         Preconditions.checkArgument(true);
 
-        try {
-            Preconditions.checkArgument(false);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Preconditions.checkArgument(false), IllegalArgumentException.class);
 
         // void checkArgument(boolean expression, @Nullable Object errorMessage)
-        try {
-            Preconditions.checkArgument(false, OBJ_0);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-            Assert.assertEquals(STR_OF_OBJ_0, e.getMessage());
-        }
+        AssertExt.assertExceptionThrown(() -> Preconditions.checkArgument(false, OBJ_0),
+                IllegalArgumentException.class, STR_OF_OBJ_0);
 
         // checkArgument(boolean expression, @Nullable String errorMessageTemplate, @Nullable Object... errorMessageArgs)
-        try {
-            Preconditions.checkArgument(false, "here %s error %s", "is", 404);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-            Assert.assertEquals("here is error 404", e.getMessage());
-        }
+        AssertExt.assertExceptionThrown(() -> Preconditions.checkArgument(false, "here %s error %s", "is", 404),
+                IllegalArgumentException.class, "here is error 404");
     }
 
     @Test
@@ -64,12 +48,7 @@ public class PreconditionsTest {
          */
         Assert.assertSame(OBJ_0, Preconditions.checkNotNull(OBJ_0));
 
-        try {
-            Preconditions.checkNotNull(null);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Preconditions.checkNotNull(null), NullPointerException.class);
     }
 
     @Test
@@ -81,12 +60,7 @@ public class PreconditionsTest {
          */
         Preconditions.checkState(true);
 
-        try {
-            Preconditions.checkState(false);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalStateException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Preconditions.checkState(false), IllegalStateException.class);
     }
 
     @Test
@@ -101,19 +75,8 @@ public class PreconditionsTest {
         Assert.assertEquals(0, Preconditions.checkElementIndex(0, INT_0));
         Assert.assertEquals(INT_0-1, Preconditions.checkElementIndex(INT_0-1, INT_0));
 
-        try {
-            Preconditions.checkElementIndex(-1, INT_0);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IndexOutOfBoundsException.class, e);
-        }
-
-        try {
-            Preconditions.checkElementIndex(INT_0, INT_0);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IndexOutOfBoundsException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Preconditions.checkElementIndex(-1, INT_0), IndexOutOfBoundsException.class);
+        AssertExt.assertExceptionThrown(() -> Preconditions.checkElementIndex(INT_0, INT_0), IndexOutOfBoundsException.class);
     }
 
     @Test
@@ -128,19 +91,8 @@ public class PreconditionsTest {
         Assert.assertEquals(0, Preconditions.checkPositionIndex(0, INT_3));
         Assert.assertEquals(INT_3, Preconditions.checkPositionIndex(INT_3, INT_3));
 
-        try {
-            Preconditions.checkPositionIndex(-1, INT_3);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IndexOutOfBoundsException.class, e);
-        }
-
-        try {
-            Preconditions.checkPositionIndex(INT_3+1, INT_3);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IndexOutOfBoundsException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Preconditions.checkPositionIndex(-1, INT_3), IndexOutOfBoundsException.class);
+        AssertExt.assertExceptionThrown(() -> Preconditions.checkPositionIndex(INT_3+1, INT_3), IndexOutOfBoundsException.class);
     }
 
     @Test
@@ -151,18 +103,7 @@ public class PreconditionsTest {
          */
         Preconditions.checkPositionIndexes(0, INT_3, INT_3);
 
-        try {
-            Preconditions.checkPositionIndexes(-1, INT_3, INT_3);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IndexOutOfBoundsException.class, e);
-        }
-
-        try {
-            Preconditions.checkPositionIndexes(0, INT_3+1, INT_3);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IndexOutOfBoundsException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Preconditions.checkPositionIndexes(-1, INT_3, INT_3), IndexOutOfBoundsException.class);
+        AssertExt.assertExceptionThrown(() -> Preconditions.checkPositionIndexes(0, INT_3+1, INT_3), IndexOutOfBoundsException.class);
     }
 }

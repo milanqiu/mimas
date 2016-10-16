@@ -1,6 +1,5 @@
 package net.milanqiu.mimas.lang;
 
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -38,12 +37,7 @@ public class SingletonCacheTest {
     public void test_getData_setData() throws Exception {
         cache = new SingletonCache<>();
         Assert.assertFalse(cache.isEnabled());
-        try {
-            cache.getData();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NoSuchElementException.class, e);
-        }
+        AssertExt.assertExceptionThrown(cache::getData, NoSuchElementException.class);
 
         cache.setData(INT_0);
         Assert.assertTrue(cache.isEnabled());
@@ -66,12 +60,7 @@ public class SingletonCacheTest {
 
         cache.disable();
         Assert.assertFalse(cache.isEnabled());
-        try {
-            cache.getData();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NoSuchElementException.class, e);
-        }
+        AssertExt.assertExceptionThrown(cache::getData, NoSuchElementException.class);
     }
 
     @Test

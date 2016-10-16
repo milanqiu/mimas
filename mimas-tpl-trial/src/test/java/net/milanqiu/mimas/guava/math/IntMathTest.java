@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.guava.math;
 
 import com.google.common.math.IntMath;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,42 +15,22 @@ public class IntMathTest {
 
     @Test
     public void test_checkedAdd() throws Exception {
-        try {
-            IntMath.checkedAdd(Integer.MAX_VALUE, 1);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(ArithmeticException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> IntMath.checkedAdd(Integer.MAX_VALUE, 1), ArithmeticException.class);
     }
 
     @Test
     public void test_checkedSubtract() throws Exception {
-        try {
-            IntMath.checkedSubtract(Integer.MIN_VALUE, 1);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(ArithmeticException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> IntMath.checkedSubtract(Integer.MIN_VALUE, 1), ArithmeticException.class);
     }
 
     @Test
     public void test_checkedMultiply() throws Exception {
-        try {
-            IntMath.checkedMultiply(0x10000, 0x10000);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(ArithmeticException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> IntMath.checkedMultiply(0x10000, 0x10000), ArithmeticException.class);
     }
 
     @Test
     public void test_checkedPow() throws Exception {
-        try {
-            IntMath.checkedPow(2, 31);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(ArithmeticException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> IntMath.checkedPow(2, 31), ArithmeticException.class);
     }
 
     @Test

@@ -5,7 +5,6 @@ import com.google.common.base.Functions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Supplier;
 import com.google.common.collect.ImmutableMap;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -41,12 +40,7 @@ public class FunctionsTest {
         Assert.assertEquals(STR_0, func2.apply(INT_0));
         Assert.assertEquals(STR_1, func2.apply(INT_1));
         Assert.assertEquals(STR_2, func2.apply(INT_2));
-        try {
-            func2.apply(INT_3);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> func2.apply(INT_3), IllegalArgumentException.class);
     }
 
     @Test
@@ -111,12 +105,7 @@ public class FunctionsTest {
         Assert.assertEquals(STR_0, func.apply(STR_0));
         Assert.assertEquals(STR_OF_INT_0, func.apply(INT_0));
         Assert.assertEquals(OBJ_0.toString(), func.apply(OBJ_0));
-        try {
-            func.apply(null);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> func.apply(null), NullPointerException.class);
     }
 
     @Test

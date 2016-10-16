@@ -51,12 +51,7 @@ public class CacheTest {
             DebugUtils.neverGoesHere();
         }
 
-        try {
-            cache.get(INT_2, CALLABLE_RETURNING_NULL_STR);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(CacheLoader.InvalidCacheLoadException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> cache.get(INT_2, CALLABLE_RETURNING_NULL_STR), CacheLoader.InvalidCacheLoadException.class);
     }
 
     @Test

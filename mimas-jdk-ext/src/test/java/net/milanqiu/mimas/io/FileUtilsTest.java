@@ -1,7 +1,7 @@
 package net.milanqiu.mimas.io;
 
 import net.milanqiu.mimas.config.MimasJdkExtProjectConfig;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
+import net.milanqiu.mimas.junit.AssertExt;
 import net.milanqiu.mimas.lang.TypeUtils;
 import net.milanqiu.mimas.string.StrUtils;
 import org.junit.Assert;
@@ -57,24 +57,14 @@ public class FileUtilsTest {
         Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "ddd", "eee").mkdirs());
         Assert.assertTrue(FileUtils.getSubFile(workDir, "aaa", "ddd", "fff").createNewFile());
 
-        try {
-            FileUtils.deleteDirectoryContents(FileUtils.getSubFile(workDir, "aaa", "ddd", "fff"));
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof IllegalArgumentException);
-        }
+        AssertExt.assertExceptionThrown(() -> FileUtils.deleteDirectoryContents(FileUtils.getSubFile(workDir, "aaa", "ddd", "fff")), IllegalArgumentException.class);
 
         FileUtils.deleteDirectoryContents(workDir);
         Assert.assertEquals(0, workDir.listFiles().length);
         Assert.assertTrue(workDir.exists());
         Assert.assertTrue(workDir.delete());
 
-        try {
-            FileUtils.deleteDirectoryContents(workDir);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof NoSuchFileException);
-        }
+        AssertExt.assertExceptionThrown(() -> FileUtils.deleteDirectoryContents(workDir), NoSuchFileException.class);
     }
 
     @Test
@@ -87,12 +77,7 @@ public class FileUtilsTest {
         FileUtils.deleteRecursively(workDir);
         Assert.assertFalse(workDir.exists());
 
-        try {
-            FileUtils.deleteRecursively(workDir);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof NoSuchFileException);
-        }
+        AssertExt.assertExceptionThrown(() -> FileUtils.deleteRecursively(workDir), NoSuchFileException.class);
     }
 
     @Test
@@ -118,26 +103,9 @@ public class FileUtilsTest {
         FileUtils.writeBytes(content, workFile);
         Assert.assertArrayEquals(content, FileUtils.readBytes(workFile));
 
-        try {
-            FileUtils.readBytes(new File(workDir, "fake"));
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof FileNotFoundException);
-        }
-
-        try {
-            FileUtils.readBytes(workDir);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof FileNotFoundException);
-        }
-
-        try {
-            FileUtils.writeBytes(content, workDir);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof FileNotFoundException);
-        }
+        AssertExt.assertExceptionThrown(() -> FileUtils.readBytes(new File(workDir, "fake")), FileNotFoundException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.readBytes(workDir),                   FileNotFoundException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.writeBytes(content, workDir),         FileNotFoundException.class);
 
         FileUtils.deleteRecursively(workDir);
         Assert.assertFalse(workDir.exists());
@@ -154,26 +122,9 @@ public class FileUtilsTest {
         Assert.assertNotEquals(content, FileUtils.readChars(workFile, StandardCharsets.UTF_16BE));
         Assert.assertArrayEquals(content.getBytes(StandardCharsets.UTF_16LE), FileUtils.readBytes(workFile));
 
-        try {
-            FileUtils.readChars(new File(workDir, "fake"), StandardCharsets.UTF_16LE);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof FileNotFoundException);
-        }
-
-        try {
-            FileUtils.readChars(workDir, StandardCharsets.UTF_16LE);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof FileNotFoundException);
-        }
-
-        try {
-            FileUtils.writeChars(content, workDir, StandardCharsets.UTF_16LE);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof FileNotFoundException);
-        }
+        AssertExt.assertExceptionThrown(() -> FileUtils.readChars(new File(workDir, "fake"), StandardCharsets.UTF_16LE), FileNotFoundException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.readChars(workDir, StandardCharsets.UTF_16LE),                   FileNotFoundException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.writeChars(content, workDir, StandardCharsets.UTF_16LE),         FileNotFoundException.class);
 
         FileUtils.deleteRecursively(workDir);
         Assert.assertFalse(workDir.exists());
@@ -190,26 +141,9 @@ public class FileUtilsTest {
         Assert.assertNotEquals(content, FileUtils.readChars(workFile, StandardCharsets.UTF_16LE));
         Assert.assertArrayEquals(content.getBytes(StandardCharsets.UTF_8), FileUtils.readBytes(workFile));
 
-        try {
-            FileUtils.readCharsUsingUtf8(new File(workDir, "fake"));
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof FileNotFoundException);
-        }
-
-        try {
-            FileUtils.readCharsUsingUtf8(workDir);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof FileNotFoundException);
-        }
-
-        try {
-            FileUtils.writeCharsUsingUtf8(content, workDir);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof FileNotFoundException);
-        }
+        AssertExt.assertExceptionThrown(() -> FileUtils.readCharsUsingUtf8(new File(workDir, "fake")), FileNotFoundException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.readCharsUsingUtf8(workDir),                   FileNotFoundException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.writeCharsUsingUtf8(content, workDir),         FileNotFoundException.class);
 
         FileUtils.deleteRecursively(workDir);
         Assert.assertFalse(workDir.exists());

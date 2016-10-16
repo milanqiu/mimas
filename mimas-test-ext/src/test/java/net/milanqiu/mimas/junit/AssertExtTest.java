@@ -3,6 +3,8 @@ package net.milanqiu.mimas.junit;
 import org.junit.Assume;
 import org.junit.Test;
 
+import java.io.IOException;
+
 /**
  * Creation Date: 2014-07-08
  * @author Milan Qiu
@@ -110,5 +112,51 @@ public class AssertExtTest {
     public void test_assertHasCustomToString_fail2() throws Exception {
         Assume.assumeTrue(WILL_EXECUTE_FAILED_ASSERTION);
         AssertExt.assertHasCustomToString(new C());
+    }
+
+    @Test
+    public void test_assertExceptionThrown() throws Exception {
+        Exception cause = new ArithmeticException();
+
+        // void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz)
+        AssertExt.assertExceptionThrown(() -> { Integer n = null; n.toString(); }, NullPointerException.class);
+        AssertExt.assertExceptionThrown(() -> { int n = 1/0; }, ArithmeticException.class);
+
+        // void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz,
+        //                            String exceptionMessage)
+        AssertExt.assertExceptionThrown(() -> { int n = 1/0; }, ArithmeticException.class, "/ by zero");
+
+        // void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz,
+        //                            String exceptionMessage, Throwable exceptionCause)
+        AssertExt.assertExceptionThrown(() -> {throw new IOException("msg", cause); }, Exception.class, "msg", cause);
+
+        // void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz,
+        //                            Throwable exceptionCause)
+        AssertExt.assertExceptionThrown(() -> {throw new IOException("msg", cause); }, Exception.class, cause);
+    }
+
+    @Test
+    public void test_assertExceptionThrown_fail() throws Exception {
+        Assume.assumeTrue(WILL_EXECUTE_FAILED_ASSERTION);
+        AssertExt.assertExceptionThrown(() -> { int n = 1/0; }, NullPointerException.class);
+    }
+
+    @Test
+    public void test_assertExceptionThrown_fail2() throws Exception {
+        Assume.assumeTrue(WILL_EXECUTE_FAILED_ASSERTION);
+        AssertExt.assertExceptionThrown(() -> {}, Exception.class);
+    }
+
+    @Test
+    public void test_assertExceptionThrown_fail3() throws Exception {
+        Assume.assumeTrue(WILL_EXECUTE_FAILED_ASSERTION);
+        AssertExt.assertExceptionThrown(() -> { int n = 1/0; }, ArithmeticException.class, "null pointer");
+    }
+
+    @Test
+    public void test_assertExceptionThrown_fail4() throws Exception {
+        Assume.assumeTrue(WILL_EXECUTE_FAILED_ASSERTION);
+        Exception cause = new ArithmeticException();
+        AssertExt.assertExceptionThrown(() -> {throw new IOException("msg", cause); }, Exception.class, new NullPointerException());
     }
 }

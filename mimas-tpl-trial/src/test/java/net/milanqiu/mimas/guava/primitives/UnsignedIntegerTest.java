@@ -43,22 +43,14 @@ public class UnsignedIntegerTest {
             negative or does not fit.
         */
         Assert.assertEquals("4294967295", UnsignedInteger.valueOf(new BigInteger("ffffffff", 16)).toString());
-        try {
-            UnsignedInteger.valueOf(new BigInteger("ffffffffffffffff", 16));
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> UnsignedInteger.valueOf(new BigInteger("ffffffffffffffff", 16)), IllegalArgumentException.class);
         /*
             UnsignedPrim valueOf(long)
             Returns the value from the long as an UnsignedPrim, or throw an IAE if the specified long is
             negative or does not fit.
          */
         Assert.assertEquals("4294967295", UnsignedInteger.valueOf(0xffffffffL).toString());
-        try {
-            UnsignedInteger.valueOf(-1);
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> UnsignedInteger.valueOf(-1), IllegalArgumentException.class);
     }
 
     @Test
