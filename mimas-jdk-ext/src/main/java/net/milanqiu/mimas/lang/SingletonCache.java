@@ -1,6 +1,7 @@
 package net.milanqiu.mimas.lang;
 
 import java.util.NoSuchElementException;
+import java.util.function.Supplier;
 
 /**
  * A cache containing only one data object.
@@ -55,6 +56,18 @@ public final class SingletonCache<D> {
     public D getData() {
         if (!enabled)
             throw new NoSuchElementException("SingletonCache disabled");
+        return data;
+    }
+
+    /**
+     * Returns the cached data. It may produce and assign new cached data with the specified supplier if the cache is disabled.
+     * @param supplier the supplier to produce new cached data
+     * @return the cached data, or new cached data produced by supplier if the cache is disabled
+     */
+    public D getData(Supplier<D> supplier) {
+        if (!enabled) {
+            setData(supplier.get());
+        }
         return data;
     }
 

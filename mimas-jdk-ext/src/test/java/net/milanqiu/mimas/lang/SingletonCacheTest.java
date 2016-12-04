@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.NoSuchElementException;
+import java.util.function.Supplier;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 
@@ -39,12 +40,19 @@ public class SingletonCacheTest {
         Assert.assertFalse(cache.isEnabled());
         AssertExt.assertExceptionThrown(cache::getData, NoSuchElementException.class);
 
-        cache.setData(INT_0);
+        // D getData(Supplier<D> supplier)
+        Assert.assertEquals(INT_0, (int) cache.getData(() -> INT_0));
         Assert.assertTrue(cache.isEnabled());
         Assert.assertEquals(INT_0, (int) cache.getData());
+
+        // D getData()
+        // void setData(D data)
         cache.setData(INT_1);
         Assert.assertTrue(cache.isEnabled());
         Assert.assertEquals(INT_1, (int) cache.getData());
+        cache.setData(INT_2);
+        Assert.assertTrue(cache.isEnabled());
+        Assert.assertEquals(INT_2, (int) cache.getData());
 
         // null test
         cache.setData(null);
