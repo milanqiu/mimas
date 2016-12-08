@@ -36,10 +36,14 @@ public class RunningTraceTest {
     }
 
     @Test
-    public void test_size_isEmpty() throws Exception {
+    public void test_clear_size_isEmpty() throws Exception {
         methodC();
         Assert.assertEquals(6, trace.size());
         Assert.assertFalse(trace.isEmpty());
+
+        trace.clear();
+        Assert.assertEquals(0, trace.size());
+        Assert.assertTrue(trace.isEmpty());
 
         RunningTrace emptyTrace = new RunningTrace();
         Assert.assertEquals(0, emptyTrace.size());
