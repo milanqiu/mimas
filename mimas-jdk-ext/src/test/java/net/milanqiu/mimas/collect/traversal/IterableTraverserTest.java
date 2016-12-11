@@ -80,7 +80,7 @@ public class IterableTraverserTest {
         iterator.forEachRemaining((element) -> {});
         AssertExt.assertExceptionThrown(iterator::next, NoSuchElementException.class);
 
-        // doesn't allow cycle, is meaningless and should be avoided
+        // doesn't allow cycle, is meaningless and endless and should be avoided
         traverser = IterableTraverser.create(false);
 
         iterable = traverser.preOrderTraversal(ppp);
@@ -158,7 +158,7 @@ public class IterableTraverserTest {
         iterator.forEachRemaining((element) -> {});
         AssertExt.assertExceptionThrown(iterator::next, NoSuchElementException.class);
 
-        // doesn't allow cycle, is meaningless and should be avoided
+        // doesn't allow cycle, is meaningless and endless and should be avoided
         traverser = IterableTraverser.create(false);
 
         iterable = traverser.postOrderTraversal(ppp);
@@ -236,7 +236,7 @@ public class IterableTraverserTest {
         iterator.forEachRemaining((element) -> {});
         AssertExt.assertExceptionThrown(iterator::next, NoSuchElementException.class);
 
-        // doesn't allow cycle, is meaningless and should be avoided
+        // doesn't allow cycle, is meaningless and endless and should be avoided
         traverser = IterableTraverser.create(false);
 
         iterable = traverser.breadthFirstTraversal(ppp);

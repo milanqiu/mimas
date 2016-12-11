@@ -15,6 +15,9 @@ import java.util.function.Predicate;
  */
 public class IterableTraverser {
 
+    /**
+     * Whether the data structure to be traversed allows cycle.
+     */
     protected boolean allowsCycle;
 
     /**
