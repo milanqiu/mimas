@@ -266,4 +266,27 @@ public class LinkedProperties extends Properties {
             out.println(key + "=" + val);
         });
     }
+
+    /**
+     * Reads this property list from the specified file.
+     * @param file the file to be read from
+     * @throws IOException if an I/O error occurs
+     */
+    public void loadFromFile(File file) throws IOException {
+        try (FileInputStream fis = new FileInputStream(file)) {
+            load(fis);
+        }
+    }
+
+    /**
+     * Writes this property list to the specified file.
+     * @param file the file to be written to
+     * @param comments a description of this property list
+     * @throws IOException if an I/O error occurs
+     */
+    public void storeToFile(File file, String comments) throws IOException {
+        try (FileOutputStream fos = new FileOutputStream(file)) {
+            store(fos, comments);
+        }
+    }
 }
