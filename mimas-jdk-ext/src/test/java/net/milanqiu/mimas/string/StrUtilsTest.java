@@ -11,55 +11,6 @@ import org.junit.Test;
 public class StrUtilsTest {
 
     @Test
-    public void test_getValidUnicodeCharValues() throws Exception {
-        char[] charArr = StrUtils.getValidUnicodeCharValues();
-        Assert.assertEquals(StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT, charArr.length);
-        int cursor = Character.MIN_VALUE;
-        for (int i = 0; i < StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT; i++) {
-            if (cursor == Character.MIN_SURROGATE)
-                cursor = Character.MAX_SURROGATE + 1;
-            if (cursor == StrUtils.REVERSED_UNICODE_BOM)
-                cursor++;
-            Assert.assertEquals(cursor++, charArr[i]);
-        }
-        Assert.assertEquals(Character.MAX_VALUE+1, cursor);
-    }
-
-    private int cursor;
-    private int count;
-
-    @Test
-    public void test_traverseValidUnicodeCharValues() throws Exception {
-        cursor = Character.MIN_VALUE;
-        count = 0;
-        StrUtils.traverseValidUnicodeCharValues((param) -> {
-            if (cursor == Character.MIN_SURROGATE)
-                cursor = Character.MAX_SURROGATE + 1;
-            if (cursor == StrUtils.REVERSED_UNICODE_BOM)
-                cursor++;
-            Assert.assertEquals(cursor++, param);
-            count++;
-        });
-        Assert.assertEquals(Character.MAX_VALUE+1, cursor);
-        Assert.assertEquals(StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT, count);
-    }
-
-    @Test
-    public void test_getValidUnicodeString() throws Exception {
-        String str = StrUtils.getValidUnicodeString();
-        Assert.assertEquals(StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT, str.length());
-        int cursor = Character.MIN_VALUE;
-        for (int i = 0; i < StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT; i++) {
-            if (cursor == Character.MIN_SURROGATE)
-                cursor = Character.MAX_SURROGATE + 1;
-            if (cursor == StrUtils.REVERSED_UNICODE_BOM)
-                cursor++;
-            Assert.assertEquals(cursor++, str.charAt(i));
-        }
-        Assert.assertEquals(Character.MAX_VALUE+1, cursor);
-    }
-
-    @Test
     public void test_isAsciiUpperCase() throws Exception {
         TypeUtils.traverseCharValues((param) -> {
             Assert.assertEquals(String.valueOf(param).matches("[A-Z]"), StrUtils.isAsciiUpperCase(param));
@@ -132,5 +83,54 @@ public class StrUtilsTest {
                 StrUtils.asciiToNative("\\u0061\\u0000\\u000F\\u0010\\u00FF\\u0100\\u0FFF\\u1000\\uFFFF"));
         Assert.assertEquals("a\\u006a\\u006",
                 StrUtils.asciiToNative("a\\u006\\u0061\\u006"));
+    }
+
+    private int cursor;
+    private int count;
+
+    @Test
+    public void test_getValidUnicodeCharValues() throws Exception {
+        char[] charArr = StrUtils.getValidUnicodeCharValues();
+        Assert.assertEquals(StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT, charArr.length);
+        int cursor = Character.MIN_VALUE;
+        for (int i = 0; i < StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT; i++) {
+            if (cursor == Character.MIN_SURROGATE)
+                cursor = Character.MAX_SURROGATE + 1;
+            if (cursor == StrUtils.REVERSED_UNICODE_BOM)
+                cursor++;
+            Assert.assertEquals(cursor++, charArr[i]);
+        }
+        Assert.assertEquals(Character.MAX_VALUE+1, cursor);
+    }
+
+    @Test
+    public void test_traverseValidUnicodeCharValues() throws Exception {
+        cursor = Character.MIN_VALUE;
+        count = 0;
+        StrUtils.traverseValidUnicodeCharValues((param) -> {
+            if (cursor == Character.MIN_SURROGATE)
+                cursor = Character.MAX_SURROGATE + 1;
+            if (cursor == StrUtils.REVERSED_UNICODE_BOM)
+                cursor++;
+            Assert.assertEquals(cursor++, param);
+            count++;
+        });
+        Assert.assertEquals(Character.MAX_VALUE+1, cursor);
+        Assert.assertEquals(StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT, count);
+    }
+
+    @Test
+    public void test_getValidUnicodeString() throws Exception {
+        String str = StrUtils.getValidUnicodeString();
+        Assert.assertEquals(StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT, str.length());
+        int cursor = Character.MIN_VALUE;
+        for (int i = 0; i < StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT; i++) {
+            if (cursor == Character.MIN_SURROGATE)
+                cursor = Character.MAX_SURROGATE + 1;
+            if (cursor == StrUtils.REVERSED_UNICODE_BOM)
+                cursor++;
+            Assert.assertEquals(cursor++, str.charAt(i));
+        }
+        Assert.assertEquals(Character.MAX_VALUE+1, cursor);
     }
 }

@@ -25,71 +25,6 @@ public class StrUtils {
     public static final String STR_SPACE = " ";
 
     /**
-     * Byte Order Mark of Unicode, which represents little-endian.
-     */
-    public static final char UNICODE_BOM = '\uFEFF';
-    /**
-     * High/low byte reversed Byte Order Mark of Unicode, which represents big-endian.
-     */
-    public static final char REVERSED_UNICODE_BOM = '\uFFFE';
-
-    /**
-     * The count of surrogate unicode character values.
-     */
-    public static final int SURROGATE_UNICODE_CHAR_VALUE_COUNT = Character.MAX_SURROGATE - Character.MIN_SURROGATE + 1;
-
-    /**
-     * The count of invalid unicode character values.
-     * See {@link #getValidUnicodeCharValues()} to study invalid unicode character values.
-     */
-    public static final int INVALID_UNICODE_CHAR_VALUE_COUNT = SURROGATE_UNICODE_CHAR_VALUE_COUNT + 1;
-    /**
-     * The count of valid unicode character values.
-     * See {@link #getValidUnicodeCharValues()} to study valid unicode character values.
-     */
-    public static final int VALID_UNICODE_CHAR_VALUE_COUNT = TypeUtils.CHAR_VALUE_COUNT - INVALID_UNICODE_CHAR_VALUE_COUNT;
-
-    /**
-     * Returns an array holding all valid unicode character values in ascending order.
-     * The surrogate section (from {@code '&#92;uD800'} to {@code '&#92;uDFFF'}) and the reversed BOM ({@code '&#92;uFFFE'})
-     * are invalid unicode character values. All other characters are valid unicode character values.
-     * The production of array costs some time. So if need to use the array repeatedly, create a variable to cache it.
-     * @return an array holding all valid unicode character values in ascending order
-     */
-    public static char[] getValidUnicodeCharValues() {
-        char[] result = new char[VALID_UNICODE_CHAR_VALUE_COUNT];
-        int index = 0;
-        for (int i = Character.MIN_VALUE; i <= Character.MAX_VALUE; i++) {
-            if ((i < Character.MIN_SURROGATE || i > Character.MAX_SURROGATE) && i != REVERSED_UNICODE_BOM)
-                result[index++] = (char) i;
-        }
-        return result;
-    }
-
-    /**
-     * Traverses all valid unicode character values in ascending order.
-     * See {@link #getValidUnicodeCharValues()} to study valid unicode character values.
-     * @param action the action to be taken in each visit
-     */
-    public static void traverseValidUnicodeCharValues(RunnableWithParam.WithChar action) {
-        for (int i = Character.MIN_VALUE; i <= Character.MAX_VALUE; i++) {
-            if ((i < Character.MIN_SURROGATE || i > Character.MAX_SURROGATE) && i != REVERSED_UNICODE_BOM)
-                action.run((char) i);
-        }
-    }
-
-    /**
-     * Returns a string holding all valid unicode characters in ascending order.
-     * The surrogate section (from {@code '&#92;uD800'} to {@code '&#92;uDFFF'}) and the reversed BOM ({@code '&#92;uFFFE'})
-     * are invalid unicode characters. All other characters are valid unicode characters.
-     * The production of string costs some time. So if need to use the string repeatedly, create a variable to cache it.
-     * @return a string holding all valid unicode characters in ascending order
-     */
-    public static String getValidUnicodeString() {
-        return new String(getValidUnicodeCharValues());
-    }
-
-    /**
      * Returns whether the specified character is an ASCII uppercase letter(regular expression: <i><tt>[A-Z]</tt></i>).
      * @param ch the character to be tested
      * @return {@code true} if the character is an ASCII uppercase letter
@@ -212,5 +147,70 @@ public class StrUtils {
             }
         }
         return sb.toString();
+    }
+
+    /**
+     * Byte Order Mark of Unicode, which represents little-endian.
+     */
+    public static final char UNICODE_BOM = '\uFEFF';
+    /**
+     * High/low byte reversed Byte Order Mark of Unicode, which represents big-endian.
+     */
+    public static final char REVERSED_UNICODE_BOM = '\uFFFE';
+
+    /**
+     * The count of surrogate unicode character values.
+     */
+    public static final int SURROGATE_UNICODE_CHAR_VALUE_COUNT = Character.MAX_SURROGATE - Character.MIN_SURROGATE + 1;
+
+    /**
+     * The count of invalid unicode character values.
+     * See {@link #getValidUnicodeCharValues()} to study invalid unicode character values.
+     */
+    public static final int INVALID_UNICODE_CHAR_VALUE_COUNT = SURROGATE_UNICODE_CHAR_VALUE_COUNT + 1;
+    /**
+     * The count of valid unicode character values.
+     * See {@link #getValidUnicodeCharValues()} to study valid unicode character values.
+     */
+    public static final int VALID_UNICODE_CHAR_VALUE_COUNT = TypeUtils.CHAR_VALUE_COUNT - INVALID_UNICODE_CHAR_VALUE_COUNT;
+
+    /**
+     * Returns an array holding all valid unicode character values in ascending order.
+     * The surrogate section (from {@code '&#92;uD800'} to {@code '&#92;uDFFF'}) and the reversed BOM ({@code '&#92;uFFFE'})
+     * are invalid unicode character values. All other characters are valid unicode character values.
+     * The production of array costs some time. So if need to use the array repeatedly, create a variable to cache it.
+     * @return an array holding all valid unicode character values in ascending order
+     */
+    public static char[] getValidUnicodeCharValues() {
+        char[] result = new char[VALID_UNICODE_CHAR_VALUE_COUNT];
+        int index = 0;
+        for (int i = Character.MIN_VALUE; i <= Character.MAX_VALUE; i++) {
+            if ((i < Character.MIN_SURROGATE || i > Character.MAX_SURROGATE) && i != REVERSED_UNICODE_BOM)
+                result[index++] = (char) i;
+        }
+        return result;
+    }
+
+    /**
+     * Traverses all valid unicode character values in ascending order.
+     * See {@link #getValidUnicodeCharValues()} to study valid unicode character values.
+     * @param action the action to be taken in each visit
+     */
+    public static void traverseValidUnicodeCharValues(RunnableWithParam.WithChar action) {
+        for (int i = Character.MIN_VALUE; i <= Character.MAX_VALUE; i++) {
+            if ((i < Character.MIN_SURROGATE || i > Character.MAX_SURROGATE) && i != REVERSED_UNICODE_BOM)
+                action.run((char) i);
+        }
+    }
+
+    /**
+     * Returns a string holding all valid unicode characters in ascending order.
+     * The surrogate section (from {@code '&#92;uD800'} to {@code '&#92;uDFFF'}) and the reversed BOM ({@code '&#92;uFFFE'})
+     * are invalid unicode characters. All other characters are valid unicode characters.
+     * The production of string costs some time. So if need to use the string repeatedly, create a variable to cache it.
+     * @return a string holding all valid unicode characters in ascending order
+     */
+    public static String getValidUnicodeString() {
+        return new String(getValidUnicodeCharValues());
     }
 }
