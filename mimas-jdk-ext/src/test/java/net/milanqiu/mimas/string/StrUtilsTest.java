@@ -1,5 +1,6 @@
 package net.milanqiu.mimas.string;
 
+import net.milanqiu.mimas.junit.AssertExt;
 import net.milanqiu.mimas.lang.TypeUtils;
 import org.junit.Assert;
 import org.junit.Test;
@@ -132,5 +133,33 @@ public class StrUtilsTest {
             Assert.assertEquals(cursor++, str.charAt(i));
         }
         Assert.assertEquals(Character.MAX_VALUE+1, cursor);
+    }
+
+    @Test
+    public void test_addPrefixIfNotEmpty() throws Exception {
+        Assert.assertEquals("$str", StrUtils.addPrefixIfNotEmpty("$", "str"));
+        Assert.assertEquals("",     StrUtils.addPrefixIfNotEmpty("$", ""));
+        AssertExt.assertExceptionThrown(() -> StrUtils.addPrefixIfNotEmpty("$", null), NullPointerException.class);
+    }
+
+    @Test
+    public void test_addPrefixIfNotNullOrEmpty() throws Exception {
+        Assert.assertEquals("$str", StrUtils.addPrefixIfNotNullOrEmpty("$", "str"));
+        Assert.assertEquals("",     StrUtils.addPrefixIfNotNullOrEmpty("$", ""));
+        Assert.assertEquals("",     StrUtils.addPrefixIfNotNullOrEmpty("$", null));
+    }
+
+    @Test
+    public void test_addSuffixIfNotEmpty() throws Exception {
+        Assert.assertEquals("str$", StrUtils.addSuffixIfNotEmpty("str", "$"));
+        Assert.assertEquals("",     StrUtils.addSuffixIfNotEmpty("", "$"));
+        AssertExt.assertExceptionThrown(() -> StrUtils.addSuffixIfNotEmpty(null, "$"), NullPointerException.class);
+    }
+
+    @Test
+    public void test_addSuffixIfNotNullOrEmpty() throws Exception {
+        Assert.assertEquals("str$", StrUtils.addSuffixIfNotNullOrEmpty("str", "$"));
+        Assert.assertEquals("",     StrUtils.addSuffixIfNotNullOrEmpty("", "$"));
+        Assert.assertEquals("",     StrUtils.addSuffixIfNotNullOrEmpty(null, "$"));
     }
 }

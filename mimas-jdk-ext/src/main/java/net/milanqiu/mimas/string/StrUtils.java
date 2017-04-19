@@ -213,4 +213,44 @@ public class StrUtils {
     public static String getValidUnicodeString() {
         return new String(getValidUnicodeCharValues());
     }
+
+    /**
+     * Adds the specified prefix to the specified string if the string is not empty.
+     * @param prefix the prefix to be added
+     * @param s the string to add to
+     * @return the empty string if {@code s} is empty, or the concatenation of {@code prefix} and {@code s}
+     */
+    public static String addPrefixIfNotEmpty(String prefix, String s) {
+        return s.isEmpty() ? "" : (prefix + s);
+    }
+
+    /**
+     * Adds the specified prefix to the specified string if the string is not null or empty.
+     * @param prefix the prefix to be added
+     * @param s the string to add to
+     * @return the empty string if {@code s} is null or empty, or the concatenation of {@code prefix} and {@code s}
+     */
+    public static String addPrefixIfNotNullOrEmpty(String prefix, String s) {
+        return (s == null || s.isEmpty()) ? "" : (prefix + s);
+    }
+
+    /**
+     * Adds the specified suffix to the specified string if the string is not empty.
+     * @param s the string to add to
+     * @param suffix the suffix to be added
+     * @return the empty string if {@code s} is empty, or the concatenation of {@code s} and {@code suffix}
+     */
+    public static String addSuffixIfNotEmpty(String s, String suffix) {
+        return s.isEmpty() ? "" : (s + suffix);
+    }
+
+    /**
+     * Adds the specified suffix to the specified string if the string is not null or empty.
+     * @param s the string to add to
+     * @param suffix the suffix to be added
+     * @return the empty string if {@code s} is null or empty, or the concatenation of {@code s} and {@code suffix}
+     */
+    public static String addSuffixIfNotNullOrEmpty(String s, String suffix) {
+        return (s == null || s.isEmpty()) ? "" : (s + suffix);
+    }
 }
