@@ -1,6 +1,7 @@
 package net.milanqiu.mimas.config;
 
 import net.milanqiu.mimas.collect.LinkedProperties;
+import net.milanqiu.mimas.db.DatabaseProfile;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,27 +32,16 @@ public class MimasProperties {
             e.printStackTrace();
         }
 
-        dbAddress = properties.getProperty("db_address", "localhost:3306");
-        dbName = properties.getProperty("db_name", "mimas");
-        dbUser = properties.getProperty("db_user", "root");
-        dbPassword = properties.getProperty("db_password", "123456");
+        dbProfile = new DatabaseProfile();
+        dbProfile.setAddress(properties.getProperty("db_address", "localhost:3306"));
+        dbProfile.setName(properties.getProperty("db_name", "mimas"));
+        dbProfile.setUser(properties.getProperty("db_user", "root"));
+        dbProfile.setPassword(properties.getProperty("db_password", "123456"));
     }
 
-    private String dbAddress;
-    private String dbName;
-    private String dbUser;
-    private String dbPassword;
+    private DatabaseProfile dbProfile;
 
-    public String getDbAddress() {
-        return dbAddress;
-    }
-    public String getDbName() {
-        return dbName;
-    }
-    public String getDbUser() {
-        return dbUser;
-    }
-    public String getDbPassword() {
-        return dbPassword;
+    public DatabaseProfile getDbProfile() {
+        return dbProfile;
     }
 }

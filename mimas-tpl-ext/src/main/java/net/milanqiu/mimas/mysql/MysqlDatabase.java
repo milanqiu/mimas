@@ -1,5 +1,6 @@
 package net.milanqiu.mimas.mysql;
 
+import net.milanqiu.mimas.db.DatabaseProfile;
 import net.milanqiu.mimas.db.JdbcDatabase;
 
 /**
@@ -9,11 +10,6 @@ import net.milanqiu.mimas.db.JdbcDatabase;
  * @author Milan Qiu
  */
 public class MysqlDatabase extends JdbcDatabase {
-
-    @Override
-    public String getDriver() {
-        return "com.mysql.cj.jdbc.Driver";
-    }
 
     @Override
     public String getProtocol() {
@@ -33,13 +29,10 @@ public class MysqlDatabase extends JdbcDatabase {
     }
 
     /**
-     * Constructs a new {@code MysqlDatabase} with the specified address, name, user and password.
-     * @param address the address of mysql database, composed of host and optional port
-     * @param name the name of mysql database
-     * @param user the user to access mysql database
-     * @param password the password to access mysql database
+     * Constructs a new {@code MysqlDatabase} with the specified database profile.
+     * @param dbProfile the profile of database
      */
-    public MysqlDatabase(String address, String name, String user, String password) {
-        super(address, name, user, password);
+    public MysqlDatabase(DatabaseProfile dbProfile) {
+        super(dbProfile);
     }
 }

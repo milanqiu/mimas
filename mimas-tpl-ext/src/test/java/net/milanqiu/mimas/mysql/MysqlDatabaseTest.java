@@ -1,6 +1,7 @@
 package net.milanqiu.mimas.mysql;
 
 import net.milanqiu.mimas.config.MimasProperties;
+import net.milanqiu.mimas.db.JdbcDatabase;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,14 +16,11 @@ import java.sql.SQLException;
  */
 public class MysqlDatabaseTest {
 
-    private MysqlDatabase db;
+    private JdbcDatabase db;
 
     @Before
     public void setUp() throws Exception {
-        db = new MysqlDatabase(MimasProperties.getSingleton().getDbAddress(),
-                MimasProperties.getSingleton().getDbName(),
-                MimasProperties.getSingleton().getDbUser(),
-                MimasProperties.getSingleton().getDbPassword());
+        db = new MysqlDatabase(MimasProperties.getSingleton().getDbProfile());
     }
 
     @Test
