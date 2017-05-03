@@ -1,10 +1,11 @@
 package net.milanqiu.mimas.mysql;
 
 import net.milanqiu.mimas.db.DatabaseProfile;
+import net.milanqiu.mimas.db.Dbms;
 import net.milanqiu.mimas.db.JdbcDatabase;
 
 /**
- * A mysql database using JDBC to connect.
+ * A MySQL database using JDBC to connect.
  * <p>
  * Creation Date: 2017-04-18
  * @author Milan Qiu
@@ -12,13 +13,8 @@ import net.milanqiu.mimas.db.JdbcDatabase;
 public class MysqlDatabase extends JdbcDatabase {
 
     @Override
-    public String getProtocol() {
-        return "jdbc:mysql://";
-    }
-
-    @Override
-    public String getDefaultParams() {
-        return "useSSL=true&serverTimezone=UTC";
+    public Dbms getDbms() {
+        return Dbms.MYSQL;
     }
 
     /**

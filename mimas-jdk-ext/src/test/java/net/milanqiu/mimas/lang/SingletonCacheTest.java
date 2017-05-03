@@ -5,7 +5,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.NoSuchElementException;
-import java.util.function.Supplier;
 
 import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 

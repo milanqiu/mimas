@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.db;
 
 import net.milanqiu.mimas.instrumentation.exception.CodeContextException;
-import net.milanqiu.mimas.string.StrUtils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,19 +15,15 @@ import java.sql.SQLException;
 public abstract class JdbcDatabase extends AbstractDatabase {
 
     /**
-     * Returns the jdbc protocol to access database.
-     * @return the jdbc protocol to access database
+     * Returns the database management system.
+     * @return the database management system
      */
-    public abstract String getProtocol();
+    public abstract Dbms getDbms();
 
     /**
      * The profile of database.
      */
     private DatabaseProfile dbProfile;
-    /**
-     * The parameters to access database.
-     */
-    private String params;
 
     /**
      * Returns the profile of database.
@@ -43,39 +38,17 @@ public abstract class JdbcDatabase extends AbstractDatabase {
     public void setDbProfile(DatabaseProfile dbProfile) {
         this.dbProfile = dbProfile.clone();
     }
-    /**
-     * Returns the parameters to access database.
-     * @return the parameters to access database
-     */
-    public String getParams() {
-        return params;
-    }
-    /**
-     * A setter corresponding to the getter {@link #getParams()}.
-     */
-    public void setParams(String params) {
-        this.params = params;
-    }
-
-    /**
-     * Returns the default parameters to access database.
-     * @return the default parameters to access database
-     */
-    public String getDefaultParams() {
-        return StrUtils.STR_EMPTY;
-    }
 
     /**
      * Constructs a new {@code JdbcDatabase}. Just for inherited.
      */
     protected JdbcDatabase() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(getDbms().getJdbcDriverClassName());
         } catch (ClassNotFoundException e) {
             throw new CodeContextException(e);
         }
         dbProfile = new DatabaseProfile();
-        params = getDefaultParams();
     }
 
     /**
@@ -89,7 +62,7 @@ public abstract class JdbcDatabase extends AbstractDatabase {
 
     @Override
     public Connection allocateConnection(boolean autoCommit) throws SQLException {
-        Connection conn = DriverManager.getConnection(dbProfile.getJdbcUrl(getProtocol(), getParams()), dbProfile.getUser(), dbProfile.getPassword());
+        Connection conn = DriverManager.getConnection(getDbms().getJdbcUrl(dbProfile), dbProfile.getUser(), dbProfile.getPassword());
         conn.setAutoCommit(autoCommit);
         return conn;
     }
