@@ -99,6 +99,14 @@ public class Tuple2Test {
     }
 
     @Test
+    public void test_clone() throws Exception {
+        tuple = new Tuple2<>(INT_0, STR_0);
+        anotherTuple = tuple.clone();
+        Assert.assertEquals(INT_0, (int) anotherTuple.getA());
+        Assert.assertEquals(STR_0, anotherTuple.getB());
+    }
+
+    @Test
     public void test_toString() throws Exception {
         tuple = new Tuple2<>(INT_0, STR_0);
         Assert.assertEquals("{A="+INT_0+", B="+STR_0+"}", tuple.toString());

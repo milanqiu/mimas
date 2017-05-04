@@ -8,7 +8,7 @@ package net.milanqiu.mimas.collect.tuple;
  * Creation Date: 2014-02-08
  * @author Milan Qiu
  */
-public class Tuple2<TA, TB> {
+public class Tuple2<TA, TB> implements Cloneable {
     /**
      * Element A.
      */
@@ -99,6 +99,15 @@ public class Tuple2<TA, TB> {
         int result = a != null ? a.hashCode() : 0;
         result = 31 * result + (b != null ? b.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public Tuple2<TA, TB> clone() throws CloneNotSupportedException {
+        try {
+            return (Tuple2<TA, TB>) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError(e);
+        }
     }
 
     /**

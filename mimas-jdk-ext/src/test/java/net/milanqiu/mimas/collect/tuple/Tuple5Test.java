@@ -114,6 +114,17 @@ public class Tuple5Test {
     }
 
     @Test
+    public void test_clone() throws Exception {
+        tuple = new Tuple5<>(INT_0, INT_1, INT_2, INT_3, STR_0);
+        anotherTuple = tuple.clone();
+        Assert.assertEquals(INT_0, (int) anotherTuple.getA());
+        Assert.assertEquals(INT_1, (int) anotherTuple.getB());
+        Assert.assertEquals(INT_2, (int) anotherTuple.getC());
+        Assert.assertEquals(INT_3, (int) anotherTuple.getD());
+        Assert.assertEquals(STR_0, anotherTuple.getE());
+    }
+
+    @Test
     public void test_toString() throws Exception {
         tuple = new Tuple5<>(INT_0, INT_1, INT_2, INT_3, STR_0);
         Assert.assertEquals("{A="+INT_0+", B="+INT_1+", C="+INT_2+", D="+INT_3+", E="+STR_0+"}", tuple.toString());

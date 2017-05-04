@@ -9,7 +9,7 @@ import java.util.List;
  * Creation Date: 2014-06-09
  * @author Milan Qiu
  */
-public class StrStr extends Tuple2<String, String> {
+public class StrStr extends Tuple2<String, String> implements Cloneable {
 
     /**
      * Constructs a two-string tuple with each element is null.
@@ -23,6 +23,15 @@ public class StrStr extends Tuple2<String, String> {
      */
     public StrStr(String a, String b) {
         setAll(a, b);
+    }
+
+    @Override
+    public StrStr clone() throws CloneNotSupportedException {
+        try {
+            return (StrStr) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError(e);
+        }
     }
 
     /**

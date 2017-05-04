@@ -9,7 +9,7 @@ import java.util.List;
  * Creation Date: 2014-06-09
  * @author Milan Qiu
  */
-public class IntInt extends Tuple2<Integer, Integer> {
+public class IntInt extends Tuple2<Integer, Integer> implements Cloneable {
 
     /**
      * Constructs a two-integer tuple with each element is null.
@@ -23,6 +23,15 @@ public class IntInt extends Tuple2<Integer, Integer> {
      */
     public IntInt(int a, int b) {
         setAll(a, b);
+    }
+
+    @Override
+    public IntInt clone() throws CloneNotSupportedException {
+        try {
+            return (IntInt) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError(e);
+        }
     }
 
     /**

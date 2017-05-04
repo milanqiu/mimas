@@ -104,6 +104,15 @@ public class Tuple3Test {
     }
 
     @Test
+    public void test_clone() throws Exception {
+        tuple = new Tuple3<>(INT_0, INT_1, STR_0);
+        anotherTuple = tuple.clone();
+        Assert.assertEquals(INT_0, (int) anotherTuple.getA());
+        Assert.assertEquals(INT_1, (int) anotherTuple.getB());
+        Assert.assertEquals(STR_0, anotherTuple.getC());
+    }
+
+    @Test
     public void test_toString() throws Exception {
         tuple = new Tuple3<>(INT_0, INT_1, STR_0);
         Assert.assertEquals("{A="+INT_0+", B="+INT_1+", C="+STR_0+"}", tuple.toString());

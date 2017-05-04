@@ -10,7 +10,7 @@ import net.milanqiu.mimas.instrumentation.exception.DeprecatedOverrideException;
  * Creation Date: 2014-02-08
  * @author Milan Qiu
  */
-public class Tuple4<TA, TB, TC, TD> extends Tuple3<TA, TB, TC> {
+public class Tuple4<TA, TB, TC, TD> extends Tuple3<TA, TB, TC> implements Cloneable {
     /**
      * Element D.
      */
@@ -99,6 +99,15 @@ public class Tuple4<TA, TB, TC, TD> extends Tuple3<TA, TB, TC> {
         int result = super.hashCode();
         result = 31 * result + (d != null ? d.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public Tuple4<TA, TB, TC, TD> clone() throws CloneNotSupportedException {
+        try {
+            return (Tuple4<TA, TB, TC, TD>) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError(e);
+        }
     }
 
     /**
