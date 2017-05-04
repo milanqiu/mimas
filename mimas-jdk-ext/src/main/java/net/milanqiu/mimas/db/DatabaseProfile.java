@@ -133,6 +133,24 @@ public class DatabaseProfile implements Cloneable {
         this.params = params;
     }
 
+    /**
+     * Returns a string representation of this object.
+     * The string representation consists of a list of properties, enclosed in braces("{}").
+     * Adjacent properties are separated by comma and space(", ").
+     * The result may be <i><tt>DatabaseProfile{address=a, name=b, user=c, password=d, params=e}</tt></i>.
+     * @return a string representation of this object
+     */
+    @Override
+    public String toString() {
+        return "DatabaseProfile{" +
+                "address=" + address +
+                ", name=" + name +
+                ", user=" + user +
+                ", password=" + password +
+                ", params=" + params +
+                '}';
+    }
+
     @Override
     public DatabaseProfile clone() {
         try {
