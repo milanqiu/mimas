@@ -5,6 +5,8 @@ import net.milanqiu.mimas.lang.TypeUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
+
 /**
  * Creation Date: 2014-11-04
  * @author Milan Qiu
@@ -161,5 +163,13 @@ public class StrUtilsTest {
         Assert.assertEquals("str$", StrUtils.addSuffixIfNotNullOrEmpty("str", "$"));
         Assert.assertEquals("",     StrUtils.addSuffixIfNotNullOrEmpty("", "$"));
         Assert.assertEquals("",     StrUtils.addSuffixIfNotNullOrEmpty(null, "$"));
+    }
+
+    @Test
+    public void test_repeat() throws Exception {
+        Assert.assertEquals(STR_0+STR_0+STR_0, StrUtils.repeat(STR_0, 3));
+        Assert.assertEquals(STR_0, StrUtils.repeat(STR_0, 1));
+        Assert.assertEquals("", StrUtils.repeat(STR_0, 0));
+        Assert.assertEquals("", StrUtils.repeat(STR_0, -3));
     }
 }

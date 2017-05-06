@@ -253,4 +253,34 @@ public class StrUtils {
     public static String addSuffixIfNotNullOrEmpty(String s, String suffix) {
         return (s == null || s.isEmpty()) ? "" : (s + suffix);
     }
+
+    /**
+     * Returns a string consisting of a specified number of concatenated copies of a specified string.
+     * Same as <code>com.google.common.base.Strings.repeat(String, int)</code> of guava.
+     * @param s the string to be repeated
+     * @param count the number of times to repeat the string
+     * @return the result string containing {@code s} repeated {@code count} times, or the empty string if {@code count} is less then one
+     */
+    public static String repeat(String s, int count) {
+        if (count <= 0)
+            return StrUtils.STR_EMPTY;
+        else if (count == 1)
+            return s;
+
+        final int len = s.length();
+        final long longSize = (long) len * (long) count;
+        final int size = (int) longSize;
+        if (size != longSize) {
+            throw new ArrayIndexOutOfBoundsException("Required array size too large: " + longSize);
+        }
+
+        final char[] array = new char[size];
+        s.getChars(0, len, array, 0);
+        int n;
+        for (n = len; n < size-n; n <<= 1) {
+            System.arraycopy(array, 0, array, n, n);
+        }
+        System.arraycopy(array, 0, array, n, size-n);
+        return new String(array);
+    }
 }
