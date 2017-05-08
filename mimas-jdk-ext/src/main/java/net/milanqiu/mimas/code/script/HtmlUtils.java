@@ -50,22 +50,7 @@ public class HtmlUtils {
      * @return HTML escape sequence of a series of spaces
      */
     public static String htmlSpaces(int count) {
-        if (count <= 0)
-            return StrUtils.STR_EMPTY;
-        else if (count == 1)
-            return HTML_SPACE;
-        else {
-            final int SPACE_LEN = HTML_SPACE.length();
-            final int RESULT_LEN = SPACE_LEN * count;
-            char[] result = new char[RESULT_LEN];
-            HTML_SPACE.getChars(0, SPACE_LEN, result, 0);
-            int n;
-            for (n = SPACE_LEN; n < RESULT_LEN>>1; n <<= 1) {
-                System.arraycopy(result, 0, result, n, n);
-            }
-            System.arraycopy(result, 0, result, n, RESULT_LEN - n);
-            return new String(result);
-        }
+        return StrUtils.repeat(HTML_SPACE, count);
     }
 
     /**
@@ -103,6 +88,15 @@ public class HtmlUtils {
     }
 
     /**
+     * Converts a series of line breaks into HTML tags.
+     * @param count the count of line breaks
+     * @return HTML tags of a series of line breaks
+     */
+    public static String htmlLineBreaks(int count) {
+        return StrUtils.repeat(HTML_LINE_BREAK, count);
+    }
+
+    /**
      * Generates a series of option tags of HTML, which indicate an integer range to be selected.
      * @param lowerBound the lower bound of the integer range
      * @param upperBound the upper bound of the integer range
@@ -122,5 +116,14 @@ public class HtmlUtils {
               .append("</option>");
         }
         return sb.toString();
+    }
+
+    /**
+     * Removes HTML tags from a string.
+     * @param html the string to be removed HTML tags from
+     * @return the result string with HTML tags removed
+     */
+    public static String removeTags(String html) {
+        return html.replaceAll("<.*?>", "");
     }
 }
