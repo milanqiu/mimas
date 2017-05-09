@@ -101,6 +101,7 @@ public class Tuple2<TA, TB> implements Cloneable {
         return result;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Tuple2<TA, TB> clone() throws CloneNotSupportedException {
         try {

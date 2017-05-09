@@ -101,6 +101,7 @@ public class Tuple4<TA, TB, TC, TD> extends Tuple3<TA, TB, TC> implements Clonea
         return result;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Tuple4<TA, TB, TC, TD> clone() throws CloneNotSupportedException {
         try {

@@ -98,6 +98,7 @@ public class Tuple3<TA, TB, TC> extends Tuple2<TA, TB> implements Cloneable {
         return result;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Tuple3<TA, TB, TC> clone() throws CloneNotSupportedException {
         try {
