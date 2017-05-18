@@ -1,5 +1,6 @@
 package net.milanqiu.mimas.code.script;
 
+import net.milanqiu.mimas.config.MimasJdkExtProjectConfig;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -39,6 +40,13 @@ public class HtmlUtilsTest {
         Assert.assertEquals("<option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option>",
                 HtmlUtils.optionsOfIntRange(1, 3, 0));
         Assert.assertEquals("", HtmlUtils.optionsOfIntRange(2, 1, 0));
+    }
+
+    @Test
+    public void test_simplePage() throws Exception {
+        String title = "Simple Page";
+        String body = "It is a simple page.<table><tr><td>adgj8</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr><tr><td>ADGJ8</td><td></td></tr></table>";
+        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDir(HtmlUtils.simplePage(title, body));
     }
 
     @Test

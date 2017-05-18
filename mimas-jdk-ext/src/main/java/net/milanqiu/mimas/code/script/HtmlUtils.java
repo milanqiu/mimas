@@ -118,6 +118,33 @@ public class HtmlUtils {
         return sb.toString();
     }
 
+    private static final String SIMPLE_PAGE_TEMPLATE =
+            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">" + System.lineSeparator() +
+            "<html>" + System.lineSeparator() +
+            "<head>" + System.lineSeparator() +
+            "<title>|||Title|||</title>" + System.lineSeparator() +
+            "<style>" + System.lineSeparator() +
+            "body { font-family:Arial; font-size:14px; line-height:25px; margin:15px; }" + System.lineSeparator() +
+            "table { border-collapse:collapse; border:none; }" + System.lineSeparator() +
+            "td { border:solid silver 1.0pt; padding:1.0pt 3.0pt 1.0pt 3.0pt; }" + System.lineSeparator() +
+            "</style>" + System.lineSeparator() +
+            "</head>" + System.lineSeparator() +
+            "" + System.lineSeparator() +
+            "<body>" + System.lineSeparator() +
+            "|||Body|||" + System.lineSeparator() +
+            "</body>" + System.lineSeparator() +
+            "</html>" + System.lineSeparator();
+
+    /**
+     * Generates a simple HTML page with the specified title and body.
+     * @param title the title of the page
+     * @param body the body of the page
+     * @return the result HTML page
+     */
+    public static String simplePage(String title, String body) {
+        return SIMPLE_PAGE_TEMPLATE.replace("|||Title|||", title).replace("|||Body|||", body);
+    }
+
     /**
      * Removes HTML tags from a string.
      * @param html the string to be removed HTML tags from
