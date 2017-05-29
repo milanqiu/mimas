@@ -9,6 +9,10 @@ import java.util.Collection;
  * @author Milan Qiu
  */
 public class SqlUtils {
+    /**
+     * Utility class is forbidden to be instantiated.
+     */
+    private SqlUtils() {}
 
     /**
      * Assembles a parameterized SQL INSERT statement with the specified table name and field names.
