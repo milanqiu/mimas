@@ -74,13 +74,17 @@
                 <artifactId>guava</artifactId>
                 <version>18.0</version>
             </dependency>
-            <!-- json -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.6</version>
+            </dependency>
+            <!-- serialization -->
             <dependency>
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
                 <version>2.6.2</version>
             </dependency>
-            <!-- xml -->
             <dependency>
                 <groupId>dom4j</groupId>
                 <artifactId>dom4j</artifactId>
@@ -91,11 +95,16 @@
                 <artifactId>commons-digester3</artifactId>
                 <version>3.2</version>
             </dependency>
-            <!-- binary serialization -->
             <dependency>
                 <groupId>com.google.protobuf</groupId>
                 <artifactId>protobuf-java</artifactId>
                 <version>2.6.1</version>
+            </dependency>
+            <!-- file -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>3.16</version>
             </dependency>
             <!-- datetime -->
             <dependency>
@@ -113,6 +122,24 @@
                 <groupId>com.zaxxer</groupId>
                 <artifactId>HikariCP</artifactId>
                 <version>2.6.1</version>
+            </dependency>
+            <!-- network -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5.3</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>2.2</version>
+                <scope>provided</scope>
             </dependency>
             <!-- logging -->
             <dependency>
