@@ -22,6 +22,7 @@ public interface TreeNode<D> extends Traversable {
 
     /**
      * A setter corresponding to the getter {@link #getData()}.
+     * @param data the data held by this node
      */
     void setData(D data);
 

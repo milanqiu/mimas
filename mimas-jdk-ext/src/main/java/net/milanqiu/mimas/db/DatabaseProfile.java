@@ -40,6 +40,7 @@ public class DatabaseProfile implements Cloneable {
     }
     /**
      * A setter corresponding to the getter {@link #getAddress()}.
+     * @param address the address of database, composed of host and optional port
      */
     public void setAddress(String address) {
         this.address = address;
@@ -53,6 +54,7 @@ public class DatabaseProfile implements Cloneable {
     }
     /**
      * A setter corresponding to the getter {@link #getName()}.
+     * @param name the name of database
      */
     public void setName(String name) {
         this.name = name;
@@ -66,6 +68,7 @@ public class DatabaseProfile implements Cloneable {
     }
     /**
      * A setter corresponding to the getter {@link #getUser()}.
+     * @param user the user to access database
      */
     public void setUser(String user) {
         this.user = user;
@@ -79,6 +82,7 @@ public class DatabaseProfile implements Cloneable {
     }
     /**
      * A setter corresponding to the getter {@link #getPassword()}.
+     * @param password the password to access database
      */
     public void setPassword(String password) {
         this.password = password;
@@ -92,6 +96,7 @@ public class DatabaseProfile implements Cloneable {
     }
     /**
      * A setter corresponding to the getter {@link #getParams()}.
+     * @param params the connection parameters to access database
      */
     public void setParams(String params) {
         this.params = params;

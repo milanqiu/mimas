@@ -20,6 +20,7 @@ public class ChildListTreeNode<D> extends AbstractTreeNode<D> {
 
     /**
      * Creates and returns a new instance of {@code ChildListTreeNode} as a root without any relation.
+     * @param <D> the type of data held by this node
      * @return the new instance of {@code ChildListTreeNode}
      */
     public static <D> ChildListTreeNode<D> createStandalone() {
@@ -29,6 +30,7 @@ public class ChildListTreeNode<D> extends AbstractTreeNode<D> {
     /**
      * Creates and returns a new instance of {@code ChildListTreeNode} with the specified data, as a root without any relation.
      * @param data the expected data of the new instance of {@code ChildListTreeNode}
+     * @param <D> the type of data held by this node
      * @return the new instance of {@code ChildListTreeNode}
      */
     public static <D> ChildListTreeNode<D> createStandalone(D data) {

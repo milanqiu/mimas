@@ -152,6 +152,7 @@ public class LangUtils {
      * @param valueIfGreater the chosen value if {@code participantA} is greater than {@code participantB}
      * @param valueIfEqual the chosen value if {@code participantA} is equal to {@code participantB}
      * @param valueIfLess the chosen value if {@code participantA} is less than {@code participantB}
+     * @param <T> the type of the choosable values
      * @return {@code valueIfGreater} if {@code participantA} is greater than {@code participantB},
      *         or {@code valueIfEqual} if equal to, or {@code valueIfLess} if less than
      */

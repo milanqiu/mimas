@@ -34,6 +34,7 @@ public abstract class JdbcDatabase extends AbstractDatabase {
     }
     /**
      * A setter corresponding to the getter {@link #getDbProfile()}.
+     * @param dbProfile the profile of database
      */
     public void setDbProfile(DatabaseProfile dbProfile) {
         this.dbProfile = dbProfile.clone();

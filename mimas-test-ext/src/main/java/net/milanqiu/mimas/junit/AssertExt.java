@@ -130,6 +130,7 @@ public class AssertExt {
     public interface RunnableWithException {
         /**
          * May take any action whatsoever, allowing exception thrown.
+         * @throws Exception any type of exception thrown out
          */
         void run() throws Exception;
     }

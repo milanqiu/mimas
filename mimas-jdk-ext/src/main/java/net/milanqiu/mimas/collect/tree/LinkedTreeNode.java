@@ -20,6 +20,7 @@ public class LinkedTreeNode<D> extends AbstractTreeNode<D> {
 
     /**
      * Creates and returns a new instance of {@code LinkedTreeNode} as a root without any relation.
+     * @param <D> the type of data held by this node
      * @return the new instance of {@code LinkedTreeNode}
      */
     public static <D> LinkedTreeNode<D> createStandalone() {
@@ -29,6 +30,7 @@ public class LinkedTreeNode<D> extends AbstractTreeNode<D> {
     /**
      * Creates and returns a new instance of {@code LinkedTreeNode} with the specified data, as a root without any relation.
      * @param data the expected data of the new instance of {@code LinkedTreeNode}
+     * @param <D> the type of data held by this node
      * @return the new instance of {@code LinkedTreeNode}
      */
     public static <D> LinkedTreeNode<D> createStandalone(D data) {
