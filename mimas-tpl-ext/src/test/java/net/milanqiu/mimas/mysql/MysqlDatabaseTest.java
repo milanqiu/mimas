@@ -30,7 +30,7 @@ public class MysqlDatabaseTest extends DatabaseTest {
     public void test_DatabaseParams() throws Exception {
         Connection conn = null;
         try {
-            ((MysqlDatabase) db).getDbProfile().setParams("");
+            ((MysqlDatabase) db).getDbProfile().setParams("useSSL=true");
             AssertExt.assertExceptionThrown(db::allocateConnection, SQLException.class);
 
             ((MysqlDatabase) db).getDbProfile().setParams("useSSL=true&serverTimezone=UTC&useUnicode=true&characterEncoding=gb2312");

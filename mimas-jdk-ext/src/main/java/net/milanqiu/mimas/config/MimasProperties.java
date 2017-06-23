@@ -37,7 +37,7 @@ public class MimasProperties {
         dbProfile.setName(properties.getProperty("db_name", "mimas"));
         dbProfile.setUser(properties.getProperty("db_user", "root"));
         dbProfile.setPassword(properties.getProperty("db_password", "123456"));
-        dbProfile.setParams(properties.getProperty("db_params", "useSSL=true&serverTimezone=UTCn"));
+        dbProfile.setParams(properties.getProperty("db_params", "useSSL=true&serverTimezone=UTC"));
     }
 
     private DatabaseProfile dbProfile;
