@@ -17,6 +17,8 @@ public class MysqlDatabaseTest extends DatabaseTest {
 
     @Before
     public void setUp() throws Exception {
+        if (!MimasProperties.getSingleton().isNeedTestDatabase())
+            return;
         db = new MysqlDatabase(MimasProperties.getSingleton().getDbProfile());
     }
 
@@ -28,6 +30,9 @@ public class MysqlDatabaseTest extends DatabaseTest {
 
     @Test
     public void test_DatabaseParams() throws Exception {
+        if (!MimasProperties.getSingleton().isNeedTestDatabase())
+            return;
+
         Connection conn = null;
         try {
             ((MysqlDatabase) db).getDbProfile().setParams("useSSL=true");

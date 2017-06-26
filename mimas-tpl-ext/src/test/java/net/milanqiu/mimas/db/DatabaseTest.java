@@ -1,5 +1,6 @@
 package net.milanqiu.mimas.db;
 
+import net.milanqiu.mimas.config.MimasProperties;
 import org.junit.Assert;
 
 import java.sql.Connection;
@@ -13,6 +14,9 @@ public abstract class DatabaseTest {
     protected Database db;
 
     public void test_allocateConnection_releaseConnection() throws Exception {
+        if (!MimasProperties.getSingleton().isNeedTestDatabase())
+            return;
+
         Connection connAutoCommit = null;
         Connection connNoAutoCommit = null;
         try {

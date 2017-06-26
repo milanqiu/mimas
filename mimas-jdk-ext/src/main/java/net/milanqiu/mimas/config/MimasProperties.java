@@ -32,16 +32,22 @@ public class MimasProperties {
             e.printStackTrace();
         }
 
+        needTestDatabase = Boolean.parseBoolean(properties.getProperty("need_test_database", "true"));
+
         dbProfile = new DatabaseProfile();
         dbProfile.setAddress(properties.getProperty("db_address", "localhost:3306"));
         dbProfile.setName(properties.getProperty("db_name", "mimas"));
         dbProfile.setUser(properties.getProperty("db_user", "root"));
-        dbProfile.setPassword(properties.getProperty("db_password", "123456"));
+        dbProfile.setPassword(properties.getProperty("db_password", ""));
         dbProfile.setParams(properties.getProperty("db_params", "useSSL=true&serverTimezone=UTC"));
     }
 
+    private boolean needTestDatabase;
     private DatabaseProfile dbProfile;
 
+    public boolean isNeedTestDatabase() {
+        return needTestDatabase;
+    }
     public DatabaseProfile getDbProfile() {
         return dbProfile;
     }

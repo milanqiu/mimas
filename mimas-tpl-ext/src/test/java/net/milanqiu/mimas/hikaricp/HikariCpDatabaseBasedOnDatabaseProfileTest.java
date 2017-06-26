@@ -14,6 +14,8 @@ public class HikariCpDatabaseBasedOnDatabaseProfileTest extends DatabaseTest {
 
     @Before
     public void setUp() throws Exception {
+        if (!MimasProperties.getSingleton().isNeedTestDatabase())
+            return;
         db = new HikariCpDatabase(Dbms.MYSQL, MimasProperties.getSingleton().getDbProfile());
     }
 
