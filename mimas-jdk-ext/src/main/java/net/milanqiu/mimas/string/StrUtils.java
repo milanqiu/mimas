@@ -215,6 +215,36 @@ public class StrUtils {
     }
 
     /**
+     * A standard string mark, used as default value of separator, connector and the similar usages.
+     */
+    public static final String STD_MARK = "```";
+
+    /**
+     * In source string, assigns all occurrences of the specified parameter with the specified value.
+     * Parameter is identified by a name, enclosed in two standard marks.
+     * @param s the source string
+     * @param paramName the name of parameter to be assigned
+     * @param paramValue the value to be assigned with
+     * @return the result string with all occurrences of the specified parameter been assigned
+     */
+    public static String assign(String s, String paramName, String paramValue) {
+        return assign(s, paramName, paramValue, STD_MARK);
+    }
+
+    /**
+     * In source string, assigns all occurrences of the specified parameter with the specified value.
+     * Parameter is identified by a name, enclosed in two marks.
+     * @param s the source string
+     * @param paramName the name of parameter to be assigned
+     * @param paramValue the value to be assigned with
+     * @param paramMark the mark of parameter, enclosing parameter name
+     * @return the result string with all occurrences of the specified parameter been assigned
+     */
+    public static String assign(String s, String paramName, String paramValue, String paramMark) {
+        return s.replace(paramMark + paramName + paramMark, paramValue);
+    }
+
+    /**
      * Adds the specified prefix to the specified string if the string is not empty.
      * @param prefix the prefix to be added
      * @param s the string to add to

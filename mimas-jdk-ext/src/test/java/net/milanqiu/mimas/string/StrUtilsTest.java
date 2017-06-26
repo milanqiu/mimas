@@ -138,6 +138,17 @@ public class StrUtilsTest {
     }
 
     @Test
+    public void test_assign() throws Exception {
+        // String assign(String s, String paramName, String paramValue)
+        Assert.assertEquals("aaabbbaaa", StrUtils.assign("aaa```aaa```aaa", "aaa", "bbb"));
+        Assert.assertEquals("bbb", StrUtils.assign("```aaa```", "aaa", "bbb"));
+        Assert.assertEquals("aaa```aaa``aaa", StrUtils.assign("aaa```aaa``aaa", "aaa", "bbb"));
+
+        // String assign(String s, String paramName, String paramValue, String paramMark)
+        Assert.assertEquals("bbb```aaa", StrUtils.assign("aaa```aaa```aaa", "```", "bbb", "aaa"));
+    }
+
+    @Test
     public void test_addPrefixIfNotEmpty() throws Exception {
         Assert.assertEquals("$str", StrUtils.addPrefixIfNotEmpty("$", "str"));
         Assert.assertEquals("",     StrUtils.addPrefixIfNotEmpty("$", ""));

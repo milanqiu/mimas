@@ -122,7 +122,7 @@ public class HtmlUtils {
             "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">" + System.lineSeparator() +
             "<html>" + System.lineSeparator() +
             "<head>" + System.lineSeparator() +
-            "<title>|||Title|||</title>" + System.lineSeparator() +
+            "<title>```Title```</title>" + System.lineSeparator() +
             "<style>" + System.lineSeparator() +
             "body { font-family:Arial; font-size:14px; line-height:25px; margin:15px; }" + System.lineSeparator() +
             "table { border-collapse:collapse; border:none; }" + System.lineSeparator() +
@@ -131,7 +131,7 @@ public class HtmlUtils {
             "</head>" + System.lineSeparator() +
             "" + System.lineSeparator() +
             "<body>" + System.lineSeparator() +
-            "|||Body|||" + System.lineSeparator() +
+            "```Body```" + System.lineSeparator() +
             "</body>" + System.lineSeparator() +
             "</html>" + System.lineSeparator();
 
@@ -142,7 +142,9 @@ public class HtmlUtils {
      * @return the result HTML page
      */
     public static String simplePage(String title, String body) {
-        return SIMPLE_PAGE_TEMPLATE.replace("|||Title|||", title).replace("|||Body|||", body);
+        String result = StrUtils.assign(SIMPLE_PAGE_TEMPLATE, "Title", title);
+        result = StrUtils.assign(result, "Body", body);
+        return result;
     }
 
     /**
