@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.guava.collect;
 
 import com.google.common.collect.*;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -46,12 +45,7 @@ public class IteratorsTest {
             Iterator<String> listIterator = list.iterator();
             Assert.assertEquals(STR_2, Iterators.get(listIterator, 2));
             Assert.assertFalse(listIterator.hasNext());
-            try {
-                Iterators.get(listIterator, 1);
-                DebugUtils.neverGoesHere();
-            } catch (Exception e) {
-                AssertExt.assertClassification(IndexOutOfBoundsException.class, e);
-            }
+            AssertExt.assertExceptionThrown(() -> Iterators.get(listIterator, 1), IndexOutOfBoundsException.class);
         }
 
         // T get(Iterator<T> iterator, int position, T defaultValue)

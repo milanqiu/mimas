@@ -225,4 +225,31 @@ public class LinkedPropertiesTest {
         FileUtils.deleteRecursively(testDir);
         Assert.assertFalse(testDir.exists());
     }
+
+    @Test
+    public void test_loadFromFile_storeToFile() throws Exception {
+        File testDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        LinkedProperties defaultProperties = new LinkedProperties();
+        defaultProperties.setProperty("fake", "will not be stored");
+        LinkedProperties properties = new LinkedProperties(defaultProperties);
+        properties.setProperty("k1", "v1");
+        properties.setProperty("k2", "v2\u0001\uEEEE");
+
+        File testFile = new File(testDir, "byte");
+        properties.storeToFile(testFile, "comment");
+
+        LinkedProperties loadedProperties = new LinkedProperties();
+        loadedProperties.loadFromFile(testFile);
+        Assert.assertEquals("v1",             loadedProperties.getProperty("k1"));
+        Assert.assertEquals("v2\u0001\uEEEE", loadedProperties.getProperty("k2"));
+
+        String testFileContent = FileUtils.readChars(testFile, StandardCharsets.ISO_8859_1);
+        String[] testFileLines = testFileContent.split(System.lineSeparator());
+        Assert.assertEquals("#comment",            testFileLines[0]);
+        Assert.assertEquals("k1=v1", testFileLines[2]);
+        Assert.assertEquals("k2=v2\\u0001\\uEEEE", testFileLines[3]);
+
+        FileUtils.deleteRecursively(testDir);
+        Assert.assertFalse(testDir.exists());
+    }
 }

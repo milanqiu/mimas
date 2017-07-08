@@ -3,7 +3,6 @@ package net.milanqiu.mimas.guava.util.concurrent;
 import com.google.common.util.concurrent.AbstractIdleService;
 import com.google.common.util.concurrent.Service;
 import net.milanqiu.mimas.concurrent.ConcurrentUtils;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.instrumentation.exception.DeliberateException;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
@@ -63,13 +62,7 @@ public class AbstractIdleServiceTest {
             service.startAsync();
             Assert.assertEquals(Service.State.STARTING, service.state());
 
-            try {
-                service.awaitRunning();
-                DebugUtils.neverGoesHere();
-            } catch (Exception e) {
-                AssertExt.assertClassification(IllegalStateException.class, e);
-                Assert.assertSame(deliberateException, e.getCause());
-            }
+            AssertExt.assertExceptionThrown(service::awaitRunning, IllegalStateException.class, deliberateException);
             Assert.assertEquals(Service.State.FAILED, service.state());
             Assert.assertSame(deliberateException, service.failureCause());
         } finally {
@@ -100,13 +93,7 @@ public class AbstractIdleServiceTest {
             service.stopAsync();
             Assert.assertEquals(Service.State.STOPPING, service.state());
 
-            try {
-                service.awaitTerminated();
-                DebugUtils.neverGoesHere();
-            } catch (Exception e) {
-                AssertExt.assertClassification(IllegalStateException.class, e);
-                Assert.assertSame(deliberateException, e.getCause());
-            }
+            AssertExt.assertExceptionThrown(service::awaitTerminated, IllegalStateException.class, deliberateException);
             Assert.assertEquals(Service.State.FAILED, service.state());
             Assert.assertSame(deliberateException, service.failureCause());
         } finally {

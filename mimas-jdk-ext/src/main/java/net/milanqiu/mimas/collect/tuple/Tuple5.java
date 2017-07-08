@@ -10,7 +10,7 @@ import net.milanqiu.mimas.instrumentation.exception.DeprecatedOverrideException;
  * Creation Date: 2014-02-08
  * @author Milan Qiu
  */
-public class Tuple5<TA, TB, TC, TD, TE> extends Tuple4<TA, TB, TC, TD> {
+public class Tuple5<TA, TB, TC, TD, TE> extends Tuple4<TA, TB, TC, TD> implements Cloneable {
     /**
      * Element E.
      */
@@ -104,6 +104,16 @@ public class Tuple5<TA, TB, TC, TD, TE> extends Tuple4<TA, TB, TC, TD> {
         return result;
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public Tuple5<TA, TB, TC, TD, TE> clone() throws CloneNotSupportedException {
+        try {
+            return (Tuple5<TA, TB, TC, TD, TE>) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError(e);
+        }
+    }
+
     /**
      * Returns a string representation of this object.
      * The string representation consists of a list of elements, enclosed in braces("{}").
@@ -113,13 +123,6 @@ public class Tuple5<TA, TB, TC, TD, TE> extends Tuple4<TA, TB, TC, TD> {
      */
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{A=").append(a);
-        sb.append(", B=").append(b);
-        sb.append(", C=").append(c);
-        sb.append(", D=").append(d);
-        sb.append(", E=").append(e);
-        sb.append('}');
-        return sb.toString();
+        return "{A=" + a + ", B=" + b + ", C=" + c + ", D=" + d + ", E=" + e + '}';
     }
 }

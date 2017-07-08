@@ -8,7 +8,7 @@ package net.milanqiu.mimas.collect.tuple;
  * Creation Date: 2014-02-08
  * @author Milan Qiu
  */
-public class Tuple2<TA, TB> {
+public class Tuple2<TA, TB> implements Cloneable {
     /**
      * Element A.
      */
@@ -101,6 +101,16 @@ public class Tuple2<TA, TB> {
         return result;
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public Tuple2<TA, TB> clone() throws CloneNotSupportedException {
+        try {
+            return (Tuple2<TA, TB>) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError(e);
+        }
+    }
+
     /**
      * Returns a string representation of this object.
      * The string representation consists of a list of elements, enclosed in braces("{}").
@@ -110,10 +120,6 @@ public class Tuple2<TA, TB> {
      */
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{A=").append(a);
-        sb.append(", B=").append(b);
-        sb.append('}');
-        return sb.toString();
+        return "{A=" + a + ", B=" + b + '}';
     }
 }

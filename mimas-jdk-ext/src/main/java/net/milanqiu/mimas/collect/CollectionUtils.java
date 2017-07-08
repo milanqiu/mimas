@@ -1,9 +1,6 @@
 package net.milanqiu.mimas.collect;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Utilities related to collection.
@@ -16,6 +13,33 @@ public class CollectionUtils {
      * Utility class is forbidden to be instantiated.
      */
     private CollectionUtils() {}
+
+    /**
+     * Converts the specified iterable of subtype to iterable of supertype.
+     * @param iterableSubtype the iterable of subtype to be converted
+     * @param <T> the supertype to be converted to
+     * @return the result iterable of supertype
+     */
+    public static <T> Iterable<T> convertIterable(Iterable<? extends T> iterableSubtype) {
+        return new Iterable<T>() {
+            @Override
+            public Iterator<T> iterator() {
+                return new Iterator<T>() {
+                    private Iterator<? extends T> iteratorSubtype = iterableSubtype.iterator();
+
+                    @Override
+                    public boolean hasNext() {
+                        return iteratorSubtype.hasNext();
+                    }
+
+                    @Override
+                    public T next() {
+                        return iteratorSubtype.next();
+                    }
+                };
+            }
+        };
+    }
 
     /**
      * Counts how many times each of the different elements occurs in an {@link java.lang.Iterable} object.
@@ -55,7 +79,7 @@ public class CollectionUtils {
     }
 
     /**
-     * Compares two {@link java.lang.Iterable} objects ignoring the element order, regardless of their actual types..
+     * Compares two {@link java.lang.Iterable} objects ignoring the element order, regardless of their actual types.
      * @param itr1 the first {@link java.lang.Iterable} object to be compared
      * @param itr2 the second {@link java.lang.Iterable} object to be compared
      * @param <T> the base class of the objects in the iterables
@@ -65,6 +89,28 @@ public class CollectionUtils {
         Map<T, Integer> itr1Elements = countsOccurrence(itr1);
         Map<T, Integer> itr2Elements = countsOccurrence(itr2);
         return itr1Elements.equals(itr2Elements);
+    }
+
+    /**
+     * Compares two {@link java.lang.Iterable} objects, regardless of their actual types.
+     * Other than {@link #equals(Iterable, Iterable)}, during the comparison, it will call {@link Iterator#hasNext()} of the
+     * two {@link java.lang.Iterable} objects repeatedly, even if it has no real effect.
+     * Usually used for testing custom {@link java.lang.Iterable} implementation.
+     * @param itr1 the first {@link java.lang.Iterable} object to be compared
+     * @param itr2 the second {@link java.lang.Iterable} object to be compared
+     * @param <T> the base class of the objects in the iterables
+     * @return {@code true} if size of two {@link java.lang.Iterable} objects are equal and their elements are equal one by one
+     */
+    public static <T> boolean equalsCallingHasNextRepeatedly(Iterable<? extends T> itr1, Iterable<? extends T> itr2) {
+        Iterator itor1 = itr1.iterator();
+        Iterator itor2 = itr2.iterator();
+        while (itor1.hasNext() && itor2.hasNext()) {
+            itor1.hasNext();
+            itor2.hasNext();
+            if (!Objects.equals(itor1.next(), itor2.next()))
+                return false;
+        }
+        return (!itor1.hasNext() && !itor2.hasNext());
     }
 
     /**

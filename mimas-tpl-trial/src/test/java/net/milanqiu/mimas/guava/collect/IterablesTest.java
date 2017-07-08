@@ -5,7 +5,6 @@ import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import com.google.common.collect.*;
 import net.milanqiu.mimas.collect.CollectionUtils;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -94,12 +93,7 @@ public class IterablesTest {
             Returns the last element of the iterable, or fails fast with a NoSuchElementException if it's empty.
          */
         Assert.assertEquals(STR_2, Iterables.getLast(ImmutableList.of(STR_0, STR_1, STR_1, STR_2)));
-        try {
-            Iterables.getLast(ImmutableList.of());
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NoSuchElementException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Iterables.getLast(ImmutableList.of()), NoSuchElementException.class);
 
         /*
             T getLast(Iterable, T default)
@@ -160,30 +154,15 @@ public class IterablesTest {
             Returns the only element in Iterable. Fails fast if the iterable is empty or has multiple elements.
          */
         Assert.assertEquals(STR_2, Iterables.getOnlyElement(ImmutableList.of(STR_2)));
-        try {
-            Iterables.getOnlyElement(ImmutableList.of());
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NoSuchElementException.class, e);
-        }
-        try {
-            Iterables.getOnlyElement(ImmutableList.of(STR_0, STR_1, STR_1, STR_2));
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Iterables.getOnlyElement(ImmutableList.of()), NoSuchElementException.class);
+        AssertExt.assertExceptionThrown(() -> Iterables.getOnlyElement(ImmutableList.of(STR_0, STR_1, STR_1, STR_2)), IllegalArgumentException.class);
 
         /*
             T getOnlyElement(Iterable, T default)
          */
         Assert.assertEquals(STR_2, Iterables.getOnlyElement(ImmutableList.of(STR_2), STR_4));
         Assert.assertEquals(STR_4, Iterables.getOnlyElement(ImmutableList.of(), STR_4));
-        try {
-            Iterables.getOnlyElement(ImmutableList.of(STR_0, STR_1, STR_1, STR_2), STR_4);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalArgumentException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> Iterables.getOnlyElement(ImmutableList.of(STR_0, STR_1, STR_1, STR_2), STR_4), IllegalArgumentException.class);
     }
 
     /*
@@ -287,17 +266,14 @@ public class IterablesTest {
                 return s.equals(STR_1) || s.equals(STR_3);
             }
         }));
-        try {
+        AssertExt.assertExceptionThrown(() -> {
             Iterables.find(list, new Predicate<String>() {
                 @Override
                 public boolean apply(String s) {
                     return s.equals(STR_3);
                 }
             });
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NoSuchElementException.class, e);
-        }
+        }, NoSuchElementException.class);
 
         /*
             T find(Iterable, Predicate, T default)

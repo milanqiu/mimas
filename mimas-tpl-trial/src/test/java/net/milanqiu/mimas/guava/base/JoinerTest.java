@@ -3,7 +3,6 @@ package net.milanqiu.mimas.guava.base;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Before;
@@ -34,12 +33,7 @@ public class JoinerTest {
     public void test_on_join() throws Exception {
         Joiner joiner = Joiner.on(separator);
         Assert.assertEquals(STR_0+separator+STR_1+separator+STR_2, joiner.join(list));
-        try {
-            joiner.join(listWithNull);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> joiner.join(listWithNull), NullPointerException.class);
     }
 
     @Test
@@ -48,12 +42,7 @@ public class JoinerTest {
         StringBuilder sb = new StringBuilder();
         sb.append(STR_4);
         Assert.assertEquals(STR_4+STR_0+separator+STR_1+separator+STR_2, joiner.appendTo(sb, list).toString());
-        try {
-            joiner.appendTo(sb, listWithNull);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> joiner.appendTo(sb, listWithNull), NullPointerException.class);
     }
 
     @Test

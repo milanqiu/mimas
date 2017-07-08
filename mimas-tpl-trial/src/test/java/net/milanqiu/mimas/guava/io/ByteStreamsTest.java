@@ -3,7 +3,6 @@ package net.milanqiu.mimas.guava.io;
 import com.google.common.io.ByteProcessor;
 import com.google.common.io.ByteStreams;
 import net.milanqiu.mimas.collect.ArrayUtils;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -53,12 +52,7 @@ public class ByteStreamsTest {
             Assert.assertArrayEquals(ArrayUtils.duplicate((byte) 0, 30),         Arrays.copyOfRange(byteArray, 70, 100));
 
             is.reset();
-            try {
-                ByteStreams.readFully(is, new byte[60], 20, 50);
-                DebugUtils.neverGoesHere();
-            } catch (Exception e) {
-                AssertExt.assertClassification(IndexOutOfBoundsException.class, e);
-            }
+            AssertExt.assertExceptionThrown(() -> ByteStreams.readFully(is, new byte[60], 20, 50), IndexOutOfBoundsException.class);
         }
     }
 

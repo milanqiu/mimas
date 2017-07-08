@@ -21,6 +21,11 @@ public class Tuple2Test {
         tuple.setAll(INT_0, STR_0);
         Assert.assertEquals(INT_0, (int) tuple.getA());
         Assert.assertEquals(STR_0, tuple.getB());
+
+        // null test
+        tuple.setAll(null, null);
+        Assert.assertNull(tuple.getA());
+        Assert.assertNull(tuple.getB());
     }
 
     @Test
@@ -34,6 +39,11 @@ public class Tuple2Test {
         tuple = new Tuple2<>(INT_1, STR_1);
         Assert.assertEquals(INT_1, (int) tuple.getA());
         Assert.assertEquals(STR_1, tuple.getB());
+
+        // null test
+        tuple = new Tuple2<>(null, null);
+        Assert.assertNull(tuple.getA());
+        Assert.assertNull(tuple.getB());
     }
 
     @Test
@@ -54,6 +64,15 @@ public class Tuple2Test {
         anotherTupleWithDifferentType = new Tuple2<>(STR_OF_INT_0, STR_0);
         Assert.assertFalse(tuple.equals(anotherTupleWithDifferentType));
         Assert.assertFalse(anotherTupleWithDifferentType.equals(tuple));
+
+        // null test
+        anotherTuple.setAll(null, null);
+        Assert.assertFalse(tuple.equals(anotherTuple));
+        Assert.assertFalse(anotherTuple.equals(tuple));
+
+        tuple.setAll(null, null);
+        Assert.assertTrue(tuple.equals(anotherTuple));
+        Assert.assertTrue(anotherTuple.equals(tuple));
     }
 
     @Test
@@ -70,11 +89,30 @@ public class Tuple2Test {
 
         anotherTupleWithDifferentType = new Tuple2<>(STR_OF_INT_0, STR_0);
         Assert.assertNotEquals(tuple.hashCode(), anotherTupleWithDifferentType.hashCode());
+
+        // null test
+        anotherTuple.setAll(null, null);
+        Assert.assertNotEquals(tuple.hashCode(), anotherTuple.hashCode());
+
+        tuple.setAll(null, null);
+        Assert.assertEquals(tuple.hashCode(), anotherTuple.hashCode());
+    }
+
+    @Test
+    public void test_clone() throws Exception {
+        tuple = new Tuple2<>(INT_0, STR_0);
+        anotherTuple = tuple.clone();
+        Assert.assertEquals(INT_0, (int) anotherTuple.getA());
+        Assert.assertEquals(STR_0, anotherTuple.getB());
     }
 
     @Test
     public void test_toString() throws Exception {
         tuple = new Tuple2<>(INT_0, STR_0);
         Assert.assertEquals("{A="+INT_0+", B="+STR_0+"}", tuple.toString());
+
+        // null test
+        tuple.setAll(null, null);
+        Assert.assertEquals("{A=null, B=null}", tuple.toString());
     }
 }

@@ -88,6 +88,13 @@ public class RunningTrace {
     }
 
     /**
+     * Clears the trace.
+     */
+    public void clear() {
+        elements.clear();
+    }
+
+    /**
      * Returns the size of trace.
      * @return the size of trace
      */

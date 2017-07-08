@@ -3,7 +3,6 @@ package net.milanqiu.mimas.guava.collect;
 import com.google.common.base.Function;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Ordering;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Before;
@@ -235,19 +234,8 @@ public class OrderingTest {
             Collections.sort(ints, Ordering.explicit(ImmutableList.of(4, 2, 5, 7, 30, 1)));
             Assert.assertEquals(ImmutableList.of(4, 2, 5, 30, 1), ints);
 
-            try {
-                Collections.sort(ints, Ordering.explicit(ImmutableList.of(4, 2, 5, 7, 30)));
-                DebugUtils.neverGoesHere();
-            } catch (Exception e) {
-                AssertExt.assertClassification(ClassCastException.class, e);
-            }
-
-            try {
-                Collections.sort(ints, Ordering.explicit(Arrays.asList(4, 2, 5, 7, 30, 1, null)));
-                DebugUtils.neverGoesHere();
-            } catch (Exception e) {
-                AssertExt.assertClassification(NullPointerException.class, e);
-            }
+            AssertExt.assertExceptionThrown(() -> Collections.sort(ints, Ordering.explicit(ImmutableList.of(4, 2, 5, 7, 30))), ClassCastException.class);
+            AssertExt.assertExceptionThrown(() -> Collections.sort(ints, Ordering.explicit(Arrays.asList(4, 2, 5, 7, 30, 1, null))), NullPointerException.class);
         }
 
         // Ordering<T> explicit(T leastValue, T... remainingValuesInOrder)
@@ -255,19 +243,8 @@ public class OrderingTest {
             Collections.sort(ints, Ordering.explicit(4, 2, 5, 7, 30, 1));
             Assert.assertEquals(ImmutableList.of(4, 2, 5, 30, 1), ints);
 
-            try {
-                Collections.sort(ints, Ordering.explicit(4, 2, 5, 7, 30));
-                DebugUtils.neverGoesHere();
-            } catch (Exception e) {
-                AssertExt.assertClassification(ClassCastException.class, e);
-            }
-
-            try {
-                Collections.sort(ints, Ordering.explicit(4, 2, 5, 7, 30, 1, null));
-                DebugUtils.neverGoesHere();
-            } catch (Exception e) {
-                AssertExt.assertClassification(NullPointerException.class, e);
-            }
+            AssertExt.assertExceptionThrown(() -> Collections.sort(ints, Ordering.explicit(4, 2, 5, 7, 30)), ClassCastException.class);
+            AssertExt.assertExceptionThrown(() -> Collections.sort(ints, Ordering.explicit(4, 2, 5, 7, 30, 1, null)), NullPointerException.class);
         }
     }
 

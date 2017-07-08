@@ -23,6 +23,13 @@ public class Tuple4Test {
         Assert.assertEquals(INT_1, (int) tuple.getB());
         Assert.assertEquals(INT_2, (int) tuple.getC());
         Assert.assertEquals(STR_0, tuple.getD());
+
+        // null test
+        tuple.setAll(null, null, null, null);
+        Assert.assertNull(tuple.getA());
+        Assert.assertNull(tuple.getB());
+        Assert.assertNull(tuple.getC());
+        Assert.assertNull(tuple.getD());
     }
 
     @Test
@@ -40,6 +47,13 @@ public class Tuple4Test {
         Assert.assertEquals(INT_1, (int) tuple.getB());
         Assert.assertEquals(INT_3, (int) tuple.getC());
         Assert.assertEquals(STR_0, tuple.getD());
+
+        // null test
+        tuple = new Tuple4<>(null, null, null, null);
+        Assert.assertNull(tuple.getA());
+        Assert.assertNull(tuple.getB());
+        Assert.assertNull(tuple.getC());
+        Assert.assertNull(tuple.getD());
     }
 
     @Test
@@ -60,6 +74,15 @@ public class Tuple4Test {
         anotherTupleWithDifferentType = new Tuple4<>(STR_OF_INT_0, STR_OF_INT_1, STR_OF_INT_2, STR_0);
         Assert.assertFalse(tuple.equals(anotherTupleWithDifferentType));
         Assert.assertFalse(anotherTupleWithDifferentType.equals(tuple));
+
+        // null test
+        anotherTuple.setAll(null, null, null, null);
+        Assert.assertFalse(tuple.equals(anotherTuple));
+        Assert.assertFalse(anotherTuple.equals(tuple));
+
+        tuple.setAll(null, null, null, null);
+        Assert.assertTrue(tuple.equals(anotherTuple));
+        Assert.assertTrue(anotherTuple.equals(tuple));
     }
 
     @Test
@@ -76,11 +99,32 @@ public class Tuple4Test {
 
         anotherTupleWithDifferentType = new Tuple4<>(STR_OF_INT_0, STR_OF_INT_1, STR_OF_INT_2, STR_0);
         Assert.assertNotEquals(tuple.hashCode(), anotherTupleWithDifferentType.hashCode());
+
+        // null test
+        anotherTuple.setAll(null, null, null, null);
+        Assert.assertNotEquals(tuple.hashCode(), anotherTuple.hashCode());
+
+        tuple.setAll(null, null, null, null);
+        Assert.assertEquals(tuple.hashCode(), anotherTuple.hashCode());
+    }
+
+    @Test
+    public void test_clone() throws Exception {
+        tuple = new Tuple4<>(INT_0, INT_1, INT_2, STR_0);
+        anotherTuple = tuple.clone();
+        Assert.assertEquals(INT_0, (int) anotherTuple.getA());
+        Assert.assertEquals(INT_1, (int) anotherTuple.getB());
+        Assert.assertEquals(INT_2, (int) anotherTuple.getC());
+        Assert.assertEquals(STR_0, anotherTuple.getD());
     }
 
     @Test
     public void test_toString() throws Exception {
         tuple = new Tuple4<>(INT_0, INT_1, INT_2, STR_0);
         Assert.assertEquals("{A="+INT_0+", B="+INT_1+", C="+INT_2+", D="+STR_0+"}", tuple.toString());
+
+        // null test
+        tuple.setAll(null, null, null, null);
+        Assert.assertEquals("{A=null, B=null, C=null, D=null}", tuple.toString());
     }
 }

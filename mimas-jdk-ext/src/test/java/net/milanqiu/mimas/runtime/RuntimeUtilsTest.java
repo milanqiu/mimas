@@ -11,17 +11,17 @@ public class RuntimeUtilsTest {
 
     @Test
     public void test_getClassSourceLocation() throws Exception {
-        StringBuilder sb = new StringBuilder();
-        sb.append(RuntimeUtils.getClassSourceLocation(RuntimeUtilsTest.class)).append(System.lineSeparator());
-        sb.append(RuntimeUtils.getClassSourceLocation(RuntimeUtils.class));
-        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDir(sb);
+        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDir(
+                RuntimeUtils.getClassSourceLocation(RuntimeUtilsTest.class) +
+                System.lineSeparator() +
+                RuntimeUtils.getClassSourceLocation(RuntimeUtils.class));
     }
 
     @Test
     public void test_getClassSourceDir() throws Exception {
-        StringBuilder sb = new StringBuilder();
-        sb.append(RuntimeUtils.getClassSourceDir(RuntimeUtilsTest.class)).append(System.lineSeparator());
-        sb.append(RuntimeUtils.getClassSourceDir(RuntimeUtils.class));
-        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDir(sb);
+        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDir(
+                RuntimeUtils.getClassSourceDir(RuntimeUtilsTest.class) +
+                System.lineSeparator() +
+                RuntimeUtils.getClassSourceDir(RuntimeUtils.class));
     }
 }

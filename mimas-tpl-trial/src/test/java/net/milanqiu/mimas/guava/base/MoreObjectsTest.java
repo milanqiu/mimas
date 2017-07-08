@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.guava.base;
 
 import com.google.common.base.MoreObjects;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,12 +19,7 @@ public class MoreObjectsTest {
         Assert.assertEquals(STR_0, MoreObjects.firstNonNull(STR_0, null));
         Assert.assertEquals(STR_1, MoreObjects.firstNonNull(null, STR_1));
 
-        try {
-            MoreObjects.firstNonNull(null, null);
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NullPointerException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> MoreObjects.firstNonNull(null, null), NullPointerException.class);
     }
 
     @Test

@@ -25,71 +25,6 @@ public class StrUtils {
     public static final String STR_SPACE = " ";
 
     /**
-     * Byte Order Mark of Unicode, which represents little-endian.
-     */
-    public static final char UNICODE_BOM = '\uFEFF';
-    /**
-     * High/low byte reversed Byte Order Mark of Unicode, which represents big-endian.
-     */
-    public static final char REVERSED_UNICODE_BOM = '\uFFFE';
-
-    /**
-     * The count of surrogate unicode character values.
-     */
-    public static final int SURROGATE_UNICODE_CHAR_VALUE_COUNT = Character.MAX_SURROGATE - Character.MIN_SURROGATE + 1;
-
-    /**
-     * The count of invalid unicode character values.
-     * See {@link #getValidUnicodeCharValues()} to study invalid unicode character values.
-     */
-    public static final int INVALID_UNICODE_CHAR_VALUE_COUNT = SURROGATE_UNICODE_CHAR_VALUE_COUNT + 1;
-    /**
-     * The count of valid unicode character values.
-     * See {@link #getValidUnicodeCharValues()} to study valid unicode character values.
-     */
-    public static final int VALID_UNICODE_CHAR_VALUE_COUNT = TypeUtils.CHAR_VALUE_COUNT - INVALID_UNICODE_CHAR_VALUE_COUNT;
-
-    /**
-     * Returns an array holding all valid unicode character values in ascending order.
-     * The surrogate section (from {@code '&#92;uD800'} to {@code '&#92;uDFFF'}) and the reversed BOM ({@code '&#92;uFFFE'})
-     * are invalid unicode character values. All other characters are valid unicode character values.
-     * The production of array costs some time. So if need to use the array repeatedly, create a variable to cache it.
-     * @return an array holding all valid unicode character values in ascending order
-     */
-    public static char[] getValidUnicodeCharValues() {
-        char[] result = new char[VALID_UNICODE_CHAR_VALUE_COUNT];
-        int index = 0;
-        for (int i = Character.MIN_VALUE; i <= Character.MAX_VALUE; i++) {
-            if ((i < Character.MIN_SURROGATE || i > Character.MAX_SURROGATE) && i != REVERSED_UNICODE_BOM)
-                result[index++] = (char) i;
-        }
-        return result;
-    }
-
-    /**
-     * Traverses all valid unicode character values in ascending order.
-     * See {@link #getValidUnicodeCharValues()} to study valid unicode character values.
-     * @param action the action to be taken in each visit
-     */
-    public static void traverseValidUnicodeCharValues(RunnableWithParam.WithChar action) {
-        for (int i = Character.MIN_VALUE; i <= Character.MAX_VALUE; i++) {
-            if ((i < Character.MIN_SURROGATE || i > Character.MAX_SURROGATE) && i != REVERSED_UNICODE_BOM)
-                action.run((char) i);
-        }
-    }
-
-    /**
-     * Returns a string holding all valid unicode characters in ascending order.
-     * The surrogate section (from {@code '&#92;uD800'} to {@code '&#92;uDFFF'}) and the reversed BOM ({@code '&#92;uFFFE'})
-     * are invalid unicode characters. All other characters are valid unicode characters.
-     * The production of string costs some time. So if need to use the string repeatedly, create a variable to cache it.
-     * @return a string holding all valid unicode characters in ascending order
-     */
-    public static String getValidUnicodeString() {
-        return new String(getValidUnicodeCharValues());
-    }
-
-    /**
      * Returns whether the specified character is an ASCII uppercase letter(regular expression: <i><tt>[A-Z]</tt></i>).
      * @param ch the character to be tested
      * @return {@code true} if the character is an ASCII uppercase letter
@@ -212,5 +147,170 @@ public class StrUtils {
             }
         }
         return sb.toString();
+    }
+
+    /**
+     * Byte Order Mark of Unicode, which represents little-endian.
+     */
+    public static final char UNICODE_BOM = '\uFEFF';
+    /**
+     * High/low byte reversed Byte Order Mark of Unicode, which represents big-endian.
+     */
+    public static final char REVERSED_UNICODE_BOM = '\uFFFE';
+
+    /**
+     * The count of surrogate unicode character values.
+     */
+    public static final int SURROGATE_UNICODE_CHAR_VALUE_COUNT = Character.MAX_SURROGATE - Character.MIN_SURROGATE + 1;
+
+    /**
+     * The count of invalid unicode character values.
+     * See {@link #getValidUnicodeCharValues()} to study invalid unicode character values.
+     */
+    public static final int INVALID_UNICODE_CHAR_VALUE_COUNT = SURROGATE_UNICODE_CHAR_VALUE_COUNT + 1;
+    /**
+     * The count of valid unicode character values.
+     * See {@link #getValidUnicodeCharValues()} to study valid unicode character values.
+     */
+    public static final int VALID_UNICODE_CHAR_VALUE_COUNT = TypeUtils.CHAR_VALUE_COUNT - INVALID_UNICODE_CHAR_VALUE_COUNT;
+
+    /**
+     * Returns an array holding all valid unicode character values in ascending order.
+     * The surrogate section (from {@code '&#92;uD800'} to {@code '&#92;uDFFF'}) and the reversed BOM ({@code '&#92;uFFFE'})
+     * are invalid unicode character values. All other characters are valid unicode character values.
+     * The production of array costs some time. So if need to use the array repeatedly, create a variable to cache it.
+     * @return an array holding all valid unicode character values in ascending order
+     */
+    public static char[] getValidUnicodeCharValues() {
+        char[] result = new char[VALID_UNICODE_CHAR_VALUE_COUNT];
+        int index = 0;
+        for (int i = Character.MIN_VALUE; i <= Character.MAX_VALUE; i++) {
+            if ((i < Character.MIN_SURROGATE || i > Character.MAX_SURROGATE) && i != REVERSED_UNICODE_BOM)
+                result[index++] = (char) i;
+        }
+        return result;
+    }
+
+    /**
+     * Traverses all valid unicode character values in ascending order.
+     * See {@link #getValidUnicodeCharValues()} to study valid unicode character values.
+     * @param action the action to be taken in each visit
+     */
+    public static void traverseValidUnicodeCharValues(RunnableWithParam.WithChar action) {
+        for (int i = Character.MIN_VALUE; i <= Character.MAX_VALUE; i++) {
+            if ((i < Character.MIN_SURROGATE || i > Character.MAX_SURROGATE) && i != REVERSED_UNICODE_BOM)
+                action.run((char) i);
+        }
+    }
+
+    /**
+     * Returns a string holding all valid unicode characters in ascending order.
+     * The surrogate section (from {@code '&#92;uD800'} to {@code '&#92;uDFFF'}) and the reversed BOM ({@code '&#92;uFFFE'})
+     * are invalid unicode characters. All other characters are valid unicode characters.
+     * The production of string costs some time. So if need to use the string repeatedly, create a variable to cache it.
+     * @return a string holding all valid unicode characters in ascending order
+     */
+    public static String getValidUnicodeString() {
+        return new String(getValidUnicodeCharValues());
+    }
+
+    /**
+     * A standard string mark, used as default value of separator, connector and the similar usages.
+     */
+    public static final String STD_MARK = "```";
+
+    /**
+     * In source string, assigns all occurrences of the specified parameter with the specified value.
+     * Parameter is identified by a name, enclosed in two standard marks.
+     * @param s the source string
+     * @param paramName the name of parameter to be assigned
+     * @param paramValue the value to be assigned with
+     * @return the result string with all occurrences of the specified parameter been assigned
+     */
+    public static String assign(String s, String paramName, String paramValue) {
+        return assign(s, paramName, paramValue, STD_MARK);
+    }
+
+    /**
+     * In source string, assigns all occurrences of the specified parameter with the specified value.
+     * Parameter is identified by a name, enclosed in two marks.
+     * @param s the source string
+     * @param paramName the name of parameter to be assigned
+     * @param paramValue the value to be assigned with
+     * @param paramMark the mark of parameter, enclosing parameter name
+     * @return the result string with all occurrences of the specified parameter been assigned
+     */
+    public static String assign(String s, String paramName, String paramValue, String paramMark) {
+        return s.replace(paramMark + paramName + paramMark, paramValue);
+    }
+
+    /**
+     * Adds the specified prefix to the specified string if the string is not empty.
+     * @param prefix the prefix to be added
+     * @param s the string to add to
+     * @return the empty string if {@code s} is empty, or the concatenation of {@code prefix} and {@code s}
+     */
+    public static String addPrefixIfNotEmpty(String prefix, String s) {
+        return s.isEmpty() ? "" : (prefix + s);
+    }
+
+    /**
+     * Adds the specified prefix to the specified string if the string is not null or empty.
+     * @param prefix the prefix to be added
+     * @param s the string to add to
+     * @return the empty string if {@code s} is null or empty, or the concatenation of {@code prefix} and {@code s}
+     */
+    public static String addPrefixIfNotNullOrEmpty(String prefix, String s) {
+        return (s == null || s.isEmpty()) ? "" : (prefix + s);
+    }
+
+    /**
+     * Adds the specified suffix to the specified string if the string is not empty.
+     * @param s the string to add to
+     * @param suffix the suffix to be added
+     * @return the empty string if {@code s} is empty, or the concatenation of {@code s} and {@code suffix}
+     */
+    public static String addSuffixIfNotEmpty(String s, String suffix) {
+        return s.isEmpty() ? "" : (s + suffix);
+    }
+
+    /**
+     * Adds the specified suffix to the specified string if the string is not null or empty.
+     * @param s the string to add to
+     * @param suffix the suffix to be added
+     * @return the empty string if {@code s} is null or empty, or the concatenation of {@code s} and {@code suffix}
+     */
+    public static String addSuffixIfNotNullOrEmpty(String s, String suffix) {
+        return (s == null || s.isEmpty()) ? "" : (s + suffix);
+    }
+
+    /**
+     * Returns a string consisting of a specified number of concatenated copies of a specified string.
+     * Same as <code>com.google.common.base.Strings.repeat(String, int)</code> of guava.
+     * @param s the string to be repeated
+     * @param count the number of times to repeat the string
+     * @return the result string containing {@code s} repeated {@code count} times, or the empty string if {@code count} is less then one
+     */
+    public static String repeat(String s, int count) {
+        if (count <= 0)
+            return StrUtils.STR_EMPTY;
+        else if (count == 1)
+            return s;
+
+        final int len = s.length();
+        final long longSize = (long) len * (long) count;
+        final int size = (int) longSize;
+        if (size != longSize) {
+            throw new ArrayIndexOutOfBoundsException("Required array size too large: " + longSize);
+        }
+
+        final char[] array = new char[size];
+        s.getChars(0, len, array, 0);
+        int n;
+        for (n = len; n < size-n; n <<= 1) {
+            System.arraycopy(array, 0, array, n, n);
+        }
+        System.arraycopy(array, 0, array, n, size-n);
+        return new String(array);
     }
 }

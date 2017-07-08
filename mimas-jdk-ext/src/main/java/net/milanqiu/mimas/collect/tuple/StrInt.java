@@ -6,7 +6,7 @@ package net.milanqiu.mimas.collect.tuple;
  * Creation Date: 2014-06-09
  * @author Milan Qiu
  */
-public class StrInt extends Tuple2<String, Integer> {
+public class StrInt extends Tuple2<String, Integer> implements Cloneable {
 
     /**
      * Constructs a string-integer tuple with each element is null.
@@ -38,10 +38,11 @@ public class StrInt extends Tuple2<String, Integer> {
     }
     /**
      * Returns the integer element(element B).
+     * If the integer element is null, returns {@code 0}.
      * @return the integer element(element B)
      */
     public int getInt() {
-        return b;
+        return b==null ? 0 : b;
     }
     /**
      * A setter corresponding to the getter {@link #getInt()}.
@@ -49,5 +50,14 @@ public class StrInt extends Tuple2<String, Integer> {
      */
     public void setInt(int b) {
         this.b = b;
+    }
+
+    @Override
+    public StrInt clone() throws CloneNotSupportedException {
+        try {
+            return (StrInt) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError(e);
+        }
     }
 }

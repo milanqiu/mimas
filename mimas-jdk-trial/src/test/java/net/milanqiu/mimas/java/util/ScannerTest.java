@@ -1,7 +1,6 @@
 package net.milanqiu.mimas.java.util;
 
 import net.milanqiu.mimas.config.MimasJdkTrialProjectConfig;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -27,24 +26,14 @@ public class ScannerTest {
         Assert.assertTrue(scanner.hasNext("[0-9]+"));
 
         Assert.assertEquals("100", scanner.next());
-        try {
-            scanner.next("[a-z]+");
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(InputMismatchException.class, e);
-        }
+        AssertExt.assertExceptionThrown(() -> scanner.next("[a-z]+"), InputMismatchException.class);
         Assert.assertEquals("200", scanner.next("[0-9]+"));
 
         Assert.assertFalse(scanner.hasNext());
         Assert.assertFalse(scanner.hasNext("[a-z]+"));
         Assert.assertFalse(scanner.hasNext("[0-9]+"));
 
-        try {
-            scanner.next();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(NoSuchElementException.class, e);
-        }
+        AssertExt.assertExceptionThrown(scanner::next, NoSuchElementException.class);
     }
 
     @Test
@@ -58,12 +47,7 @@ public class ScannerTest {
 
         Assert.assertFalse(scanner.hasNextInt());
         Assert.assertTrue(scanner.hasNextInt(16));
-        try {
-            scanner.nextInt();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(InputMismatchException.class, e);
-        }
+        AssertExt.assertExceptionThrown(scanner::nextInt, InputMismatchException.class);
         Assert.assertEquals(0xEE, scanner.nextInt(16));
 
         Assert.assertFalse(scanner.hasNextInt());
@@ -85,12 +69,7 @@ public class ScannerTest {
         Pattern pattern = Pattern.compile("([a-z]+)([0-9]+)");
         MatchResult mr;
 
-        try {
-            scanner.match();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalStateException.class, e);
-        }
+        AssertExt.assertExceptionThrown(scanner::match, IllegalStateException.class);
 
         Assert.assertTrue(scanner.hasNext(pattern));
         mr = scanner.match();
@@ -107,12 +86,7 @@ public class ScannerTest {
         Assert.assertEquals("100", mr.group(2));
 
         Assert.assertFalse(scanner.hasNext(pattern));
-        try {
-            scanner.match();
-            DebugUtils.neverGoesHere();
-        } catch (Exception e) {
-            AssertExt.assertClassification(IllegalStateException.class, e);
-        }
+        AssertExt.assertExceptionThrown(scanner::match, IllegalStateException.class);
     }
 
     @Test

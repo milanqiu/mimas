@@ -1,5 +1,6 @@
 package net.milanqiu.mimas.instrumentation;
 
+import net.milanqiu.mimas.instrumentation.exception.AssertionFailedException;
 import net.milanqiu.mimas.instrumentation.exception.NeverGoesHereException;
 import net.milanqiu.mimas.lang.StackTrace;
 
@@ -32,6 +33,27 @@ public class DebugUtils {
      */
     public static void neverGoesHere(String message) {
         throw new NeverGoesHereException(message);
+    }
+
+    /**
+     * Asserts a condition is true.
+     * If assertion fails, it will throw an {@link AssertionFailedException}.
+     * @param condition the condition to be asserted
+     */
+    public static void assertTrue(boolean condition) {
+        if (!condition)
+            throw new AssertionFailedException();
+    }
+
+    /**
+     * Asserts a condition is true.
+     * If assertion fails, it will throw an {@link AssertionFailedException} with the specified message.
+     * @param message the error message when assertion fails
+     * @param condition the condition to be asserted
+     */
+    public static void assertTrue(String message, boolean condition) {
+        if (!condition)
+            throw new AssertionFailedException(message);
     }
 
     /**

@@ -10,7 +10,7 @@ import net.milanqiu.mimas.instrumentation.exception.DeprecatedOverrideException;
  * Creation Date: 2014-02-08
  * @author Milan Qiu
  */
-public class Tuple3<TA, TB, TC> extends Tuple2<TA, TB> {
+public class Tuple3<TA, TB, TC> extends Tuple2<TA, TB> implements Cloneable {
     /**
      * Element C.
      */
@@ -98,6 +98,16 @@ public class Tuple3<TA, TB, TC> extends Tuple2<TA, TB> {
         return result;
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public Tuple3<TA, TB, TC> clone() throws CloneNotSupportedException {
+        try {
+            return (Tuple3<TA, TB, TC>) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError(e);
+        }
+    }
+
     /**
      * Returns a string representation of this object.
      * The string representation consists of a list of elements, enclosed in braces("{}").
@@ -107,11 +117,6 @@ public class Tuple3<TA, TB, TC> extends Tuple2<TA, TB> {
      */
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{A=").append(a);
-        sb.append(", B=").append(b);
-        sb.append(", C=").append(c);
-        sb.append('}');
-        return sb.toString();
+        return "{A=" + a + ", B=" + b + ", C=" + c + '}';
     }
 }

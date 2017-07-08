@@ -1,5 +1,7 @@
 package net.milanqiu.mimas.instrumentation;
 
+import net.milanqiu.mimas.instrumentation.exception.AssertionFailedException;
+import net.milanqiu.mimas.junit.AssertExt;
 import net.milanqiu.mimas.lang.StackTrace;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,6 +11,17 @@ import org.junit.Test;
  * @author Milan Qiu
  */
 public class DebugUtilsTest {
+
+    @Test
+    public void test_assertTrue() throws Exception {
+        // void assertTrue(boolean condition)
+        DebugUtils.assertTrue(true);
+        AssertExt.assertExceptionThrown(() -> DebugUtils.assertTrue(false), AssertionFailedException.class);
+
+        // void assertTrue(String message, boolean condition)
+        DebugUtils.assertTrue("an error", true);
+        AssertExt.assertExceptionThrown(() -> DebugUtils.assertTrue("an error", false), AssertionFailedException.class, "an error");
+    }
 
     private void getCurrentMethodInEncapsulation() {
         StackTraceElement method = DebugUtils.getCurrentMethod();
