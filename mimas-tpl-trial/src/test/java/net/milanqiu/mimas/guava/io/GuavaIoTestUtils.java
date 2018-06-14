@@ -3,7 +3,7 @@ package net.milanqiu.mimas.guava.io;
 import com.google.common.collect.ImmutableList;
 import net.milanqiu.mimas.io.FileUtils;
 import net.milanqiu.mimas.lang.TypeUtils;
-import net.milanqiu.mimas.string.StrUtils;
+import net.milanqiu.mimas.string.EncodingUtils;
 import org.junit.Assert;
 
 import java.io.File;
@@ -25,9 +25,9 @@ public class GuavaIoTestUtils {
     public static final String ALL_CHAR_VALUES_STR = TypeUtils.getAllCharValuesString();
     public static final int ALL_CHAR_VALUES_COUNT = TypeUtils.CHAR_VALUE_COUNT;
 
-    public static final char[] UNICODE_CHAR_VALUES = StrUtils.getValidUnicodeCharValues();
-    public static final String UNICODE_CHAR_VALUES_STR = StrUtils.getValidUnicodeString();
-    public static final int UNICODE_CHAR_VALUES_COUNT = StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT;
+    public static final char[] UNICODE_CHAR_VALUES = EncodingUtils.getValidUnicodeCharValues();
+    public static final String UNICODE_CHAR_VALUES_STR = EncodingUtils.getValidUnicodeString();
+    public static final int UNICODE_CHAR_VALUES_COUNT = EncodingUtils.VALID_UNICODE_CHAR_VALUE_COUNT;
 
     public static final String MULTILINE_STR =
                     STR_0 + System.lineSeparator() +

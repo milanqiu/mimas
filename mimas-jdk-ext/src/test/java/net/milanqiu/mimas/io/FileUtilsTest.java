@@ -3,7 +3,7 @@ package net.milanqiu.mimas.io;
 import net.milanqiu.mimas.config.MimasJdkExtProjectConfig;
 import net.milanqiu.mimas.junit.AssertExt;
 import net.milanqiu.mimas.lang.TypeUtils;
-import net.milanqiu.mimas.string.StrUtils;
+import net.milanqiu.mimas.string.EncodingUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -115,7 +115,7 @@ public class FileUtilsTest {
     public void test_readChars_writeChars() throws Exception {
         File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
         File workFile = new File(workDir, "temp");
-        String content = StrUtils.getValidUnicodeString();
+        String content = EncodingUtils.getValidUnicodeString();
 
         FileUtils.writeChars(content, workFile, StandardCharsets.UTF_16LE);
         Assert.assertEquals(content, FileUtils.readChars(workFile, StandardCharsets.UTF_16LE));
@@ -134,7 +134,7 @@ public class FileUtilsTest {
     public void test_readCharsUsingUtf8_writeCharsUsingUtf8() throws Exception {
         File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
         File workFile = new File(workDir, "temp");
-        String content = StrUtils.getValidUnicodeString();
+        String content = EncodingUtils.getValidUnicodeString();
 
         FileUtils.writeCharsUsingUtf8(content, workFile);
         Assert.assertEquals(content, FileUtils.readCharsUsingUtf8(workFile));
