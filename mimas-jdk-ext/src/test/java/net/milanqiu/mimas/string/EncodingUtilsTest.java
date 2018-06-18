@@ -3,6 +3,8 @@ package net.milanqiu.mimas.string;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.nio.charset.StandardCharsets;
+
 /**
  * Creation Date: 2018-06-14
  * @author Milan Qiu
@@ -82,5 +84,14 @@ public class EncodingUtilsTest {
             Assert.assertEquals(cursor++, str.charAt(i));
         }
         Assert.assertEquals(Character.MAX_VALUE+1, cursor);
+    }
+
+    @Test
+    public void test_getByteCountOfUtf8() throws Exception {
+        Assert.assertEquals(EncodingUtils.getByteCountOfUtf8("a".getBytes(StandardCharsets.UTF_8)[0]), 1);
+        Assert.assertEquals(EncodingUtils.getByteCountOfUtf8("á".getBytes(StandardCharsets.UTF_8)[0]), 2);
+        Assert.assertEquals(EncodingUtils.getByteCountOfUtf8("啊".getBytes(StandardCharsets.UTF_8)[0]), 3);
+        Assert.assertEquals(EncodingUtils.getByteCountOfUtf8("🔥".getBytes(StandardCharsets.UTF_8)[0]), 4);
+        Assert.assertEquals(EncodingUtils.getByteCountOfUtf8("𪚥".getBytes(StandardCharsets.UTF_8)[0]), 4);
     }
 }

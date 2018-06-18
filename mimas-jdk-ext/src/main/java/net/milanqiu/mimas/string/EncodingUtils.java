@@ -3,6 +3,8 @@ package net.milanqiu.mimas.string;
 import net.milanqiu.mimas.lang.RunnableWithParam;
 import net.milanqiu.mimas.lang.TypeUtils;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * Utilities related to encoding.
  * <p>
@@ -140,5 +142,28 @@ public class EncodingUtils {
      */
     public static String getValidUnicodeString() {
         return new String(getValidUnicodeCharValues());
+    }
+
+    /**
+     * Returns the byte count of a UTF-8 character base on the leading byte.
+     * @param leadingByte the leading byte of the UTF-8 character
+     * @return the byte count of the UTF-8 character
+     * @throws UnsupportedEncodingException if the leading byte is illegal
+     */
+    public static int getByteCountOfUtf8(byte leadingByte) throws UnsupportedEncodingException {
+        if ((leadingByte & 0b10000000) == 0)
+            return 1;
+        else if ((leadingByte & 0b11100000) == 0b11000000)
+            return 2;
+        else if ((leadingByte & 0b11110000) == 0b11100000)
+            return 3;
+        else if ((leadingByte & 0b11111000) == 0b11110000)
+            return 4;
+        else if ((leadingByte & 0b11111100) == 0b11111000)
+            return 5;
+        else if ((leadingByte & 0b11111110) == 0b11111100)
+            return 6;
+        else
+            throw new UnsupportedEncodingException();
     }
 }
