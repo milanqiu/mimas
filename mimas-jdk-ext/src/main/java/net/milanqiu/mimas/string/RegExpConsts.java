@@ -21,4 +21,24 @@ public class RegExpConsts {
      * Regular expression of strict identifier name. Extra character is not allowed.
      */
     public static final String REG_EXP_STRICT_IDENTIFIER_NAME = "^" + REG_EXP_IDENTIFIER_NAME + "$";
+
+    /**
+     * Regular expression of integer.
+     */
+    public static final String REG_EXP_INTEGER = "\\d+";
+
+    /**
+     * Regular expression of strict integer. Extra character is not allowed.
+     */
+    public static final String REG_EXP_STRICT_INTEGER = "^" + REG_EXP_INTEGER + "$";
+
+    /**
+     * Regular expression of identifier name or integer.
+     */
+    public static final String REG_EXP_IDENTIFIER_NAME_OR_INTEGER = "(" + REG_EXP_IDENTIFIER_NAME + "|" + REG_EXP_INTEGER + ")";
+
+    /**
+     * Regular expression of strict identifier name or integer. Extra character is not allowed.
+     */
+    public static final String REG_EXP_STRICT_IDENTIFIER_NAME_OR_INTEGER = "^" + REG_EXP_IDENTIFIER_NAME_OR_INTEGER + "$";
 }
