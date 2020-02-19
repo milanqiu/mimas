@@ -118,19 +118,19 @@ public class AssertExtTest {
     public void test_assertExceptionThrown() throws Exception {
         Exception cause = new ArithmeticException();
 
-        // void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz)
+        // void assertExceptionThrown(RunnableWithExceptionForAssert runnable, Class<? extends Throwable> exceptionClazz)
         AssertExt.assertExceptionThrown(() -> { Integer n = null; n.toString(); }, NullPointerException.class);
         AssertExt.assertExceptionThrown(() -> { int n = 1/0; }, ArithmeticException.class);
 
-        // void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz,
+        // void assertExceptionThrown(RunnableWithExceptionForAssert runnable, Class<? extends Throwable> exceptionClazz,
         //                            String exceptionMessage)
         AssertExt.assertExceptionThrown(() -> { int n = 1/0; }, ArithmeticException.class, "/ by zero");
 
-        // void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz,
+        // void assertExceptionThrown(RunnableWithExceptionForAssert runnable, Class<? extends Throwable> exceptionClazz,
         //                            String exceptionMessage, Throwable exceptionCause)
         AssertExt.assertExceptionThrown(() -> {throw new IOException("msg", cause); }, Exception.class, "msg", cause);
 
-        // void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz,
+        // void assertExceptionThrown(RunnableWithExceptionForAssert runnable, Class<? extends Throwable> exceptionClazz,
         //                            Throwable exceptionCause)
         AssertExt.assertExceptionThrown(() -> {throw new IOException("msg", cause); }, Exception.class, cause);
     }
