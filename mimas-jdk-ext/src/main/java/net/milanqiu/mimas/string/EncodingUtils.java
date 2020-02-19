@@ -1,6 +1,6 @@
 package net.milanqiu.mimas.string;
 
-import net.milanqiu.mimas.lang.RunnableWithParam;
+import net.milanqiu.mimas.lang.runnable.RunnableWithParam;
 import net.milanqiu.mimas.lang.TypeUtils;
 
 import java.io.UnsupportedEncodingException;

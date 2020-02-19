@@ -1,5 +1,7 @@
 package net.milanqiu.mimas.lang;
 
+import net.milanqiu.mimas.lang.runnable.RunnableWithParam;
+
 import java.util.Comparator;
 
 /**
