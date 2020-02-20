@@ -62,56 +62,56 @@ public class RuntimeUtils {
     /**
      * Announces some work is finished via file.
      * The announcement file is readable by external programs.
-     * It's path is specified, file name is {@code ANNOUNCEMENT_FILE_NAME},
+     * It's directory is specified, file name is {@code ANNOUNCEMENT_FILE_NAME},
      * content is led by {@code ANNOUNCEMENT_RESULT_FINISHED} and followed by specified message.
-     * @param path the path to put the announcement file
+     * @param dir the directory to put the announcement file
      * @param message the message attached to the announcement
      * @throws IOException if an I/O error occurs
      */
-    public static void announceFinished(File path, String message) throws IOException {
+    public static void announceFinished(File dir, String message) throws IOException {
         FileUtils.writeCharsUsingUtf8(ANNOUNCEMENT_RESULT_FINISHED + System.lineSeparator() + message,
-                new File(path, ANNOUNCEMENT_FILE_NAME));
+                new File(dir, ANNOUNCEMENT_FILE_NAME));
     }
 
     /**
      * Announces some work is finished via file.
      * The announcement file is readable by external programs.
-     * It's path is specified, file name is {@code ANNOUNCEMENT_FILE_NAME},
+     * It's directory is specified, file name is {@code ANNOUNCEMENT_FILE_NAME},
      * content is led by {@code ANNOUNCEMENT_RESULT_FINISHED} and followed by specified message.
-     * @param path the path to put the announcement file
+     * @param dirName the name of directory to put the announcement file
      * @param message the message attached to the announcement
      * @throws IOException if an I/O error occurs
      */
-    public static void announceFinished(String path, String message) throws IOException {
+    public static void announceFinished(String dirName, String message) throws IOException {
         FileUtils.writeCharsUsingUtf8(ANNOUNCEMENT_RESULT_FINISHED + System.lineSeparator() + message,
-                new File(path, ANNOUNCEMENT_FILE_NAME));
+                new File(dirName, ANNOUNCEMENT_FILE_NAME));
     }
 
     /**
      * Announces an exception is thrown via file.
      * The announcement file is readable by external programs.
-     * It's path is specified, file name is {@code ANNOUNCEMENT_FILE_NAME},
-     * content is led by {@code ANNOUNCEMENT_RESULT_EXCEPTION} and followed by message of specified exception.
-     * @param path the path to put the announcement file
+     * It's directory is specified, file name is {@code ANNOUNCEMENT_FILE_NAME},
+     * content is led by {@code ANNOUNCEMENT_RESULT_EXCEPTION} and followed by description of specified exception.
+     * @param dir the directory to put the announcement file
      * @param e the exception attached to the announcement
      * @throws IOException if an I/O error occurs
      */
-    public static void announceException(File path, Exception e) throws IOException {
-        FileUtils.writeCharsUsingUtf8(ANNOUNCEMENT_RESULT_EXCEPTION + System.lineSeparator() + e.getMessage(),
-                new File(path, ANNOUNCEMENT_FILE_NAME));
+    public static void announceException(File dir, Exception e) throws IOException {
+        FileUtils.writeCharsUsingUtf8(ANNOUNCEMENT_RESULT_EXCEPTION + System.lineSeparator() + e.toString(),
+                new File(dir, ANNOUNCEMENT_FILE_NAME));
     }
 
     /**
      * Announces an exception is thrown via file.
      * The announcement file is readable by external programs.
-     * It's path is specified, file name is {@code ANNOUNCEMENT_FILE_NAME},
-     * content is led by {@code ANNOUNCEMENT_RESULT_EXCEPTION} and followed by message of specified exception.
-     * @param path the path to put the announcement file
+     * It's directory is specified, file name is {@code ANNOUNCEMENT_FILE_NAME},
+     * content is led by {@code ANNOUNCEMENT_RESULT_EXCEPTION} and followed by description of specified exception.
+     * @param dirName the name of directory to put the announcement file
      * @param e the exception attached to the announcement
      * @throws IOException if an I/O error occurs
      */
-    public static void announceException(String path, Exception e) throws IOException {
-        FileUtils.writeCharsUsingUtf8(ANNOUNCEMENT_RESULT_EXCEPTION + System.lineSeparator() + e.getMessage(),
-                new File(path, ANNOUNCEMENT_FILE_NAME));
+    public static void announceException(String dirName, Exception e) throws IOException {
+        FileUtils.writeCharsUsingUtf8(ANNOUNCEMENT_RESULT_EXCEPTION + System.lineSeparator() + e.toString(),
+                new File(dirName, ANNOUNCEMENT_FILE_NAME));
     }
 }

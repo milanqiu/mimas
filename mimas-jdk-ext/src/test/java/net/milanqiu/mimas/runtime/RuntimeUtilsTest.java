@@ -33,10 +33,13 @@ public class RuntimeUtilsTest {
     @Test
     public void test_announceFinished() throws Exception {
         File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File announcementFile = new File(workDir, RuntimeUtils.ANNOUNCEMENT_FILE_NAME);
+        Assert.assertFalse(announcementFile.exists());
 
         RuntimeUtils.announceFinished(workDir, TestConsts.STR_0);
+        Assert.assertTrue(announcementFile.exists());
         Assert.assertEquals(RuntimeUtils.ANNOUNCEMENT_RESULT_FINISHED + System.lineSeparator() + TestConsts.STR_0,
-                FileUtils.readCharsUsingUtf8(new File(workDir, RuntimeUtils.ANNOUNCEMENT_FILE_NAME)));
+                FileUtils.readCharsUsingUtf8(announcementFile));
 
         FileUtils.deleteRecursively(workDir);
         Assert.assertFalse(workDir.exists());
@@ -45,11 +48,13 @@ public class RuntimeUtilsTest {
     @Test
     public void test_announceException() throws Exception {
         File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File announcementFile = new File(workDir, RuntimeUtils.ANNOUNCEMENT_FILE_NAME);
+        Assert.assertFalse(announcementFile.exists());
 
         Exception e = new RuntimeException();
         RuntimeUtils.announceException(workDir, e);
-        Assert.assertEquals(RuntimeUtils.ANNOUNCEMENT_RESULT_EXCEPTION + System.lineSeparator() + e.getMessage(),
-                FileUtils.readCharsUsingUtf8(new File(workDir, RuntimeUtils.ANNOUNCEMENT_FILE_NAME)));
+        Assert.assertEquals(RuntimeUtils.ANNOUNCEMENT_RESULT_EXCEPTION + System.lineSeparator() + e.toString(),
+                FileUtils.readCharsUsingUtf8(announcementFile));
 
         FileUtils.deleteRecursively(workDir);
         Assert.assertFalse(workDir.exists());
