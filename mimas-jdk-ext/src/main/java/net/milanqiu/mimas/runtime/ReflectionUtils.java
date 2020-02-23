@@ -22,4 +22,32 @@ public class ReflectionUtils {
     public static boolean isNonAbstract(Class<?> clazz) {
         return !Modifier.isAbstract(clazz.getModifiers());
     }
+
+    /**
+     * Returns whether the specified class has a default constructor without any parameter.
+     * @param clazz the class to be tested
+     * @return {@code true} if the specified class has a default constructor without any parameter
+     */
+    public static boolean hasDefaultConstructor(Class<?> clazz) {
+        try {
+            clazz.getDeclaredConstructor();
+            return true;
+        } catch (NoSuchMethodException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Returns whether the specified class has a public default constructor without any parameter.
+     * @param clazz the class to be tested
+     * @return {@code true} if the specified class has a public default constructor without any parameter
+     */
+    public static boolean hasPublicDefaultConstructor(Class<?> clazz) {
+        try {
+            clazz.getConstructor();
+            return true;
+        } catch (NoSuchMethodException e) {
+            return false;
+        }
+    }
 }
