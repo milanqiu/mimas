@@ -15,12 +15,12 @@ public class ReflectionUtils {
     private ReflectionUtils() {}
 
     /**
-     * Returns whether the specified class is non-abstract.
+     * Returns whether the specified class is abstract.
      * @param clazz the class to be tested
-     * @return {@code true} if the specified class is non-abstract
+     * @return {@code true} if the specified class is abstract
      */
-    public static boolean isNonAbstract(Class<?> clazz) {
-        return !Modifier.isAbstract(clazz.getModifiers());
+    public static boolean isAbstract(Class<?> clazz) {
+        return Modifier.isAbstract(clazz.getModifiers());
     }
 
     /**

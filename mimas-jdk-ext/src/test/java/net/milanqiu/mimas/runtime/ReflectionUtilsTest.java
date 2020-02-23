@@ -15,10 +15,10 @@ import org.junit.Test;
 public class ReflectionUtilsTest {
 
     @Test
-    public void test_isNonAbstract() throws Exception {
-        Assert.assertFalse(ReflectionUtils.isNonAbstract(TreeNode.class));
-        Assert.assertFalse(ReflectionUtils.isNonAbstract(AbstractTreeNode.class));
-        Assert.assertTrue(ReflectionUtils.isNonAbstract(LinkedTreeNode.class));
+    public void test_isAbstract() throws Exception {
+        Assert.assertTrue(ReflectionUtils.isAbstract(TreeNode.class)); // interface
+        Assert.assertTrue(ReflectionUtils.isAbstract(AbstractTreeNode.class)); // abstract class
+        Assert.assertFalse(ReflectionUtils.isAbstract(LinkedTreeNode.class)); // non-abstract class
     }
 
     @Test
