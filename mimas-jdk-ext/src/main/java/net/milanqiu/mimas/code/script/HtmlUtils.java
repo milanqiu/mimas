@@ -149,6 +149,7 @@ public class HtmlUtils {
 
     /**
      * Removes HTML tags from a string.
+     * The removal is simple. It doesn't work well on nested tags.
      * @param html the string to be removed HTML tags from
      * @return the result string with HTML tags removed
      */
