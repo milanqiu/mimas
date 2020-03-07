@@ -1,5 +1,6 @@
 package net.milanqiu.mimas.runtime;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 
 /**
@@ -49,5 +50,20 @@ public class ReflectionUtils {
         } catch (NoSuchMethodException e) {
             return false;
         }
+    }
+
+    /**
+     * Finds the constructor of the specified class with the specified parameter count.
+     * If not found, returns {@code null}.
+     * @param clazz the class to find constructor
+     * @param paramCount the parameter count of constructor to be found by
+     * @return the constructor of the specified class with the specified parameter count, or {@code null} if not found
+     */
+    public static Constructor<?> findConstructorByParamCount(Class<?> clazz, int paramCount) {
+        for (Constructor<?> constructor : clazz.getConstructors()) {
+            if (constructor.getParameterCount() == paramCount)
+                return constructor;
+        }
+        return null;
     }
 }

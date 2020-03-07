@@ -38,4 +38,14 @@ public class ReflectionUtilsTest {
         Assert.assertFalse(ReflectionUtils.hasPublicDefaultConstructor(MapEntry.class)); // only with-parameter constructor
         Assert.assertTrue(ReflectionUtils.hasPublicDefaultConstructor(LinkedProperties.class)); // two constructors
     }
+
+    @Test
+    public void test_getConstructorByParamCount() throws Exception {
+        Assert.assertEquals(LinkedProperties.class.getConstructor(),
+                ReflectionUtils.findConstructorByParamCount(LinkedProperties.class, 0));
+        Assert.assertEquals(LinkedProperties.class.getConstructor(LinkedProperties.class),
+                ReflectionUtils.findConstructorByParamCount(LinkedProperties.class, 1));
+        Assert.assertEquals(null,
+                ReflectionUtils.findConstructorByParamCount(LinkedProperties.class, 2));
+    }
 }
