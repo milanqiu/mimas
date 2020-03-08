@@ -128,7 +128,7 @@ public class StrUtilsTest {
         Assert.assertEquals("123str", ss.getB());
 
         AssertExt.assertExceptionThrown(() -> StrUtils.removeRegExpPrefix(RegExpConsts.REG_EXP_INTEGER, "str"),
-                StringNotFoundException.class, "regular expression prefix \\d+ not found in str");
+                StringNotFoundException.class, "regular expression prefix [\\+-]?\\d+ not found in str");
     }
 
     @Test

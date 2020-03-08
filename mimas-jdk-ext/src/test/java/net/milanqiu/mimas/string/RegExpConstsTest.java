@@ -33,12 +33,48 @@ public class RegExpConstsTest {
     }
 
     @Test
+    public void test_REG_EXP_POSITIVE_INTEGER() throws Exception {
+        Assert.assertFalse("0".matches(REG_EXP_POSITIVE_INTEGER));
+        Assert.assertTrue("123".matches(REG_EXP_POSITIVE_INTEGER));
+        Assert.assertTrue("+123".matches(REG_EXP_POSITIVE_INTEGER));
+        Assert.assertFalse("-123".matches(REG_EXP_POSITIVE_INTEGER));
+        Assert.assertFalse("".matches(REG_EXP_POSITIVE_INTEGER));
+        Assert.assertFalse("a0".matches(REG_EXP_POSITIVE_INTEGER));
+        Assert.assertFalse("123.456".matches(REG_EXP_POSITIVE_INTEGER));
+        Assert.assertFalse("+123.456".matches(REG_EXP_POSITIVE_INTEGER));
+        Assert.assertFalse("-123.456".matches(REG_EXP_POSITIVE_INTEGER));
+
+        Assert.assertTrue(Pattern.compile(REG_EXP_POSITIVE_INTEGER).matcher("123.456").find());
+        Assert.assertFalse(Pattern.compile(REG_EXP_STRICT_POSITIVE_INTEGER).matcher("123.456").find());
+    }
+
+    @Test
+    public void test_REG_EXP_NONNEGATIVE_INTEGER() throws Exception {
+        Assert.assertTrue("0".matches(REG_EXP_NONNEGATIVE_INTEGER));
+        Assert.assertTrue("123".matches(REG_EXP_NONNEGATIVE_INTEGER));
+        Assert.assertTrue("+123".matches(REG_EXP_NONNEGATIVE_INTEGER));
+        Assert.assertFalse("-123".matches(REG_EXP_NONNEGATIVE_INTEGER));
+        Assert.assertFalse("".matches(REG_EXP_NONNEGATIVE_INTEGER));
+        Assert.assertFalse("a0".matches(REG_EXP_NONNEGATIVE_INTEGER));
+        Assert.assertFalse("123.456".matches(REG_EXP_NONNEGATIVE_INTEGER));
+        Assert.assertFalse("+123.456".matches(REG_EXP_NONNEGATIVE_INTEGER));
+        Assert.assertFalse("-123.456".matches(REG_EXP_NONNEGATIVE_INTEGER));
+
+        Assert.assertTrue(Pattern.compile(REG_EXP_NONNEGATIVE_INTEGER).matcher("123.456").find());
+        Assert.assertFalse(Pattern.compile(REG_EXP_STRICT_NONNEGATIVE_INTEGER).matcher("123.456").find());
+    }
+
+    @Test
     public void test_REG_EXP_INTEGER() throws Exception {
         Assert.assertTrue("0".matches(REG_EXP_INTEGER));
         Assert.assertTrue("123".matches(REG_EXP_INTEGER));
+        Assert.assertTrue("+123".matches(REG_EXP_INTEGER));
+        Assert.assertTrue("-123".matches(REG_EXP_INTEGER));
         Assert.assertFalse("".matches(REG_EXP_INTEGER));
         Assert.assertFalse("a0".matches(REG_EXP_INTEGER));
         Assert.assertFalse("123.456".matches(REG_EXP_INTEGER));
+        Assert.assertFalse("+123.456".matches(REG_EXP_INTEGER));
+        Assert.assertFalse("-123.456".matches(REG_EXP_INTEGER));
 
         Assert.assertTrue(Pattern.compile(REG_EXP_INTEGER).matcher("123.456").find());
         Assert.assertFalse(Pattern.compile(REG_EXP_STRICT_INTEGER).matcher("123.456").find());
@@ -64,9 +100,13 @@ public class RegExpConstsTest {
 
         Assert.assertTrue("0".matches(REG_EXP_IDENTIFIER_NAME_OR_INTEGER));
         Assert.assertTrue("123".matches(REG_EXP_IDENTIFIER_NAME_OR_INTEGER));
+        Assert.assertTrue("+123".matches(REG_EXP_IDENTIFIER_NAME_OR_INTEGER));
+        Assert.assertTrue("-123".matches(REG_EXP_IDENTIFIER_NAME_OR_INTEGER));
         Assert.assertFalse("".matches(REG_EXP_IDENTIFIER_NAME_OR_INTEGER));
         Assert.assertTrue("a0".matches(REG_EXP_IDENTIFIER_NAME_OR_INTEGER));
         Assert.assertFalse("123.456".matches(REG_EXP_IDENTIFIER_NAME_OR_INTEGER));
+        Assert.assertFalse("+123.456".matches(REG_EXP_IDENTIFIER_NAME_OR_INTEGER));
+        Assert.assertFalse("-123.456".matches(REG_EXP_IDENTIFIER_NAME_OR_INTEGER));
 
         Assert.assertTrue(Pattern.compile(REG_EXP_IDENTIFIER_NAME_OR_INTEGER).matcher("123.456").find());
         Assert.assertFalse(Pattern.compile(REG_EXP_STRICT_IDENTIFIER_NAME_OR_INTEGER).matcher("123.456").find());
