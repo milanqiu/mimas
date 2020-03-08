@@ -1,12 +1,10 @@
 package net.milanqiu.mimas.string;
 
 import net.milanqiu.mimas.collect.tuple.StrStr;
-import net.milanqiu.mimas.instrumentation.DebugUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Utilities related to regular expression.
@@ -19,6 +17,15 @@ public class RegExpUtils {
      * Utility class is forbidden to be instantiated.
      */
     private RegExpUtils() {}
+
+    /**
+     * Converts a regular expression into strict mode, which only matches the whole string or the whole line.
+     * @param regex the regular expression to be converted
+     * @return new converted regular expression in strict mode
+     */
+    public static String strict(String regex) {
+        return "^" + regex + "$";
+    }
 
     /**
      * Removes all group names from a regular expression.

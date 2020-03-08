@@ -5,12 +5,22 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Creation Date: 2020-03-08
  * @author Milan Qiu
  */
 public class RegExpUtilsTest {
+
+    @Test
+    public void test_strict() throws Exception {
+        Assert.assertTrue(Pattern.compile(RegExpConsts.REG_EXP_INTEGER).matcher("abc123def").find());
+        Assert.assertFalse(Pattern.compile(RegExpUtils.strict(RegExpConsts.REG_EXP_INTEGER)).matcher("abc123def").find());
+        Assert.assertTrue(Pattern.compile(RegExpUtils.strict(RegExpConsts.REG_EXP_INTEGER)).matcher("123").find());
+        Assert.assertFalse(Pattern.compile(RegExpUtils.strict(RegExpConsts.REG_EXP_INTEGER)).matcher("abc\n123\ndef").find());
+        Assert.assertTrue(Pattern.compile(RegExpUtils.strict(RegExpConsts.REG_EXP_INTEGER), Pattern.MULTILINE).matcher("abc\n123\ndef").find());
+    }
 
     @Test
     public void test_removeGroupNames() throws Exception {
