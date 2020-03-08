@@ -20,6 +20,8 @@ public class RegExpUtilsTest {
         Assert.assertTrue(Pattern.compile(RegExpUtils.strict(RegExpConsts.REG_EXP_INTEGER)).matcher("123").find());
         Assert.assertFalse(Pattern.compile(RegExpUtils.strict(RegExpConsts.REG_EXP_INTEGER)).matcher("abc\n123\ndef").find());
         Assert.assertTrue(Pattern.compile(RegExpUtils.strict(RegExpConsts.REG_EXP_INTEGER), Pattern.MULTILINE).matcher("abc\n123\ndef").find());
+        Assert.assertTrue(Pattern.compile(RegExpUtils.strict("a|b")).matcher("a").find());
+        Assert.assertFalse(Pattern.compile(RegExpUtils.strict("a|b")).matcher("ac").find());
     }
 
     @Test

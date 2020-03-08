@@ -24,7 +24,7 @@ public class RegExpUtils {
      * @return new converted regular expression in strict mode
      */
     public static String strict(String regex) {
-        return "^" + regex + "$";
+        return "^(?:" + regex + ")$";
     }
 
     /**
