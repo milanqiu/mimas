@@ -1,5 +1,9 @@
 package net.milanqiu.mimas.string;
 
+import net.milanqiu.mimas.collect.tuple.StrStr;
+
+import java.util.regex.Matcher;
+
 /**
  * Utilities related to string.
  * <p>
@@ -152,6 +156,98 @@ public class StrUtils {
      */
     public static String addSuffixIfNotNullOrEmpty(String s, String suffix) {
         return (s == null || s.isEmpty()) ? "" : (s + suffix);
+    }
+
+    /**
+     * Removes the specified prefix from the specified string.
+     * Throws a {@link StringNotFoundException} if the prefix doesn't exist.
+     * @param prefix the prefix to be removed
+     * @param s the string to be removed prefix from
+     * @return the result string with prefix removed
+     */
+    public static String removePrefix(String prefix, String s) {
+        if (s.startsWith(prefix)) {
+            return s.substring(prefix.length());
+        } else {
+            throw new StringNotFoundException("prefix %s not found in %s", prefix, s);
+        }
+    }
+
+    /**
+     * Removes the specified prefix from the specified string.
+     * Returns the original string if the prefix doesn't exist.
+     * @param prefix the prefix to be removed
+     * @param s the string to be removed prefix from
+     * @return the result string with prefix removed
+     */
+    public static String removePrefixIfExists(String prefix, String s) {
+        if (s.startsWith(prefix)) {
+            return s.substring(prefix.length());
+        } else {
+            return s;
+        }
+    }
+
+    /**
+     * Removes the specified regular expression prefix from the specified string.
+     * Throws a {@link StringNotFoundException} if the regular expression prefix doesn't exist.
+     * @param regExpPrefix the regular expression prefix to be removed
+     * @param s the string to be removed regular expression prefix from
+     * @return a {@link StrStr} object with A equaling to actually matched prefix and B equaling to the result string with regular expression prefix removed
+     */
+    public static StrStr removeRegExpPrefix(String regExpPrefix, String s) {
+        Matcher matcher = PatternCache.get(regExpPrefix).matcher(s);
+        if (matcher.lookingAt()) {
+            return new StrStr(matcher.group(), s.substring(matcher.end()));
+        } else {
+            throw new StringNotFoundException("regular expression prefix %s not found in %s", regExpPrefix, s);
+        }
+    }
+
+    /**
+     * Removes the specified regular expression prefix from the specified string.
+     * Returns a {@link StrStr} object with A equaling to empty string and B equaling to the original string if the prefix doesn't exist.
+     * @param regExpPrefix the regular expression prefix to be removed
+     * @param s the string to be removed regular expression prefix from
+     * @return a {@link StrStr} object with A equaling to actually matched prefix and B equaling to the result string with regular expression prefix removed
+     */
+    public static StrStr removeRegExpPrefixIfExists(String regExpPrefix, String s) {
+        Matcher matcher = PatternCache.get(regExpPrefix).matcher(s);
+        if (matcher.lookingAt()) {
+            return new StrStr(matcher.group(), s.substring(matcher.end()));
+        } else {
+            return new StrStr("", s);
+        }
+    }
+
+    /**
+     * Removes the specified suffix from the specified string.
+     * Throws a {@link StringNotFoundException} if the suffix doesn't exist.
+     * @param suffix the suffix to be removed
+     * @param s the string to be removed suffix from
+     * @return the result string with suffix removed
+     */
+    public static String removeSuffix(String suffix, String s) {
+        if (s.endsWith(suffix)) {
+            return s.substring(0, s.length()-suffix.length());
+        } else {
+            throw new StringNotFoundException("suffix %s not found in %s", suffix, s);
+        }
+    }
+
+    /**
+     * Removes the specified suffix from the specified string.
+     * Returns the original string if the suffix doesn't exist.
+     * @param suffix the suffix to be removed
+     * @param s the string to be removed suffix from
+     * @return the result string with suffix removed
+     */
+    public static String removeSuffixIfExists(String suffix, String s) {
+        if (s.endsWith(suffix)) {
+            return s.substring(0, s.length()-suffix.length());
+        } else {
+            return s;
+        }
     }
 
     /**

@@ -1,5 +1,6 @@
 package net.milanqiu.mimas.string;
 
+import net.milanqiu.mimas.collect.tuple.StrStr;
 import net.milanqiu.mimas.instrumentation.DebugUtils;
 
 import java.util.ArrayList;
@@ -55,12 +56,10 @@ public class RegExpUtils {
      */
     public static boolean matchesZeroOrMore(String regex, String s, List<String> allRepetitions) {
         if (PatternCache.get("("+regex+")*").matcher(s).matches()) {
-            Pattern pattern = PatternCache.get(regex);
             while (!s.isEmpty()) {
-                Matcher matcher = pattern.matcher(s);
-                DebugUtils.assertTrue(matcher.lookingAt());
-                allRepetitions.add(matcher.group());
-                s = s.substring(matcher.end());
+                StrStr ss = StrUtils.removeRegExpPrefix(regex, s);
+                allRepetitions.add(ss.getA());
+                s = ss.getB();
             }
             return true;
         } else {
@@ -78,12 +77,10 @@ public class RegExpUtils {
      */
     public static boolean matchesOneOrMore(String regex, String s, List<String> allRepetitions) {
         if (PatternCache.get("("+regex+")+").matcher(s).matches()) {
-            Pattern pattern = PatternCache.get(regex);
             do {
-                Matcher matcher = pattern.matcher(s);
-                DebugUtils.assertTrue(matcher.lookingAt());
-                allRepetitions.add(matcher.group());
-                s = s.substring(matcher.end());
+                StrStr ss = StrUtils.removeRegExpPrefix(regex, s);
+                allRepetitions.add(ss.getA());
+                s = ss.getB();
             } while (!s.isEmpty());
             return true;
         } else {
@@ -103,20 +100,15 @@ public class RegExpUtils {
      */
     public static boolean matchesOneOrMoreWithSeparator(String regex, String s, String separator, List<String> allRepetitions) {
         if (PatternCache.get(removeGroupNames(regex)+"("+separator+regex+")*").matcher(s).matches()) {
-            Pattern pattern = PatternCache.get(regex);
-            Pattern patternSeparator = PatternCache.get(separator);
             do {
-                Matcher matcher = pattern.matcher(s);
-                DebugUtils.assertTrue(matcher.lookingAt());
-                allRepetitions.add(matcher.group());
-                s = s.substring(matcher.end());
+                StrStr ss = StrUtils.removeRegExpPrefix(regex, s);
+                allRepetitions.add(ss.getA());
+                s = ss.getB();
 
                 if (s.isEmpty()) {
                     return true;
                 } else {
-                    Matcher matcherSeparator = patternSeparator.matcher(s);
-                    DebugUtils.assertTrue(matcherSeparator.lookingAt());
-                    s = s.substring(matcherSeparator.end());
+                    s = StrUtils.removeRegExpPrefix(separator, s).getB();
                 }
             } while (true);
         } else {

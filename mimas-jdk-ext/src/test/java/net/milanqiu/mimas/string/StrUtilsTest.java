@@ -1,5 +1,6 @@
 package net.milanqiu.mimas.string;
 
+import net.milanqiu.mimas.collect.tuple.StrStr;
 import net.milanqiu.mimas.junit.AssertExt;
 import net.milanqiu.mimas.lang.TypeUtils;
 import org.junit.Assert;
@@ -99,6 +100,65 @@ public class StrUtilsTest {
         Assert.assertEquals("str$", StrUtils.addSuffixIfNotNullOrEmpty("str", "$"));
         Assert.assertEquals("",     StrUtils.addSuffixIfNotNullOrEmpty("", "$"));
         Assert.assertEquals("",     StrUtils.addSuffixIfNotNullOrEmpty(null, "$"));
+    }
+
+    @Test
+    public void test_removePrefix() throws Exception {
+        Assert.assertEquals("str", StrUtils.removePrefix("$", "$str"));
+        Assert.assertEquals("$str", StrUtils.removePrefix("", "$str"));
+        AssertExt.assertExceptionThrown(() -> StrUtils.removePrefix("$", "str"),
+                StringNotFoundException.class, "prefix $ not found in str");
+    }
+
+    @Test
+    public void test_removePrefixIfExists() throws Exception {
+        Assert.assertEquals("str", StrUtils.removePrefixIfExists("$", "$str"));
+        Assert.assertEquals("$str", StrUtils.removePrefixIfExists("", "$str"));
+        Assert.assertEquals("str", StrUtils.removePrefixIfExists("$", "str"));
+    }
+
+    @Test
+    public void test_removeRegExpPrefix() throws Exception {
+        StrStr ss = StrUtils.removeRegExpPrefix(RegExpConsts.REG_EXP_INTEGER, "123str");
+        Assert.assertEquals("123", ss.getA());
+        Assert.assertEquals("str", ss.getB());
+
+        ss = StrUtils.removeRegExpPrefix("", "123str");
+        Assert.assertEquals("", ss.getA());
+        Assert.assertEquals("123str", ss.getB());
+
+        AssertExt.assertExceptionThrown(() -> StrUtils.removeRegExpPrefix(RegExpConsts.REG_EXP_INTEGER, "str"),
+                StringNotFoundException.class, "regular expression prefix \\d+ not found in str");
+    }
+
+    @Test
+    public void test_removeRegExpPrefixIfExists() throws Exception {
+        StrStr ss = StrUtils.removeRegExpPrefixIfExists(RegExpConsts.REG_EXP_INTEGER, "123str");
+        Assert.assertEquals("123", ss.getA());
+        Assert.assertEquals("str", ss.getB());
+
+        ss = StrUtils.removeRegExpPrefixIfExists("", "123str");
+        Assert.assertEquals("", ss.getA());
+        Assert.assertEquals("123str", ss.getB());
+
+        ss = StrUtils.removeRegExpPrefixIfExists(RegExpConsts.REG_EXP_INTEGER, "str");
+        Assert.assertEquals("", ss.getA());
+        Assert.assertEquals("str", ss.getB());
+    }
+
+    @Test
+    public void test_removeSuffix() throws Exception {
+        Assert.assertEquals("str", StrUtils.removeSuffix("$", "str$"));
+        Assert.assertEquals("str$", StrUtils.removeSuffix("", "str$"));
+        AssertExt.assertExceptionThrown(() -> StrUtils.removeSuffix("$", "str"),
+                StringNotFoundException.class, "suffix $ not found in str");
+    }
+
+    @Test
+    public void test_removeSuffixIfExists() throws Exception {
+        Assert.assertEquals("str", StrUtils.removeSuffixIfExists("$", "str$"));
+        Assert.assertEquals("str$", StrUtils.removeSuffixIfExists("", "str$"));
+        Assert.assertEquals("str", StrUtils.removeSuffixIfExists("$", "str"));
     }
 
     @Test
