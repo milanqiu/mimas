@@ -55,6 +55,7 @@ public class ReflectionUtils {
     /**
      * Finds the constructor of the specified class with the specified parameter count.
      * If not found, returns {@code null}.
+     * If there is more than one constructor with the specified parameter count, returns the first.
      * @param clazz the class to find constructor
      * @param paramCount the parameter count of constructor to be found by
      * @return the constructor of the specified class with the specified parameter count, or {@code null} if not found
