@@ -59,4 +59,19 @@ public class ExternalCommandMap {
     public void executeAndAnnounce(String commandName, String announcementDirName) throws IOException {
         executeAndAnnounce(commandName, new File(announcementDirName));
     }
+
+    /**
+     * Executes a command by name, and then announces to external.
+     * If the command is executed successfully, it will announce the returned result.
+     * If the command is failed to be executed, it will announce the thrown exception.
+     * The command name and announcement directory are fetched from a string array.
+     * @param args with first element is the name of command to be executed, and second element is the name of directory to put the announcement file
+     * @throws IOException if an I/O error occurs when announcing
+     */
+    public void executeAndAnnounce(String[] args) throws IOException {
+        if (args.length < 2) {
+            throw new IllegalArgumentException("at least two arguments are required");
+        }
+        executeAndAnnounce(args[0], args[1]);
+    }
 }
