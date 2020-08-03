@@ -59,4 +59,19 @@ public class RuntimeUtilsTest {
         FileUtils.deleteRecursively(workDir);
         Assert.assertFalse(workDir.exists());
     }
+
+    @Test
+    public void test_announceHalted() throws Exception {
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File announcementFile = new File(workDir, RuntimeUtils.ANNOUNCEMENT_FILE_NAME);
+        Assert.assertFalse(announcementFile.exists());
+
+        Exception e = new RuntimeException();
+        RuntimeUtils.announceHalted(workDir, e);
+        Assert.assertEquals(RuntimeUtils.ANNOUNCEMENT_RESULT_HALTED + System.lineSeparator() + e.toString(),
+                FileUtils.readCharsUsingUtf8(announcementFile));
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
+    }
 }

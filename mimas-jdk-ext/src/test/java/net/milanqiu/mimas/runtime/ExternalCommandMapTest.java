@@ -65,4 +65,40 @@ public class ExternalCommandMapTest {
         FileUtils.deleteRecursively(workDir);
         Assert.assertFalse(workDir.exists());
     }
+
+    @Test
+    public void test_announceHalted() throws Exception {
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File announcementFile = new File(workDir, RuntimeUtils.ANNOUNCEMENT_FILE_NAME);
+
+        ExternalCommandMap commands = new ExternalCommandMap();
+        commands.put("c1", () -> "111");
+        commands.put("c2", () -> "222");
+        commands.put("ce", () -> Integer.toString(1/0));
+
+        // void announceHalted(File announcementDir, Exception e)
+        try {
+            commands.executeAndAnnounce("c0", workDir);
+        } catch (Exception e) {
+            commands.announceHalted(workDir, e);
+            Assert.assertEquals(RuntimeUtils.ANNOUNCEMENT_RESULT_HALTED + System.lineSeparator() + "java.lang.IllegalArgumentException: command name not found: c0",
+                    FileUtils.readCharsUsingUtf8(announcementFile));
+        }
+
+        // void announceHalted(String[] args, Exception e)
+        try {
+            commands.executeAndAnnounce(new String[]{"c0", workDir.getPath()});
+        } catch (Exception e) {
+            commands.announceHalted(new String[]{"c0", workDir.getPath()}, e);
+            Assert.assertEquals(RuntimeUtils.ANNOUNCEMENT_RESULT_HALTED + System.lineSeparator() + "java.lang.IllegalArgumentException: command name not found: c0",
+                    FileUtils.readCharsUsingUtf8(announcementFile));
+        }
+
+        AssertExt.assertExceptionThrown(() -> {
+            commands.announceHalted(new String[]{workDir.getPath()}, new Exception());
+        }, IllegalArgumentException.class, "at least two arguments are required");
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
+    }
 }

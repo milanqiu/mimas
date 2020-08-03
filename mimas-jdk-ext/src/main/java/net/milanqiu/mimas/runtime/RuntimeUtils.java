@@ -58,6 +58,10 @@ public class RuntimeUtils {
      * The result text of exception announcement.
      */
     public static final String ANNOUNCEMENT_RESULT_EXCEPTION = "exception";
+    /**
+     * The result text of halted announcement.
+     */
+    public static final String ANNOUNCEMENT_RESULT_HALTED = "halted";
 
     /**
      * Announces some work is finished via file.
@@ -92,6 +96,7 @@ public class RuntimeUtils {
      * The announcement file is readable by external programs.
      * It's directory is specified, file name is {@code ANNOUNCEMENT_FILE_NAME},
      * content is led by {@code ANNOUNCEMENT_RESULT_EXCEPTION} and followed by description of specified exception.
+     * It is usually used when the exception is predictable and catchable.
      * @param dir the directory to put the announcement file
      * @param e the exception attached to the announcement
      * @throws IOException if an I/O error occurs
@@ -106,12 +111,43 @@ public class RuntimeUtils {
      * The announcement file is readable by external programs.
      * It's directory is specified, file name is {@code ANNOUNCEMENT_FILE_NAME},
      * content is led by {@code ANNOUNCEMENT_RESULT_EXCEPTION} and followed by description of specified exception.
+     * It is usually used when the exception is predictable and catchable.
      * @param dirName the name of directory to put the announcement file
      * @param e the exception attached to the announcement
      * @throws IOException if an I/O error occurs
      */
     public static void announceException(String dirName, Exception e) throws IOException {
         FileUtils.writeCharsUsingUtf8(ANNOUNCEMENT_RESULT_EXCEPTION + System.lineSeparator() + e.toString(),
+                new File(dirName, ANNOUNCEMENT_FILE_NAME));
+    }
+
+    /**
+     * Announces some work is halted via file.
+     * The announcement file is readable by external programs.
+     * It's directory is specified, file name is {@code ANNOUNCEMENT_FILE_NAME},
+     * content is led by {@code ANNOUNCEMENT_RESULT_HALTED} and followed by description of specified exception.
+     * It is usually used when the exception is unpredictable and causing a higher level of halt.
+     * @param dir the directory to put the announcement file
+     * @param e the exception attached to the announcement
+     * @throws IOException if an I/O error occurs
+     */
+    public static void announceHalted(File dir, Exception e) throws IOException {
+        FileUtils.writeCharsUsingUtf8(ANNOUNCEMENT_RESULT_HALTED + System.lineSeparator() + e.toString(),
+                new File(dir, ANNOUNCEMENT_FILE_NAME));
+    }
+
+    /**
+     * Announces some work is halted via file.
+     * The announcement file is readable by external programs.
+     * It's directory is specified, file name is {@code ANNOUNCEMENT_FILE_NAME},
+     * content is led by {@code ANNOUNCEMENT_RESULT_HALTED} and followed by description of specified exception.
+     * It is usually used when the exception is unpredictable and causing a higher level of halt.
+     * @param dirName the name of directory to put the announcement file
+     * @param e the exception attached to the announcement
+     * @throws IOException if an I/O error occurs
+     */
+    public static void announceHalted(String dirName, Exception e) throws IOException {
+        FileUtils.writeCharsUsingUtf8(ANNOUNCEMENT_RESULT_HALTED + System.lineSeparator() + e.toString(),
                 new File(dirName, ANNOUNCEMENT_FILE_NAME));
     }
 }

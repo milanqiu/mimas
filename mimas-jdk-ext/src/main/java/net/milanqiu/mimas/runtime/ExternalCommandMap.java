@@ -74,4 +74,43 @@ public class ExternalCommandMap {
         }
         executeAndAnnounce(args[0], args[1]);
     }
+
+    /**
+     * Announces one execution of command is halted.
+     * Notice it doesn't mean a predictable and catchable exception in execution process, but an unpredictable exception causing halt of the execution itself.
+     * @param announcementDir the directory to put the announcement file
+     * @param e the unpredictable exception causing halt of the execution itself
+     */
+    public void announceHalted(File announcementDir, Exception e) {
+        try {
+            RuntimeUtils.announceHalted(announcementDir, e);
+        } catch (IOException ee) {
+            e.printStackTrace();
+            ee.printStackTrace();
+        }
+    }
+
+    /**
+     * Announces one execution of command is halted.
+     * Notice it doesn't mean a predictable and catchable exception in execution process, but an unpredictable exception causing halt of the execution itself.
+     * @param announcementDirName the name of directory to put the announcement file
+     * @param e the unpredictable exception causing halt of the execution itself
+     */
+    public void announceHalted(String announcementDirName, Exception e) {
+        announceHalted(new File(announcementDirName), e);
+    }
+
+    /**
+     * Announces one execution of command is halted.
+     * Notice it doesn't mean a predictable and catchable exception in execution process, but an unpredictable exception causing halt of the execution itself.
+     * The announcement directory is fetched from a string array.
+     * @param args with second element is the name of directory to put the announcement file
+     * @param e the unpredictable exception causing halt of the execution itself
+     */
+    public void announceHalted(String[] args, Exception e) {
+        if (args.length < 2) {
+            throw new IllegalArgumentException("at least two arguments are required");
+        }
+        announceHalted(args[1], e);
+    }
 }
