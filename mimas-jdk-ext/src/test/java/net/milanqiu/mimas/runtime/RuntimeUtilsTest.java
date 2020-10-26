@@ -1,7 +1,12 @@
 package net.milanqiu.mimas.runtime;
 
 import net.milanqiu.mimas.config.MimasJdkExtProjectConfig;
+import net.milanqiu.mimas.instrumentation.TestConsts;
+import net.milanqiu.mimas.io.FileUtils;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.io.File;
 
 /**
  * Creation Date: 2014-11-02
@@ -23,5 +28,50 @@ public class RuntimeUtilsTest {
                 RuntimeUtils.getClassSourceDir(RuntimeUtilsTest.class) +
                 System.lineSeparator() +
                 RuntimeUtils.getClassSourceDir(RuntimeUtils.class));
+    }
+
+    @Test
+    public void test_announceFinished() throws Exception {
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File announcementFile = new File(workDir, RuntimeUtils.ANNOUNCEMENT_FILE_NAME);
+        Assert.assertFalse(announcementFile.exists());
+
+        RuntimeUtils.announceFinished(workDir, TestConsts.STR_0);
+        Assert.assertTrue(announcementFile.exists());
+        Assert.assertEquals(RuntimeUtils.ANNOUNCEMENT_RESULT_FINISHED + System.lineSeparator() + TestConsts.STR_0,
+                FileUtils.readCharsUsingUtf8(announcementFile));
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
+    }
+
+    @Test
+    public void test_announceException() throws Exception {
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File announcementFile = new File(workDir, RuntimeUtils.ANNOUNCEMENT_FILE_NAME);
+        Assert.assertFalse(announcementFile.exists());
+
+        Exception e = new RuntimeException();
+        RuntimeUtils.announceException(workDir, e);
+        Assert.assertEquals(RuntimeUtils.ANNOUNCEMENT_RESULT_EXCEPTION + System.lineSeparator() + e.toString(),
+                FileUtils.readCharsUsingUtf8(announcementFile));
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
+    }
+
+    @Test
+    public void test_announceHalted() throws Exception {
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File announcementFile = new File(workDir, RuntimeUtils.ANNOUNCEMENT_FILE_NAME);
+        Assert.assertFalse(announcementFile.exists());
+
+        Exception e = new RuntimeException();
+        RuntimeUtils.announceHalted(workDir, e);
+        Assert.assertEquals(RuntimeUtils.ANNOUNCEMENT_RESULT_HALTED + System.lineSeparator() + e.toString(),
+                FileUtils.readCharsUsingUtf8(announcementFile));
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
     }
 }

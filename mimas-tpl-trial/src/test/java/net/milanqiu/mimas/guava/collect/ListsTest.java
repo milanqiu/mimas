@@ -3,7 +3,7 @@ package net.milanqiu.mimas.guava.collect;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
-import net.milanqiu.mimas.lang.RunnableWithParam;
+import net.milanqiu.mimas.lang.runnable.RunnableWithParam;
 import net.milanqiu.mimas.lang.TypeUtils;
 import org.junit.Assert;
 import org.junit.Test;

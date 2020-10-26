@@ -85,12 +85,22 @@ public class ListenableFutureTest {
         Assert.assertTrue(comparison.equalsExpectedAndNext(
                 "Callable invoked"
         ));
-        // when runs this test case in IDE, "Callback invoked" tracks before "Callable returned"
-        // when runs this test case in Maven, "Callable returned" tracks before "Callback invoked"
-        Assert.assertTrue(comparison.equalsBatchIgnoringOrderAndNext(
-                "Callback invoked : Callable returned",
-                "Callable returned"
-        ));
+        // case 1: "Callable returned" tracks before "Callback invoked"
+        // case 2: "Callback invoked" tracks before "Callable returned"
+        // case 3: "Callable returned" only, "Callback invoked" has not been switched to yet
+        if (comparison.equalsExpected("Callable returned")) {
+            comparison.next();
+            if (!comparison.isEnd()) {
+                Assert.assertTrue(comparison.equalsExpectedAndNext(
+                        "Callback invoked : Callable returned"
+                ));
+            }
+        } else {
+            Assert.assertTrue(comparison.equalsBatchAndNext(
+                    "Callback invoked : Callable returned",
+                    "Callable returned"
+            ));
+        }
         Assert.assertTrue(comparison.isEnd());
     }
 

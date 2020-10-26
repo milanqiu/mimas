@@ -3,7 +3,7 @@ package net.milanqiu.mimas.runtime;
 import net.milanqiu.mimas.instrumentation.exception.CodeContextException;
 import net.milanqiu.mimas.io.FileUtils;
 import net.milanqiu.mimas.junit.AssertExt;
-import net.milanqiu.mimas.string.StrUtils;
+import net.milanqiu.mimas.string.EncodingUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -149,7 +149,7 @@ public class MavenProjectConventionTest {
         File expectedFile = new File(ROOT_DIR + "workspace/files/test_out/" + getClass().getName() + ".test_writeFileInTestOutDir.tmp");
 
         Assert.assertTrue(expectedFile.getParentFile().mkdirs());;
-        String content = StrUtils.getValidUnicodeString();
+        String content = EncodingUtils.getValidUnicodeString();
 
         Assert.assertFalse(expectedFile.exists());
         dpc.writeFileInTestOutDir(content);

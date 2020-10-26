@@ -1,4 +1,4 @@
-package net.milanqiu.mimas.lang;
+package net.milanqiu.mimas.lang.runnable;
 
 /**
  * Likes {@link java.lang.Runnable}, but accepts a parameter when running.

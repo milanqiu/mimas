@@ -125,9 +125,10 @@ public class AssertExt {
 
     /**
      * Likes {@link java.lang.Runnable}, but may throw an exception when running.
+     * Only used for assert in test scope.
      */
     @FunctionalInterface
-    public interface RunnableWithException {
+    public interface RunnableWithExceptionForAssert {
         /**
          * May take any action whatsoever, allowing exception thrown.
          * @throws Exception any type of exception thrown out
@@ -140,7 +141,7 @@ public class AssertExt {
      * @param runnable the runnable code expected to throw exception
      * @param exceptionClazz the expected exception class
      */
-    public static void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz) {
+    public static void assertExceptionThrown(RunnableWithExceptionForAssert runnable, Class<? extends Throwable> exceptionClazz) {
         try {
             runnable.run();
             Assert.fail("Expected exception not thrown");
@@ -155,7 +156,7 @@ public class AssertExt {
      * @param exceptionClazz the expected exception class
      * @param exceptionMessage the expected exception message
      */
-    public static void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz,
+    public static void assertExceptionThrown(RunnableWithExceptionForAssert runnable, Class<? extends Throwable> exceptionClazz,
                                              String exceptionMessage) {
         try {
             runnable.run();
@@ -173,7 +174,7 @@ public class AssertExt {
      * @param exceptionMessage the expected exception message
      * @param exceptionCause the expected exception cause
      */
-    public static void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz,
+    public static void assertExceptionThrown(RunnableWithExceptionForAssert runnable, Class<? extends Throwable> exceptionClazz,
                                              String exceptionMessage, Throwable exceptionCause) {
         try {
             runnable.run();
@@ -191,7 +192,7 @@ public class AssertExt {
      * @param exceptionClazz the expected exception class
      * @param exceptionCause the expected exception cause
      */
-    public static void assertExceptionThrown(RunnableWithException runnable, Class<? extends Throwable> exceptionClazz,
+    public static void assertExceptionThrown(RunnableWithExceptionForAssert runnable, Class<? extends Throwable> exceptionClazz,
                                              Throwable exceptionCause) {
         try {
             runnable.run();

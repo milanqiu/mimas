@@ -1,5 +1,6 @@
 package net.milanqiu.mimas.string;
 
+import net.milanqiu.mimas.collect.tuple.StrStr;
 import net.milanqiu.mimas.junit.AssertExt;
 import net.milanqiu.mimas.lang.TypeUtils;
 import org.junit.Assert;
@@ -63,81 +64,6 @@ public class StrUtilsTest {
     }
 
     @Test
-    public void test_nativeToAscii() throws Exception {
-        // String nativeToAscii(char ntv)
-        Assert.assertEquals("\\u0061", StrUtils.nativeToAscii('a'));
-        Assert.assertEquals("\\u0000", StrUtils.nativeToAscii('\u0000'));
-        Assert.assertEquals("\\u000F", StrUtils.nativeToAscii('\u000f'));
-        Assert.assertEquals("\\u0010", StrUtils.nativeToAscii('\u0010'));
-        Assert.assertEquals("\\u00FF", StrUtils.nativeToAscii('\u00ff'));
-        Assert.assertEquals("\\u0100", StrUtils.nativeToAscii('\u0100'));
-        Assert.assertEquals("\\u0FFF", StrUtils.nativeToAscii('\u0fff'));
-        Assert.assertEquals("\\u1000", StrUtils.nativeToAscii('\u1000'));
-        Assert.assertEquals("\\uFFFF", StrUtils.nativeToAscii('\uffff'));
-
-        // String nativeToAscii(String ntv)
-        Assert.assertEquals("\\u0061\\u0000\\u000F\\u0010\\u00FF\\u0100\\u0FFF\\u1000\\uFFFF",
-                StrUtils.nativeToAscii("a\u0000\u000f\u0010\u00ff\u0100\u0fff\u1000\uffff"));
-    }
-
-    @Test
-    public void test_asciiToNative() throws Exception {
-        Assert.assertEquals("a\u0000\u000f\u0010\u00ff\u0100\u0fff\u1000\uffff",
-                StrUtils.asciiToNative("\\u0061\\u0000\\u000F\\u0010\\u00FF\\u0100\\u0FFF\\u1000\\uFFFF"));
-        Assert.assertEquals("a\\u006a\\u006",
-                StrUtils.asciiToNative("a\\u006\\u0061\\u006"));
-    }
-
-    private int cursor;
-    private int count;
-
-    @Test
-    public void test_getValidUnicodeCharValues() throws Exception {
-        char[] charArr = StrUtils.getValidUnicodeCharValues();
-        Assert.assertEquals(StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT, charArr.length);
-        int cursor = Character.MIN_VALUE;
-        for (int i = 0; i < StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT; i++) {
-            if (cursor == Character.MIN_SURROGATE)
-                cursor = Character.MAX_SURROGATE + 1;
-            if (cursor == StrUtils.REVERSED_UNICODE_BOM)
-                cursor++;
-            Assert.assertEquals(cursor++, charArr[i]);
-        }
-        Assert.assertEquals(Character.MAX_VALUE+1, cursor);
-    }
-
-    @Test
-    public void test_traverseValidUnicodeCharValues() throws Exception {
-        cursor = Character.MIN_VALUE;
-        count = 0;
-        StrUtils.traverseValidUnicodeCharValues((param) -> {
-            if (cursor == Character.MIN_SURROGATE)
-                cursor = Character.MAX_SURROGATE + 1;
-            if (cursor == StrUtils.REVERSED_UNICODE_BOM)
-                cursor++;
-            Assert.assertEquals(cursor++, param);
-            count++;
-        });
-        Assert.assertEquals(Character.MAX_VALUE+1, cursor);
-        Assert.assertEquals(StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT, count);
-    }
-
-    @Test
-    public void test_getValidUnicodeString() throws Exception {
-        String str = StrUtils.getValidUnicodeString();
-        Assert.assertEquals(StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT, str.length());
-        int cursor = Character.MIN_VALUE;
-        for (int i = 0; i < StrUtils.VALID_UNICODE_CHAR_VALUE_COUNT; i++) {
-            if (cursor == Character.MIN_SURROGATE)
-                cursor = Character.MAX_SURROGATE + 1;
-            if (cursor == StrUtils.REVERSED_UNICODE_BOM)
-                cursor++;
-            Assert.assertEquals(cursor++, str.charAt(i));
-        }
-        Assert.assertEquals(Character.MAX_VALUE+1, cursor);
-    }
-
-    @Test
     public void test_assign() throws Exception {
         // String assign(String s, String paramName, String paramValue)
         Assert.assertEquals("aaabbbaaa", StrUtils.assign("aaa```aaa```aaa", "aaa", "bbb"));
@@ -174,6 +100,65 @@ public class StrUtilsTest {
         Assert.assertEquals("str$", StrUtils.addSuffixIfNotNullOrEmpty("str", "$"));
         Assert.assertEquals("",     StrUtils.addSuffixIfNotNullOrEmpty("", "$"));
         Assert.assertEquals("",     StrUtils.addSuffixIfNotNullOrEmpty(null, "$"));
+    }
+
+    @Test
+    public void test_removePrefix() throws Exception {
+        Assert.assertEquals("str", StrUtils.removePrefix("$", "$str"));
+        Assert.assertEquals("$str", StrUtils.removePrefix("", "$str"));
+        AssertExt.assertExceptionThrown(() -> StrUtils.removePrefix("$", "str"),
+                StringNotFoundException.class, "prefix $ not found in str");
+    }
+
+    @Test
+    public void test_removePrefixIfExists() throws Exception {
+        Assert.assertEquals("str", StrUtils.removePrefixIfExists("$", "$str"));
+        Assert.assertEquals("$str", StrUtils.removePrefixIfExists("", "$str"));
+        Assert.assertEquals("str", StrUtils.removePrefixIfExists("$", "str"));
+    }
+
+    @Test
+    public void test_removeRegExpPrefix() throws Exception {
+        StrStr ss = StrUtils.removeRegExpPrefix(RegExpConsts.REG_EXP_INTEGER, "123str");
+        Assert.assertEquals("123", ss.getA());
+        Assert.assertEquals("str", ss.getB());
+
+        ss = StrUtils.removeRegExpPrefix("", "123str");
+        Assert.assertEquals("", ss.getA());
+        Assert.assertEquals("123str", ss.getB());
+
+        AssertExt.assertExceptionThrown(() -> StrUtils.removeRegExpPrefix(RegExpConsts.REG_EXP_INTEGER, "str"),
+                StringNotFoundException.class, "regular expression prefix [\\+-]?\\d+ not found in str");
+    }
+
+    @Test
+    public void test_removeRegExpPrefixIfExists() throws Exception {
+        StrStr ss = StrUtils.removeRegExpPrefixIfExists(RegExpConsts.REG_EXP_INTEGER, "123str");
+        Assert.assertEquals("123", ss.getA());
+        Assert.assertEquals("str", ss.getB());
+
+        ss = StrUtils.removeRegExpPrefixIfExists("", "123str");
+        Assert.assertEquals("", ss.getA());
+        Assert.assertEquals("123str", ss.getB());
+
+        ss = StrUtils.removeRegExpPrefixIfExists(RegExpConsts.REG_EXP_INTEGER, "str");
+        Assert.assertEquals("", ss.getA());
+        Assert.assertEquals("str", ss.getB());
+    }
+
+    @Test
+    public void test_removeSuffix() throws Exception {
+        Assert.assertEquals("str", StrUtils.removeSuffix("$", "str$"));
+        Assert.assertEquals("str$", StrUtils.removeSuffix("", "str$"));
+        AssertExt.assertExceptionThrown(() -> StrUtils.removeSuffix("$", "str"),
+                StringNotFoundException.class, "suffix $ not found in str");
+    }
+
+    @Test
+    public void test_removeSuffixIfExists() throws Exception {
+        Assert.assertEquals("str", StrUtils.removeSuffixIfExists("$", "str$"));
+        Assert.assertEquals("str$", StrUtils.removeSuffixIfExists("", "str$"));
+        Assert.assertEquals("str", StrUtils.removeSuffixIfExists("$", "str"));
     }
 
     @Test
