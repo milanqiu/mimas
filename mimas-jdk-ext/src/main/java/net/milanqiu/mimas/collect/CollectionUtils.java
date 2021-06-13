@@ -136,4 +136,84 @@ public class CollectionUtils {
     public static int getSumLength(Iterable<String> itr) {
         return StreamUtils.parallelStreamOf(itr).filter(e -> e!=null).mapToInt(String::length).sum();
     }
+
+    /**
+     * Returns the union of two {@link java.lang.Iterable} objects.
+     * Notice the element order will be according to the first, then the second.
+     * @param itr1 the first {@link java.lang.Iterable} object
+     * @param itr2 the second {@link java.lang.Iterable} object
+     * @param <T> the base class of the objects in the iterables
+     * @return the union of two specified {@link java.lang.Iterable} objects.
+     */
+    public static <T> List<T> union(Iterable<? extends T> itr1, Iterable<? extends T> itr2) {
+        List<T> result = new ArrayList<>();
+        Set<T> set1 = iterableToSet(itr1);
+        for (T element : itr1) {
+            result.add(element);
+        }
+        for (T element : itr2) {
+            if (!set1.contains(element))
+                result.add(element);
+        }
+        return result;
+    }
+
+    /**
+     * Returns the intersection of two {@link java.lang.Iterable} objects.
+     * Notice the element order will be according to the first.
+     * @param itr1 the first {@link java.lang.Iterable} object
+     * @param itr2 the second {@link java.lang.Iterable} object
+     * @param <T> the base class of the objects in the iterables
+     * @return the union of two specified {@link java.lang.Iterable} objects.
+     */
+    public static <T> List<T> intersection(Iterable<? extends T> itr1, Iterable<? extends T> itr2) {
+        List<T> result = new ArrayList<>();
+        Set<T> set2 = iterableToSet(itr2);
+        for (T element : itr1) {
+            if (set2.contains(element))
+                result.add(element);
+        }
+        return result;
+    }
+
+    /**
+     * Returns the difference of two {@link java.lang.Iterable} objects.
+     * Notice the element order will be according to the first.
+     * @param itr1 the first {@link java.lang.Iterable} object
+     * @param itr2 the second {@link java.lang.Iterable} object
+     * @param <T> the base class of the objects in the iterables
+     * @return the union of two specified {@link java.lang.Iterable} objects.
+     */
+    public static <T> List<T> difference(Iterable<? extends T> itr1, Iterable<? extends T> itr2) {
+        List<T> result = new ArrayList<>();
+        Set<T> set2 = iterableToSet(itr2);
+        for (T element : itr1) {
+            if (!set2.contains(element))
+                result.add(element);
+        }
+        return result;
+    }
+
+    /**
+     * Returns the symmetric difference of two {@link java.lang.Iterable} objects.
+     * Notice the element order will be according to the first, then the second.
+     * @param itr1 the first {@link java.lang.Iterable} object
+     * @param itr2 the second {@link java.lang.Iterable} object
+     * @param <T> the base class of the objects in the iterables
+     * @return the union of two specified {@link java.lang.Iterable} objects.
+     */
+    public static <T> List<T> symmetricDifference(Iterable<? extends T> itr1, Iterable<? extends T> itr2) {
+        List<T> result = new ArrayList<>();
+        Set<T> set1 = iterableToSet(itr1);
+        Set<T> set2 = iterableToSet(itr2);
+        for (T element : itr1) {
+            if (!set2.contains(element))
+                result.add(element);
+        }
+        for (T element : itr2) {
+            if (!set1.contains(element))
+                result.add(element);
+        }
+        return result;
+    }
 }

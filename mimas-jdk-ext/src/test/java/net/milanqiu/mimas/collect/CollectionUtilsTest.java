@@ -365,4 +365,44 @@ public class CollectionUtilsTest {
         list = Arrays.asList(STR_0, STR_1, STR_2, null, StrUtils.STR_EMPTY);
         Assert.assertEquals(STR_0.length()+STR_1.length()+STR_2.length(), CollectionUtils.getSumLength(list));
     }
+
+    @Test
+    public void test_union() throws Exception {
+        List<String> list1 = Arrays.asList(STR_0, STR_1, STR_2, STR_3);
+        List<String> list2 = Arrays.asList(STR_4, STR_2, STR_1);
+        List<String> result = CollectionUtils.union(list1, list2);
+        Assert.assertEquals(Arrays.asList(STR_0, STR_1, STR_2, STR_3, STR_4), result);
+        result = CollectionUtils.union(list2, list1);
+        Assert.assertEquals(Arrays.asList(STR_4, STR_2, STR_1, STR_0, STR_3), result);
+    }
+
+    @Test
+    public void test_intersection() throws Exception {
+        List<String> list1 = Arrays.asList(STR_0, STR_1, STR_2, STR_3);
+        List<String> list2 = Arrays.asList(STR_4, STR_2, STR_1);
+        List<String> result = CollectionUtils.intersection(list1, list2);
+        Assert.assertEquals(Arrays.asList(STR_1, STR_2), result);
+        result = CollectionUtils.intersection(list2, list1);
+        Assert.assertEquals(Arrays.asList(STR_2, STR_1), result);
+    }
+
+    @Test
+    public void test_difference() throws Exception {
+        List<String> list1 = Arrays.asList(STR_0, STR_1, STR_2, STR_3);
+        List<String> list2 = Arrays.asList(STR_4, STR_2, STR_1);
+        List<String> result = CollectionUtils.difference(list1, list2);
+        Assert.assertEquals(Arrays.asList(STR_0, STR_3), result);
+        result = CollectionUtils.difference(list2, list1);
+        Assert.assertEquals(Arrays.asList(STR_4), result);
+    }
+
+    @Test
+    public void test_symmetricDifference() throws Exception {
+        List<String> list1 = Arrays.asList(STR_0, STR_1, STR_2, STR_3);
+        List<String> list2 = Arrays.asList(STR_4, STR_2, STR_1);
+        List<String> result = CollectionUtils.symmetricDifference(list1, list2);
+        Assert.assertEquals(Arrays.asList(STR_0, STR_3, STR_4), result);
+        result = CollectionUtils.symmetricDifference(list2, list1);
+        Assert.assertEquals(Arrays.asList(STR_4, STR_0, STR_3), result);
+    }
 }
