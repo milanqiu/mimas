@@ -28,6 +28,31 @@ public class CollectionUtilsTest {
     }
 
     @Test
+    public void test_iterableToSet() throws Exception {
+        Set<Object> set = CollectionUtils.iterableToSet(Arrays.asList(OBJ_0, OBJ_1, OBJ_2, OBJ_0));
+        Set<Object> setExpected = new HashSet<>();
+        setExpected.add(OBJ_0);
+        setExpected.add(OBJ_1);
+        setExpected.add(OBJ_2);
+        Assert.assertEquals(setExpected, set);
+
+        // same test but change element type to int
+        Set<Integer> setInt = CollectionUtils.iterableToSet(Arrays.asList(INT_0, INT_1, INT_2, INT_0));
+        Set<Integer> setIntExpected = new HashSet<>();
+        setIntExpected.add(INT_0);
+        setIntExpected.add(INT_1);
+        setIntExpected.add(INT_2);
+        Assert.assertEquals(setIntExpected, setInt);
+
+        // null test
+        Set<Object> setWithNull = CollectionUtils.iterableToSet(Arrays.asList(OBJ_0, null, null));
+        Set<Object> setWithNullExpected = new HashSet<>();
+        setWithNullExpected.add(OBJ_0);
+        setWithNullExpected.add(null);
+        Assert.assertEquals(setWithNullExpected, setWithNull);
+    }
+
+    @Test
     public void test_countsOccurrence() throws Exception {
         Map<Object, Integer> counts = CollectionUtils.countsOccurrence(Arrays.asList(OBJ_0, OBJ_1, OBJ_2, OBJ_0));
         Map<Object, Integer> countsExpected = new HashMap<>();

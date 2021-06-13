@@ -42,6 +42,20 @@ public class CollectionUtils {
     }
 
     /**
+     * Converts the specified iterable to a set.
+     * @param itr the iterable to be converted
+     * @param <T> the base class of the objects in the iterable
+     * @return the result set
+     */
+    public static <T> Set<T> iterableToSet(Iterable<? extends T> itr) {
+        Set<T> result = new HashSet<>();
+        for (T element : itr) {
+            result.add(element);
+        }
+        return result;
+    }
+
+    /**
      * Counts how many times each of the different elements occurs in an {@link java.lang.Iterable} object.
      * @param itr the {@link java.lang.Iterable} object to count in
      * @param <T> the base class of the objects in the iterable
