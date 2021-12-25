@@ -53,6 +53,11 @@ public abstract class MavenProjectConvention implements ProjectConvention {
     }
 
     @Override
+    public File getFilesDir(String subName) {
+        return new File(getFilesDir(), subName);
+    }
+
+    @Override
     public File getTestTempDir() {
         if (testTempDir == null) {
             File filesDir = getFilesDir();

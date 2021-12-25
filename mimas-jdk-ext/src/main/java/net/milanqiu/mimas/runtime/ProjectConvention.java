@@ -49,6 +49,14 @@ public interface ProjectConvention {
     File getFilesDir();
 
     /**
+     * Returns a sub file of the directory of files.
+     * The directory is used to store independent files from code and resources.
+     * @param subName the name of sub file
+     * @return the sub file of the directory of files.
+     */
+    File getFilesDir(String subName);
+
+    /**
      * Returns the temporary directory of test.
      * The directory is used to put temporary files when running tests, especially unit tests.
      * @return the temporary directory of test

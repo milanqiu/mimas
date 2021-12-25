@@ -102,6 +102,7 @@ public class MavenProjectConventionTest {
     @Test
     public void test_getFilesDir() throws Exception {
         Assert.assertEquals(new File(ROOT_DIR + "workspace/files/"), dpc.getFilesDir());
+        Assert.assertEquals(new File(ROOT_DIR + "workspace/files/aaa/"), dpc.getFilesDir("aaa"));
 
         AssertExt.assertExceptionThrown(wpc::getFilesDir, CodeContextException.class);
     }
