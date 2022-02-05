@@ -187,23 +187,23 @@ public class TestConsts {
     /**
      * String constant #0.
      */
-    public static final String STR_0 = "str0";
+    public static final String STR_0 = "str零";
     /**
      * String constant #1.
      */
-    public static final String STR_1 = "str1";
+    public static final String STR_1 = "str一";
     /**
      * String constant #2.
      */
-    public static final String STR_2 = "str2";
+    public static final String STR_2 = "str二";
     /**
      * String constant #3.
      */
-    public static final String STR_3 = "str23";
+    public static final String STR_3 = "str二三";
     /**
      * String constant #4.
      */
-    public static final String STR_4 = "str234";
+    public static final String STR_4 = "str二三四";
 
     /**
      * Object constant #0.

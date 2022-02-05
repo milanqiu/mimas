@@ -116,7 +116,7 @@ public class IterablesTest {
         Assert.assertTrue(Iterables.elementsEqual(list1, list2));
         Assert.assertTrue(Iterables.elementsEqual(list1, list3));
         Assert.assertTrue(Iterables.elementsEqual(list1, set1));
-        Assert.assertTrue(Iterables.elementsEqual(list1, set2));
+        Assert.assertFalse(Iterables.elementsEqual(list1, set2));
         Assert.assertTrue(CollectionUtils.equalsIgnoringOrder(list1, set2));
     }
 
