@@ -35,4 +35,29 @@ public class ConcurrentUtils {
     public static void unblockUncaughtExceptions() {
         Thread.setDefaultUncaughtExceptionHandler(SYSTEM_DEFAULT_UNCAUGHT_EXCEPTION_HANDLER);
     }
+
+    /**
+     * Causes the currently executing thread to sleep. Resets the interrupted status when {@link java.lang.InterruptedException} is thrown.
+     * @param millis the length of time to sleep in milliseconds
+     */
+    public static void sleepSafely(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    /**
+     * Causes the currently executing thread to sleep. Resets the interrupted status when {@link java.lang.InterruptedException} is thrown.
+     * @param millis the length of time to sleep in milliseconds
+     * @param nanos {@code 0-999999} additional nanoseconds to sleep
+     */
+    public static void sleepSafely(long millis, int nanos) {
+        try {
+            Thread.sleep(millis, nanos);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
 }

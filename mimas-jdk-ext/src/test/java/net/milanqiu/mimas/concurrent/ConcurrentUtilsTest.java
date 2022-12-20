@@ -1,6 +1,7 @@
 package net.milanqiu.mimas.concurrent;
 
 import net.milanqiu.mimas.instrumentation.exception.DeliberateException;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -28,5 +29,17 @@ public class ConcurrentUtilsTest {
             //throw new DeliberateException();
         }).start();
         TimeUnit.MILLISECONDS.sleep(10);
+    }
+
+    @Test
+    public void test_sleepSafely() throws Exception {
+        // void sleepSafely(long millis)
+        Thread thread = new Thread(() -> {
+            ConcurrentUtils.sleepSafely(500);
+            Assert.assertTrue(Thread.currentThread().isInterrupted());
+        });
+        thread.start();
+        thread.interrupt();
+        Thread.sleep(1000);
     }
 }
