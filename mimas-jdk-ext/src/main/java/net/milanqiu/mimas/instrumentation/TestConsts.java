@@ -1,5 +1,6 @@
 package net.milanqiu.mimas.instrumentation;
 
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.Callable;
 
 /**
@@ -265,4 +266,77 @@ public class TestConsts {
             return null;
         }
     };
+
+    /**
+     * Host to test network.
+     */
+    public static final String HOST = "http://test.milanqiu.net/gwangmyeongseong-web/";
+    /**
+     * Url to test http get.
+     */
+    public static final String URL_GET = HOST + "GetServlet";
+    /**
+     * Parameters to test http get.
+     */
+    public static final String PARAMS_GET = "?Param1=a1&Param2=啊";
+    /**
+     * Content returned from http get.
+     */
+    public static final String CONTENT_GET = "Method: get<br>Param1: a1<br>Param2: 啊";
+    /**
+     * Content returned from http get as byte array.
+     */
+    public static final byte[] CONTENT_GET_BYTE_ARRAY = CONTENT_GET.getBytes(StandardCharsets.UTF_8);
+    /**
+     * Content length returned from http get.
+     */
+    public static final int CONTENT_GET_BYTE_ARRAY_LENGTH = CONTENT_GET_BYTE_ARRAY.length;
+    /**
+     * Url to test http post.
+     */
+    public static final String URL_POST = HOST + "PostServlet";
+    /**
+     * Parameters to test http post.
+     */
+    public static final String PARAMS_POST = "Param1=a1&Param2=%E5%95%8A";
+    /**
+     * Name of parameter #1 to test http post.
+     */
+    public static final String PARAM1_NAME_POST = "Param1";
+    /**
+     * Value of parameter #1 to test http post.
+     */
+    public static final String PARAM1_VALUE_POST = "a1";
+    /**
+     * Name of parameter #2 to test http post.
+     */
+    public static final String PARAM2_NAME_POST = "Param2";
+    /**
+     * Value of parameter #2 to test http post.
+     */
+    public static final String PARAM2_VALUE_POST = "啊";
+    /**
+     * Content returned from http post.
+     */
+    public static final String CONTENT_POST = "Method: post<br>Param1: a1<br>Param2: 啊";
+    /**
+     * Content returned from http post as byte array.
+     */
+    public static final byte[] CONTENT_POST_BYTE_ARRAY = CONTENT_POST.getBytes(StandardCharsets.UTF_8);
+    /**
+     * Content length returned from http post.
+     */
+    public static final int CONTENT_POST_BYTE_ARRAY_LENGTH = CONTENT_POST_BYTE_ARRAY.length;
+    /**
+     * Fake url to test network.
+     */
+    public static final String URL_FAKE = HOST + "Fake.html";
+    /**
+     * Fake url with fake host to test network.
+     */
+    public static final String URL_FAKE_HOST = "http://www.r9odzyuefcpc.com/index.html";
+    /**
+     * Https url to test network.
+     */
+    public static final String URL_HTTPS = "https://www.12306.cn";
 }
