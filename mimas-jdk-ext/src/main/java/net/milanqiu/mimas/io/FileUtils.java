@@ -127,10 +127,9 @@ public class FileUtils {
      * @param fromFile the file to read
      * @return the file content as bytes
      * @throws IOException if an I/O error occurs
-     * @throws FileNotFoundException if the specified file does not exist, is a directory rather than a regular file,
-     *                               or for some other reason cannot be opened for reading
      */
     public static byte[] readBytes(File fromFile) throws IOException {
+        /* deprecated implementation
         long fileSize = fromFile.length();
         if (fileSize > Integer.MAX_VALUE)
             throw new IOException("File too big");
@@ -143,6 +142,8 @@ public class FileUtils {
             }
             return result;
         }
+        */
+        return Files.readAllBytes(fromFile.toPath());
     }
 
     /**
@@ -152,10 +153,9 @@ public class FileUtils {
      * @param charset the character set used to decode the file content
      * @return the file content as characters
      * @throws IOException if an I/O error occurs
-     * @throws FileNotFoundException if the specified file does not exist, is a directory rather than a regular file,
-     *                               or for some other reason cannot be opened for reading
      */
     public static String readChars(File fromFile, Charset charset) throws IOException {
+        /* deprecated implementation
         long fileSize = fromFile.length();
         if (fileSize > Integer.MAX_VALUE)
             throw new IOException("File too big");
@@ -165,6 +165,8 @@ public class FileUtils {
             int fileSizeRead = br.read(buf);
             return new String(buf, 0, fileSizeRead);
         }
+        */
+        return new String(readBytes(fromFile), charset);
     }
 
     /**
@@ -173,8 +175,6 @@ public class FileUtils {
      * @param fromFile the file to read
      * @return the file content as characters
      * @throws IOException if an I/O error occurs
-     * @throws FileNotFoundException if the specified file does not exist, is a directory rather than a regular file,
-     *                               or for some other reason cannot be opened for reading
      */
     public static String readCharsUsingUtf8(File fromFile) throws IOException {
         return readChars(fromFile, StandardCharsets.UTF_8);
@@ -186,13 +186,14 @@ public class FileUtils {
      * @param bytes the byte array to write
      * @param toFile the destination file
      * @throws IOException if an I/O error occurs
-     * @throws FileNotFoundException if the specified file exists but is a directory rather than a regular file, does
-     *                               not exist but cannot be created, or cannot be opened for any other reason
      */
     public static void writeBytes(byte[] bytes, File toFile) throws IOException {
+        /* deprecated implementation
         try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(toFile))) {
             bos.write(bytes);
         }
+        */
+        Files.write(toFile.toPath(), bytes);
     }
 
     /**
@@ -202,13 +203,14 @@ public class FileUtils {
      * @param toFile the destination file
      * @param charset the character set used to encode the character sequence
      * @throws IOException if an I/O error occurs
-     * @throws FileNotFoundException if the specified file exists but is a directory rather than a regular file, does
-     *                               not exist but cannot be created, or cannot be opened for any other reason
      */
     public static void writeChars(CharSequence chars, File toFile, Charset charset) throws IOException {
+        /* deprecated implementation
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(toFile), charset))) {
             bw.append(chars);
         }
+        */
+        writeBytes(chars.toString().getBytes(charset), toFile);
     }
 
     /**
@@ -217,8 +219,6 @@ public class FileUtils {
      * @param chars the character sequence to write
      * @param toFile the destination file
      * @throws IOException if an I/O error occurs
-     * @throws FileNotFoundException if the specified file exists but is a directory rather than a regular file, does
-     *                               not exist but cannot be created, or cannot be opened for any other reason
      */
     public static void writeCharsUsingUtf8(CharSequence chars, File toFile) throws IOException {
         writeChars(chars, toFile, StandardCharsets.UTF_8);

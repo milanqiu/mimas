@@ -8,8 +8,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.AccessDeniedException;
 import java.nio.file.NoSuchFileException;
 import java.util.Arrays;
 
@@ -103,9 +103,9 @@ public class FileUtilsTest {
         FileUtils.writeBytes(content, workFile);
         Assert.assertArrayEquals(content, FileUtils.readBytes(workFile));
 
-        AssertExt.assertExceptionThrown(() -> FileUtils.readBytes(new File(workDir, "fake")), FileNotFoundException.class);
-        AssertExt.assertExceptionThrown(() -> FileUtils.readBytes(workDir),                   FileNotFoundException.class);
-        AssertExt.assertExceptionThrown(() -> FileUtils.writeBytes(content, workDir),         FileNotFoundException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.readBytes(new File(workDir, "fake")), NoSuchFileException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.readBytes(workDir),                   AccessDeniedException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.writeBytes(content, workDir),         AccessDeniedException.class);
 
         FileUtils.deleteRecursively(workDir);
         Assert.assertFalse(workDir.exists());
@@ -122,9 +122,9 @@ public class FileUtilsTest {
         Assert.assertNotEquals(content, FileUtils.readChars(workFile, StandardCharsets.UTF_16BE));
         Assert.assertArrayEquals(content.getBytes(StandardCharsets.UTF_16LE), FileUtils.readBytes(workFile));
 
-        AssertExt.assertExceptionThrown(() -> FileUtils.readChars(new File(workDir, "fake"), StandardCharsets.UTF_16LE), FileNotFoundException.class);
-        AssertExt.assertExceptionThrown(() -> FileUtils.readChars(workDir, StandardCharsets.UTF_16LE),                   FileNotFoundException.class);
-        AssertExt.assertExceptionThrown(() -> FileUtils.writeChars(content, workDir, StandardCharsets.UTF_16LE),         FileNotFoundException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.readChars(new File(workDir, "fake"), StandardCharsets.UTF_16LE), NoSuchFileException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.readChars(workDir, StandardCharsets.UTF_16LE),                   AccessDeniedException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.writeChars(content, workDir, StandardCharsets.UTF_16LE),         AccessDeniedException.class);
 
         FileUtils.deleteRecursively(workDir);
         Assert.assertFalse(workDir.exists());
@@ -141,9 +141,9 @@ public class FileUtilsTest {
         Assert.assertNotEquals(content, FileUtils.readChars(workFile, StandardCharsets.UTF_16LE));
         Assert.assertArrayEquals(content.getBytes(StandardCharsets.UTF_8), FileUtils.readBytes(workFile));
 
-        AssertExt.assertExceptionThrown(() -> FileUtils.readCharsUsingUtf8(new File(workDir, "fake")), FileNotFoundException.class);
-        AssertExt.assertExceptionThrown(() -> FileUtils.readCharsUsingUtf8(workDir),                   FileNotFoundException.class);
-        AssertExt.assertExceptionThrown(() -> FileUtils.writeCharsUsingUtf8(content, workDir),         FileNotFoundException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.readCharsUsingUtf8(new File(workDir, "fake")), NoSuchFileException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.readCharsUsingUtf8(workDir),                   AccessDeniedException.class);
+        AssertExt.assertExceptionThrown(() -> FileUtils.writeCharsUsingUtf8(content, workDir),         AccessDeniedException.class);
 
         FileUtils.deleteRecursively(workDir);
         Assert.assertFalse(workDir.exists());
