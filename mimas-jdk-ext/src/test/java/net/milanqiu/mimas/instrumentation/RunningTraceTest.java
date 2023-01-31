@@ -53,13 +53,13 @@ public class RunningTraceTest {
     @Test
     public void test_toString() throws Exception {
         methodC();
-        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDir(trace.toString());
+        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(trace.toString());
     }
 
     @Test
     public void test_toFullString() throws Exception {
         methodC();
-        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDir(trace.toFullString());
+        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(trace.toFullString());
     }
 
     @Test

@@ -31,6 +31,6 @@ public class MathUtilsTest {
             Assert.assertTrue(occurrence[i] > 0);
             sb.append(i+11).append(":").append(occurrence[i]).append(System.lineSeparator());
         }
-        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDir(sb.toString());
+        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(sb.toString());
     }
 }

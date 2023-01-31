@@ -130,7 +130,7 @@ public class ScannerTest {
     @Test
     public void test_delimiter() throws Exception {
         Scanner scanner = new Scanner("");
-        MimasJdkTrialProjectConfig.getSingleton().writeFileInTestOutDir(scanner.delimiter().toString());
+        MimasJdkTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(scanner.delimiter().toString());
     }
 
     @Test

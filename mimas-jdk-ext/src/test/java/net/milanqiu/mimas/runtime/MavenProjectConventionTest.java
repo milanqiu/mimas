@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Creation Date: 2014-11-03
@@ -153,12 +154,29 @@ public class MavenProjectConventionTest {
         String content = EncodingUtils.getValidUnicodeString();
 
         Assert.assertFalse(expectedFile.exists());
-        dpc.writeFileInTestOutDir(content);
+        dpc.writeFileInTestOutDir(content, StandardCharsets.UTF_16LE);
+        Assert.assertTrue(expectedFile.exists());
+        Assert.assertEquals(content, FileUtils.readChars(expectedFile, StandardCharsets.UTF_16LE));
+
+        FileUtils.deleteRecursively(new File(ROOT_DIR));
+
+        AssertExt.assertExceptionThrown(() -> wpc.writeFileInTestOutDir(content, StandardCharsets.UTF_16LE), CodeContextException.class);
+    }
+
+    @Test
+    public void test_writeFileInTestOutDirUsingUtf8() throws Exception {
+        File expectedFile = new File(ROOT_DIR + "workspace/files/test_out/" + getClass().getName() + ".test_writeFileInTestOutDirUsingUtf8.tmp");
+
+        Assert.assertTrue(expectedFile.getParentFile().mkdirs());;
+        String content = EncodingUtils.getValidUnicodeString();
+
+        Assert.assertFalse(expectedFile.exists());
+        dpc.writeFileInTestOutDirUsingUtf8(content);
         Assert.assertTrue(expectedFile.exists());
         Assert.assertEquals(content, FileUtils.readCharsUsingUtf8(expectedFile));
 
         FileUtils.deleteRecursively(new File(ROOT_DIR));
 
-        AssertExt.assertExceptionThrown(() -> wpc.writeFileInTestOutDir(content), CodeContextException.class);
+        AssertExt.assertExceptionThrown(() -> wpc.writeFileInTestOutDirUsingUtf8(content), CodeContextException.class);
     }
 }

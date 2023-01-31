@@ -2,6 +2,7 @@ package net.milanqiu.mimas.runtime;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 /**
  * Conventional properties and running environment of project, according to rule "Convention over Configuration".
@@ -85,9 +86,18 @@ public interface ProjectConvention {
 
     /**
      * Writes a special work file in the output directory of test with the contents of the specified character sequence,
+     * using the specified character set.
+     * @param chars the character sequence to write
+     * @param charset the character set used to encode the character sequence
+     * @throws IOException if an I/O error occurs
+     */
+    void writeFileInTestOutDir(CharSequence chars, Charset charset) throws IOException;
+
+    /**
+     * Writes a special work file in the output directory of test with the contents of the specified character sequence,
      * using the UTF-8 character set.
      * @param chars the character sequence to write
      * @throws IOException if an I/O error occurs
      */
-    void writeFileInTestOutDir(CharSequence chars) throws IOException;
+    void writeFileInTestOutDirUsingUtf8(CharSequence chars) throws IOException;
 }

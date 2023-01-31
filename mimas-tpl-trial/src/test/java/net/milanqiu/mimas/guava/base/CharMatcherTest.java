@@ -42,7 +42,7 @@ public class CharMatcherTest {
             Determines whether a character is whitespace according to the latest Unicode standard, as illustrated here.
         */
         String charAsciis = EncodingUtils.nativeToAscii(CharMatcherExt.toString(CharMatcher.WHITESPACE));
-        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(charAsciis);
+        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(charAsciis);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class CharMatcherTest {
             a break between words for formatting purposes).
         */
         String charAsciis = EncodingUtils.nativeToAscii(CharMatcherExt.toString(CharMatcher.BREAKING_WHITESPACE));
-        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(charAsciis);
+        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(charAsciis);
     }
 
     @Test
@@ -62,7 +62,7 @@ public class CharMatcherTest {
             LINE_SEPARATOR, PARAGRAPH_SEPARATOR, CONTROL, FORMAT, SURROGATE, and PRIVATE_USE according to ICU4J.
          */
         String charAsciis = EncodingUtils.nativeToAscii(CharMatcherExt.toString(CharMatcher.INVISIBLE));
-        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(charAsciis);
+        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(charAsciis);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class CharMatcherTest {
             Determines whether a character is a digit according to Unicode.
          */
         String charAsciis = EncodingUtils.nativeToAscii(CharMatcherExt.toString(CharMatcher.DIGIT));
-        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(charAsciis);
+        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(charAsciis);
     }
 
     @Test
@@ -80,7 +80,7 @@ public class CharMatcherTest {
             Determines whether a character is a letter according to Java's definition.
          */
         String charAsciis = EncodingUtils.nativeToAscii(CharMatcherExt.toString(CharMatcher.JAVA_LETTER));
-        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(charAsciis);
+        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(charAsciis);
     }
 
     @Test
@@ -89,7 +89,7 @@ public class CharMatcherTest {
             Determines whether a character is a digit according to Java's definition.
          */
         String charAsciis = EncodingUtils.nativeToAscii(CharMatcherExt.toString(CharMatcher.JAVA_DIGIT));
-        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(charAsciis);
+        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(charAsciis);
     }
 
     @Test
@@ -98,7 +98,7 @@ public class CharMatcherTest {
             Determines whether a character is a letter or digit according to Java's definition.
          */
         String charAsciis = EncodingUtils.nativeToAscii(CharMatcherExt.toString(CharMatcher.JAVA_LETTER_OR_DIGIT));
-        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(charAsciis);
+        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(charAsciis);
     }
 
     @Test
@@ -107,7 +107,7 @@ public class CharMatcherTest {
             Determines whether a character is an ISO control character as specified by Character.isISOControl(char).
          */
         String charAsciis = EncodingUtils.nativeToAscii(CharMatcherExt.toString(CharMatcher.JAVA_ISO_CONTROL));
-        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(charAsciis);
+        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(charAsciis);
     }
 
     @Test
@@ -116,7 +116,7 @@ public class CharMatcherTest {
             Determines whether a character is lower case according to Java's definition.
          */
         String charAsciis = EncodingUtils.nativeToAscii(CharMatcherExt.toString(CharMatcher.JAVA_LOWER_CASE));
-        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(charAsciis);
+        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(charAsciis);
     }
 
     @Test
@@ -125,7 +125,7 @@ public class CharMatcherTest {
             Determines whether a character is upper case according to Java's definition.
          */
         String charAsciis = EncodingUtils.nativeToAscii(CharMatcherExt.toString(CharMatcher.JAVA_UPPER_CASE));
-        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(charAsciis);
+        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(charAsciis);
     }
 
     @Test
@@ -134,7 +134,7 @@ public class CharMatcherTest {
             Determines whether a character is ASCII, meaning that its code point is less than 128.
          */
         String charAsciis = EncodingUtils.nativeToAscii(CharMatcherExt.toString(CharMatcher.ASCII));
-        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(charAsciis);
+        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(charAsciis);
     }
 
     @Test
@@ -143,7 +143,7 @@ public class CharMatcherTest {
             Determines whether a character is single-width (not double-width).
          */
         String charAsciis = EncodingUtils.nativeToAscii(CharMatcherExt.toString(CharMatcher.SINGLE_WIDTH));
-        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(charAsciis);
+        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(charAsciis);
     }
 
     @Test

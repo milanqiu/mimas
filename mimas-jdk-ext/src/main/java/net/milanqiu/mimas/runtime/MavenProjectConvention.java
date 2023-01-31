@@ -7,6 +7,7 @@ import net.milanqiu.mimas.lang.StackTrace;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 
 /**
@@ -90,7 +91,13 @@ public abstract class MavenProjectConvention implements ProjectConvention {
     }
 
     @Override
-    public void writeFileInTestOutDir(CharSequence chars) throws IOException {
+    public void writeFileInTestOutDir(CharSequence chars, Charset charset) throws IOException {
+        File workFile = new File(getTestOutDir(), StackTrace.methodToString(DebugUtils.getInvokerMethod()) + ".tmp");
+        FileUtils.writeChars(chars, workFile, charset);
+    }
+
+    @Override
+    public void writeFileInTestOutDirUsingUtf8(CharSequence chars) throws IOException {
         File workFile = new File(getTestOutDir(), StackTrace.methodToString(DebugUtils.getInvokerMethod()) + ".tmp");
         FileUtils.writeCharsUsingUtf8(chars, workFile);
     }

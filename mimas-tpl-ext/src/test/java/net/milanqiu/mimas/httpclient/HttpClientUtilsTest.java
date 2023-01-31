@@ -66,7 +66,7 @@ public class HttpClientUtilsTest {
         HttpClientUtils.registerHttps();
 
         test_get();
-        MimasTplExtProjectConfig.getSingleton().writeFileInTestOutDir(HttpClientUtils.getOkStringUsingUtf8AsDefault(TestConsts.URL_HTTPS));
+        MimasTplExtProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(HttpClientUtils.getOkStringUsingUtf8AsDefault(TestConsts.URL_HTTPS));
     }
 
     @Test

@@ -428,7 +428,7 @@ public class FilesTest {
     @Test
     public void test_createTempDir() throws Exception {
         File file = Files.createTempDir();
-        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(file.toString());
+        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(file.toString());
     }
 
     @Test

@@ -42,7 +42,7 @@ public class HashingTest {
             sb.append(Hashing.goodFastHash(i).hashString(STR_0, StandardCharsets.UTF_8).toString())
               .append(System.lineSeparator());
         }
-        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(sb);
+        MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(sb);
 
         Assert.assertEquals(Hashing.goodFastHash(32).hashString(STR_0, StandardCharsets.UTF_8),
                             Hashing.goodFastHash(32).hashString(STR_0, StandardCharsets.UTF_8));

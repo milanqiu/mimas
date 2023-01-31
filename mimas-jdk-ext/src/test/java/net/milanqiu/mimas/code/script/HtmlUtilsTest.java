@@ -46,7 +46,7 @@ public class HtmlUtilsTest {
     public void test_simplePage() throws Exception {
         String title = "Simple Page";
         String body = "It is a simple page.<table><tr><td>adgj8</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr><tr><td>ADGJ8</td><td></td></tr></table>";
-        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDir(HtmlUtils.simplePage(title, body));
+        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(HtmlUtils.simplePage(title, body));
     }
 
     @Test

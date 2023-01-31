@@ -23,6 +23,6 @@ public class HttpMessageExtTest {
                 return HttpMessageExt.getAllHeadersStr(httpResponse);
             }
         });
-        MimasTplExtProjectConfig.getSingleton().writeFileInTestOutDir(allHeadersStr);
+        MimasTplExtProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(allHeadersStr);
     }
 }

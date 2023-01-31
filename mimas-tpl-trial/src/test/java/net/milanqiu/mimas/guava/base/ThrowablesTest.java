@@ -43,7 +43,7 @@ public class ThrowablesTest {
                     "net.milanqiu.mimas.guava.base.ThrowablesTest$ExceptionC: " +
                     "net.milanqiu.mimas.guava.base.ThrowablesTest$ExceptionB: " +
                     "net.milanqiu.mimas.guava.base.ThrowablesTest$ExceptionA"));
-            MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDir(Throwables.getStackTraceAsString(e));
+            MimasTplTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(Throwables.getStackTraceAsString(e));
         }
     }
 }

@@ -55,7 +55,7 @@ public class CollectionsTest {
             Collections.shuffle(ints);
             sb.append(ints).append(System.lineSeparator());
         }
-        MimasJdkTrialProjectConfig.getSingleton().writeFileInTestOutDir(sb);
+        MimasJdkTrialProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(sb);
     }
 
     @Test

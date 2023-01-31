@@ -16,18 +16,18 @@ public class RuntimeUtilsTest {
 
     @Test
     public void test_getClassSourceLocation() throws Exception {
-        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDir(
+        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(
                 RuntimeUtils.getClassSourceLocation(RuntimeUtilsTest.class) +
-                System.lineSeparator() +
-                RuntimeUtils.getClassSourceLocation(RuntimeUtils.class));
+                        System.lineSeparator() +
+                        RuntimeUtils.getClassSourceLocation(RuntimeUtils.class));
     }
 
     @Test
     public void test_getClassSourceDir() throws Exception {
-        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDir(
+        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(
                 RuntimeUtils.getClassSourceDir(RuntimeUtilsTest.class) +
-                System.lineSeparator() +
-                RuntimeUtils.getClassSourceDir(RuntimeUtils.class));
+                        System.lineSeparator() +
+                        RuntimeUtils.getClassSourceDir(RuntimeUtils.class));
     }
 
     @Test
