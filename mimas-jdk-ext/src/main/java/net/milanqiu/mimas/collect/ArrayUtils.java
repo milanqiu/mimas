@@ -226,6 +226,110 @@ public class ArrayUtils {
     }
 
     /**
+     * Concatenates two character arrays and returns the result array.
+     * @param array1 the first array to be concatenated
+     * @param array2 the second array to be concatenated
+     * @return the result array
+     */
+    public static char[] concat(char[] array1, char[] array2) {
+        char[] result = new char[array1.length+array2.length];
+        System.arraycopy(array1, 0, result, 0, array1.length);
+        System.arraycopy(array2, 0, result, array1.length, array2.length);
+        return result;
+    }
+
+    /**
+     * Concatenates two byte arrays and returns the result array.
+     * @param array1 the first array to be concatenated
+     * @param array2 the second array to be concatenated
+     * @return the result array
+     */
+    public static byte[] concat(byte[] array1, byte[] array2) {
+        byte[] result = new byte[array1.length+array2.length];
+        System.arraycopy(array1, 0, result, 0, array1.length);
+        System.arraycopy(array2, 0, result, array1.length, array2.length);
+        return result;
+    }
+
+    /**
+     * Concatenates two short arrays and returns the result array.
+     * @param array1 the first array to be concatenated
+     * @param array2 the second array to be concatenated
+     * @return the result array
+     */
+    public static short[] concat(short[] array1, short[] array2) {
+        short[] result = new short[array1.length+array2.length];
+        System.arraycopy(array1, 0, result, 0, array1.length);
+        System.arraycopy(array2, 0, result, array1.length, array2.length);
+        return result;
+    }
+
+    /**
+     * Concatenates two integer arrays and returns the result array.
+     * @param array1 the first array to be concatenated
+     * @param array2 the second array to be concatenated
+     * @return the result array
+     */
+    public static int[] concat(int[] array1, int[] array2) {
+        int[] result = new int[array1.length+array2.length];
+        System.arraycopy(array1, 0, result, 0, array1.length);
+        System.arraycopy(array2, 0, result, array1.length, array2.length);
+        return result;
+    }
+
+    /**
+     * Concatenates two long arrays and returns the result array.
+     * @param array1 the first array to be concatenated
+     * @param array2 the second array to be concatenated
+     * @return the result array
+     */
+    public static long[] concat(long[] array1, long[] array2) {
+        long[] result = new long[array1.length+array2.length];
+        System.arraycopy(array1, 0, result, 0, array1.length);
+        System.arraycopy(array2, 0, result, array1.length, array2.length);
+        return result;
+    }
+
+    /**
+     * Concatenates two float arrays and returns the result array.
+     * @param array1 the first array to be concatenated
+     * @param array2 the second array to be concatenated
+     * @return the result array
+     */
+    public static float[] concat(float[] array1, float[] array2) {
+        float[] result = new float[array1.length+array2.length];
+        System.arraycopy(array1, 0, result, 0, array1.length);
+        System.arraycopy(array2, 0, result, array1.length, array2.length);
+        return result;
+    }
+
+    /**
+     * Concatenates two double arrays and returns the result array.
+     * @param array1 the first array to be concatenated
+     * @param array2 the second array to be concatenated
+     * @return the result array
+     */
+    public static double[] concat(double[] array1, double[] array2) {
+        double[] result = new double[array1.length+array2.length];
+        System.arraycopy(array1, 0, result, 0, array1.length);
+        System.arraycopy(array2, 0, result, array1.length, array2.length);
+        return result;
+    }
+
+    /**
+     * Concatenates two object arrays and returns the result array.
+     * @param array1 the first array to be concatenated
+     * @param array2 the second array to be concatenated
+     * @return the result array
+     */
+    public static Object[] concat(Object[] array1, Object[] array2) {
+        Object[] result = new Object[array1.length+array2.length];
+        System.arraycopy(array1, 0, result, 0, array1.length);
+        System.arraycopy(array2, 0, result, array1.length, array2.length);
+        return result;
+    }
+
+    /**
      * Returns whether the specified array is null or empty.
      * @param array the array to be tested
      * @param <T> the class of the objects in the array
