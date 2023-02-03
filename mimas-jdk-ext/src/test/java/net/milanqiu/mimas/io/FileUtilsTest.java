@@ -1,5 +1,6 @@
 package net.milanqiu.mimas.io;
 
+import net.milanqiu.mimas.collect.ArrayUtils;
 import net.milanqiu.mimas.config.MimasJdkExtProjectConfig;
 import net.milanqiu.mimas.junit.AssertExt;
 import net.milanqiu.mimas.lang.TypeUtils;
@@ -144,6 +145,54 @@ public class FileUtilsTest {
         AssertExt.assertExceptionThrown(() -> FileUtils.readCharsUsingUtf8(new File(workDir, "fake")), NoSuchFileException.class);
         AssertExt.assertExceptionThrown(() -> FileUtils.readCharsUsingUtf8(workDir),                   AccessDeniedException.class);
         AssertExt.assertExceptionThrown(() -> FileUtils.writeCharsUsingUtf8(content, workDir),         AccessDeniedException.class);
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
+    }
+
+    @Test
+    public void test_appendBytes() throws Exception {
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File workFile = new File(workDir, "temp");
+        byte[] content = TypeUtils.getAllByteValues();
+
+        FileUtils.writeBytes(content, workFile);
+        Assert.assertArrayEquals(content, FileUtils.readBytes(workFile));
+
+        FileUtils.appendBytes(content, workFile);
+        Assert.assertArrayEquals(ArrayUtils.concat(content, content), FileUtils.readBytes(workFile));
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
+    }
+
+    @Test
+    public void test_appendChars() throws Exception {
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File workFile = new File(workDir, "temp");
+        String content = EncodingUtils.getValidUnicodeString();
+
+        FileUtils.writeChars(content, workFile, StandardCharsets.UTF_16LE);
+        Assert.assertEquals(content, FileUtils.readChars(workFile, StandardCharsets.UTF_16LE));
+
+        FileUtils.appendChars(content, workFile, StandardCharsets.UTF_16LE);
+        Assert.assertEquals(content + content, FileUtils.readChars(workFile, StandardCharsets.UTF_16LE));
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
+    }
+
+    @Test
+    public void test_appendCharsUsingUtf8() throws Exception {
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File workFile = new File(workDir, "temp");
+        String content = EncodingUtils.getValidUnicodeString();
+
+        FileUtils.writeCharsUsingUtf8(content, workFile);
+        Assert.assertEquals(content, FileUtils.readCharsUsingUtf8(workFile));
+
+        FileUtils.appendCharsUsingUtf8(content, workFile);
+        Assert.assertEquals(content + content, FileUtils.readCharsUsingUtf8(workFile));
 
         FileUtils.deleteRecursively(workDir);
         Assert.assertFalse(workDir.exists());

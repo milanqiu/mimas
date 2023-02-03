@@ -5,6 +5,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
+import java.nio.file.StandardOpenOption;
 
 /**
  * Utilities related to file.
@@ -222,5 +223,36 @@ public class FileUtils {
      */
     public static void writeCharsUsingUtf8(CharSequence chars, File toFile) throws IOException {
         writeChars(chars, toFile, StandardCharsets.UTF_8);
+    }
+
+    /**
+     * Appends the contents of a byte array to the end of a file rather than the beginning.
+     * @param bytes the byte array to append
+     * @param toFile the destination file
+     * @throws IOException if an I/O error occurs
+     */
+    public static void appendBytes(byte[] bytes, File toFile) throws IOException {
+        Files.write(toFile.toPath(), bytes, StandardOpenOption.APPEND);
+    }
+
+    /**
+     * Appends the contents of a character sequence to the end of a file rather than the beginning, using the given character set.
+     * @param chars the character sequence to append
+     * @param toFile the destination file
+     * @param charset the character set used to encode the character sequence
+     * @throws IOException if an I/O error occurs
+     */
+    public static void appendChars(CharSequence chars, File toFile, Charset charset) throws IOException {
+        appendBytes(chars.toString().getBytes(charset), toFile);
+    }
+
+    /**
+     * Appends the contents of a character sequence to the end of a file rather than the beginning, using the UTF-8 character set.
+     * @param chars the character sequence to append
+     * @param toFile the destination file
+     * @throws IOException if an I/O error occurs
+     */
+    public static void appendCharsUsingUtf8(CharSequence chars, File toFile) throws IOException {
+        appendChars(chars, toFile, StandardCharsets.UTF_8);
     }
 }
