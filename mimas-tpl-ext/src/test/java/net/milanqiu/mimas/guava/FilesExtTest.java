@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import net.milanqiu.mimas.collect.CollectionUtils;
 import net.milanqiu.mimas.config.MimasTplExtProjectConfig;
 import net.milanqiu.mimas.io.FileUtils;
-import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
 

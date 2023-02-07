@@ -6,6 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.StandardOpenOption;
+import java.util.List;
 
 /**
  * Utilities related to file.
@@ -182,6 +183,27 @@ public class FileUtils {
     }
 
     /**
+     * Reads the content of a file as lines, using the given character set.
+     * @param fromFile the file to read
+     * @param charset the character set used to decode the file content
+     * @return the file content as lines
+     * @throws IOException if an I/O error occurs
+     */
+    public static List<String> readLines(File fromFile, Charset charset) throws IOException {
+        return Files.readAllLines(fromFile.toPath(), charset);
+    }
+
+    /**
+     * Reads the content of a file as lines, using the UTF-8 character set.
+     * @param fromFile the file to read
+     * @return the file content as lines
+     * @throws IOException if an I/O error occurs
+     */
+    public static List<String> readLinesUsingUtf8(File fromFile) throws IOException {
+        return readLines(fromFile, StandardCharsets.UTF_8);
+    }
+
+    /**
      * Overwrites a file with the contents of a byte array.
      * Same as <code>com.google.common.io.Files.write(byte[], File)</code> of guava.
      * @param bytes the byte array to write
@@ -226,6 +248,27 @@ public class FileUtils {
     }
 
     /**
+     * Overwrites a file with the contents of an iterable of character sequences, using the given character set.
+     * @param lines the iterable of character sequences to write
+     * @param toFile the destination file
+     * @param charset the character set used to encode the lines
+     * @throws IOException if an I/O error occurs
+     */
+    public static void writeLines(Iterable<? extends CharSequence> lines, File toFile, Charset charset) throws IOException {
+        Files.write(toFile.toPath(), lines, charset);
+    }
+
+    /**
+     * Overwrites a file with the contents of an iterable of character sequences, using the UTF-8 character set.
+     * @param lines the iterable of character sequences to write
+     * @param toFile the destination file
+     * @throws IOException if an I/O error occurs
+     */
+    public static void writeLinesUsingUtf8(Iterable<? extends CharSequence> lines, File toFile) throws IOException {
+        writeLines(lines, toFile, StandardCharsets.UTF_8);
+    }
+
+    /**
      * Appends the contents of a byte array to the end of a file rather than the beginning.
      * @param bytes the byte array to append
      * @param toFile the destination file
@@ -254,5 +297,26 @@ public class FileUtils {
      */
     public static void appendCharsUsingUtf8(CharSequence chars, File toFile) throws IOException {
         appendChars(chars, toFile, StandardCharsets.UTF_8);
+    }
+
+    /**
+     * Appends the contents of an iterable of character sequences to the end of a file rather than the beginning, using the given character set.
+     * @param lines the iterable of character sequences to append
+     * @param toFile the destination file
+     * @param charset the character set used to encode the lines
+     * @throws IOException if an I/O error occurs
+     */
+    public static void appendLines(Iterable<? extends CharSequence> lines, File toFile, Charset charset) throws IOException {
+        Files.write(toFile.toPath(), lines, charset, StandardOpenOption.APPEND);
+    }
+
+    /**
+     * Appends the contents of an iterable of character sequences to the end of a file rather than the beginning, using the UTF-8 character set.
+     * @param lines the iterable of character sequences to append
+     * @param toFile the destination file
+     * @throws IOException if an I/O error occurs
+     */
+    public static void appendLinesUsingUtf8(Iterable<? extends CharSequence> lines, File toFile) throws IOException {
+        appendLines(lines, toFile, StandardCharsets.UTF_8);
     }
 }

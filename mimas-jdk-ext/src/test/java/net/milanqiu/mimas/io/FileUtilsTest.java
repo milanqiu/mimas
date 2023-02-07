@@ -1,6 +1,7 @@
 package net.milanqiu.mimas.io;
 
 import net.milanqiu.mimas.collect.ArrayUtils;
+import net.milanqiu.mimas.collect.CollectionUtils;
 import net.milanqiu.mimas.config.MimasJdkExtProjectConfig;
 import net.milanqiu.mimas.junit.AssertExt;
 import net.milanqiu.mimas.lang.TypeUtils;
@@ -13,6 +14,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.NoSuchFileException;
 import java.util.Arrays;
+import java.util.List;
+
+import static net.milanqiu.mimas.instrumentation.TestConsts.*;
 
 /**
  * Creation Date: 2014-11-03
@@ -151,6 +155,76 @@ public class FileUtilsTest {
     }
 
     @Test
+    public void test_readLines() throws Exception {
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File workFile = new File(workDir, "temp");
+
+        FileUtils.writeChars(STR_0 + System.lineSeparator() +
+                             STR_1 + System.lineSeparator() +
+                             System.lineSeparator() +
+                             STR_2 + System.lineSeparator() +
+                             System.lineSeparator(),
+                workFile, StandardCharsets.UTF_16LE);
+        List<String> lines = FileUtils.readLines(workFile, StandardCharsets.UTF_16LE);
+        Assert.assertTrue(CollectionUtils.equals(Arrays.asList(STR_0, STR_1, "", STR_2, ""), lines));
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
+    }
+
+    @Test
+    public void test_readLinesUsingUtf8() throws Exception {
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File workFile = new File(workDir, "temp");
+
+        FileUtils.writeCharsUsingUtf8(STR_0 + System.lineSeparator() +
+                                      STR_1 + System.lineSeparator() +
+                                      System.lineSeparator() +
+                                      STR_2 + System.lineSeparator() +
+                                      System.lineSeparator(),
+                workFile);
+        List<String> lines = FileUtils.readLinesUsingUtf8(workFile);
+        Assert.assertTrue(CollectionUtils.equals(Arrays.asList(STR_0, STR_1, "", STR_2, ""), lines));
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
+    }
+
+    @Test
+    public void test_writeLines() throws Exception {
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File workFile = new File(workDir, "temp");
+
+        FileUtils.writeLines(Arrays.asList(STR_0, STR_1, "", STR_2, ""), workFile, StandardCharsets.UTF_16LE);
+        Assert.assertEquals(STR_0 + System.lineSeparator() +
+                            STR_1 + System.lineSeparator() +
+                            System.lineSeparator() +
+                            STR_2 + System.lineSeparator() +
+                            System.lineSeparator(),
+                FileUtils.readChars(workFile, StandardCharsets.UTF_16LE));
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
+    }
+
+    @Test
+    public void test_writeLinesUsingUtf8() throws Exception {
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File workFile = new File(workDir, "temp");
+
+        FileUtils.writeLinesUsingUtf8(Arrays.asList(STR_0, STR_1, "", STR_2, ""), workFile);
+        Assert.assertEquals(STR_0 + System.lineSeparator() +
+                            STR_1 + System.lineSeparator() +
+                            System.lineSeparator() +
+                            STR_2 + System.lineSeparator() +
+                            System.lineSeparator(),
+                FileUtils.readCharsUsingUtf8(workFile));
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
+    }
+
+    @Test
     public void test_appendBytes() throws Exception {
         File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
         File workFile = new File(workDir, "temp");
@@ -193,6 +267,52 @@ public class FileUtilsTest {
 
         FileUtils.appendCharsUsingUtf8(content, workFile);
         Assert.assertEquals(content + content, FileUtils.readCharsUsingUtf8(workFile));
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
+    }
+
+    @Test
+    public void test_appendLines() throws Exception {
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File workFile = new File(workDir, "temp");
+
+        FileUtils.writeLines(Arrays.asList(STR_0, STR_1, "", STR_2, ""), workFile, StandardCharsets.UTF_16LE);
+        FileUtils.appendLines(Arrays.asList(STR_2, STR_3, "", STR_4, ""), workFile, StandardCharsets.UTF_16LE);
+        Assert.assertEquals(STR_0 + System.lineSeparator() +
+                            STR_1 + System.lineSeparator() +
+                            System.lineSeparator() +
+                            STR_2 + System.lineSeparator() +
+                            System.lineSeparator() +
+                            STR_2 + System.lineSeparator() +
+                            STR_3 + System.lineSeparator() +
+                            System.lineSeparator() +
+                            STR_4 + System.lineSeparator() +
+                            System.lineSeparator(),
+                FileUtils.readChars(workFile, StandardCharsets.UTF_16LE));
+
+        FileUtils.deleteRecursively(workDir);
+        Assert.assertFalse(workDir.exists());
+    }
+
+    @Test
+    public void test_appendLinesUsingUtf8() throws Exception {
+        File workDir = MimasJdkExtProjectConfig.getSingleton().prepareDirInTestTempDir();
+        File workFile = new File(workDir, "temp");
+
+        FileUtils.writeLinesUsingUtf8(Arrays.asList(STR_0, STR_1, "", STR_2, ""), workFile);
+        FileUtils.appendLinesUsingUtf8(Arrays.asList(STR_2, STR_3, "", STR_4, ""), workFile);
+        Assert.assertEquals(STR_0 + System.lineSeparator() +
+                            STR_1 + System.lineSeparator() +
+                            System.lineSeparator() +
+                            STR_2 + System.lineSeparator() +
+                            System.lineSeparator() +
+                            STR_2 + System.lineSeparator() +
+                            STR_3 + System.lineSeparator() +
+                            System.lineSeparator() +
+                            STR_4 + System.lineSeparator() +
+                            System.lineSeparator(),
+                FileUtils.readCharsUsingUtf8(workFile));
 
         FileUtils.deleteRecursively(workDir);
         Assert.assertFalse(workDir.exists());

@@ -27,6 +27,7 @@ public class FilesExt {
      * @param charset the character set used to encode the lines
      * @throws IOException if an I/O error occurs
      */
+    @Deprecated
     public static void writeLines(Iterable<? extends CharSequence> lines, File toFile, Charset charset) throws IOException {
         Files.asCharSink(toFile, charset).writeLines(lines);
     }
@@ -49,6 +50,7 @@ public class FilesExt {
      * @param toFile the destination file
      * @throws IOException if an I/O error occurs
      */
+    @Deprecated
     public static void writeLinesUsingUtf8(Iterable<? extends CharSequence> lines, File toFile) throws IOException {
         Files.asCharSink(toFile, StandardCharsets.UTF_8).writeLines(lines);
     }
@@ -71,6 +73,7 @@ public class FilesExt {
      * @return the contents as lines of the file
      * @throws IOException if an I/O error occurs
      */
+    @Deprecated
     public static List<String> readLines(File fromFile, Charset charset) throws IOException {
         return Files.readLines(fromFile, charset);
     }
@@ -81,6 +84,7 @@ public class FilesExt {
      * @return the contents as lines of the file
      * @throws IOException if an I/O error occurs
      */
+    @Deprecated
     public static List<String> readLinesUsingUtf8(File fromFile) throws IOException {
         return Files.readLines(fromFile, StandardCharsets.UTF_8);
     }
