@@ -330,7 +330,7 @@ public class TestConsts {
     /**
      * Fake url to test network.
      */
-    public static final String URL_FAKE = HOST + "Fake.html";
+    public static final String URL_FAKE_PAGE = HOST + "Fake.html";
     /**
      * Fake url with fake host to test network.
      */

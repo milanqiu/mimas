@@ -41,12 +41,12 @@ public class HttpClientUtilsTest {
 
         log.info("HttpClientUtils.setRetryStrategy(3, 500)");
         HttpClientUtils.setRetryStrategy(3, 500);
-        log.info("HttpClientUtils.getOkString(TestConsts.URL_FAKE)");
-        AssertExt.assertExceptionThrown(() -> HttpClientUtils.getOkString(TestConsts.URL_FAKE), HttpStatusCodeException.class, "404");
+        log.info("HttpClientUtils.getOkString(TestConsts.URL_FAKE_PAGE)");
+        AssertExt.assertExceptionThrown(() -> HttpClientUtils.getOkString(TestConsts.URL_FAKE_PAGE), HttpStatusCodeException.class, "404");
         log.info("HttpClientUtils.clearRetryStrategy()");
         HttpClientUtils.clearRetryStrategy();
-        log.info("HttpClientUtils.getOkString(TestConsts.URL_FAKE)");
-        AssertExt.assertExceptionThrown(() -> HttpClientUtils.getOkString(TestConsts.URL_FAKE), HttpStatusCodeException.class, "404");
+        log.info("HttpClientUtils.getOkString(TestConsts.URL_FAKE_PAGE)");
+        AssertExt.assertExceptionThrown(() -> HttpClientUtils.getOkString(TestConsts.URL_FAKE_PAGE), HttpStatusCodeException.class, "404");
 
         log.info("HttpClientUtils.setRetryStrategy(3, 500)");
         HttpClientUtils.setRetryStrategy(3, 500);
@@ -100,7 +100,7 @@ public class HttpClientUtilsTest {
             }
         }));
 
-        Assert.assertEquals(TestConsts.STR_0, HttpClientUtils.get(TestConsts.URL_FAKE, new ResponseHandler<String>() {
+        Assert.assertEquals(TestConsts.STR_0, HttpClientUtils.get(TestConsts.URL_FAKE_PAGE, new ResponseHandler<String>() {
             @Override
             public String handleResponse(HttpResponse httpResponse) throws ClientProtocolException, IOException {
                 Assert.assertEquals("HTTP/1.1",  httpResponse.getProtocolVersion().toString());
@@ -120,7 +120,7 @@ public class HttpClientUtilsTest {
         // String getOkString(String uri)
         Assert.assertEquals(TestConsts.CONTENT_GET, HttpClientUtils.getOkString(TestConsts.URL_GET + TestConsts.PARAMS_GET));
 
-        AssertExt.assertExceptionThrown(() -> HttpClientUtils.getOkString(TestConsts.URL_FAKE), HttpStatusCodeException.class, "404");
+        AssertExt.assertExceptionThrown(() -> HttpClientUtils.getOkString(TestConsts.URL_FAKE_PAGE), HttpStatusCodeException.class, "404");
         AssertExt.assertExceptionThrown(() -> HttpClientUtils.getOkString(TestConsts.URL_FAKE_HOST), UnknownHostException.class);
 
         // String getOkString(String uri, Charset defaultCharset)
@@ -131,7 +131,7 @@ public class HttpClientUtilsTest {
     public void test_getOkStringUsingUtf8AsDefault() throws Exception {
         Assert.assertEquals(TestConsts.CONTENT_GET, HttpClientUtils.getOkStringUsingUtf8AsDefault(TestConsts.URL_GET + TestConsts.PARAMS_GET));
 
-        AssertExt.assertExceptionThrown(() -> HttpClientUtils.getOkStringUsingUtf8AsDefault(TestConsts.URL_FAKE), HttpStatusCodeException.class, "404");
+        AssertExt.assertExceptionThrown(() -> HttpClientUtils.getOkStringUsingUtf8AsDefault(TestConsts.URL_FAKE_PAGE), HttpStatusCodeException.class, "404");
         AssertExt.assertExceptionThrown(() -> HttpClientUtils.getOkStringUsingUtf8AsDefault(TestConsts.URL_FAKE_HOST), UnknownHostException.class);
     }
 
@@ -139,7 +139,7 @@ public class HttpClientUtilsTest {
     public void test_getOkByteArray() throws Exception {
         Assert.assertArrayEquals(TestConsts.CONTENT_GET_BYTE_ARRAY, HttpClientUtils.getOkByteArray(TestConsts.URL_GET + TestConsts.PARAMS_GET));
 
-        AssertExt.assertExceptionThrown(() -> HttpClientUtils.getOkByteArray(TestConsts.URL_FAKE), HttpStatusCodeException.class, "404");
+        AssertExt.assertExceptionThrown(() -> HttpClientUtils.getOkByteArray(TestConsts.URL_FAKE_PAGE), HttpStatusCodeException.class, "404");
         AssertExt.assertExceptionThrown(() -> HttpClientUtils.getOkByteArray(TestConsts.URL_FAKE_HOST), UnknownHostException.class);
     }
 
@@ -174,7 +174,7 @@ public class HttpClientUtilsTest {
             }
         }));
 
-        Assert.assertEquals(TestConsts.STR_0, HttpClientUtils.post(TestConsts.URL_FAKE, formEntity, new ResponseHandler<String>() {
+        Assert.assertEquals(TestConsts.STR_0, HttpClientUtils.post(TestConsts.URL_FAKE_PAGE, formEntity, new ResponseHandler<String>() {
             @Override
             public String handleResponse(HttpResponse httpResponse) throws ClientProtocolException, IOException {
                 Assert.assertEquals("HTTP/1.1",  httpResponse.getProtocolVersion().toString());
@@ -194,7 +194,7 @@ public class HttpClientUtilsTest {
         // String postOkString(String uri, UrlEncodedFormEntity formEntity)
         Assert.assertEquals(TestConsts.CONTENT_POST, HttpClientUtils.postOkString(TestConsts.URL_POST, formEntity));
 
-        AssertExt.assertExceptionThrown(() -> HttpClientUtils.postOkString(TestConsts.URL_FAKE, formEntity), HttpStatusCodeException.class, "404");
+        AssertExt.assertExceptionThrown(() -> HttpClientUtils.postOkString(TestConsts.URL_FAKE_PAGE, formEntity), HttpStatusCodeException.class, "404");
         AssertExt.assertExceptionThrown(() -> HttpClientUtils.postOkString(TestConsts.URL_FAKE_HOST, formEntity), UnknownHostException.class);
 
         // String postOkString(String uri, UrlEncodedFormEntity formEntity, Charset defaultCharset)
@@ -205,7 +205,7 @@ public class HttpClientUtilsTest {
     public void test_postOkStringUsingUtf8AsDefault() throws Exception {
         Assert.assertEquals(TestConsts.CONTENT_POST, HttpClientUtils.postOkStringUsingUtf8AsDefault(TestConsts.URL_POST, formEntity));
 
-        AssertExt.assertExceptionThrown(() -> HttpClientUtils.postOkStringUsingUtf8AsDefault(TestConsts.URL_FAKE, formEntity), HttpStatusCodeException.class, "404");
+        AssertExt.assertExceptionThrown(() -> HttpClientUtils.postOkStringUsingUtf8AsDefault(TestConsts.URL_FAKE_PAGE, formEntity), HttpStatusCodeException.class, "404");
         AssertExt.assertExceptionThrown(() -> HttpClientUtils.postOkStringUsingUtf8AsDefault(TestConsts.URL_FAKE_HOST, formEntity), UnknownHostException.class);
     }
 
@@ -213,7 +213,7 @@ public class HttpClientUtilsTest {
     public void test_postOkByteArray() throws Exception {
         Assert.assertArrayEquals(TestConsts.CONTENT_POST_BYTE_ARRAY, HttpClientUtils.postOkByteArray(TestConsts.URL_POST, formEntity));
 
-        AssertExt.assertExceptionThrown(() -> HttpClientUtils.postOkByteArray(TestConsts.URL_FAKE, formEntity), HttpStatusCodeException.class, "404");
+        AssertExt.assertExceptionThrown(() -> HttpClientUtils.postOkByteArray(TestConsts.URL_FAKE_PAGE, formEntity), HttpStatusCodeException.class, "404");
         AssertExt.assertExceptionThrown(() -> HttpClientUtils.postOkByteArray(TestConsts.URL_FAKE_HOST, formEntity), UnknownHostException.class);
     }
 }
