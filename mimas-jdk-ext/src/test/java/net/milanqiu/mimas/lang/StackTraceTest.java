@@ -1,6 +1,7 @@
 package net.milanqiu.mimas.lang;
 
 import net.milanqiu.mimas.collect.tuple.StrStr;
+import net.milanqiu.mimas.config.MimasJdkExtProjectConfig;
 import net.milanqiu.mimas.junit.AssertExt;
 import org.junit.Assert;
 import org.junit.Test;
@@ -144,5 +145,12 @@ public class StackTraceTest {
         Assert.assertEquals(STR_1, stackTrace.getElement(0).getMethodName());
         Assert.assertEquals(STR_2, stackTrace.getElement(1).getClassName());
         Assert.assertEquals(STR_3, stackTrace.getElement(1).getMethodName());
+    }
+
+    @Test
+    public void test_toString() throws Exception {
+        StackTrace stackTrace = StackTrace.createFromCurrentThread();
+        stackTrace = stackTrace.append(StackTrace.createMethodElement(STR_0, STR_1));
+        MimasJdkExtProjectConfig.getSingleton().writeFileInTestOutDirUsingUtf8(stackTrace.toString());
     }
 }

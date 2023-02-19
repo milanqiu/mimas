@@ -195,4 +195,20 @@ public class StackTrace {
         result.elements = Arrays.copyOfRange(elements, offset, elements.length);
         return result;
     }
+
+    /**
+     * Returns a string representation of this object.
+     * The string representation consists of a list of {@link java.lang.StackTraceElement}, enclosed in braces("{}").
+     * @return a string representation of this object
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("StackTrace{").append(System.lineSeparator());
+        for (StackTraceElement element : elements) {
+            sb.append('\t').append(element).append(System.lineSeparator());
+        }
+        sb.append('}');
+        return sb.toString();
+    }
 }
