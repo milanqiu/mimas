@@ -123,6 +123,8 @@ public class HttpClientUtils {
     public static <T> T get(String uri, ResponseHandler<? extends T> responseHandler) throws IOException {
         CloseableHttpClient hc = hcb.build();
         HttpGet hg = new HttpGet(uri);
+        hg.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36");
+        hg.setHeader("Connection", "keep-alive");
         return hc.execute(hg, responseHandler);
     }
 
@@ -208,6 +210,8 @@ public class HttpClientUtils {
     public static <T> T post(String uri, UrlEncodedFormEntity formEntity, ResponseHandler<? extends T> responseHandler) throws IOException {
         CloseableHttpClient hc = hcb.build();
         HttpPost hp = new HttpPost(uri);
+        hp.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36");
+        hp.setHeader("Connection", "keep-alive");
         hp.setEntity(formEntity);
         return hc.execute(hp, responseHandler);
     }
